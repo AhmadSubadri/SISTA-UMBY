@@ -119,7 +119,8 @@ public $result = [
         $data = [
             'chart_data' => $chart_data,
             'resultTest' => $this->M_umum->getresultrabinKaprodi($id)->result(),
-            'Data' => $this->M_lecturer->GetDetailHasilSempro($id)
+            'Data' => $this->M_lecturer->GetDetailHasilSempro($id),
+            'DataTitle' => $this->M_lecturer->GetDataRabinResult($id)
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/skripsi/detail_sempro',$data);
@@ -129,20 +130,60 @@ public $result = [
     public function SavePengumumansempro()
     {
         $nim = $this->input->post('nim');
-        $data = array(
-            'status' => $this->input->post('status'),
-            'note' => $this->input->post('note'),
-            'status_sempro' => "2"
-        );
-        $this->db->where('nim', $nim);
-        $this->db->update('tb_ideasubmission', $data);
+        if($this->input->post('status') == '1'){
+            $data = array(
+                'status' => $this->input->post('status'),
+                'note' => $this->input->post('note'),
+                'status_sempro' => "2"
+            );
+            $this->db->where('nim', $nim);
+            $this->db->update('tb_ideasubmission', $data);
 
-        $this->db->set('status', "1");
-        $this->db->where('nim_student', $nim);
-        $this->db->update('tb_detail_sempro');
+            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'rabin' => $this->input->post('rabin'), 'id_major' => $this->input->post('id_major')]);
 
-        $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
-        $this->session->set_flashdata('msg_class','alert-success');
-        redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));
+            $this->db->set('status', "1");
+            $this->db->where('nim_student', $nim);
+            $this->db->update('tb_detail_sempro');
+
+            $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
+            $this->session->set_flashdata('msg_class','alert-success');
+            redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));
+        } elseif($this->input->post('status') == '2') {
+            $data = array(
+                'status' => $this->input->post('status'),
+                'note' => $this->input->post('note'),
+                'status_sempro' => "2"
+            );
+            $this->db->where('nim', $nim);
+            $this->db->update('tb_ideasubmission', $data);
+
+            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'rabin' => $this->input->post('rabin'), 'id_major' => $this->input->post('id_major')]);
+
+            $this->db->set('status', "1");
+            $this->db->where('nim_student', $nim);
+            $this->db->update('tb_detail_sempro');
+
+            $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
+            $this->session->set_flashdata('msg_class','alert-success');
+            redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));
+        } else {
+            $data = array(
+                'status' => $this->input->post('status'),
+                'note' => $this->input->post('note'),
+                'status_sempro' => "2"
+            );
+            $this->db->where('nim', $nim);
+            $this->db->update('tb_ideasubmission', $data);
+
+            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'rabin' => $this->input->post('rabin'), 'id_major' => $this->input->post('id_major')]);
+
+            $this->db->set('status', "1");
+            $this->db->where('nim_student', $nim);
+            $this->db->update('tb_detail_sempro');
+
+            $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
+            $this->session->set_flashdata('msg_class','alert-success');
+            redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));
+        }
     }
 }
