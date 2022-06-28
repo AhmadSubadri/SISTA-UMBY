@@ -112,7 +112,9 @@
             <div class="modal-header">
                 <h4>Pengumuman hasil akhir seminar proposal <i class="fa fa-lock"></i></h4>
             </div>
-            <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
+            <div class="modal-body">
+                <i class="fa fa-question-circle"></i> Are you sure you want to log-off?
+            </div>
             <div class="modal-footer"><a class="btn btn-primary btn-block" href="">Logout</a>
             </div>
         </div>

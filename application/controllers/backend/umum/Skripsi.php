@@ -118,7 +118,8 @@ class Skripsi extends CI_Controller
         $id = $this->input->post('iddetail');
         $data = array(
             'feedback' => $this->input->post('feedback'),
-            'note' => $this->input->post('note')
+            'note' => $this->input->post('note'),
+            'status' => "1"
         );
         $this->db->where('id_detail', $id);
         $this->db->update('tb_detail_sempro', $data);
