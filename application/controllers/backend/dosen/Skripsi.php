@@ -125,4 +125,24 @@ public $result = [
         $this->load->view('backend/dosen/skripsi/detail_sempro',$data);
         $this->load->view('backend/partials_/footer');
     }
+
+    public function SavePengumumansempro()
+    {
+        $nim = $this->input->post('nim');
+        $data = array(
+            'status' => $this->input->post('status'),
+            'note' => $this->input->post('note'),
+            'status_sempro' => "2"
+        );
+        $this->db->where('nim', $nim);
+        $this->db->update('tb_ideasubmission', $data);
+
+        $this->db->set('status', "1");
+        $this->db->where('nim_student', $nim);
+        $this->db->update('tb_detail_sempro');
+
+        $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+        redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));
+    }
 }

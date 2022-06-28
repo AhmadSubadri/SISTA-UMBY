@@ -84,7 +84,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-4 sub-title">
-                                <h6># Dosen</h6>
+                                <h6># Dosen penguji</h6>
                             </div>
                             <div class="col-md-8 sub-title">
                                 <h6>Catatan</h6>
