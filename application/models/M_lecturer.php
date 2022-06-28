@@ -80,7 +80,7 @@ class M_lecturer extends CI_Model
 
     public function GetDetailHasilSempro($id)
     {
-        $this->db->select('d.id_detail as id, d.nidn_lecturer as nidn, l.fullname as name, d.feedback as feedback, d.note as note')
+        $this->db->select('d.id_detail as id, d.nidn_lecturer as nidn, s.username as nim, l.fullname as name, d.feedback as feedback, d.note as note')
         ->where('d.nim_student', $id)
         ->join('tb_student s', 's.username = d.nim_student')
         ->join('tb_lecturers l', 'l.username = d.nidn_lecturer')

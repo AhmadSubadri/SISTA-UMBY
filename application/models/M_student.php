@@ -78,6 +78,18 @@ class M_student extends CI_Model
         return $query->result();
     }
 
+    public function GetFeedbackSempro()
+    {
+        $username = $this->session->userdata('username');
+        $this->db->select('d.id_detail as id, d.nidn_lecturer as nidn, l.fullname as name, d.note as note')
+        ->where('d.nim_student', $username)
+        ->where('d.status', "1")
+        ->join('tb_lecturers l', 'l.username = d.nidn_lecturer')
+        ->from('tb_detail_sempro d');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function insertData($table,$data)
     {
         $this->db->insert($table,$data);

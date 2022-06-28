@@ -98,7 +98,8 @@ class Skripsi extends CI_Controller
     {
     	$data = [
             'DataPengujiSempro' => $this->M_student->GetDataPengujiSempro(),
-            'DataDataSempro' => $this->M_student->GetDataSempro()
+            'DataDataSempro' => $this->M_student->GetDataSempro(),
+			'GetFeedbackSempro' => $this->M_student->GetFeedbackSempro()
         ];
     	$this->load->view('backend/partials_/head');
     	$this->load->view('backend/mahasiswa/skripsi/sempro', $data);

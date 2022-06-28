@@ -1,3 +1,4 @@
+<?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
     <a href="<?= site_url('dsn/dashboard/data-sempro-skripsi');?>" class="btn btn-mini"><i
             class="ti-back-left"></i>Kembali</a>
@@ -112,9 +113,30 @@
             <div class="modal-header">
                 <h4>Pengumuman hasil akhir seminar proposal <i class="fa fa-lock"></i></h4>
             </div>
-            <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
-            <div class="modal-footer"><a class="btn btn-primary btn-block" href="">Logout</a>
-            </div>
+            <form action="<?= site_url('dsn/dashboard/save-pengumuman-sempro');?>" class="form-material" method="post">
+                <div class="modal-body">
+                    <?php foreach($Data as $data):?>
+                    <input type="text" name="nim" id="nim" value="<?= $data->nim;?>" hidden>
+                    <?php endforeach;?>
+                    <!-- <label for="">Feedback</label> -->
+                    <div class="form-group form-default form-static-label">
+                        <select name="status" class="form-control">
+                            <option value="1">Diterima</option>
+                            <option value="2">Diterima dengan revisi</option>
+                            <option value="3">Ditolak</option>
+                        </select>
+                        <span class="form-bar"></span>
+                        <label class="float-label">Feedback</label>
+                    </div>
+                    <div class="form-group form-default form-static-label">
+                        <textarea name="note" id="ckeditor" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-grd-primary btn-block"><i class="ti-save"></i>
+                        Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -159,5 +181,16 @@ var chart = new Chart(ctx, {
             }]
         }
     }
+});
+</script>
+<script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
+<script src="<?php echo base_url('assets/bootstrap/bootstrap.bundle.js');?>"></script>
+<script src="<?php echo base_url('assets/ckeditor/ckeditor.js');?>"></script>
+<script type="text/javascript">
+$(function() {
+    CKEDITOR.replace('ckeditor', {
+        filebrowserImageBrowseUrl: '<?php echo base_url('assets/kcfinder/browse.php');?>',
+        height: '200px'
+    });
 });
 </script>
