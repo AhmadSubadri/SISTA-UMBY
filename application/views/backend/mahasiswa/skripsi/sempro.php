@@ -55,20 +55,26 @@
                 <h4 class="sub-title text-center">Pengumuman hasil Seminar proposal</h4>
                 <ul>
                     <?php foreach($DataDataSempro as $row):?>
-                    <li class="text-center">
+                    <li>
                         <?php if($row->status == 0):?>
                         <div class="text-center">
                             <h6>Data not available</h6>
                         </div>
                         <?php elseif($row->status == 1):?>
-                        <label class="label label-mini label-success">*Judul dan proposal anda <b>diterima</b></label>
+                        <div class="text-center">
+                            <h4 class="sub-title text-center">*Judul dan proposal anda
+                                <label class="label label-mini label-success">diterima,</label>
+                                <?= $row->note;?>
+                            </h4>
+                        </div>
                         <blockquote class="blockquote mb-0">
                             <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting dosen
                                 pembimbing skripsi sudah di sahkan</p>
                             <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite></footer>
                         </blockquote>
                         <?php elseif($row->status == 2):?>
-                        <label class="label label-mini label-success">*Judul dan proposal anda diterima dengan
+                        <label class="label label-mini label-success text-center">*Judul dan proposal anda diterima
+                            dengan
                             revisi</label>
                         <blockquote class="blockquote mb-0">
                             <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting dosen
