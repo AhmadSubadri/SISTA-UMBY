@@ -30,6 +30,7 @@ class Skripsi extends CI_Controller
 
 	public function UploadPengajuan()
 	{
+		$detail = $this->db->get_where('tb_detail_sempro',['nim_student' => $this->input->post('nim')])->row();
 		$this->db->select('title, nim');
 		$this->db->where('nim', $this->input->post('nim'));
 		$submisson = $this->db->get('tb_ideasubmission')->row();
@@ -51,6 +52,15 @@ class Skripsi extends CI_Controller
 	        		'title' => $this->input->post('title'),
 	        		'nidn' => $this->input->post('nidn'),
 	        		'status' => "0",
+					'note' => " ",
+					'rabin' => " ",
+					'result_test' => " ",
+					'to_check' => "0",
+					'kegiatan' => "NULL",
+					'tempat' => "NULL",
+					'tanggal' => "",
+					'jam' => "NULL",
+					'status_sempro' => "0",
 	        		'id_major' => $this->input->post('major'),
 	        		'file' => $this->upload->file_name
 	        	);
@@ -58,7 +68,11 @@ class Skripsi extends CI_Controller
         		$this->db->update('tb_ideasubmission', $data);
 	        	// $this->M_student->insertData('tb_ideasubmission',$data);
 	        	if ($this->db->affected_rows() > 0) {
-	        		$this->session->set_flashdata('success','Submission of title & proposal successfully added !!');
+					if($detail->nim_student > 0){
+						$this->M_student->delete('tb_detail_sempro','nim_student', $nim);
+					}
+					$this->session->set_flashdata('msg',"Submission of title & document has been added successfully");
+            		$this->session->set_flashdata('msg_class','alert-success');
 	        		redirect(site_url('mhs/dashboard/pengajuan-judul-skripsi'));
 	        	}
 	        	redirect(site_url('mhs/dashboard/pengajuan-judul-skripsi'));
@@ -81,12 +95,23 @@ class Skripsi extends CI_Controller
 	        		'title' => $this->input->post('title'),
 	        		'nidn' => $this->input->post('nidn'),
 	        		'status' => "0",
+					'status' => "0",
+					'note' => " ",
+					'rabin' => " ",
+					'result_test' => " ",
+					'to_check' => "0",
+					'kegiatan' => "NULL",
+					'tempat' => "NULL",
+					'tanggal' => "NULL",
+					'jam' => "NULL",
+					'status_sempro' => "0",
 	        		'id_major' => $this->input->post('major'),
 	        		'file' => $this->upload->file_name
 	        	);
 	        	$this->M_student->insertData('tb_ideasubmission',$data);
 	        	if ($this->db->affected_rows() > 0) {
-	        		$this->session->set_flashdata('success','Submission of title & proposal successfully added !!');
+	        		$this->session->set_flashdata('msg',"Submission of title & document has been added successfully");
+            		$this->session->set_flashdata('msg_class','alert-success');
 	        		redirect(site_url('mhs/dashboard/pengajuan-judul-skripsi'));
 	        	}
 	        	redirect(site_url('mhs/dashboard/pengajuan-judul-skripsi'));

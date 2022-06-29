@@ -116,11 +116,11 @@
             <form action="<?= site_url('dsn/dashboard/save-pengumuman-sempro');?>" class="form-material" method="post">
                 <div class="modal-body">
                     <?php foreach($DataTitle as $row):?>
-                    <input type="text" name="title" id="title" value="<?= $row->title;?>">
-                    <input type="text" name="name" id="name" value="<?= $row->name;?>">
-                    <input type="text" name="id_major" id="id_major" value="<?= $row->id_major;?>">
-                    <input type="text" name="rabin" id="rabin" value="<?= $row->rabin;?>">
-                    <input type="text" name="year" id="year" value="<?= date('Y');?>">
+                    <input type="hidden" name="title" id="title" value="<?= $row->title;?>">
+                    <input type="hidden" name="name" id="name" value="<?= $row->name;?>">
+                    <input type="hidden" name="id_major" id="id_major" value="<?= $row->id_major;?>">
+                    <input type="hidden" name="rabin" id="rabin" value="<?= $row->rabin;?>">
+                    <input type="hidden" name="year" id="year" value="<?= date('Y');?>">
                     <?php endforeach;?>
                     <?php foreach($Data as $data):?>
                     <input type="text" name="nim" id="nim" value="<?= $data->nim;?>" hidden>
