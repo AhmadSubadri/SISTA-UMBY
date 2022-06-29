@@ -1,3 +1,4 @@
+<?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="card-block col-sm-12">
     <div class="card">
         <blockquote class="blockquote mb-0">
@@ -100,17 +101,17 @@
                 <?php foreach($DataUpload as $row):?>
                 <div class="col-md-10">
                     <h6><?= $row->title;?></h6>
-                    <p class="font-italic"><i class="ti-calendar"> <?= $row->created_at;?></i></p>
+                    <p class="font-italic"><i class="ti-calendar"> Update : <?= $row->created_at;?></i></p>
                 </div>
                 <div class="col text-center">
                     <?php if ($row->status == '0'): ?>
                     <label class="label label-md label-warning">Waiting</label>
                     <?php elseif ($row->status == '1'):?>
-                    <label class="label label-md label-warning">Received</label>
+                    <label class="label label-md label-success">Diterima</label>
                     <?php elseif ($row->status == '2'):?>
-                    <label class="label label-md label-warning">Rejected</label>
+                    <label class="label label-md label-success">Diterima dengan revisi</label>
                     <?php else:?>
-                    <label class="label label-md label-warning">Received with revision</label>
+                    <label class="label label-md label-danger">Ditolak</label>
                     <?php endif;?>
                 </div>
                 <?php endforeach;?>

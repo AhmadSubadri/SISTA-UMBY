@@ -172,4 +172,10 @@ class M_student extends CI_Model
         $query = $this->db->get()->result();
         return $query;
     }
+
+    public function delete($tabel,$col,$id){
+        $this->db->where($col,$id);
+        $action = $this->db->delete($tabel);
+        return $action;
+    }
 }

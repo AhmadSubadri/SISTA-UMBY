@@ -23,7 +23,7 @@
                 <ul>
                     <?php foreach($DataDataSempro as $row):?>
                     <li>
-                        <?php if($row->tanggal == null):?>
+                        <?php if($row->tanggal == NULL):?>
                         <label class="label label-mini label-danger">Belum terjadwal</label>
                         <?php else:?>
                         <h6>
@@ -73,16 +73,31 @@
                             <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite></footer>
                         </blockquote>
                         <?php elseif($row->status == 2):?>
-                        <label class="label label-mini label-success text-center">*Judul dan proposal anda diterima
-                            dengan
-                            revisi</label>
+                        <div class="text-center">
+                            <h4 class="sub-title text-center">*Judul dan proposal anda <label
+                                    class="label label-mini label-success">diterima dengan revisi</label>
+                                <?= $row->note;?>
+                            </h4>
+                        </div>
                         <blockquote class="blockquote mb-0">
-                            <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting dosen
-                                pembimbing skripsi sudah di sahkan</p>
-                            <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite></footer>
+                            <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting
+                                dosen pembimbing skripsi sudah di sahkan</p>
+                            <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite>
+                            </footer>
                         </blockquote>
                         <?php else:?>
-                        <label class="label label-mini label-danger">*Judul dan proposal anda ditolak</label>
+                        <div class="text-center">
+                            <h4 class="sub-title text-center">*Judul dan proposal anda <label
+                                    class="label label-mini label-danger">ditolak</label>
+                                <?= $row->note;?>
+                            </h4>
+                        </div>
+                        <blockquote class="blockquote mb-0">
+                            <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi belum bisa di
+                                lanjutkan, silahkan ajukan judul dan proposal kembali</p>
+                            <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite>
+                            </footer>
+                        </blockquote>
                         <?php endif;?>
                     </li>
                     <?php endforeach;?>

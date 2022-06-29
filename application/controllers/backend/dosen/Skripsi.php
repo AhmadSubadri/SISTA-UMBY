@@ -175,8 +175,6 @@ public $result = [
             $this->db->where('nim', $nim);
             $this->db->update('tb_ideasubmission', $data);
 
-            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'rabin' => $this->input->post('rabin'), 'id_major' => $this->input->post('id_major')]);
-
             $this->db->set('status', "1");
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
