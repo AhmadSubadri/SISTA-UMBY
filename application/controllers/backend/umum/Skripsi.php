@@ -44,7 +44,6 @@ class Skripsi extends CI_Controller
                 $x = $kgram;
                 $y = $basis;
                 $length=strlen($Token);
-
                 $teksSplit=null;
                 if(strlen($Token) < $x){
                     $teksSplit[]=$Token;

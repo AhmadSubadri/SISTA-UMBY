@@ -49,8 +49,6 @@
         </div>
     </div>
 
-
-    <?php $this->load->view('backend/partials_/alert_success.php');?>
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
@@ -106,7 +104,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <?php if($row->tanggal == null):?>
+                                    <?php if($row->tanggal == 0):?>
                                     <label class="label label-mini label-danger">Belum terjadwal</label>
                                     <?php else:?>
                                     <h6>Hari/Tanggal : <?php echo format_tanggal(date($row->tanggal));?> /

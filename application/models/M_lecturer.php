@@ -70,7 +70,7 @@ class M_lecturer extends CI_Model
 
     public function GetDataByIdAjuan($id)
     {
-        $this->db->select('i.id as id, i.nim as nim, i.title as title, i.rabin as rabin, s.id_major as id_major s.fullname as name, i.file as file, s.image as image, i.created_at as date, i.to_check as to_check')
+        $this->db->select('i.id as id, i.nim as nim, i.title as title, i.rabin as rabin, s.id_major as id_major, s.fullname as name, i.file as file, s.image as image, i.created_at as date, i.to_check as to_check')
         ->where('i.nim', $id)
         ->join('tb_student s', 's.username = i.nim')
         ->order_by('i.created_at', 'DESC')
