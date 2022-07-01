@@ -43,7 +43,7 @@
                                 </div>
                             </td>
                             <td>
-                                <?php if($row->tanggal == null):?>
+                                <?php if($row->tanggal == 0):?>
                                 <label class="label label-mini label-danger">Belum terjadwal</label>
                                 <?php else:?>
                                 <h6>Hari/Tanggal : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?>
@@ -53,7 +53,7 @@
                                 <?php endif;?>
                             </td>
                             <td>
-                                <?php if($row->feedback == 0):?>
+                                <?php if($row->feedback == null):?>
                                 <label class="label label-mini label-danger">Belum sempro</label>
                                 <?php else:?>
                                 <label class="label label-mini label-success">Sudah sempro</label>
