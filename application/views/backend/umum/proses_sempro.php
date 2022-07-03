@@ -1,3 +1,4 @@
+
 <div class="col-xl-12">
     <a href="<?= site_url('dsn/dashboard/pelaksanaan-sempro');?>" class="btn btn-mini"><i
             class="ti-back-left"></i>Kembali</a>
@@ -103,8 +104,8 @@
                                         <form action="<?php echo base_url('dsn/dashboard/save-feedback');?>"
                                             class="form-material" method="post">
                                             <?php foreach($DetailId as $row):?>
-                                            <input type="text" name="nim" value="<?= $row->nim;?>">
-                                            <input type="text" name="iddetail" value="<?= $row->id_detail;?>">
+                                            <input type="hidden" name="nim" value="<?= $row->nim;?>">
+                                            <input type="hidden" name="iddetail" value="<?= $row->id_detail;?>">
                                             <!-- <input type="text" name="iddetail" value="<?= $row->id_detail;?>"> -->
                                             <?php endforeach;?>
                                             <div class="form-group form-default form-static-label">
