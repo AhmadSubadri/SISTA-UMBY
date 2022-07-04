@@ -38,14 +38,16 @@
 		<?php endforeach;?>
 	</div>
 	<div class="card-footer">
-		<form class="form-inline" action="<?= site_url('dsn/dashboard/save-feedback-bimbingan');?>" method="post">
+		<?= form_open_multipart('dsn/dashboard/save-feedback-bimbingan'); ?>
+		<!-- <form class="form-inline"> -->
+			<div class="form-inline">
 			<div class="form-group">
 				<?php foreach($Mahasiswa as $mhs):?>
 					<input name="name" class="form-bg-null" value="<?= $mhs->fullname;?>" hidden/>
 					<input name="receiver" class="form-bg-null" value="<?= $mhs->username;?>" hidden/>
 					<input name="sender" class="form-bg-null" value="<?= $this->session->userdata('username');?>" hidden/>
 				<?php endforeach;?>
-				<input name="file" class="form-bg-null" placeholder="name file..." hidden />
+				<input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
 				<div class="fileUpload btn btn-sm btn-grd-inverse">
 					<span><i class="ti-clip"></i> File</span>
 					<input id="uploadBtn" type="file" name="file" class="upload" />
@@ -54,9 +56,10 @@
 			<div class="form-group">
 				<textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default" required style="width: 530px"></textarea>
 			</div>
-
 			<button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
-		</form>
+			</div>
+		<!-- </form> -->
+		<?= form_close();?>
 	</div>
 </div>
 

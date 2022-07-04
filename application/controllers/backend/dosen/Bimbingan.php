@@ -49,14 +49,15 @@ public $result = [
         $config['file_name'] = "$nim-$name-Feedback-".date("Y-d-m");
         $config['upload_path'] = '_uploads/guidance/'.$this->input->post('name');
         $config['allowed_types'] = 'pdf|docx|xls';
-        $config['max_size'] = 5000;
+        // $config['max_size'] = 5000;
         $this->load->library('upload', $config);
-        if ($this->upload->do_upload('file')){
+        if(!$this->upload->do_upload('file')){
             $data = array(
                 'sender' => $this->input->post('sender'),
                 'receiver' => $this->input->post('receiver'),
                 'message' => $this->input->post('message'),
                 // 'status' => $this->input->post('status')
+
             );
             $this->M_bimbingan->add('tb_guidancecard',$data);
             $this->M_bimbingan->add('tb_guidance',$data);
