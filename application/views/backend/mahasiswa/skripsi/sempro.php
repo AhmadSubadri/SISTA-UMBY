@@ -61,11 +61,11 @@
                             <h6>Data not available</h6>
                         </div>
                         <?php elseif($row->status == 1):?>
-                        <div class="text-center">
+                        <div class="sub-title">
                             <h4 class="sub-title text-center">*Judul dan proposal anda
                                 <label class="label label-mini label-success">diterima,</label>
-                                <?= $row->note;?>
                             </h4>
+                            <?= $row->note;?>
                         </div>
                         <blockquote class="blockquote mb-0">
                             <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting dosen

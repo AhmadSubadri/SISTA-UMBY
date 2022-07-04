@@ -43,10 +43,9 @@ class Skripsi extends CI_Controller
             $juduluji = $this->M_umum->getSourcetitle('tb_sourcetitle')->result_array();
             $array_abstrak = array();
             foreach($juduluji as $key => $value){
-                $id_dokumen = $value["id"];
+                // $id_dokumen = $value["id"];
                 $keys=   $array_abstrak[$key] = $value["rabin"];
                 $readngram1 = hasing("$keys","$kgram","$basis");            
-                $readngram;
                 $resultintersect = array_intersect($readngram1,$readngram2);  
                 $totals=count($resultintersect);
 

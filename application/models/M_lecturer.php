@@ -40,18 +40,16 @@ class M_lecturer extends CI_Model
         return $query->result();
     }
 
-    function GetRow($namab){
+    public function GetRow($namab){
         $major = $this->session->userdata('major');
         $this->db->select('i.id as id, i.nim as nim, i.title as title, s.fullname as name, i.file as file, s.image as image, i.created_at as date');
-        $this->db->like('s.fullname', $namab , 'both');
-        $this->db->order_by('i.nim', 'ASC');
+        $this->db->like('s.fullname', $namab ,'both');
+        $this->db->order_by('s.fullname', 'ASC');
         $this->db->where('i.id_major', $major);
         $this->db->where('i.to_check', '0');
         $this->db->join('tb_student s', 's.username = i.nim');
-        $this->db->limit(10);
-        $this->db->from('tb_ideasubmission i');
-        $query = $this->db->get();
-        return $query->result();
+        // $this->db->limit(10);
+        return $this->db->get('tb_ideasubmission i')->result();
     }
 
     public function GetDataSempro()

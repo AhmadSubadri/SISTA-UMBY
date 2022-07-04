@@ -70,7 +70,8 @@
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="button.html" class="waves-effect waves-dark">
+                        <a href="<?= site_url('dsn/dashboard/data-sempro-mahasiswa');?>"
+                            class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Data mahasiswa seminar
                                 proposal</span>
