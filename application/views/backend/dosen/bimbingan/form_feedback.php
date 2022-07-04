@@ -3,7 +3,7 @@
 <?php endforeach;?>
 
 <div class="card">
-	<div class="card-header">
+	<div class="card-header" id="klompok">
 		<?php foreach($Mahasiswa as $mhs):?>
 			<div class="media">
 				<?php if($mhs->image == null):?>
@@ -19,7 +19,16 @@
 				</div>
 			</div>
 			<div class="card-header-right">
-				<p><?= $mhs->username;?></p>
+				<?php if($mhs->status_exam != 0):?>
+					<button class="btn btn-mini waves-effect waves-light btn-success disabled btn-disabled" data-toggle="tooltip"
+					data-placement="top" title="Students have the right to register exam"><i
+					class="ti-check-box"></i>Approved</button>
+				<?php else:?>
+					<button class="btn btn-mini waves-effect waves-light"
+					onclick="ConfirmDialog(<?= $mhs->username;?>)" data-toggle="tooltip"
+					data-placement="top" title="Click to finished the guidance"><i
+					class="ti-check-box text-primary"></i>Finish</button>
+				<?php endif;?>
 			</div>
 		<?php endforeach;?>
 	</div>
@@ -36,6 +45,10 @@
 	<div class="card-footer">
 		<form class="form-inline">
 			<div class="form-group">
+				<?php foreach($Mahasiswa as $mhs):?>
+					<input name="receiver" class="form-bg-null" value="<?= $mhs->username;?>" hidden/>
+					<input name="sender" class="form-bg-null" value="<?= $this->session->userdata('username');?>" hidden/>
+				<?php endforeach;?>
 				<input name="file" class="form-bg-null" placeholder="name file..." hidden />
 				<div class="fileUpload btn btn-sm btn-grd-inverse">
 					<span><i class="ti-clip"></i> File</span>
@@ -43,7 +56,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default" required style="width: 540px"></textarea>
+				<textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default" required style="width: 530px"></textarea>
 			</div>
 
 			<button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
@@ -74,4 +87,31 @@
 	document.getElementById("uploadBtn").onchange = function() {
 		document.getElementById("uploadFile").value = this.value;
 	};
+</script>
+<script>
+function ConfirmDialog(id) {
+    swal("Click ok untuk menyelesaikan bimbingan!")
+        .then(
+            function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "POST",
+                        url: '<?= site_url('dsn/dashboard/insertApprovelguidance')?>',
+                        data: {
+                            id: id
+                        },
+                        error: function() {
+                            alert('Something is wrong');
+                        },
+                        success: function(data) {
+                            swal(`NIM ${id} berhak daftar pendadaran dari sekarang`);
+                            $(document.location.reload(true));
+                        }
+                    });
+                } else {
+                    swal(`Yakin Cancel progres ?`);
+                }
+            }
+        );
+}
 </script>

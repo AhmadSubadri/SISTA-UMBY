@@ -32,10 +32,18 @@ class M_bimbingan extends CI_Model
 
     public function GetMahasiswa($id)
     {
-        $this->db->select('*')
-        ->where('username', $id)
-        ->from('tb_student');
+        $this->db->select('s.fullname, s.username, s.image, t.status_exam')
+        ->where('t.nim', $id)
+        ->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function _SetData($tabel, $array, $col, $id){
+        $this->db->set($array);
+        $this->db->where($col, $id);
+        $query = $this->db->update($tabel);
+        return $query;
     }
 }
