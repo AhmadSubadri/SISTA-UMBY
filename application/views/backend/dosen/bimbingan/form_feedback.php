@@ -31,9 +31,21 @@
 	<div class="card-block" style="display:block; height:307px; overflow: auto;" id="jklm">
 		<?php foreach($Data as $isi):?>
 			<?php if($isi->sender == $this->session->userdata('username')):?>
-				<div class="text-right"><?= $isi->nameLecturer;?><br><?= $isi->message;?><br></div><br>
+				<div class="text-right">
+					<?= $isi->nameLecturer;?><br><?= $isi->message;?><br>
+					<?php if($isi->file != 0):?>
+						<a href="" class="text-primary">Download file</a>
+					<?php else:?>
+					<?php endif;?>
+				</div><br>
 			<?php else:?>
-				<div class="text-left col-md-6"><?= $isi->name;?><br><?= $isi->message;?></div><br>
+				<div class="text-left col-md-6">
+					<?= $isi->name;?><br><?= $isi->message;?><br>
+					<?php if($isi->file != 0):?>
+						<a href="" class="text-primary">Download file</a>
+					<?php else:?>
+					<?php endif;?>
+				</div><br>
 			<?php endif;?>
 		<?php endforeach;?>
 	</div>
@@ -41,23 +53,42 @@
 		<?= form_open_multipart('dsn/dashboard/save-feedback-bimbingan'); ?>
 		<!-- <form class="form-inline"> -->
 			<div class="form-inline">
-			<div class="form-group">
 				<?php foreach($Mahasiswa as $mhs):?>
 					<input name="name" class="form-bg-null" value="<?= $mhs->fullname;?>" hidden/>
 					<input name="receiver" class="form-bg-null" value="<?= $mhs->username;?>" hidden/>
 					<input name="sender" class="form-bg-null" value="<?= $this->session->userdata('username');?>" hidden/>
 				<?php endforeach;?>
-				<input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
-				<div class="fileUpload btn btn-sm btn-grd-inverse">
-					<span><i class="ti-clip"></i> File</span>
-					<input id="uploadBtn" type="file" name="file" class="upload" />
+				<?php foreach($Mahasiswa as $mhs):?>
+					<?php if($mhs->status_exam != 0):?>
+						<div style="pointer-events: none; opacity: 0.4;">
+							<div class="form-group">
+								<input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
+								<div class="fileUpload btn btn-sm btn-grd-inverse">
+									<span><i class="ti-clip"></i> File</span>
+									<input id="uploadBtn" type="file" name="file" class="upload" />
+								</div>
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default" required style="width: 530px"></textarea>
+							</div>
+							<button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
+						</div>
+					</div>
+				<?php else:?>
+					<div class="form-group">
+						<input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
+						<div class="fileUpload btn btn-sm btn-grd-inverse">
+							<span><i class="ti-clip"></i> File</span>
+							<input id="uploadBtn" type="file" name="file" class="upload" />
+						</div>
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default" required style="width: 530px"></textarea>
+					</div>
+					<button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
 				</div>
-			</div>
-			<div class="form-group">
-				<textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default" required style="width: 530px"></textarea>
-			</div>
-			<button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
-			</div>
+			<?php endif;?>
+		<?php endforeach;?>
 		<!-- </form> -->
 		<?= form_close();?>
 	</div>
