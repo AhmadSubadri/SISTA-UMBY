@@ -189,10 +189,10 @@ public $result = [
     public function Sempro()
     {
         $data = [
-			'Data' => $this->M_umum->Index()
+			'Data' => $this->M_lecturer->SemproSaya()
 		];
 		$this->load->view('backend/partials_/head');
-		$this->load->view('backend/umum/skripsi', $data);
+		$this->load->view('backend/dosen/skripsi/mahasiswa_sempro', $data);
 		$this->load->view('backend/partials_/footer');
     }
 }

@@ -1,0 +1,1 @@
+Abad mahasiswa

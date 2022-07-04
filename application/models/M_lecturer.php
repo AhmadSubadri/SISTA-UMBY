@@ -98,6 +98,20 @@ class M_lecturer extends CI_Model
         return $query->result();
     }
 
+    public function SemproSaya()
+    {
+        $username = $this->session->userdata('username');
+        $this->db->select('d.id_detail as id, s.fullname as name, i.title as title, i.tanggal as tanggal, i.jam as jam, i.tempat as tempat, s.image as image, d.nim_student as nim, i.kegiatan as kegiatan, d.feedback as feedback, i.id as ididea')
+        ->where('d.nidn_lecturer', $username)
+        ->order_by('i.tanggal', 'ASC')
+        ->order_by('i.jam', 'ASC')
+        ->join('tb_student s', 's.username = d.nim_student')
+        ->join('tb_ideasubmission i', 'i.nim = d.nim_student')
+        ->from('tb_detail_sempro d');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     //GET DOSEN BY JURUSAN
     public function _getallLecturers(){
         $id = $this->session->userdata('major');
@@ -126,16 +140,6 @@ class M_lecturer extends CI_Model
         ->from('tb_thesisreceived s')
         ->join('tb_student m','m.username = s.nim')
         ->join('tb_lecturers l','l.username = s.nidn');
-        $query = $this->db->get();
-        return $query;
-    }
-
-    public function _getThesisReceivedtoGuidance(){
-        $id = $this->session->userdata('username');
-        $this->db->select('s.id as id, s.nim as nim, s.title as title, m.fullname as nameStudent, s.status as status, m.image as image')
-        ->where('s.nidn', $id)
-        ->from('tb_thesisreceived s')
-        ->join('tb_student m','m.username = s.nim');
         $query = $this->db->get();
         return $query;
     }

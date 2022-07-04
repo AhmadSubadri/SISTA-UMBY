@@ -12,6 +12,7 @@ $route['Dashboard'] = 'backend/Dashboard';
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';
 $route['mhs/dashboard/upload-pengajuan'] = 'backend/mahasiswa/Skripsi/UploadPengajuan';
 $route['mhs/dashboard/data-sempro'] = 'backend/mahasiswa/Skripsi/Sempro';
+$route['mhs/dashboard/Bimbingan'] = 'backend/mahasiswa/Bimbingan';
 
 // Skripsi Dosen
 $route['dsn/dashboard/data-pengajuan-skripsi'] = 'backend/dosen/Skripsi';
@@ -24,6 +25,8 @@ $route['dsn/dashboard/autocom'] = 'backend/dosen/Skripsi/getautocomplete';
 $route['dsn/dashboard/save-pengumuman-sempro'] = 'backend/dosen/Skripsi/SavePengumumansempro';
 $route['dsn/dashboard/data-sempro-mahasiswa'] = 'backend/dosen/Skripsi/Sempro';
 
+// Bimbingan
+$route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';
