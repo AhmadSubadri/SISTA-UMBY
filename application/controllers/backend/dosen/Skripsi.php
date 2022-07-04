@@ -145,7 +145,8 @@ public $result = [
             $this->db->set('status', "1");
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
-
+            $this->M_lecturer->add('tb_thesisreceived',['nim' => $this->input->post('nim'), 'title' => $this->input->post('title'), 'major' => $this->input->post('id_major'), 'status' => "0"]);
+            $this->M_lecturer->delete('tb_resultrabintest','nim', $nim);
 
             $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
@@ -164,6 +165,8 @@ public $result = [
             $this->db->set('status', "1");
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
+            $this->M_lecturer->add('tb_thesisreceived',['nim' => $this->input->post('nim'), 'title' => $this->input->post('title'), 'major' => $this->input->post('id_major'), 'status' => "0"]);
+            $this->M_lecturer->delete('tb_resultrabintest','nim', $nim);
 
             $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
@@ -180,6 +183,7 @@ public $result = [
             $this->db->set('status', "1");
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
+            $this->M_lecturer->delete('tb_resultrabintest','nim', $nim);
 
             $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
@@ -200,7 +204,9 @@ public $result = [
     public function PlotingDosesnPembimbing()
     {
         $data = [
-            'Data' => $this->M_lecturer->SemproSaya()
+            'Datamentor' => $this->M_lecturer->_getallLecturers(),
+            'thesisFix' => $this->M_lecturer->_getThesisAcctoPlot(),
+            'DataThesis' => $this->M_lecturer->_getThesisReceived()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/skripsi/ploting_pembimbing', $data);

@@ -15,51 +15,51 @@
                                 <i class="ti-layout-sidebar-left text-primary"></i> + Kirim pengumuman sempro
                             </a>
                         <?php endif;?>
-                        <?php endforeach;?>
-                    </div>
+                    <?php endforeach;?>
                 </div>
-                <div class="card-block">
-                    <div class="accordion-block  color-accordion-block">
-                        <div id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="accordion-panel">
-                                <div class="accordion-heading" role="tab" id="headingOne">
-                                    <h3 class="card-title accordion-title">
-                                        <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                        data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-                                        aria-controls="collapseOne">
-                                    Diagram BAR hasil cek plagiat</a>
-                                </h3>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                            aria-labelledby="headingOne">
-                            <div class="accordion-content accordion-desc">
-                                <canvas id="myChart"></canvas>
-                            </div>
+            </div>
+            <div class="card-block">
+                <div class="accordion-block  color-accordion-block">
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="accordion-panel">
+                            <div class="accordion-heading" role="tab" id="headingOne">
+                                <h3 class="card-title accordion-title">
+                                    <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                    data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                Diagram BAR hasil cek plagiat</a>
+                            </h3>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                        aria-labelledby="headingOne">
+                        <div class="accordion-content accordion-desc">
+                            <canvas id="myChart"></canvas>
                         </div>
                     </div>
-                    <div class="accordion-panel">
-                        <div class="accordion-heading" role="tab" id="headingTwo">
-                            <h3 class="card-title accordion-title">
-                                <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                            5 Judul persentase tertinggi</a>
-                        </h3>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                    aria-labelledby="headingTwo">
-                    <div class="accordion-content accordion-desc"><br>
-                        <div class="row">
-                            <?php $i = 1; foreach($resultTest as $row):?>
-                            <div class="col-md-6">
-                                <h6><?= $row->title;?></h6>
-                            </div>
-                            <div class="col-md-4"><?= $row->name;?></div>
-                            <div class="col-md-2">
-                                <p class="text-danger"><?= number_format($row->result,2);?>%</p>
-                            </div>
-                            <hr />
-                            <br><br><br>
+                </div>
+                <div class="accordion-panel">
+                    <div class="accordion-heading" role="tab" id="headingTwo">
+                        <h3 class="card-title accordion-title">
+                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                            data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                        5 Judul persentase tertinggi</a>
+                    </h3>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                aria-labelledby="headingTwo">
+                <div class="accordion-content accordion-desc"><br>
+                    <div class="row">
+                        <?php $i = 1; foreach($resultTest as $row):?>
+                        <div class="col-md-6">
+                            <h6><?= $row->title;?></h6>
+                        </div>
+                        <div class="col-md-4"><?= $row->name;?></div>
+                        <div class="col-md-2">
+                            <p class="text-danger"><?= number_format($row->result,2);?>%</p>
+                        </div>
+                        <hr />
+                        <br><br><br>
                         <?php endforeach;?>
                     </div>
                 </div>

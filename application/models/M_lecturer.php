@@ -124,7 +124,7 @@ class M_lecturer extends CI_Model
 
     public function _getThesisAcctoPlot(){
         $id = $this->session->userdata('major');
-        $this->db->select('s.id as id, s.nim as nim, s.title as title, m.fullname as nameStudent, s.status as status');
+        $this->db->select('s.id as id, s.nim as nim, s.title as title, m.fullname as nameStudent, s.status as status, m.image as image');
         $this->db->where('s.major', $id);
         $this->db->where('s.status', '0');
         $this->db->from('tb_thesisreceived s');
