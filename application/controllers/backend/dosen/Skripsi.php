@@ -146,6 +146,7 @@ public $result = [
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
 
+
             $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
             redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));
@@ -194,5 +195,15 @@ public $result = [
 		$this->load->view('backend/partials_/head');
 		$this->load->view('backend/dosen/skripsi/mahasiswa_sempro', $data);
 		$this->load->view('backend/partials_/footer');
+    }
+
+    public function PlotingDosesnPembimbing()
+    {
+        $data = [
+            'Data' => $this->M_lecturer->SemproSaya()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/skripsi/ploting_pembimbing', $data);
+        $this->load->view('backend/partials_/footer');
     }
 }

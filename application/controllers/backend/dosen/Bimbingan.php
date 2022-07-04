@@ -18,7 +18,7 @@ public $result = [
     public function Index()
     {
         $data = [
-            'data' => $this->M_bimbingan->_getThesisReceivedtoGuidance()
+            'Data' => $this->M_bimbingan->_getThesisReceivedtoGuidance()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/bimbingan/bimbingan',$data);

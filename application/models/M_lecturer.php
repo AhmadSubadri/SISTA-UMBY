@@ -20,7 +20,7 @@ class M_lecturer extends CI_Model
 
     public function GetDataRabinResult($id)
     {
-        $this->db->select('i.id as id, i.nim as nim, i.title as title, s.fullname as name, s.id_major, i.rabin')
+        $this->db->select('i.id as id, i.nim as nim, i.title as title, s.fullname as name, s.id_major, i.rabin, i.status as status, i.status_sempro as status_sempro')
         ->where('i.nim', $id)
         ->join('tb_student s', 's.username = i.nim')
         ->order_by('i.created_at', 'DESC')
