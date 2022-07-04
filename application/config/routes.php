@@ -30,6 +30,8 @@ $route['dsn/dashboard/save-ploting-dospem'] = 'backend/dosen/Skripsi/SavePloting
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';
 $route['dsn/dashboard/Form-Bimbingan'] = 'backend/dosen/Bimbingan/formfedbackGuidance';
+$route['dsn/dashboard/insertApprovelguidance'] = 'backend/dosen/Bimbingan/insertApprovelguidance';
+
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';

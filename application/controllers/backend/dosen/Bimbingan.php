@@ -34,4 +34,10 @@ public $result = [
         ];
         $this->load->view('backend/dosen/bimbingan/form_feedback',$data);
     }
+
+    public function insertApprovelguidance()
+    {
+        $id = $this->input->post('id');
+        $this->M_bimbingan->_SetData('tb_thesisreceived', ['status_exam' => "1"], 'nim' ,$id);
+    }
 }
