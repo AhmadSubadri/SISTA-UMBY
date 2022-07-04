@@ -25,9 +25,11 @@ $route['dsn/dashboard/autocom'] = 'backend/dosen/Skripsi/getautocomplete';
 $route['dsn/dashboard/save-pengumuman-sempro'] = 'backend/dosen/Skripsi/SavePengumumansempro';
 $route['dsn/dashboard/data-sempro-mahasiswa'] = 'backend/dosen/Skripsi/Sempro';
 $route['dsn/dashboard/ploting-dosen-pembimbing'] = 'backend/dosen/Skripsi/PlotingDosesnPembimbing';
+$route['dsn/dashboard/save-ploting-dospem'] = 'backend/dosen/Skripsi/SavePlotingDospem';
 
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';
+$route['dsn/dashboard/Form-Bimbingan'] = 'backend/dosen/Bimbingan/formfedbackGuidance';
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';

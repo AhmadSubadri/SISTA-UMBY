@@ -24,4 +24,14 @@ public $result = [
         $this->load->view('backend/dosen/bimbingan/bimbingan',$data);
         $this->load->view('backend/partials_/footer');
     }
+
+    public function formfedbackGuidance()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'Data' => $this->M_bimbingan->_getDataGuidanceById($id),
+            'Mahasiswa' => $this->M_bimbingan->GetMahasiswa($id)
+        ];
+        $this->load->view('backend/dosen/bimbingan/form_feedback',$data);
+    }
 }
