@@ -212,4 +212,19 @@ public $result = [
         $this->load->view('backend/dosen/skripsi/ploting_pembimbing', $data);
         $this->load->view('backend/partials_/footer');
     }
+
+    public function SavePlotingDospem(){
+        $id = $this->input->post('id[]');
+        $dospem = $this->input->post('nidn');
+        for($i = 0; $i < count($id); $i++){
+            $record = array(
+                'nidn' => $dospem,
+                'status' => '1'
+            );
+            $this->M_lecturer->_SetData('tb_thesisreceived', $record, 'nim', $id[$i]);
+        }
+        $this->session->set_flashdata('msg',"Ploting pembimbing has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+        redirect(site_url('dsn/dashboard/ploting-dosen-pembimbing'));
+    }
 }

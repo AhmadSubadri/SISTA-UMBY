@@ -16,4 +16,26 @@ class M_bimbingan extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function _getDataGuidanceById($id)
+    {
+        $username = $this->session->userdata('username');
+        $this->db->select('g.id as id, g.sender as sender, g.receiver as receiver, s.fullname as name')
+        ->from('tb_guidance g')
+        ->where('g.sender', $username)
+        ->where('g.receiver', $id)
+        ->join('tb_student s', 's.username = g.sender')
+        ->order_by('g.id', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function GetMahasiswa($id)
+    {
+        $this->db->select('*')
+        ->where('username', $id)
+        ->from('tb_student');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

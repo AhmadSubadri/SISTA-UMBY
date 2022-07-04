@@ -223,15 +223,4 @@ class M_lecturer extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-
-    public function _getDataGuidanceById($id)
-    {
-        $this->db->select('g.id as id, g.sender as sender, g.receiver as receiver, s.fullname as name')
-        ->from('tb_guidance g')
-        ->where('g.id', $id)
-        ->join('tb_student s', 's.username = g.sender')
-        ->order_by('g.id', 'DESC');
-        $query = $this->db->get();
-        return $query->result();
-    }
 }
