@@ -28,20 +28,20 @@
 			</div>
 		<?php endforeach;?>
 	</div>
-	<div class="card-block" style="display:block; height:250px; overflow: auto;">
+	<div class="card-block" style="display:block; height:307px; overflow: auto;" id="jklm">
 		<?php foreach($Data as $isi):?>
 			<?php if($isi->sender == $this->session->userdata('username')):?>
-				<p class="text-right"><?= $isi->nameLecturer;?><br><?= $isi->message;?></p>
-				<!-- <p class="text-left"><?= $isi->name;?><br><?= $isi->message;?></p> -->
+				<div class="text-right"><?= $isi->nameLecturer;?><br><?= $isi->message;?><br></div><br>
 			<?php else:?>
-				<p class="text-left"><?= $isi->name;?><br><?= $isi->message;?></p>
+				<div class="text-left col-md-6"><?= $isi->name;?><br><?= $isi->message;?></div><br>
 			<?php endif;?>
 		<?php endforeach;?>
 	</div>
 	<div class="card-footer">
-		<form class="form-inline">
+		<form class="form-inline" action="<?= site_url('dsn/dashboard/save-feedback-bimbingan');?>" method="post">
 			<div class="form-group">
 				<?php foreach($Mahasiswa as $mhs):?>
+					<input name="name" class="form-bg-null" value="<?= $mhs->fullname;?>" hidden/>
 					<input name="receiver" class="form-bg-null" value="<?= $mhs->username;?>" hidden/>
 					<input name="sender" class="form-bg-null" value="<?= $this->session->userdata('username');?>" hidden/>
 				<?php endforeach;?>
@@ -83,6 +83,9 @@
 	document.getElementById("uploadBtn").onchange = function() {
 		document.getElementById("uploadFile").value = this.value;
 	};
+</script>
+<script type="text/javascript">
+	$("#jklm").scrollTop($("#jklm")[0].scrollHeight);
 </script>
 <script>
 	function ConfirmDialog(id) {
