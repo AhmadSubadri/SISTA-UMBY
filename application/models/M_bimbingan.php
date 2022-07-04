@@ -20,12 +20,11 @@ class M_bimbingan extends CI_Model
     public function _getDataGuidanceById($id)
     {
         $username = $this->session->userdata('username');
-        $this->db->select('g.id as id, g.sender as sender, g.receiver as receiver, s.fullname as name')
+        $this->db->select('g.id as id, g.sender as sender, g.receiver as receiver, s.fullname as name, s.image as image, g.message, l.fullname as nameLecturer, g.created_at')
         ->from('tb_guidance g')
-        ->where('g.sender', $username)
-        ->where('g.receiver', $id)
-        ->join('tb_student s', 's.username = g.sender')
-        ->order_by('g.id', 'DESC');
+        ->where('g.sender= '.$username.' and g.receiver='.$id .' or g.sender= ' . $id . ' and g.receiver=' . $username)
+        ->join('tb_student s', 's.username = g.sender OR s.username = g.receiver')
+        ->join('tb_lecturers l', 'l.username = g.sender OR l.username = g.receiver');
         $query = $this->db->get();
         return $query->result();
     }

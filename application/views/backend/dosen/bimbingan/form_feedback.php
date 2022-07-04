@@ -1,7 +1,3 @@
-<?php foreach($Data as $row):?>
-	<?= $row->name;?>
-<?php endforeach;?>
-
 <div class="card">
 	<div class="card-header" id="klompok">
 		<?php foreach($Mahasiswa as $mhs):?>
@@ -32,15 +28,15 @@
 			</div>
 		<?php endforeach;?>
 	</div>
-	<div class="card-block" style="display:block; height:250px; overflow:auto;">
-		ya kali<br>ya kali<br>ya kali<br>ya kali<br>ya kali<br>ya kali<br>ya kali<br>ya kali<br>ya kali<br>ya kali<br>ya kali<br>
-		ya kali<br>
-		ya kali<br>
-		ya kali
-		ya kali
-		ya kali
-		ya kali
-		
+	<div class="card-block" style="display:block; height:250px; overflow: auto;">
+		<?php foreach($Data as $isi):?>
+			<?php if($isi->sender == $this->session->userdata('username')):?>
+				<p class="text-right"><?= $isi->nameLecturer;?><br><?= $isi->message;?></p>
+				<!-- <p class="text-left"><?= $isi->name;?><br><?= $isi->message;?></p> -->
+			<?php else:?>
+				<p class="text-left"><?= $isi->name;?><br><?= $isi->message;?></p>
+			<?php endif;?>
+		<?php endforeach;?>
 	</div>
 	<div class="card-footer">
 		<form class="form-inline">
@@ -89,29 +85,29 @@
 	};
 </script>
 <script>
-function ConfirmDialog(id) {
-    swal("Click ok untuk menyelesaikan bimbingan!")
-        .then(
-            function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        type: "POST",
-                        url: '<?= site_url('dsn/dashboard/insertApprovelguidance')?>',
-                        data: {
-                            id: id
-                        },
-                        error: function() {
-                            alert('Something is wrong');
-                        },
-                        success: function(data) {
-                            swal(`NIM ${id} berhak daftar pendadaran dari sekarang`);
-                            $(document.location.reload(true));
-                        }
-                    });
-                } else {
-                    swal(`Yakin Cancel progres ?`);
-                }
-            }
-        );
-}
+	function ConfirmDialog(id) {
+		swal("Click ok untuk menyelesaikan bimbingan!")
+		.then(
+			function(isConfirm) {
+				if (isConfirm) {
+					$.ajax({
+						type: "POST",
+						url: '<?= site_url('dsn/dashboard/insertApprovelguidance')?>',
+						data: {
+							id: id
+						},
+						error: function() {
+							alert('Something is wrong');
+						},
+						success: function(data) {
+							swal(`NIM ${id} berhak daftar pendadaran dari sekarang`);
+							$(document.location.reload(true));
+						}
+					});
+				} else {
+					swal(`Yakin Cancel progres ?`);
+				}
+			}
+			);
+	}
 </script>
