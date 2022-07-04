@@ -79,7 +79,7 @@
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="<?= site_url('dsn/dashboard/data-sempro-mahasiswa');?>"
+                        <a href="<?= site_url('dsn/dashboard/ploting-dosen-pembimbing');?>"
                             class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Ploting dosen

@@ -24,6 +24,7 @@ $route['dsn/dashboard/detail-hasil-sempro/(:any)'] = 'backend/dosen/Skripsi/Deta
 $route['dsn/dashboard/autocom'] = 'backend/dosen/Skripsi/getautocomplete';
 $route['dsn/dashboard/save-pengumuman-sempro'] = 'backend/dosen/Skripsi/SavePengumumansempro';
 $route['dsn/dashboard/data-sempro-mahasiswa'] = 'backend/dosen/Skripsi/Sempro';
+$route['dsn/dashboard/ploting-dosen-pembimbing'] = 'backend/dosen/Skripsi/PlotingDosesnPembimbing';
 
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';
