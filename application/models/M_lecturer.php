@@ -40,18 +40,16 @@ class M_lecturer extends CI_Model
         return $query->result();
     }
 
-    function GetRow($namab){
+    public function GetRow($namab){
         $major = $this->session->userdata('major');
         $this->db->select('i.id as id, i.nim as nim, i.title as title, s.fullname as name, i.file as file, s.image as image, i.created_at as date');
-        $this->db->like('s.fullname', $namab , 'both');
-        $this->db->order_by('i.nim', 'ASC');
+        $this->db->like('s.fullname', $namab ,'both');
+        $this->db->order_by('s.fullname', 'ASC');
         $this->db->where('i.id_major', $major);
         $this->db->where('i.to_check', '0');
         $this->db->join('tb_student s', 's.username = i.nim');
-        $this->db->limit(10);
-        $this->db->from('tb_ideasubmission i');
-        $query = $this->db->get();
-        return $query->result();
+        // $this->db->limit(10);
+        return $this->db->get('tb_ideasubmission i')->result();
     }
 
     public function GetDataSempro()
@@ -100,6 +98,20 @@ class M_lecturer extends CI_Model
         return $query->result();
     }
 
+    public function SemproSaya()
+    {
+        $username = $this->session->userdata('username');
+        $this->db->select('d.id_detail as id, s.fullname as name, i.title as title, i.tanggal as tanggal, i.jam as jam, i.tempat as tempat, s.image as image, d.nim_student as nim, i.kegiatan as kegiatan, d.feedback as feedback, i.id as ididea')
+        ->where('d.nidn_lecturer', $username)
+        ->order_by('i.tanggal', 'ASC')
+        ->order_by('i.jam', 'ASC')
+        ->join('tb_student s', 's.username = d.nim_student')
+        ->join('tb_ideasubmission i', 'i.nim = d.nim_student')
+        ->from('tb_detail_sempro d');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     //GET DOSEN BY JURUSAN
     public function _getallLecturers(){
         $id = $this->session->userdata('major');
@@ -128,16 +140,6 @@ class M_lecturer extends CI_Model
         ->from('tb_thesisreceived s')
         ->join('tb_student m','m.username = s.nim')
         ->join('tb_lecturers l','l.username = s.nidn');
-        $query = $this->db->get();
-        return $query;
-    }
-
-    public function _getThesisReceivedtoGuidance(){
-        $id = $this->session->userdata('username');
-        $this->db->select('s.id as id, s.nim as nim, s.title as title, m.fullname as nameStudent, s.status as status, m.image as image')
-        ->where('s.nidn', $id)
-        ->from('tb_thesisreceived s')
-        ->join('tb_student m','m.username = s.nim');
         $query = $this->db->get();
         return $query;
     }

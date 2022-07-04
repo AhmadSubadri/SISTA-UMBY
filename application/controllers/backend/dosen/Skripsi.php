@@ -31,17 +31,18 @@ public $result = [
         $this->load->view('backend/partials_/footer');
     }
 
-    public function get_autocomplete(){
+    public function getautocomplete()
+    {
         if (isset($_GET['term'])) {
             $result = $this->M_lecturer->GetRow($_GET['term']);
             if (count($result) > 0) {
-            foreach ($result as $row)
-                $arr_result[] = array(
-                    'label' => $row->name,
-                    'description' => $row->id,
-                    'nim' => $row->nim,
-                );
-                echo json_encode($arr_result);
+                foreach ($result as $row)
+                    $arr_result[] = array(
+                        'label' => $row->name,
+                        'description' => $row->id,
+                        'nim' => $row->nim
+                    );
+                    echo json_encode($arr_result);
             }
         }
     }
@@ -183,5 +184,15 @@ public $result = [
             $this->session->set_flashdata('msg_class','alert-success');
             redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));
         }
+    }
+
+    public function Sempro()
+    {
+        $data = [
+			'Data' => $this->M_lecturer->SemproSaya()
+		];
+		$this->load->view('backend/partials_/head');
+		$this->load->view('backend/dosen/skripsi/mahasiswa_sempro', $data);
+		$this->load->view('backend/partials_/footer');
     }
 }

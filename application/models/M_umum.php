@@ -34,18 +34,6 @@ class M_umum extends CI_Model
         return $query->result();
     }
 
-    // public function GetProsesSempro($id)
-    // {
-    //     $this->db->select('i.id as id, i.title as title, i.file as file, s.fullname as name, i.nim as nim, i.rabin as rabin')
-    //     ->where('i.id', $id)
-    //     ->from('tb_ideasubmission i')
-    //     ->join('tb_lecturers l', 'l.username = i.nidn')
-    //     ->join('tb_student s', 's.username = i.nim')
-    //     ->join('tb_major m', 'm.id = i.id_major');
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
-
     public function getresultrabin($id)
     {
         $this->db->select('*')
