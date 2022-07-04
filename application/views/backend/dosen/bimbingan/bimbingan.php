@@ -1,7 +1,6 @@
-<?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
     <div class="card">
-        <div class="card-block table-border-style" style="display:block; height:550px; overflow:auto;">
+        <div class="card-block table-border-style" style="display:block; height:600px; overflow:auto;">
             <h4 class="sub-title text-center">Daftar mahasiswa bimbingan</h4>
             <?php if( !empty($Data->result()) ) :?>
                 <div class="row">
