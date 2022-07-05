@@ -76,48 +76,46 @@
     <div class="card-footer">
         <?= form_open_multipart('dsn/dashboard/save-feedback-bimbingan'); ?>
         <!-- <form class="form-inline"> -->
-        <div class="form-inline">
-            <?php foreach($Mahasiswa as $mhs):?>
+
+        <?php foreach($Mahasiswa as $mhs):?>
+        <?php if($mhs->status_exam != 0):?>
+        <div class="form-inline" style="pointer-events: none; opacity: 0.4;">
             <input name="name" class="form-bg-null" value="<?= $mhs->fullname;?>" hidden />
             <input name="receiver" class="form-bg-null" value="<?= $mhs->username;?>" hidden />
             <input name="sender" class="form-bg-null" value="<?= $this->session->userdata('username');?>" hidden />
-            <?php endforeach;?>
-            <?php foreach($Mahasiswa as $mhs):?>
-            <?php if($mhs->status_exam != 0):?>
-            <div style="pointer-events: none; opacity: 0.4;">
-                <div class="form-group">
-                    <input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
-                    <div class="fileUpload btn btn-sm btn-grd-inverse">
-                        <span><i class="ti-clip"></i> File</span>
-                        <input id="uploadBtn" type="file" name="file" class="upload" />
-                    </div>
+            <div class="form-group">
+                <input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
+                <div class="fileUpload btn btn-sm btn-grd-inverse">
+                    <span><i class="ti-clip"></i> File</span>
+                    <input id="uploadBtn" type="file" name="file" class="upload" />
                 </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default"
-                        required style="width: 530px"></textarea>
-                </div>
-                <button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
             </div>
+            <div class="form-group">
+                <textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default"
+                    required style="width: 530px"></textarea>
+            </div>
+            <button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
         </div>
         <?php else:?>
-        <div class="form-group">
-            <input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
-            <div class="fileUpload btn btn-sm btn-grd-inverse">
-                <span><i class="ti-clip"></i> File</span>
-                <input id="uploadBtn" type="file" name="file" class="upload" />
+        <div class="form-inline">
+            <div class="form-group">
+                <input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
+                <div class="fileUpload btn btn-sm btn-grd-inverse">
+                    <span><i class="ti-clip"></i> File</span>
+                    <input id="uploadBtn" type="file" name="file" class="upload" />
+                </div>
             </div>
+            <div class="form-group">
+                <textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default"
+                    required style="width: 530px"></textarea>
+            </div>
+            <button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
         </div>
-        <div class="form-group">
-            <textarea class="form-control" id="uploadFile" name="message" class="form-control form-bg-default" required
-                style="width: 530px"></textarea>
-        </div>
-        <button type="submit" class="btn btn-sm btn-grd-primary"><i class="ti-location-arrow"></i>Send</button>
+        <?php endif;?>
+        <?php endforeach;?>
+        <!-- </form> -->
+        <?= form_close();?>
     </div>
-    <?php endif;?>
-    <?php endforeach;?>
-    <!-- </form> -->
-    <?= form_close();?>
-</div>
 </div>
 
 <style>
