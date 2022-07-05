@@ -20,6 +20,7 @@ class Bimbingan extends CI_Controller
         $data = [
             'Data' => $this->M_bimbingan->GetPembimbing(),
             'DataChat' => $this->M_bimbingan->_getDataGuidanceMhs(),
+            'DataChatCard' => $this->M_bimbingan->_getDataGuidanceCardMhs(),
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/mahasiswa/skripsi/bimbingan',$data);

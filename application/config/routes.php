@@ -27,6 +27,7 @@ $route['dsn/dashboard/save-pengumuman-sempro'] = 'backend/dosen/Skripsi/SavePeng
 $route['dsn/dashboard/data-sempro-mahasiswa'] = 'backend/dosen/Skripsi/Sempro';
 $route['dsn/dashboard/ploting-dosen-pembimbing'] = 'backend/dosen/Skripsi/PlotingDosesnPembimbing';
 $route['dsn/dashboard/save-ploting-dospem'] = 'backend/dosen/Skripsi/SavePlotingDospem';
+$route['dsn/dashboard/syarat-pendadaran'] = 'backend/dosen/Pendadaran';
 
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';

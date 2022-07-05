@@ -74,4 +74,15 @@ class M_bimbingan extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function _getDataGuidanceCardMhs()
+    {
+        $username = $this->session->userdata('username');
+        $this->db->select('*')
+        ->where('receiver', $username)
+        ->order_by('created_at', 'ASC')
+        ->from('tb_guidancecard');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
