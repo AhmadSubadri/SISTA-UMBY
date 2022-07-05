@@ -40,6 +40,7 @@ $route['dsn/dashboard/save-feedback-bimbingan'] = 'backend/dosen/Bimbingan/formf
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';
 $route['dsn/dashboard/proses-sempro/(:any)'] = 'backend/umum/Skripsi/ProsesSempro/$1';
 $route['dsn/dashboard/save-feedback'] = 'backend/umum/Skripsi/SaveFeedbackSubmission';
+$route['dsn/dashboard/Bimbingan'] = 'backend/umum/Skripsi/Bimbingan';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

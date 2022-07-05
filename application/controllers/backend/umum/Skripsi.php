@@ -12,6 +12,7 @@ class Skripsi extends CI_Controller
 		$this->load->model('M_student');
 		$this->load->model('M_umum');
 		$this->load->model('M_chart');
+        $this->load->model('M_bimbingan');
 		if($this->M_user->isNotLogin()) redirect(site_url(''));
 		$this->load->library('form_validation');
 	}
@@ -99,5 +100,15 @@ class Skripsi extends CI_Controller
         $this->M_umum->_SetData('tb_ideasubmission',['status_sempro'=>"1"], 'nim', $this->input->post('nim'));
 
         redirect(site_url('dsn/dashboard/pelaksanaan-sempro'));
+    }
+
+    public function Bimbingan()
+    {
+        $data = [
+            'Data' => $this->M_bimbingan->_getThesisReceivedtoGuidance()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/bimbingan/bimbingan',$data);
+        $this->load->view('backend/partials_/footer');
     }
 }

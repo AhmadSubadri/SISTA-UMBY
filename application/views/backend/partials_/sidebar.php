@@ -144,6 +144,13 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+                    <li class=" ">
+                        <a href="<?= site_url('dsn/dashboard/Bimbingan');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Bimbingan</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
