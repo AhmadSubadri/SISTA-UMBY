@@ -19,7 +19,7 @@ public $result = [
     public function Index()
     {
         $data = [
-            'Data' => $this->M_requirement->getRequirement()
+            'Data' => $this->M_requirement->getAllRequirement()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/pendadaran/syarat_pendadaran', $data);

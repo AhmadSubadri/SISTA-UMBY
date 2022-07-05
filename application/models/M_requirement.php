@@ -7,11 +7,21 @@ class M_requirement extends CI_Model
         parent::__construct();
     }
 
-    public function getRequirement()
+    public function getRequirementByType()
     {
         $major = $this->session->userdata('major');
         $this->db->select('*')
         ->where('type', "1")
+        ->where('major', $major)
+        ->from('tb_requirements');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getAllRequirement()
+    {
+        $major = $this->session->userdata('major');
+        $this->db->select('*')
         ->where('major', $major)
         ->from('tb_requirements');
         $query = $this->db->get();
