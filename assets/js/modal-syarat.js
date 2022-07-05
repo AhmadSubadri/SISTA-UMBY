@@ -23,7 +23,7 @@ function Barisbaru() {
     Baris += '</td>';
     Baris += '<td width="200px">';
     Baris +=
-        '<input type="text" name="qty[]" class="form-control" placeholder="Jumlah Lembar..." required="">';
+        '<input type="text" name="qty[]" class="form-control" placeholder="2 Lembar..." required="">';
     Baris += '</td>';
     Baris += '<td class="text-center" width="50px">';
     Baris +=
@@ -77,36 +77,14 @@ function simpanyes() {
                 $('#popsuccess').html('<div class="alert alert-danger">Data failed to save</div>')
             }
         },
-        // error: function(error) {
-        //     alert(error);
-        // }
+        error: function(error) {
+            $('#popsuccess').fadeIn(800, function() {
+                $("#modalrequirement").modal('hide');
+                $(document.location.reload(true));
+                $("#popsuccess").html(data.popsuccess).fadeOut(5000).delay(800);
+            });
+        }
     });
-}
-
-function ConfirmDialog(id) {
-    swal("Are you sure delete this data ?")
-        .then(
-            function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        type: "POST",
-                        url: '<?= site_url("delete-requirement-exam")?>',
-                        data: {
-                            id: id
-                        },
-                        error: function() {
-                            alert("Something is wrong");
-                        },
-                        success: function(data) {
-                            swal(`Data deleted successfully !`);
-                            $(document.location.reload(true));
-                        }
-                    });
-                } else {
-                    swal(`Are you sure Cancel progress ?`);
-                }
-            }
-        );
 }
 
 function publishCon(idpub) {

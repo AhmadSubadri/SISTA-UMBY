@@ -15,7 +15,7 @@ class M_requirement extends CI_Model
         ->where('major', $major)
         ->from('tb_requirements');
         $query = $this->db->get();
-        return $query->result();
+        return $query;
     }
 
     public function insert($table,$data)

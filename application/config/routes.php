@@ -32,6 +32,9 @@ $route['dsn/dashboard/save-ploting-dospem'] = 'backend/dosen/Skripsi/SavePloting
 $route['dsn/dashboard/syarat-pendadaran'] = 'backend/dosen/Pendadaran';
 $route['dsn/dashboard/delete-syarat/(:any)'] = 'backend/dosen/Pendadaran/deleterequirementexam/$1';
 $route['dsn/dashboard/insert-syarat'] = 'backend/dosen/Pendadaran/insertrequirementexam';
+$route['dsn/dashboard/update-syarat'] = 'backend/dosen/Pendadaran/updateRequirementexam';
+$route['publish-requirementexam/(:any)'] = 'backend/dosen/Pendadaran/publishrequirement/$1';
+$route['unpublish-requirementexam/(:any)'] = 'backend/dosen/Pendadaran/unpublishrequirement/$1';
 
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';
