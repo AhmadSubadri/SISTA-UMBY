@@ -17,8 +17,8 @@ class Bimbingan extends CI_Controller
     public function Index()
     {
         $data = [
-            'data' => $this->M_student->_getDataGuidance(),
-            'datacard' => $this->M_student->_getDataGuidanceCard(),
+            'Data' => $this->M_student->_getDataGuidance(),
+            'Datacard' => $this->M_student->_getDataGuidanceCard(),
             'mentor' => $this->M_student->_getsThesisReceived()
         ];
         $this->load->view('backend/partials_/head');
