@@ -50,4 +50,28 @@ class M_bimbingan extends CI_Model
         $Q =$this->db->insert($tabel,$data);
         return $Q;
     }
+
+    public function GetPembimbing()
+    {
+        $id = $this->session->userdata('username');
+        $this->db->select('l.fullname, l.username, s.fullname as name, l.image, t.status_exam, l.email, l.phone')
+        ->where('t.nim', $id)
+        ->from('tb_thesisreceived t')
+        ->join('tb_lecturers l', 'l.username = t.nidn')
+        ->join('tb_student s', 's.username = t.nim');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function _getDataGuidanceMhs()
+    {
+        $username = $this->session->userdata('username');
+        $this->db->select('g.id as id, g.sender as sender, g.receiver as receiver, s.fullname as name, s.image as image, g.message, l.fullname as nameLecturer, g.created_at, g.file')
+        ->from('tb_guidance g')
+        ->where('g.sender= '.$username.' and g.receiver= l.username or g.sender= l.username and g.receiver=' . $username)
+        ->join('tb_student s', 's.username = g.sender OR s.username = g.receiver')
+        ->join('tb_lecturers l', 'l.username = g.sender OR l.username = g.receiver');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

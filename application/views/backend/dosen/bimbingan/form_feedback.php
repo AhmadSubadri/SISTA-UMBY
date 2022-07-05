@@ -52,7 +52,7 @@
                     <img class="img-radius img-40 align-top m-r-15"
                         src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                     <?php else:?>
-                    <img src="<?php echo base_url('_uploads/profile/student/').$mhs->image;?>" alt="user image"
+                    <img src="<?php echo base_url('_uploads/profile/student/').$isi->image;?>" alt="user image"
                         class="img-radius img-40 align-top m-r-15">
                     <?php endif;?>
                     <div class="media-body">
@@ -70,9 +70,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="text-left col-md-6">
-
-        </div><br> -->
         <?php endif;?>
         <?php endforeach;?>
     </div>
