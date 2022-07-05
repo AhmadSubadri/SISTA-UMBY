@@ -7,7 +7,7 @@ class M_requirement extends CI_Model
         parent::__construct();
     }
 
-    public function getRequirementByType()
+    public function getRequirementPendadaran()
     {
         $major = $this->session->userdata('major');
         $this->db->select('*')
@@ -16,27 +16,6 @@ class M_requirement extends CI_Model
         ->from('tb_requirements');
         $query = $this->db->get();
         return $query->result();
-    }
-
-    public function getAllRequirement()
-    {
-        $major = $this->session->userdata('major');
-        $this->db->select('*')
-        ->where('major', $major)
-        ->from('tb_requirements');
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    public function getRequirementThesisExam()
-    {
-        $major = $this->session->userdata('major');
-        $this->db->select('*')
-        ->where('type', "2")
-        ->where('major', $major)
-        ->from('tb_requirements');
-        $query = $this->db->get();
-        return $query;
     }
 
     public function insert($table,$data)

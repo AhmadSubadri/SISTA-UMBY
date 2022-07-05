@@ -19,10 +19,41 @@ public $result = [
     public function Index()
     {
         $data = [
-            'Data' => $this->M_requirement->getAllRequirement()
+            'Data' => $this->M_requirement->getRequirementPendadaran()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/pendadaran/syarat_pendadaran', $data);
         $this->load->view('backend/partials_/footer');
+    }
+
+    public function insertrequirementexam()
+    {
+        $i = 0; // untuk loopingn
+        $a = $this->input->post('major');
+        $b = $this->input->post('type');
+        $c = $this->input->post('requirement');
+        $d = $this->input->post('qty');
+        if ($c[0] !== null) {
+            foreach ($c as $row) {
+                $data = [
+                    'requirements'=>$row,
+                    'qty'=>$d[$i],
+                    'type'=>$b,
+                    'major'=>$a,
+                ];
+                $insert = $this->M_requirement->insert('tb_requirements', $data);
+                if ($insert) {
+                    $i++;
+                }
+            }
+            redirect(site_url('dsn/dashboard/syarat-pendadaran'));
+        }
+        redirect(site_url('dsn/dashboard/syarat-pendadaran'));
+    }
+
+    public function deleterequirementexam($id)
+    {
+        $this->M_requirement->delete('tb_requirements','id',$id);
+        redirect(site_url('dsn/dashboard/syarat-pendadaran'));
     }
 }
