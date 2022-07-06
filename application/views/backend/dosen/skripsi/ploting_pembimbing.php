@@ -21,7 +21,7 @@
 					<h6>Check box</h6>
 				</div>
 				<?php if(count($thesisFix->result()) == null):?>
-					<div class="text-center">
+					<div class="col-sm-12 col-xl-12 sub-title text-center">
 						<h6>Data not available</h6>
 					</div>
 				<?php else:?>

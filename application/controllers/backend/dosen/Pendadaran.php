@@ -51,9 +51,39 @@ public $result = [
         redirect(site_url('dsn/dashboard/syarat-pendadaran'));
     }
 
+    public function updateRequirementexam()
+    {
+        $id = $this->input->post('id');
+        $this->M_requirement->update('tb_requirements',['requirements' => $this->input->post('requirement'), 'qty' => $this->input->post('qty')], 'id', $id);
+        redirect(site_url('dsn/dashboard/syarat-pendadaran'));
+    }
+
+    // Get data mahasiswa siap daftar pendadaran setelah acc bimbingan
+    public function GetPendadaran()
+    {
+        $data = [
+            'Data' => $this->M_examthesis->Index()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/pendadaran/data_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+    }
+
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);
+        redirect(site_url('dsn/dashboard/syarat-pendadaran'));
+    }
+
+    public function publishrequirement($id)
+    {
+        $this->M_requirement->_SetData('tb_requirements', ['status' => "1"], 'id' ,$id);
+        redirect(site_url('dsn/dashboard/syarat-pendadaran'));
+    }
+
+    public function unpublishrequirement($id)
+    {
+        $this->M_requirement->_SetData('tb_requirements', ['status' => "0"], 'id' ,$id);
         redirect(site_url('dsn/dashboard/syarat-pendadaran'));
     }
 }

@@ -1,10 +1,21 @@
 <?php
 
-class M_Examthesis extends CI_Model
+class M_examthesis extends CI_Model
 {
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function Index()
+    {
+        $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image')
+        ->where('t.status_bimbingan', '1')
+        ->where('t.major', $this->session->userdata('major'))
+        ->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function getdataUploadrequirement()
@@ -18,16 +29,16 @@ class M_Examthesis extends CI_Model
         return $query->result();
     }
 
-    public function _getThesisReceived($id)
-    {
-        $this->db->select('t.id as id, s.fullname as nameStudent, l.fullname as nameLecturer, t.title as title, t.nim as nim, t.nidn as nidn')
-        ->where('t.nim', $id)
-        ->from('tb_thesisreceived t')
-        ->join('tb_student s', 's.username = t.nim')
-        ->join('tb_lecturers l', 'l.username = t.nidn');
-        $query = $this->db->get();
-        return $query->result();
-    }
+    // public function _getThesisReceived($id)
+    // {
+    //     $this->db->select('t.id as id, s.fullname as nameStudent, l.fullname as nameLecturer, t.title as title, t.nim as nim, t.nidn as nidn')
+    //     ->where('t.nim', $id)
+    //     ->from('tb_thesisreceived t')
+    //     ->join('tb_student s', 's.username = t.nim')
+    //     ->join('tb_lecturers l', 'l.username = t.nidn');
+    //     $query = $this->db->get();
+    //     return $query->result();
+    // }
 
     public function getExaminer($major)
     {

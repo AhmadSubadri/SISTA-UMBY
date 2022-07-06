@@ -216,7 +216,7 @@ class M_lecturer extends CI_Model
 
     public function _getsThesisReceived($id)
     {
-        $this->db->select('t.id as id, t.title as title, s.fullname as name, t.nim as nim, s.email as email, s.image as image, t.status_exam as status_exam')
+        $this->db->select('t.id as id, t.title as title, s.fullname as name, t.nim as nim, s.email as email, s.image as image, t.status_bimbingan as status_bimbingan')
         ->from('tb_thesisreceived t')
         ->where('nim', $id)
         ->join('tb_student s', 's.username = t.nim');
