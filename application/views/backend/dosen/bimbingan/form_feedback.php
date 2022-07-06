@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="card-header-right">
-            <?php if($mhs->status_exam != 0):?>
+            <?php if($mhs->status_bimbingan != 0):?>
             <button class="btn btn-mini waves-effect waves-light btn-success disabled btn-disabled"
                 data-toggle="tooltip" data-placement="top" title="Students have the right to register exam"><i
                     class="ti-check-box"></i>Approved</button>
@@ -78,7 +78,7 @@
         <!-- <form class="form-inline"> -->
 
         <?php foreach($Mahasiswa as $mhs):?>
-        <?php if($mhs->status_exam != 0):?>
+        <?php if($mhs->status_bimbingan != 0):?>
         <div class="form-inline" style="pointer-events: none; opacity: 0.4;">
             <input name="name" class="form-bg-null" value="<?= $mhs->fullname;?>" hidden />
             <input name="receiver" class="form-bg-null" value="<?= $mhs->username;?>" hidden />

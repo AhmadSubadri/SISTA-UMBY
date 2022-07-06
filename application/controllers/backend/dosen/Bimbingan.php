@@ -38,7 +38,7 @@ public $result = [
     public function insertApprovelguidance()
     {
         $id = $this->input->post('id');
-        $this->M_bimbingan->_SetData('tb_thesisreceived', ['status_exam' => "1"], 'nim' ,$id);
+        $this->M_bimbingan->_SetData('tb_thesisreceived', ['status_bimbingan' => "1"], 'nim' ,$id);
     }
 
     public function formfedbackGuidanceSave()

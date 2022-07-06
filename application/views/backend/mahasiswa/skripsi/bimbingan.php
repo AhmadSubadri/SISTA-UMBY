@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="card-header-right">
-                                <?php if($dsn->status_exam != 0):?>
+                                <?php if($dsn->status_bimbingan != 0):?>
                                 <button class="btn btn-mini waves-effect waves-light btn-success disabled btn-disabled"
                                     data-toggle="tooltip" data-placement="top"
                                     title="Students have the right to register exam"><i
@@ -107,7 +107,7 @@
                         <div class="card-footer">
                             <?= form_open_multipart('mhs/dashboard/save-bimbingan'); ?>
                             <?php foreach($Data as $dsn):?>
-                            <?php if($dsn->status_exam == 0):?>
+                            <?php if($dsn->status_bimbingan == 0):?>
                             <div class="form-inline">
                                 <input name="name" class="form-bg-null" value="<?= $dsn->name;?>" hidden />
                                 <input name="receiver" class="form-bg-null" value="<?= $dsn->username;?>" hidden />

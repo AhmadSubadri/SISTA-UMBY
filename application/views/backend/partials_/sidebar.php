@@ -111,10 +111,9 @@
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                        <a href="<?= site_url('dsn/dashboard/mahasiswa-pendadaran');?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Pengumuman &
-                                bimbingan</span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Mahasiswa pendadaran</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

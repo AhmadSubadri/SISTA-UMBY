@@ -42,6 +42,8 @@ $route['dsn/dashboard/Form-Bimbingan'] = 'backend/dosen/Bimbingan/formfedbackGui
 $route['dsn/dashboard/insertApprovelguidance'] = 'backend/dosen/Bimbingan/insertApprovelguidance';
 $route['dsn/dashboard/save-feedback-bimbingan'] = 'backend/dosen/Bimbingan/formfedbackGuidanceSave';
 
+//Pendadaran
+$route['dsn/dashboard/mahasiswa-pendadaran'] = 'backend/dosen/Pendadaran/GetPendadaran';
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';

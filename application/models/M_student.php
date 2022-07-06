@@ -145,7 +145,7 @@ class M_student extends CI_Model
         $id = $this->session->userdata('username');
         $this->db->select('*')
         ->where('nim', $id)
-        ->where('status_exam', "1")
+        ->where('status_bimbingan', "1")
         ->from('tb_thesisreceived');
         $query = $this->db->get()->result();
         return $query;

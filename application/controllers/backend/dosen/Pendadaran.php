@@ -58,6 +58,17 @@ public $result = [
         redirect(site_url('dsn/dashboard/syarat-pendadaran'));
     }
 
+    // Get data mahasiswa siap daftar pendadaran setelah acc bimbingan
+    public function GetPendadaran()
+    {
+        $data = [
+            'Data' => $this->M_examthesis->Index()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/pendadaran/data_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+    }
+
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);

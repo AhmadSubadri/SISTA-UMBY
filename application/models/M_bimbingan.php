@@ -31,7 +31,7 @@ class M_bimbingan extends CI_Model
 
     public function GetMahasiswa($id)
     {
-        $this->db->select('s.fullname, s.username, s.image, t.status_exam')
+        $this->db->select('s.fullname, s.username, s.image, t.status_bimbingan')
         ->where('t.nim', $id)
         ->from('tb_thesisreceived t')
         ->join('tb_student s', 's.username = t.nim');
@@ -54,7 +54,7 @@ class M_bimbingan extends CI_Model
     public function GetPembimbing()
     {
         $id = $this->session->userdata('username');
-        $this->db->select('l.fullname, l.username, s.fullname as name, l.image, t.status_exam, l.email, l.phone')
+        $this->db->select('l.fullname, l.username, s.fullname as name, l.image, t.status_bimbingan, l.email, l.phone')
         ->where('t.nim', $id)
         ->from('tb_thesisreceived t')
         ->join('tb_lecturers l', 'l.username = t.nidn')
