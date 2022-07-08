@@ -3,8 +3,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-header-right">
-                <a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal"
-                    data-target="#modalrequirement">+ Tambah persyaratan</a>
+                <a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalrequirement">+ Tambah persyaratan</a>
             </div>
         </div>
         <div class="card-block">

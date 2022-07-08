@@ -69,6 +69,28 @@ public $result = [
         $this->load->view('backend/partials_/footer');
     }
 
+    public function DetailDataPendadaran($id)
+    {
+        
+        $data = [
+            'Data' => $this->M_examthesis->DetailDataPendadaran($id),
+            'DetailPenguji' => $this->M_examthesis->DetailPenguji($id),
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/pendadaran/detail_data_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+    }
+
+    public function PenjadwalanPendadaran()
+    {
+        $data = [
+            'Data' => $this->M_examthesis->getPengujiFix()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/pendadaran/penjadwalan_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+    }
+
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);

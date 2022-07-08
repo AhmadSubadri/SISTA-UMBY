@@ -1,10 +1,14 @@
 <div class="col-xl-12">
 	<div class="card">
+		<div class="card-block">
+			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah menyelesaikan masa bimbingan dan sudah di <code>Approved</code> oleh masing-masing pembimbing.</p>
+		</div>
+	</div>
+</div>
+<div class="col-xl-12">
+	<div class="card">
 		<div class="card-header">
-			<h4>Data pendadaran</h4>
-			<div class="card-header-right">
-				<a href="" class="btn btn-mini btn-outline-primary">+ Ploting penguji pendadaran</a>
-			</div>
+			<h6>Data pendadaran</h6>
 		</div>
 		<div class="card-block">
 			<div class="row">
@@ -18,7 +22,7 @@
 					Status pendadaran
 				</div>
 				<div class="col-sm-12 col-xl-2 sub-title">
-					Status Daftar
+					Aksi
 				</div>
 
 				<?php $i=1; foreach($Data as $row):?>
@@ -33,7 +37,7 @@
 								class="img-radius img-40 align-top m-r-15">
 							<?php endif;?>
 							<div class="media-body">
-								<h6 class=""><?= $row->fullname;?>/<?= $row->nim;?></h6>
+								<h6 class="text-primary"><?= $row->fullname;?>/<?= $row->nim;?></h6>
 								"<?= $row->title;?>"
 							</div>
 						</div>
@@ -53,7 +57,11 @@
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-2 sub-title">
-						Status Daftar
+						<?php if ($row->status_daftar != 0):?>
+							<a href="<?= site_url('dsn/dashboard/detail-data-pendadaran/'.$row->id);?>" class="btn btn-mini btn-outline-primary">Lihat data</a>
+						<?php else:?>
+							<a href="" class="btn btn-mini btn-outline-danger btn-disabled disabled"><i class="ti-na"></i>Lihat data</a>
+						<?php endif;?>
 					</div>
 				<?php endforeach;?>
 			</div>
