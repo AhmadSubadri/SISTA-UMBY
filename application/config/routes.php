@@ -47,6 +47,7 @@ $route['dsn/dashboard/mahasiswa-pendadaran'] = 'backend/dosen/Pendadaran/GetPend
 $route['dsn/dashboard/penentuan-jadwal-pendadaran'] = 'backend/dosen/Pendadaran/PenjadwalanPendadaran';
 $route['dsn/dashboard/detail-data-pendadaran/(:any)'] = 'backend/dosen/Pendadaran/DetailDataPendadaran/$1';
 $route['dsn/dashboard/insert-penguji-pendadaran'] = 'backend/dosen/Pendadaran/InsertPengujiPendadaran';
+$route['dsn/dashboard/update-penguji-pendadaran'] = 'backend/dosen/Pendadaran/UpdatePengujiPendadaran';
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';

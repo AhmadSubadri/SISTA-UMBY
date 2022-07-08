@@ -121,6 +121,37 @@ public $result = [
     return redirect('dsn/dashboard/penentuan-jadwal-pendadaran');
     }
 
+    public function UpdatePengujiPendadaran($value='')
+    {
+        $nim = $this->input->post('nim');
+        $penguji = $this->input->post('penguji');
+        for($i=0; $i < sizeof($penguji); $i++){
+            $Datapenguji = array(
+                'id_thesisreceived' => $this->input->post('id_Thesis'),
+                'nim' => $nim,
+                'penguji' => $penguji[$i],
+                'id_major' => $this->input->post('major')
+            );
+            // $this->db->where('nim', $nim);
+            // $this->db->update('tb_detail_pendadaran', $Datapenguji);
+            $this->M_examthesis->delete('tb_detail_pendadaran', 'nim', $nim);
+            $this->db->insert('tb_detail_pendadaran', $Datapenguji);
+        }
+        $DataDetail = array(
+            'kegiatan' => $this->input->post('kegiatan'),
+            'tempat' => $this->input->post('tempat'),
+            'date' => $this->input->post('tanggal'),
+            'time' => $this->input->post('jam'),
+            'time' => $this->input->post('jam')
+        );
+        $this->db->where('nim', $nim);
+        $this->db->update('tb_thesisreceived', $DataDetail);
+        $this->session->set_flashdata('msg',"update Ploting examiner has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+
+    return redirect('dsn/dashboard/penentuan-jadwal-pendadaran');
+    }
+
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);

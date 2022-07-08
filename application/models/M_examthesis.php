@@ -51,17 +51,6 @@ class M_examthesis extends CI_Model
         return $query->result();
     }
 
-    // public function _getThesisReceived($id)
-    // {
-    //     $this->db->select('t.id as id, s.fullname as nameStudent, l.fullname as nameLecturer, t.title as title, t.nim as nim, t.nidn as nidn')
-    //     ->where('t.nim', $id)
-    //     ->from('tb_thesisreceived t')
-    //     ->join('tb_student s', 's.username = t.nim')
-    //     ->join('tb_lecturers l', 'l.username = t.nidn');
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
-
     public function getExaminer($major)
     {
         $this->db->select('*')
@@ -83,6 +72,12 @@ class M_examthesis extends CI_Model
         $this->db->where($col, $id);
         $query = $this->db->update($tabel);
         return $query;
+    }
+
+    public function delete($tabel,$col,$id){
+        $this->db->where($col,$id);
+        $action = $this->db->delete($tabel);
+        return $action;
     }
 
     public function getPengujiFix()
