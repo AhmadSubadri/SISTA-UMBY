@@ -157,11 +157,6 @@
         $tanggal = $i['date'];
         $jam = $i['time'];
 ?>
-<?php
-$asd = $this->db->select('l.fullname as nameLecturer, d.penguji')->where('d.id_thesisreceived', $id)->from('tb_detail_pendadaran d')->join('tb_lecturers l', 'l.username = d.penguji')->get()->result();
-$oke = $this->db->select('*')->from('tb_lecturers')->where('username NOT IN (select penguji from tb_detail_pendadaran where id_thesisreceived ='.$id.')')->get()->result();
-
-?>
 <!-- Modal insert Requirements -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalEditPendadaran<?=$id;?>" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
@@ -195,14 +190,11 @@ $oke = $this->db->select('*')->from('tb_lecturers')->where('username NOT IN (sel
 							<label class="text-primary">Dosen penguji</label>
 							<div class="form-group row">
 								<div class="form-group col-sm-6 form-default form-static-label">
-		                            <?php foreach($asd as $all):?>
-										<input type="checkbox" name="penguji[]" value="<?=$all->penguji;?>" checked>
-										<label><?= $all->nameLecturer;?></label><br>
-									<?php endforeach;?>
-									<?php foreach($oke as $ok):?>
-										<input type="checkbox" name="penguji[]" value="<?=$ok->username;?>">
-											<label><?= $ok->fullname;?></label><br>
-									<?php endforeach;?>
+			                            <?php foreach($DataDosen as $all):?>
+										<?php $uji = $this->db->select('penguji')->from('tb_detail_pendadaran')->where('penguji', $all->username)->where('nim', $nim)->get()->row_array();?>
+											<input type="checkbox" name="penguji[]" value="<?=$all->username;?>" <?php if($all->username == $uji['penguji']){echo "checked";}?>>
+											<label><?= $all->fullname;?></label><br>
+										<?php endforeach;?>
 		                        </div>
 		                        <div class="form-group col-sm-6 form-default form-static-label">
 		                            <input type="text" name="tempat" class="form-control" required="" value="<?= $tempat;?>">
