@@ -27,8 +27,7 @@
                     <h6><?= $row->qty;?></h6>
                 </div>
                 <div class="col-sm-12 col-xl-3 sub-title">
-                    <a href="" class="btn btn-mini btn-outline-warning" id="Modal-Tourist" data-toggle="modal"
-                        data-target="#modal_edit<?= $row->id;?>">Edit</a>
+                    <a href="" class="btn btn-mini btn-outline-warning" id="Modal-Tourist" data-toggle="modal" data-target="#modal_edit<?= $row->id;?>">Edit</a>
                     <a href="<?= site_url('dsn/dashboard/delete-syarat/'.$row->id);?>"
                         class="btn btn-mini btn-outline-danger">Delete</a>
                     <?php if ($row->status != 0) :?>

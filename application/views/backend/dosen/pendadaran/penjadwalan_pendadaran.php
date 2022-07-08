@@ -1,3 +1,4 @@
+<?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
 	<div class="card">
 		<div class="card-block">
@@ -9,13 +10,10 @@
 	<div class="card">
 		<div class="card-header">
 			<h6>Daftar mahasiswa siap ploting penguji</h6>
-			<div class="card-header-right">
-				<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalPendadaran">+ Ploting dosen penguji pendadaran</a>
-			</div>
 		</div>
 		<div class="card-block">
 			<div class="row sub-title">
-				<div class="col-sm-12 col-xl-4 sub-title">
+				<div class="col-sm-12 col-xl-3 sub-title">
 					# profil
 				</div>
 				<div class="col-sm-12 col-xl-3 sub-title">
@@ -24,14 +22,15 @@
 				<div class="col-sm-12 col-xl-4 sub-title">
 					Penguji
 				</div>
-				<div class="col-sm-12 col-xl-1 sub-title">
+				<div class="col-sm-12 col-xl-2 sub-title">
 					Aksi
 				</div>
 				<!-- Data -->
-				<?php if(!empty(count($Data))):?>
-					<?php foreach($Data as $data => $val):?>
-						<div class="col-sm-12 col-xl-4">
+				<?php if(!empty(count($Data->result()))):?>
+					<?php $j=1; foreach($Data->result() as $data => $val):?>
+						<div class="col-sm-12 col-xl-3">
 							<div class="media">
+								<label class="badge-top-right"><?=$j++;?>.</label>
 								<?php if($val->image == null):?>
 									<img class="img-radius img-40 align-top m-r-15"
 									src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
@@ -49,9 +48,13 @@
 							<?php if($val->tempat == null):?>
 								<label class="label label-mini label-danger">Belum ada jadwal</label>
 							<?php else:?>
-								Hari/tgl : <?php echo format_tanggal(date($val->date));?> / <?= $val->time;?>;
-								Kegiatan : <?= $val->kegiatan;?>;
-								Lokasi : <?= $val->tempat;?>;
+								<?php if(format_tanggal(date($val->date)) == format_tanggal(date('Y-m-d'))):?>
+								<span class="text-danger" id="warningText">Hari ini : <?php echo format_tanggal(date($val->date));?></span><br>Jam : <?= $val->time;?><br>
+								<?php else:?>
+								Hari/tgl : <span class="text-primary"><?php echo format_tanggal(date($val->date));?> / <?= $val->time;?></span><br>
+								<?php endif;?>
+								Kegiatan : <?= $val->kegiatan;?><br>
+								Lokasi : <?= $val->tempat;?>
 							<?php endif;?>
 						</div>
 						<div class="col-sm-12 col-xl-4">
@@ -61,17 +64,21 @@
 							<?php if (!empty(count($penguji))):?>
 								<?php $i=1; foreach($penguji as $nama):?>
 								<?= $i++;?>. <?= $nama->nameLecturer;?><br>
-								<?php endforeach;?>
+							<?php endforeach;?>
 							<?php else:?>
 								<label class="label label-mini label-danger">Belum ada penguji</label>
 							<?php endif;?>
 						</div>
-						<div class="col-sm-12 col-xl-1">
-							aksi
+						<div class="col-sm-12 col-xl-2">
+							<?php if (!empty(count($penguji))):?>
+								<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalEditPendadaran<?=$val->id;?>">Edit ploting</a>
+							<?php else:?>
+								<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalPendadaran<?=$val->id;?>">Ploting</a>
+							<?php endif;?>
 						</div>
 						<div class="sub-title col-sm-12 col-xl-12"></div>
 					<?php endforeach;?>
-				<?php else:?>
+					<?php else:?>
 					<div class="col-sm-12 col-xl-12 text-center">
 						Data not availabel
 					</div>
@@ -81,8 +88,12 @@
 	</div>
 </div>
 
+<?php foreach($Data->result_array() as $i):
+        $id = $i['id'];
+        $nim = $i['username'];
+?>
 <!-- Modal insert Requirements -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalPendadaran" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalPendadaran<?=$id;?>" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -91,48 +102,57 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form class="form-material" action="<?= site_url("dsn/dashboard/insert-syarat")?>" method="post" id="savedata">
-				<div class="modal-body">
-					<div class="form-group form-default row">
-						<div class="col-sm-6">
-							<input type="date" name="tanggal" class="form-control" required="">
-							<span class="form-bar"></span>
+			<form class="form-material" action="<?= site_url('dsn/dashboard/insert-penguji-pendadaran')?>" method="post" id="savedata">
+				<div class="card">
+					<div class="card-block">
+						<div class="modal-body">
+							<div class="form-group form-default row">
+								<input type="text" name="nim" value="<?= $nim;?>" hidden>
+								<input type="text" name="id_Thesis" value="<?= $id;?>" hidden>
+								<input type="text" name="kegiatan" value="Sidang pendadaran" hidden>
+								<input type="text" name="major" value="<?= $this->session->userdata("major")?>" hidden>
+								<div class="form-group col-sm-6 form-default form-static-label">
+		                            <input type="date" name="tanggal" class="form-control" required="">
+		                            <span class="form-bar"></span>
+		                            <label class="float-label text-primary">Tanggal pelaksanaan</label>
+		                        </div>
+		                        <div class="form-group col-sm-6 form-default form-static-label">
+		                            <input type="time" name="jam" class="form-control" required="">
+		                            <span class="form-bar"></span>
+		                            <label class="float-label text-primary">Jam pelaksanaan</label>
+		                        </div>
+							</div>
+							<label class="text-primary">Dosen penguji</label>
+							<div class="form-group row">
+								<div class="form-group col-sm-6 form-default form-static-label">
+		                            <?php foreach($DataDosen as $dosen):?>
+									<input type="checkbox" name="penguji[]" value="<?=$dosen->username;?>">
+									<label><?= $dosen->fullname;?></label><br>
+									<?php endforeach;?>
+		                        </div>
+		                        <div class="form-group col-sm-6 form-default form-static-label">
+		                            <input type="text" name="tempat" class="form-control" required="" placeholder="Ruang 152">
+		                            <span class="form-bar"></span>
+		                            <label class="float-label text-primary">Tempat</label>
+		                        </div>
+							</div>
 						</div>
-						<div class="col-sm-6">
-							<input type="text" name="tempat" class="form-control" required="">
-							<span class="form-bar"></span>
-							<label class="float-label">Tempat</label>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-mini btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-mini btn-primary">Save penjadwalan</button>
 						</div>
 					</div>
-					<a class="waves-effect waves-light text-primary" id="newcolumn">+ Create column</a>
-					<table class="table table-bordered" id="tableLoop">
-						<input type="text" name="major" value="<?= $this->session->userdata("major")?>" hidden>
-						<tbody></tbody>
-					</table>
-					<div class="form-group form-default row">
-						<div class="col-sm-4">
-							<input type="text" name="mahasiswa" class="form-control" required="">
-							<span class="form-bar"></span>
-							<label class="float-label">Mahasiswa</label>
-						</div>
-						<div class="col-sm-4">
-							<input type="text" name="penguji" class="form-control" required="">
-							<span class="form-bar"></span>
-							<label class="float-label">Penguji</label>
-						</div>
-						<div class="col-sm-4">
-							<input type="time" name="jam" class="form-control" required="">
-							<span class="form-bar"></span>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-mini btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-mini btn-primary">Save penjadwalan</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+<?php endforeach;?>
 
-<script src="<?php echo base_url()?>assets/js/modal-penjadwalan.js"></script>
+<style type="text/css">
+	#warningText {
+  animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;  
+}
+@keyframes blinker2 { to { opacity: 0; } }
+</style>
+<!-- <span class="berkedip">TEKS BERKEDIP</span> -->

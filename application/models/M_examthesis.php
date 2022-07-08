@@ -94,7 +94,7 @@ class M_examthesis extends CI_Model
         ->from('tb_thesisreceived t')
         ->join('tb_student s', 's.username = t.nim');
         $query = $this->db->get();
-        return $query->result();
+        return $query;
     }
 
     public function getScheduleexam()
