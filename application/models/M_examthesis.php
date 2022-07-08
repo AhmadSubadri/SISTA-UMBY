@@ -88,13 +88,11 @@ class M_examthesis extends CI_Model
     public function getPengujiFix()
     {
         $major = $this->session->userdata('major');
-        $this->db->select('d.id, l.fullname as nameLecturer, s.fullname as nameStudent, s.username, t.kegiatan, t.tempat, t.date, t.time')
-        ->where('d.id_major', $major)
-        ->where('t.status_ploting', "1")
-        ->from('tb_detail_pendadaran d')
-        ->join('tb_lecturers l', 'l.username = d.penguji')
-        ->join('tb_student s', 's.username = d.nim')
-        ->join('tb_thesisreceived t', 't.id = d.id_thesisreceived');
+        $this->db->select('t.id, s.fullname as nameStudent, s.username, t.kegiatan, t.tempat, t.date, t.time, s.image')
+        ->where('t.major', $major)
+        ->where('t.status_daftar', 1)
+        ->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim');
         $query = $this->db->get();
         return $query->result();
     }
