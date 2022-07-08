@@ -51,7 +51,8 @@
 								<?php if(format_tanggal(date($val->date)) == format_tanggal(date('Y-m-d'))):?>
 								<span class="text-danger" id="warningText">Hari ini : <?php echo format_tanggal(date($val->date));?></span><br>Jam : <?= $val->time;?><br>
 								<?php else:?>
-								Hari/tgl : <span class="text-primary"><?php echo format_tanggal(date($val->date));?> / <?= $val->time;?></span><br>
+								Hari/tgl : <span class="text-primary"><?php echo format_tanggal(date($val->date));?></span><br>
+								Jam : <?= $val->time;?><br>
 								<?php endif;?>
 								Kegiatan : <?= $val->kegiatan;?><br>
 								Lokasi : <?= $val->tempat;?>
@@ -140,6 +141,79 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-mini btn-secondary" data-dismiss="modal">Close</button>
 							<button type="submit" class="btn btn-mini btn-primary">Save penjadwalan</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<?php endforeach;?>
+
+<?php foreach($Data->result_array() as $i):
+        $id = $i['id'];
+        $nim = $i['username'];
+        $tempat = $i['tempat'];
+        $tanggal = $i['date'];
+        $jam = $i['time'];
+?>
+<?php
+$asd = $this->db->select('l.fullname as nameLecturer, d.penguji')->where('d.id_thesisreceived', $id)->from('tb_detail_pendadaran d')->join('tb_lecturers l', 'l.username = d.penguji')->get()->result();
+$oke = $this->db->select('*')->from('tb_lecturers')->where('username NOT IN (select penguji from tb_detail_pendadaran where id_thesisreceived ='.$id.')')->get()->result();
+
+?>
+<!-- Modal insert Requirements -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalEditPendadaran<?=$id;?>" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 class="modal-title" id="exampleModalLabel">Update ploting penguji pedadaran</h6>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form class="form-material" action="<?= site_url('dsn/dashboard/update-penguji-pendadaran')?>" method="post" id="savedata">
+				<div class="card">
+					<div class="card-block">
+						<div class="modal-body">
+							<div class="form-group form-default row">
+								<input type="text" name="nim" value="<?= $nim;?>" hidden>
+								<input type="text" name="id_Thesis" value="<?= $id;?>" hidden>
+								<input type="text" name="kegiatan" value="Sidang pendadaran" hidden>
+								<input type="text" name="major" value="<?= $this->session->userdata("major")?>" hidden>
+								<div class="form-group col-sm-6 form-default form-static-label">
+		                            <input type="date" name="tanggal" class="form-control" value="<?= $tanggal;?>" required="">
+		                            <span class="form-bar"></span>
+		                            <label class="float-label text-primary">Tanggal pelaksanaan</label>
+		                        </div>
+		                        <div class="form-group col-sm-6 form-default form-static-label">
+		                            <input type="time" name="jam" class="form-control" value="<?= $jam;?>" required="">
+		                            <span class="form-bar"></span>
+		                            <label class="float-label text-primary">Jam pelaksanaan</label>
+		                        </div>
+							</div>
+							<label class="text-primary">Dosen penguji</label>
+							<div class="form-group row">
+								<div class="form-group col-sm-6 form-default form-static-label">
+		                            <?php foreach($asd as $all):?>
+										<input type="checkbox" name="penguji[]" value="<?=$all->penguji;?>" checked>
+										<label><?= $all->nameLecturer;?></label><br>
+									<?php endforeach;?>
+									<?php foreach($oke as $ok):?>
+										<input type="checkbox" name="penguji[]" value="<?=$ok->username;?>">
+											<label><?= $ok->fullname;?></label><br>
+									<?php endforeach;?>
+		                        </div>
+		                        <div class="form-group col-sm-6 form-default form-static-label">
+		                            <input type="text" name="tempat" class="form-control" required="" value="<?= $tempat;?>">
+		                            <span class="form-bar"></span>
+		                            <label class="float-label text-primary">Tempat</label>
+		                        </div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-mini btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-mini btn-primary">Update penjadwalan</button>
 						</div>
 					</div>
 				</div>
