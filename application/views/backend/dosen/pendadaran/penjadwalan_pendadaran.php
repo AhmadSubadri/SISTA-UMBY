@@ -14,43 +14,65 @@
 			</div>
 		</div>
 		<div class="card-block">
-			<div class="row">
+			<div class="row sub-title">
 				<div class="col-sm-12 col-xl-4 sub-title">
 					# profil
 				</div>
-				<div class="col-sm-12 col-xl-4 sub-title">
+				<div class="col-sm-12 col-xl-3 sub-title">
 					Jadwal
 				</div>
 				<div class="col-sm-12 col-xl-4 sub-title">
 					Penguji
 				</div>
+				<div class="col-sm-12 col-xl-1 sub-title">
+					Aksi
+				</div>
 				<!-- Data -->
-				<?php if(!empty($Data)):?>
-					<?php foreach($Data as $data):?>
-						<div class="col-sm-12 col-xl-4 sub-title">
-							<div class="media sub-title">
-								<?php if($data->image == null):?>
+				<?php if(!empty(count($Data))):?>
+					<?php foreach($Data as $data => $val):?>
+						<div class="col-sm-12 col-xl-4">
+							<div class="media">
+								<?php if($val->image == null):?>
 									<img class="img-radius img-40 align-top m-r-15"
 									src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
 								<?php else:?>
 									<img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>" alt="user image"
 									class="img-radius img-40 align-top m-r-15">
 								<?php endif;?>
-								<div class="media-body">
-									<h6 class="text-primary"><?= $data->nameStudent;?></h6>
-									<?= $data->nim;?>
+								<div class="media-body align-middle">
+									<h6 class="text-primary"></h6>
+									<?= $val->nameStudent;?> / <?= $val->username;?>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-12 col-xl-4 sub-title">
-							Nilai
+						<div class="col-sm-12 col-xl-3">
+							<?php if($val->tempat == null):?>
+								<label class="label label-mini label-danger">Belum ada jadwal</label>
+							<?php else:?>
+								Hari/tgl : <?php echo format_tanggal(date($val->date));?> / <?= $val->time;?>;
+								Kegiatan : <?= $val->kegiatan;?>;
+								Lokasi : <?= $val->tempat;?>;
+							<?php endif;?>
 						</div>
-						<div class="col-sm-12 col-xl-4 sub-title">
-							Catatan
+						<div class="col-sm-12 col-xl-4">
+							<?php
+							$penguji = $this->db->select('l.fullname as nameLecturer, d.penguji')->where('d.id_thesisreceived', $val->id)->from('tb_detail_pendadaran d')->join('tb_lecturers l', 'l.username = d.penguji')->get()->result();
+							?>
+							<?php if (!empty(count($penguji))):?>
+								<?php $i=1; foreach($penguji as $nama):?>
+								<?= $i++;?>. <?= $nama->nameLecturer;?><br>
+								<?php endforeach;?>
+							<?php else:?>
+								<label class="label label-mini label-danger">Belum ada penguji</label>
+							<?php endif;?>
 						</div>
+						<div class="col-sm-12 col-xl-1">
+							aksi
+						</div>
+						<div class="sub-title col-sm-12 col-xl-12"></div>
 					<?php endforeach;?>
 				<?php else:?>
-					<div class="col-sm-12 col-xl-12 sub-title text-center">
+					<div class="col-sm-12 col-xl-12 text-center">
 						Data not availabel
 					</div>
 				<?php endif;?>
