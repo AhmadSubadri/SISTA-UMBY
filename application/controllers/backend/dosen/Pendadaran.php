@@ -83,12 +83,42 @@ public $result = [
 
     public function PenjadwalanPendadaran()
     {
+        $major = $this->session->userdata('major');
         $data = [
-            'Data' => $this->M_examthesis->getPengujiFix()
+            'Data' => $this->M_examthesis->getPengujiFix(),
+            'DataDosen' => $this->M_examthesis->getExaminer($major)
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/pendadaran/penjadwalan_pendadaran', $data);
         $this->load->view('backend/partials_/footer');
+    }
+
+    public function InsertPengujiPendadaran()
+    {
+        $nim = $this->input->post('nim');
+        $penguji = $this->input->post('penguji');
+        for($i=0; $i < sizeof($penguji); $i++){
+            $Datapenguji = array(
+                'id_thesisreceived' => $this->input->post('id_Thesis'),
+                'nim' => $nim,
+                'penguji' => $penguji[$i],
+                'id_major' => $this->input->post('major')
+            );
+            $this->db->insert('tb_detail_pendadaran', $Datapenguji);
+        }
+        $DataDetail = array(
+            'kegiatan' => $this->input->post('kegiatan'),
+            'tempat' => $this->input->post('tempat'),
+            'date' => $this->input->post('tanggal'),
+            'time' => $this->input->post('jam'),
+            'time' => $this->input->post('jam')
+        );
+        $this->db->where('nim', $nim);
+        $this->db->update('tb_thesisreceived', $DataDetail);
+        $this->session->set_flashdata('msg',"Ploting examiner has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+
+    return redirect('dsn/dashboard/penentuan-jadwal-pendadaran');
     }
 
     public function deleterequirementexam($id)
