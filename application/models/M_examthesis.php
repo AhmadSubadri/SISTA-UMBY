@@ -13,7 +13,29 @@ class M_examthesis extends CI_Model
         ->where('t.status_bimbingan', '1')
         ->where('t.major', $this->session->userdata('major'))
         ->from('tb_thesisreceived t')
-        ->join('tb_student s', 's.username = t.nim');
+        ->join('tb_student s', 's.username = t.nim')
+        ->join('tb_lecturers l', 'l.username = t.nidn');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function DetailDataPendadaran($id)
+    {
+        $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image, t.kegiatan, t.tempat, t.date, t.time, l.fullname as nameLecturer, l.image as imageDosen, l.username as nidn, l.email, l.phone')
+        ->where('t.id', $id)
+        ->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim')
+        ->join('tb_lecturers l', 'l.username = t.nidn');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function DetailPenguji($id)
+    {
+        $this->db->select('l.fullname, p.nilai, p.note, p.penguji')
+        ->where('p.id_thesisreceived', $id)
+        ->from('tb_detail_pendadaran p')
+        ->join('tb_lecturers l', 'l.username = p.penguji');
         $query = $this->db->get();
         return $query->result();
     }
@@ -63,15 +85,16 @@ class M_examthesis extends CI_Model
         return $query;
     }
 
-    public function getExaminerFix($id)
+    public function getPengujiFix()
     {
-        $this->db->select('t.id as id, l.fullname as nameLecturera, m.fullname as nameLecturerb, n.fullname as nameLecturerc, t.examiner_a as penguji_a, t.examiner_b as penguji_b, t.examiner_c as penguji_c, t.location as location, t.date as date, t.time as time')
-        ->where('t.nim', $id)
-        ->from('tb_thesisreceived t')
-        ->join('tb_student s', 's.username = t.nim')
-        ->join('tb_lecturers l', 'l.username = t.examiner_a')
-        ->join('tb_lecturers m', 'm.username = t.examiner_b')
-        ->join('tb_lecturers n', 'n.username = t.examiner_c');
+        $major = $this->session->userdata('major');
+        $this->db->select('d.id, l.fullname as nameLecturer, s.fullname as nameStudent, s.username, t.kegiatan, t.tempat, t.date, t.time')
+        ->where('d.id_major', $major)
+        ->where('t.status_ploting', "1")
+        ->from('tb_detail_pendadaran d')
+        ->join('tb_lecturers l', 'l.username = d.penguji')
+        ->join('tb_student s', 's.username = d.nim')
+        ->join('tb_thesisreceived t', 't.id = d.id_thesisreceived');
         $query = $this->db->get();
         return $query->result();
     }
