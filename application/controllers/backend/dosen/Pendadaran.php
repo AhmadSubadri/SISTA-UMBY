@@ -125,6 +125,7 @@ public $result = [
     {
         $nim = $this->input->post('nim');
         $penguji = $this->input->post('penguji');
+        $this->M_examthesis->delete('tb_detail_pendadaran', 'nim', $nim);
         for($i=0; $i < sizeof($penguji); $i++){
             $Datapenguji = array(
                 'id_thesisreceived' => $this->input->post('id_Thesis'),
@@ -132,9 +133,6 @@ public $result = [
                 'penguji' => $penguji[$i],
                 'id_major' => $this->input->post('major')
             );
-            // $this->db->where('nim', $nim);
-            // $this->db->update('tb_detail_pendadaran', $Datapenguji);
-            $this->M_examthesis->delete('tb_detail_pendadaran', 'nim', $nim);
             $this->db->insert('tb_detail_pendadaran', $Datapenguji);
         }
         $DataDetail = array(
@@ -150,6 +148,16 @@ public $result = [
         $this->session->set_flashdata('msg_class','alert-success');
 
     return redirect('dsn/dashboard/penentuan-jadwal-pendadaran');
+    }
+
+    public function PelaksanaanPendadaran()
+    {
+        $data = [
+            'DataPendadaran' => $this->M_examthesis->GetDataPendaranBypenguji()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/pendadaran/pelaksanaan_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
     }
 
     public function deleterequirementexam($id)

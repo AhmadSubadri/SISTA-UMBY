@@ -50,10 +50,12 @@
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-2 sub-title">
-						<?php if ($row->status_pendadaran != 0):?>
+						<?php if ($row->status_pendadaran == 0):?>
+							<label class="label label-mini label-warning">Belum pendadaran</label>
+						<?php elseif($row->status_pendadaran == 1):?>
 							<label class="label label-mini label-success">Sudah pendadaran</label>
 						<?php else:?>
-							<label class="label label-mini label-warning">Belum pendadaran</label>
+							<label class="label label-mini label-primary">Sudah pengumuman</label>
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-2 sub-title">

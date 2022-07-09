@@ -1,17 +1,11 @@
 <?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
 	<div class="card">
-		<div class="card-block">
-			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah melakukan<code>pendaftaran dan upload</code>syarat pendadaran.</p>
-		</div>
-	</div>
-</div>
-<div class="col-xl-12">
-	<div class="card">
 		<div class="card-header">
-			<h6>Daftar mahasiswa siap ploting penguji</h6>
+			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah melakukan<code>pendaftaran dan upload</code>syarat pendadaran, dilanjutkan untuk pemilihan dosen penguji pendadaran dan jadwal pelaksanaan.</p>
 		</div>
 		<div class="card-block">
+			<h6 class="sub-title">Daftar mahasiswa tahap ploting penguji dan penjadwalan</h6>
 			<div class="row sub-title">
 				<div class="col-sm-12 col-xl-3 sub-title">
 					# profil
@@ -35,7 +29,7 @@
 									<img class="img-radius img-40 align-top m-r-15"
 									src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
 								<?php else:?>
-									<img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>" alt="user image"
+									<img src="<?php echo base_url('_uploads/profile/student/').$val->image;?>" alt="user image"
 									class="img-radius img-40 align-top m-r-15">
 								<?php endif;?>
 								<div class="media-body align-middle">
@@ -157,11 +151,6 @@
         $tanggal = $i['date'];
         $jam = $i['time'];
 ?>
-<?php
-$asd = $this->db->select('l.fullname as nameLecturer, d.penguji')->where('d.id_thesisreceived', $id)->from('tb_detail_pendadaran d')->join('tb_lecturers l', 'l.username = d.penguji')->get()->result();
-$oke = $this->db->select('*')->from('tb_lecturers')->where('username NOT IN (select penguji from tb_detail_pendadaran where id_thesisreceived ='.$id.')')->get()->result();
-
-?>
 <!-- Modal insert Requirements -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalEditPendadaran<?=$id;?>" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
@@ -195,14 +184,11 @@ $oke = $this->db->select('*')->from('tb_lecturers')->where('username NOT IN (sel
 							<label class="text-primary">Dosen penguji</label>
 							<div class="form-group row">
 								<div class="form-group col-sm-6 form-default form-static-label">
-		                            <?php foreach($asd as $all):?>
-										<input type="checkbox" name="penguji[]" value="<?=$all->penguji;?>" checked>
-										<label><?= $all->nameLecturer;?></label><br>
-									<?php endforeach;?>
-									<?php foreach($oke as $ok):?>
-										<input type="checkbox" name="penguji[]" value="<?=$ok->username;?>">
-											<label><?= $ok->fullname;?></label><br>
-									<?php endforeach;?>
+			                            <?php foreach($DataDosen as $all):?>
+										<?php $uji = $this->db->select('penguji')->from('tb_detail_pendadaran')->where('penguji', $all->username)->where('nim', $nim)->get()->row_array();?>
+											<input type="checkbox" name="penguji[]" value="<?=$all->username;?>" <?php if($all->username == $uji['penguji']){echo "checked";}?>>
+											<label><?= $all->fullname;?></label><br>
+										<?php endforeach;?>
 		                        </div>
 		                        <div class="form-group col-sm-6 form-default form-static-label">
 		                            <input type="text" name="tempat" class="form-control" required="" value="<?= $tempat;?>">
