@@ -1,3 +1,4 @@
+<?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
 	<a href="<?= site_url('dsn/dashboard/pelaksanaan-pendadaran');?>" class="btn btn-mini"><i
 		class="ti-back-left"></i>Kembali</a>
@@ -50,9 +51,17 @@
 								<div class="accordion-desc">
 									<div class="row">
 										<div class="col-sm-12 col-xl-12 sub-title">
-											<form class="form-material" action="#" method="post" id="savedata">
+											<!-- <form class="form-material" method="post" id="savedata"> -->
+												<?= form_open_multipart('dsn/dashboard/save-feedback-pendadaran'); ?>
 												<div class="card">
+													<div class="form-material">
 													<div class="card-block">
+														<?php foreach($Data as $row):?>
+															<input type="text" name="nim" class="form-control" value="<?= $row->nim;?>" hidden>
+															<input type="text" name="penguji" class="form-control" value="<?= $this->session->userdata('username');?>" hidden>
+															<input type="text" name="id_thesisrecheived" class="form-control" value="<?= $row->id;?>" hidden>
+															<input type="text" name="name" class="form-control" value="<?= $row->nameStudent;?>" hidden>
+														<?php endforeach;?>
 														<div class="form-group form-default row">
 															<div class="form-group col-sm-6 form-default form-static-label">
 																<input type="text" name="nilai" class="form-control" required="">
@@ -73,11 +82,13 @@
 															</div>
 														</div>
 														<div class="form-group form-default row">
-															<a href="" class="btn btn-mini btn-outline-primary"><i class="ti-save"></i> Save hasil pendadaran</a>
+															<button type="submit" class="btn btn-mini btn-outline-primary"><i class="ti-save"></i> Save hasil pendadaran</button>
 														</div>
 													</div>
+													</div>
 												</div>
-											</form>
+												<?= form_close();?>
+											<!-- </form> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-xl-12 card-block text-center">

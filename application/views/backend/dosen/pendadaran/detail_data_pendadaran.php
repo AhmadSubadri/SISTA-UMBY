@@ -46,26 +46,34 @@
 							<a class="accordion-msg b-none waves-effect waves-light">Data hasil ujian pendadaran</a>
 							<div class="accordion-desc">
 								<div class="row">
-									<div class="col-sm-12 col-xl-5 sub-title">
+									<div class="col-sm-12 col-xl-4 sub-title">
 										# Penguji
 									</div>
-									<div class="col-sm-12 col-xl-1 sub-title">
+									<div class="col-sm-12 col-xl-2 sub-title">
 										Nilai
 									</div>
 									<div class="col-sm-12 col-xl-6 sub-title">
 										Catatan
 									</div>
 									<!-- Data -->
-									<?php if(!empty($DataPenguji)):?>
+									<?php if( !empty($DetailPenguji) ):?>
 										<?php foreach($DetailPenguji as $data):?>
-											<div class="col-sm-12 col-xl-5 sub-title">
+											<div class="col-sm-12 col-xl-4 sub-title">
 												<?= $data->fullname;?>
 											</div>
-											<div class="col-sm-12 col-xl-1 sub-title">
-												Nilai
+											<div class="col-sm-12 col-xl-2 sub-title">
+											<?php if($data->nilai == null):?>
+												<label class="label label-mini label-warning">Nilai belum ada</label>
+											<?php else:?>
+												<h6><?= $data->nilai;?></h6>
+											<?php endif;?>
 											</div>
 											<div class="col-sm-12 col-xl-6 sub-title">
-												Catatan
+												<?php if($data->note == null):?>
+												<label class="label label-mini label-warning">Catatan belum ada</label>
+											<?php else:?>
+												<h6><?= $data->note;?></h6>
+											<?php endif;?>
 											</div>
 										<?php endforeach;?>
 									<?php else:?>
