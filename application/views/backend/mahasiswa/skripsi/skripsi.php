@@ -68,8 +68,7 @@
                         <input id="uploadBtn" type="file" name="file" class="upload" />
                     </div>
                 </div>
-                <button class="btn btn-mini waves-effect waves-light btn-grd-primary"><i class="ti-save"></i>Upload
-                    pengajuan</button>
+                <button class="btn btn-mini waves-effect waves-light btn-grd-primary"><i class="ti-save"></i>Upload pengajuan</button>
             </div>
             <?= form_close();?>
         </div>

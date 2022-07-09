@@ -160,6 +160,17 @@ public $result = [
         $this->load->view('backend/partials_/footer');
     }
 
+    public function DetailPelaksanaanPendadaran($id)
+    {
+        $data = [
+            'Data' => $this->M_examthesis->DetailPelaksanaanPendadaran($id),
+            // 'DetailPenguji' => $this->M_examthesis->DetailPenguji($id),
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/pendadaran/detail_pelaksanaan_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+    }
+
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);
