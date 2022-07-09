@@ -150,6 +150,16 @@ public $result = [
     return redirect('dsn/dashboard/penentuan-jadwal-pendadaran');
     }
 
+    public function PelaksanaanPendadaran()
+    {
+        $data = [
+            'DataPendadaran' => $this->M_examthesis->GetDataPendaranBypenguji()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/pendadaran/pelaksanaan_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+    }
+
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);

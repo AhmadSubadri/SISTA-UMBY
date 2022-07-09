@@ -30,6 +30,19 @@ class M_examthesis extends CI_Model
         return $query->result();
     }
 
+    public function GetDataPendaranBypenguji()
+    {
+        $penguji = $this->session->userdata('username');
+        $this->db->select('s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image')
+        ->where('d.penguji', $penguji)
+        ->from('tb_detail_pendadaran d')
+        ->order_by('t.date', 'ASC')
+        ->join('tb_student s','s.username = d.nim')
+        ->join('tb_thesisreceived t','t.id = d.id_thesisreceived');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function DetailPenguji($id)
     {
         $this->db->select('l.fullname, p.nilai, p.note, p.penguji')
@@ -90,19 +103,5 @@ class M_examthesis extends CI_Model
         ->join('tb_student s', 's.username = t.nim');
         $query = $this->db->get();
         return $query;
-    }
-
-    public function getScheduleexam()
-    {
-        $major = $this->session->userdata('major');
-        $this->db->select('t.id as id, t.title as title, t.location as location, t.time as time, t.date as date, s.fullname as nameStudent')
-        ->where('t.major', $major)
-        ->order_by('t.date ASC')
-        ->order_by('t.time ASC')
-        ->from('tb_thesisreceived t')
-        ->join('tb_student s', 's.username = t.nim')
-        ->join('tb_lecturers l', 'l.username = t.nidn');
-        $query = $this->db->get();
-        return $query->result();
     }
 }

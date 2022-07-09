@@ -1,17 +1,11 @@
 <?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
 	<div class="card">
-		<div class="card-block">
-			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah melakukan<code>pendaftaran dan upload</code>syarat pendadaran.</p>
-		</div>
-	</div>
-</div>
-<div class="col-xl-12">
-	<div class="card">
 		<div class="card-header">
-			<h6>Daftar mahasiswa siap ploting penguji</h6>
+			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah melakukan<code>pendaftaran dan upload</code>syarat pendadaran, dilanjutkan untuk pemilihan dosen penguji pendadaran dan jadwal pelaksanaan.</p>
 		</div>
 		<div class="card-block">
+			<h6 class="sub-title">Daftar mahasiswa tahap ploting penguji dan penjadwalan</h6>
 			<div class="row sub-title">
 				<div class="col-sm-12 col-xl-3 sub-title">
 					# profil
@@ -35,7 +29,7 @@
 									<img class="img-radius img-40 align-top m-r-15"
 									src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
 								<?php else:?>
-									<img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>" alt="user image"
+									<img src="<?php echo base_url('_uploads/profile/student/').$val->image;?>" alt="user image"
 									class="img-radius img-40 align-top m-r-15">
 								<?php endif;?>
 								<div class="media-body align-middle">
