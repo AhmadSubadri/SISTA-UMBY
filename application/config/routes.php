@@ -50,6 +50,7 @@ $route['dsn/dashboard/insert-penguji-pendadaran'] = 'backend/dosen/Pendadaran/In
 $route['dsn/dashboard/update-penguji-pendadaran'] = 'backend/dosen/Pendadaran/UpdatePengujiPendadaran';
 $route['dsn/dashboard/pelaksanaan-pendadaran'] = 'backend/dosen/Pendadaran/PelaksanaanPendadaran';
 $route['dsn/dashboard/detail-pelaksanaan-pendadaran/(:any)'] = 'backend/dosen/Pendadaran/DetailPelaksanaanPendadaran/$1';
+$route['dsn/dashboard/save-feedback-pendadaran'] = 'backend/dosen/Pendadaran/SaveFeedbackPendadaran';
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';

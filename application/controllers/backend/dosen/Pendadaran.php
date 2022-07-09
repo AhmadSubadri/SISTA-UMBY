@@ -74,7 +74,7 @@ public $result = [
         
         $data = [
             'Data' => $this->M_examthesis->DetailDataPendadaran($id),
-            'DetailPenguji' => $this->M_examthesis->DetailPenguji($id),
+            'DetailPenguji' => $this->M_examthesis->DetailPenguji($id)
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/pendadaran/detail_data_pendadaran', $data);
@@ -121,7 +121,7 @@ public $result = [
     return redirect('dsn/dashboard/penentuan-jadwal-pendadaran');
     }
 
-    public function UpdatePengujiPendadaran($value='')
+    public function UpdatePengujiPendadaran()
     {
         $nim = $this->input->post('nim');
         $penguji = $this->input->post('penguji');
@@ -164,11 +164,50 @@ public $result = [
     {
         $data = [
             'Data' => $this->M_examthesis->DetailPelaksanaanPendadaran($id),
-            // 'DetailPenguji' => $this->M_examthesis->DetailPenguji($id),
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/pendadaran/detail_pelaksanaan_pendadaran', $data);
         $this->load->view('backend/partials_/footer');
+    }
+
+    public function SaveFeedbackPendadaran()
+    {
+        $nim = $this->input->post('nim');
+        $penguji = $this->input->post('penguji');
+        $name =  $this->input->post('name');//nama file menggunakan nama mahasiswa
+        mkdir ('_uploads/pendadaran/'.$name); 
+        $config['file_name'] = "$nim-$name-Feedback-pendadaran-".date("Y-d-m");
+        $config['upload_path'] = '_uploads/pendadaran/'.$name;
+        $config['allowed_types'] = 'pdf|docx|xls';
+        // $config['max_size'] = 5000;
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload('file')){
+            $Data = array(
+                'nilai' => $this->input->post('nilai'),
+                'note' => $this->input->post('note')
+            );
+            $this->db->where('penguji', $penguji);
+            $this->db->where('nim', $nim);
+            $this->db->update('tb_detail_pendadaran', $Data);
+            $this->M_examthesis->_SetData('tb_thesisreceived',['status_pendadaran'=>"1"], 'nim', $nim);
+            $this->session->set_flashdata('msg',"Feedback of exam thesis not file has been added successfully no file");
+            $this->session->set_flashdata('msg_class','alert-success');
+            redirect(site_url('dsn/dashboard/pelaksanaan-pendadaran'));
+        }else{
+            $datae = array(
+                'nilai' => $this->input->post('nilai'),
+                'note' => $this->input->post('note'),
+                'file' => $this->upload->file_name
+            );
+            $this->db->where('penguji', $penguji);
+            $this->db->where('nim', $nim);
+            $this->db->update('tb_detail_pendadaran', $datae);
+            $this->M_examthesis->_SetData('tb_thesisreceived',['status_pendadaran'=>"1"], 'nim', $nim);
+            $this->session->set_flashdata('msg',"Feedback of exam thesis has been added successfully");
+            $this->session->set_flashdata('msg_class','alert-success');
+            redirect(site_url('dsn/dashboard/pelaksanaan-pendadaran'));
+        }
+        redirect(site_url('dsn/dashboard/pelaksanaan-pendadaran'));
     }
 
     public function deleterequirementexam($id)

@@ -2,30 +2,43 @@
     <div class="card">
         <div class="card-block">
             <?php if( !empty($Data) ) :?>
-            <div class="row">
-                <div class="col-sm-12 col-xl-3">
-                    <h4 class="sub-title text-center">Bimbingan Skripsi</h4>
-                    <div class="pcoded-inner-navbar main-menu">
-                        <?php foreach($Data as $data):?>
-                        <div class="main-menu-header">
-                            <?php if($data->image == null):?>
-                            <img class="img-80 img-radius" src="<?php echo base_url()?>_uploads/profile/profile.png"
-                                width="60px" height="60px" alt="User-Profile-Image">
-                            <?php else:?>
-                            <img class="img-80 img-radius" width="60px" height="60px"
-                                src="<?= base_url('_uploads/profile/staff/').$data->image;?>" alt="User-Profile-Image">
-                            <?php endif;?>
-                            <div class="user-details">
-                                <span><?= $data->fullname;?></span>
-                                <span><?= $data->email;?></span>
-                                <span><?= $data->username;?></span>
-                                <span><?= $data->phone;?></span>
+                <div class="row">
+                        <div class="col-sm-12 col-xl-6">
+                            <p class="sub-title">Profil mahasiswa</p>
+                            <div class="media sub-title">
+                                <?php if($this->session->userdata('image') == null):?>
+                                    <img class="img-radius img-40 align-top m-r-15"
+                                    src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
+                                <?php else:?>
+                                    <img src="<?php echo base_url('_uploads/profile/student/').$this->session->userdata('image');?>" alt="user image"
+                                    class="img-radius img-40 align-top m-r-15">
+                                <?php endif;?>
+                                <div class="media-body">
+                                    <h6 class="text-primary"><?= $this->session->userdata('name');?>/<?= $this->session->userdata('username');?></h6>
+                                    Email : <?= $this->session->userdata('email');?><br>
+                                    No : <?= $this->session->userdata('phone');?>
+                                </div>
                             </div>
                         </div>
-                        <?php endforeach;?>
-                    </div>
+                         <?php foreach($Data as $row):?>
+                        <div class="col-sm-12 col-xl-6">
+                            <p class="sub-title">Profil pembimbing</p>
+                            <div class="media sub-title">
+                                <?php if($row->image == null):?>
+                                    <img class="img-radius img-40 align-top m-r-15"
+                                    src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
+                                <?php else:?>
+                                    <img src="<?php echo base_url('_uploads/profile/staff/').$row->image;?>" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                <?php endif;?>
+                                <div class="media-body">
+                                    <h6 class="text-primary"><?= $row->fullname;?>/<?= $row->username;?></h6>
+                                    Email : <?= $row->email;?><br>No : <?= $row->phone;?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
                 </div>
-                <div class="col-sm-12 col-xl-9">
+                <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
                             <?php foreach($Data as $dsn):?>
