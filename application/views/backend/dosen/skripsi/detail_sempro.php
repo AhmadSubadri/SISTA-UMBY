@@ -60,12 +60,12 @@
                         </div>
                         <hr />
                         <br><br><br>
-                        <?php endforeach;?>
-                    </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div><br>
 <div class="row">
     <div class="col-md-4 sub-title">

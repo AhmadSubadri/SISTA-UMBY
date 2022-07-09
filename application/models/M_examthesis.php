@@ -30,11 +30,23 @@ class M_examthesis extends CI_Model
         return $query->result();
     }
 
+    public function DetailPelaksanaanPendadaran($id)
+    {
+        $this->db->select('t.id, t.title, t.laporan_akhir, s.fullname as nameStudent, s.username as nim, s.image as imageMhs, s.email as emailMhs, l.username as nidn, l.fullname as nameLecturer, l.email as emailDsn, l.image as imageDsn, l.phone')
+        ->where('t.id', $id)
+        ->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim')
+        ->join('tb_lecturers l', 'l.username = t.nidn');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function GetDataPendaranBypenguji()
     {
         $penguji = $this->session->userdata('username');
-        $this->db->select('s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image')
+        $this->db->select('t.id, s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image')
         ->where('d.penguji', $penguji)
+        ->where('t.status_pendadaran', NULL)
         ->from('tb_detail_pendadaran d')
         ->order_by('t.date', 'ASC')
         ->join('tb_student s','s.username = d.nim')

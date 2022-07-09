@@ -56,7 +56,7 @@
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-1">
-						Aksi
+						<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Ujian</a>
 					</div>
 					<div class="sub-title col-sm-12 col-xl-12"></div>
 				<?php endforeach;?>
