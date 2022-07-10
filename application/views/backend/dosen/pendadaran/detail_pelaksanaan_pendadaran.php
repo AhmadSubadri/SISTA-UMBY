@@ -66,7 +66,7 @@
 															<div class="form-group col-sm-6 form-default form-static-label">
 																<input type="text" name="nilai" class="form-control" required="">
 																<span class="form-bar"></span>
-																<label class="float-label text-primary">Nilai</label>
+																<label class="float-label text-primary">Nilai <i class="text-danger">(Skala nilai 1-100)</i></label>
 															</div>
 															<div class="form-group col-sm-6 form-default form-static-label">
 																<input id="uploadFile" name="file" class="form-bg-null" placeholder="name file..." disabled />
