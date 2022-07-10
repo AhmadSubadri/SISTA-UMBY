@@ -1,4 +1,6 @@
 <div class="col-xl-12">
+	<a href="<?= site_url('dsn/dashboard/mahasiswa-pendadaran');?>" class="btn btn-mini"><i
+		class="ti-back-left"></i>Kembali</a>
 	<div class="card">
 		<div class="card-header">
 			<h6>Detail data pendadaran mahasiswa</h6>
@@ -73,49 +75,56 @@
 												<label class="label label-mini label-warning">Belum ada catatan</label>
 											<?php elseif($data->note != null && $data->file != null):?>
 												<h6><?= $data->note;?></h6>
-												<a href="" class="text-primary btn-mini"><i class="ti-download"></i> Download file</a>
+												<a href="<?= base_url('_uploads/pendadaran/'.$data->nameStudent."/".$data->file);?>" target="_blank" class="text-primary btn-mini"><i class="ti-download"></i> Download file</a>
 											<?php elseif($data->note != null && $data->file == null):?>
 												<h6><?= $data->note;?></h6>
 											<?php else:?>
-												<a href="" class="btn btn-mini btn-outline-danger">Download file</a>
+												<a href="<?= base_url('_uploads/pendadaran/'.$data->nameStudent."/".$data->file);?>" target="_blank" class="btn btn-mini btn-outline-danger">Download file</a>
 											<?php endif;?>
 											</div>
 										<?php endforeach;?>
 										<div class="col-sm-12 col-xl-4 sub-title text-danger text-center">
 											Hasil nilai rata-rata 
 										</div>
-										<div class="col-sm-12 col-xl-2 sub-title text-danger text-center">
+										<div class="col-sm-12 col-xl-2 sub-title text-center">
 											<?php $notnull = count($MeanNilai);?>
 											<?php $sum = 0; foreach($MeanNilai as $as):?>
 												<?php $sum += str_replace(",", "", $as->total);
 													$count = $sum/$notnull;
 												?>
 											<?php endforeach;?>
+											<?php if($notnull != 0):?>
 											<?php
-												echo $count ;
-
+											if(number_format($count,1) >= 50):
+												echo "<label class='text-primary'>".number_format($count,1)."</label>";
+											else:
+												echo "<label class='text-danger'>".number_format($count,1)."</label>";
+											endif;
 													if($count >= 85):
-														echo " (A)";
+														echo " (A)<br> <u class='text-primary'>LULUS</u>";
 													elseif($count >= 80 && $count <=84.99):
-														echo " (A-)";
+														echo " (A-)<br> <u class='text-primary'>LULUS</u>";
 													elseif($count >= 70 && $count <= 79.99):
-														echo " (B+)";
+														echo " (B+)<br> <u class='text-primary'>LULUS</u>";
 													elseif($count >= 65 && $count <= 69.99):
-														echo " (B)";
+														echo " (B)<br> <u class='text-primary'>LULUS</u>";
 													elseif($count >= 60 && $count <= 64.99):
-														echo " (B-)";
+														echo " (B-)<br> <u class='text-primary'>LULUS</u>";
 													elseif($count >= 50 && $count <= 59.99):
-														echo " (C+)";
+														echo " (C+)<br> <u class='text-primary'>LULUS</u>";
 													elseif($count >= 40 && $count <= 49.99):
-														echo " (C)";
+														echo " (C)<br> <u class='text-danger'>TIDAL LULUS</u>";
 													elseif($count >= 20 && $count <=39.99):
-														echo " (D)";
+														echo " (D)<br> <u class='text-danger'>TIDAL LULUS</u>";
 													elseif($count <= 19.99):
-														echo " (E)";
+														echo " (E)<br> <u class='text-danger'>TIDAL LULUS</u>";
 													else:
 														echo "NULL";
 													endif;
 											?>
+										<?php else:?>
+											0
+										<?php endif;?>
 										</div>
 									<?php else:?>
 										<div class="col-sm-12 col-xl-12 sub-title text-center">

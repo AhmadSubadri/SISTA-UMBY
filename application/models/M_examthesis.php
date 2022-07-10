@@ -57,9 +57,10 @@ class M_examthesis extends CI_Model
 
     public function DetailPenguji($id)
     {
-        $this->db->select('l.fullname, p.nilai, p.file, p.note, p.penguji')
+        $this->db->select('l.fullname, p.nilai, p.file, p.note, p.penguji, s.fullname as nameStudent')
         ->where('p.id_thesisreceived', $id)
         ->from('tb_detail_pendadaran p')
+        ->join('tb_student s','s.username = p.nim')
         ->join('tb_lecturers l', 'l.username = p.penguji');
         $query = $this->db->get();
         return $query;
