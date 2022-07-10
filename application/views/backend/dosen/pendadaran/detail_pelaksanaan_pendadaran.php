@@ -78,7 +78,7 @@
 														</div>
 														<div class="form-group form-default row">
 															<div class="form-group col-sm-12 form-default form-static-label">
-																<textarea name="note" id="catatanPendadaran" required></textarea>
+																<textarea name="note" id="catatanPendadaran" required=""></textarea>
 															</div>
 														</div>
 														<div class="form-group form-default row">

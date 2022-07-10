@@ -60,9 +60,9 @@
 					</div>
 					<div class="col-sm-12 col-xl-2 sub-title">
 						<?php if ($row->status_daftar != 0):?>
-							<a href="<?= site_url('dsn/dashboard/detail-data-pendadaran/'.$row->id);?>" class="btn btn-mini btn-outline-primary">Lihat data</a>
+							<a href="<?= site_url('dsn/dashboard/detail-data-pendadaran/'.$row->id);?>" class="btn btn-mini btn-outline-primary">Lihat hasil</a>
 						<?php else:?>
-							<a href="" class="btn btn-mini btn-outline-danger btn-disabled disabled"><i class="ti-na"></i>Lihat data</a>
+							<a href="" class="btn btn-mini btn-outline-danger btn-disabled disabled"><i class="ti-na"></i>Lihat hasil</a>
 						<?php endif;?>
 					</div>
 				<?php endforeach;?>

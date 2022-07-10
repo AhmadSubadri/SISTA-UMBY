@@ -211,6 +211,11 @@ public $result = [
         redirect(site_url('dsn/dashboard/pelaksanaan-pendadaran'));
     }
 
+    // public function DownloadFilePendadaran($name)
+    // {
+    //     force_download('_uploads/pendadaran',NULL);
+    // }
+
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);
