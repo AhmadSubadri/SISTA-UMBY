@@ -62,7 +62,18 @@ class M_examthesis extends CI_Model
         ->from('tb_detail_pendadaran p')
         ->join('tb_lecturers l', 'l.username = p.penguji');
         $query = $this->db->get();
-        return $query->result();
+        return $query;
+    }
+
+    public function MeanNilaiPendadaran($id)
+    {
+        $this->db->select('p.nilai as total, p.penguji')
+        ->where('p.id_thesisreceived', $id)
+        ->where('p.nilai != 0')
+        ->from('tb_detail_pendadaran p')
+        ->join('tb_lecturers l', 'l.username = p.penguji');
+        $query = $this->db->get();
+        return $query;
     }
 
     public function getdataUploadrequirement()

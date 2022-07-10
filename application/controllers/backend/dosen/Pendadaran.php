@@ -74,7 +74,8 @@ public $result = [
         
         $data = [
             'Data' => $this->M_examthesis->DetailDataPendadaran($id),
-            'DetailPenguji' => $this->M_examthesis->DetailPenguji($id)
+            'DetailPenguji' => $this->M_examthesis->DetailPenguji($id)->result(),
+            'MeanNilai' => $this->M_examthesis->MeanNilaiPendadaran($id)->result()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/pendadaran/detail_data_pendadaran', $data);

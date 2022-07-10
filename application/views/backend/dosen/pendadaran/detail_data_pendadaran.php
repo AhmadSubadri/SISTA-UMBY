@@ -49,7 +49,7 @@
 									<div class="col-sm-12 col-xl-4 sub-title">
 										# Penguji
 									</div>
-									<div class="col-sm-12 col-xl-2 sub-title">
+									<div class="col-sm-12 col-xl-2 sub-title text-center">
 										Nilai
 									</div>
 									<div class="col-sm-12 col-xl-6 sub-title">
@@ -57,25 +57,66 @@
 									</div>
 									<!-- Data -->
 									<?php if( !empty($DetailPenguji) ):?>
-										<?php foreach($DetailPenguji as $data):?>
+										<?php $i=1; foreach($DetailPenguji as $data):?>
 											<div class="col-sm-12 col-xl-4 sub-title">
-												<?= $data->fullname;?>
+												<?= $i++?>. <?= $data->fullname;?>
 											</div>
-											<div class="col-sm-12 col-xl-2 sub-title">
+											<div class="col-sm-12 col-xl-2 sub-title text-center">
 											<?php if($data->nilai == null):?>
-												<label class="label label-mini label-warning">Nilai belum ada</label>
+												<label class="label label-mini label-warning">Belum ada nilai</label>
 											<?php else:?>
 												<h6><?= $data->nilai;?></h6>
 											<?php endif;?>
 											</div>
 											<div class="col-sm-12 col-xl-6 sub-title">
-												<?php if($data->note == null):?>
-												<label class="label label-mini label-warning">Catatan belum ada</label>
-											<?php else:?>
+											<?php if($data->note == null && $data->file == null):?>
+												<label class="label label-mini label-warning">Belum ada catatan</label>
+											<?php elseif($data->note != null && $data->file != null):?>
 												<h6><?= $data->note;?></h6>
+												<a href="" class="text-primary btn-mini"><i class="ti-download"></i> Download file</a>
+											<?php elseif($data->note != null && $data->file == null):?>
+												<h6><?= $data->note;?></h6>
+											<?php else:?>
+												<a href="" class="btn btn-mini btn-outline-danger">Download file</a>
 											<?php endif;?>
 											</div>
 										<?php endforeach;?>
+										<div class="col-sm-12 col-xl-4 sub-title text-danger text-center">
+											Hasil nilai rata-rata 
+										</div>
+										<div class="col-sm-12 col-xl-2 sub-title text-danger text-center">
+											<?php $notnull = count($MeanNilai);?>
+											<?php $sum = 0; foreach($MeanNilai as $as):?>
+												<?php $sum += str_replace(",", "", $as->total);
+													$count = $sum/$notnull;
+												?>
+											<?php endforeach;?>
+											<?php
+												echo $count ;
+
+													if($count >= 85):
+														echo " (A)";
+													elseif($count >= 80 && $count <=84.99):
+														echo " (A-)";
+													elseif($count >= 70 && $count <= 79.99):
+														echo " (B+)";
+													elseif($count >= 65 && $count <= 69.99):
+														echo " (B)";
+													elseif($count >= 60 && $count <= 64.99):
+														echo " (B-)";
+													elseif($count >= 50 && $count <= 59.99):
+														echo " (C+)";
+													elseif($count >= 40 && $count <= 49.99):
+														echo " (C)";
+													elseif($count >= 20 && $count <=39.99):
+														echo " (D)";
+													elseif($count <= 19.99):
+														echo " (E)";
+													else:
+														echo "NULL";
+													endif;
+											?>
+										</div>
 									<?php else:?>
 										<div class="col-sm-12 col-xl-12 sub-title text-center">
 												Data not availabel
