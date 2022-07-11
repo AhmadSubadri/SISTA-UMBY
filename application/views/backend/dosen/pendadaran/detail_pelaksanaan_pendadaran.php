@@ -58,7 +58,6 @@
 													<div class="card-block">
 														<?php foreach($Data as $row):?>
 															<input type="text" name="nim" class="form-control" value="<?= $row->nim;?>" hidden>
-															<input type="text" name="penguji" class="form-control" value="<?= $this->session->userdata('username');?>" hidden>
 															<input type="text" name="id_thesisrecheived" class="form-control" value="<?= $row->id;?>" hidden>
 															<input type="text" name="name" class="form-control" value="<?= $row->nameStudent;?>" hidden>
 														<?php endforeach;?>
