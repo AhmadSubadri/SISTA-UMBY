@@ -1,4 +1,5 @@
 <div class="col-xl-12">
+	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
 		<div class="card-header">
 			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang akan anda uji sidang pendadaran, pastikan tanggal dan jam pelaksanaan pendadaran sudah di pahami.<code> Jika tanggal pelaksaan berkedip berwarna merah, itu menandakan ada jadwal sidang pendadaran untuk anda di hari ini.</code></p>
@@ -56,7 +57,13 @@
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-1">
-						<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Ujian</a>
+						<?php if ($data->status_pendadaran == 0):?>
+							<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Ujian</a>
+						<?php elseif($data->status_pendadaran == 1):?>
+							<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Edit hasil</a>
+						<?php else:?>
+							<a href="" class="btn btn-mini btn-outline-danger disabled"><i class="ti-na"></i>Done</a>
+						<?php endif;?>
 					</div>
 					<div class="sub-title col-sm-12 col-xl-12"></div>
 				<?php endforeach;?>

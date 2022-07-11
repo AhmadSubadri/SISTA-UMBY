@@ -142,14 +142,11 @@
 										<div class="card">
 											<div class="form-material">
 												<div class="card-block">
-													<?php foreach($Data as $row):?>
-														<input type="text" name="nim" class="form-control" value="" hidden>
-														<input type="text" name="penguji" class="form-control" value="<?= $this->session->userdata('username');?>" hidden>
-														<input type="text" name="id_thesisrecheived" class="form-control" value="" hidden>
-														<input type="text" name="name" class="form-control" value="" hidden>
+													<?php foreach($Data as $dt):?>
+														<input type="text" name="nim" class="form-control" value="<?= $dt->nim;?>" hidden>
 													<?php endforeach;?>
 													<div class="form-group form-default row">
-														<div class="form-group col-sm-4 form-default form-static-label">
+														<div class="form-group col-sm-6 form-default form-static-label">
 															<?php $notnull = count($MeanNilai);?>
 															<?php $sum = 0; foreach($MeanNilai as $as):?>
 															<?php $sum += str_replace(",", "", $as->total);
@@ -161,7 +158,7 @@
 															<span class="form-bar"></span>
 															<label class="float-label text-primary">Nilai rata-rata akhir (angka)</label>
 														</div>
-														<div class="form-group col-sm-4 form-default form-static-label text-center">
+														<div class="form-group col-sm-6 form-default form-static-label text-center">
 															<input type="text" name="nilaihuruf"
 															value="<?php if($notnull != 0):?><?php if($hasil >= 85):
 																echo "A";
@@ -186,13 +183,6 @@
 															endif;?><?php else:?>-<?php endif;?>" class="form-control" readonly required="">
 															<span class="form-bar"></span>
 															<label class="float-label text-primary">Nilai rata-rata akhir (huruf)</label>
-														</div>
-														<div class="form-group col-sm-4 form-default form-static-label text-right">
-															<input id="uploadFile" name="file" class="form-bg-null" placeholder="name file..." disabled />
-															<div class="fileUpload btn btn-mini btn-grd-inverse">
-																<span>Choose file</span>
-																<input id="uploadBtn" type="file" name="file" class="upload" />
-															</div>
 														</div>
 													</div>
 													<div class="form-group form-default row">
@@ -219,30 +209,6 @@
 	</div>
 </div>
 
-<style>
-.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
-}
-
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-</style>
-<script type="text/javascript">
-document.getElementById("uploadBtn").onchange = function() {
-    document.getElementById("uploadFile").value = this.value;
-};
-</script>
 <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/bootstrap.bundle.js');?>"></script>
 <script src="<?php echo base_url('assets/ckeditor/ckeditor.js');?>"></script>

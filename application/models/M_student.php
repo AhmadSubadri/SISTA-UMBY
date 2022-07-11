@@ -140,27 +140,26 @@ class M_student extends CI_Model
         return $query->result();
     }
 
-    public function checkstatusExam()
+    public function checkstatusBimbingan()
     {
         $id = $this->session->userdata('username');
         $this->db->select('*')
         ->where('nim', $id)
         ->where('status_bimbingan', "1")
         ->from('tb_thesisreceived');
-        $query = $this->db->get()->result();
-        return $query;
+        $query = $this->db->get();
+        return $query->result();
     }
 
-    public function getRequirementThesisExam()
+    public function GetRequirementPendadaran()
     {
         $id = $this->session->userdata('major');
         $this->db->select('*')
         ->where('major', $id)
-        ->where('status', "1")
-        ->where('type', "2")
+        ->where('type', "1")
         ->from('tb_requirements');
-        $query = $this->db->get()->result();
-        return $query;
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function _getDatauploadexam()
