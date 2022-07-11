@@ -174,10 +174,10 @@ public $result = [
     public function SaveFeedbackPendadaran()
     {
         $nim = $this->input->post('nim');
-        $penguji = $this->input->post('penguji');
+        $penguji = $this->session->userdata('username');
         $name =  $this->input->post('name');//nama file menggunakan nama mahasiswa
         mkdir ('_uploads/pendadaran/'.$name); 
-        $config['file_name'] = "$nim-$name-Feedback-pendadaran-".date("Y-d-m");
+        $config['file_name'] = "$nim-$name-Feedback-pendadaran-($this->session->userdata('username'))".date("Y-d-m");
         $config['upload_path'] = '_uploads/pendadaran/'.$name;
         $config['allowed_types'] = 'pdf|docx|xls';
         // $config['max_size'] = 5000;
@@ -211,10 +211,10 @@ public $result = [
         redirect(site_url('dsn/dashboard/pelaksanaan-pendadaran'));
     }
 
-    // public function DownloadFilePendadaran($name)
-    // {
-    //     force_download('_uploads/pendadaran',NULL);
-    // }
+    public function SavePengumumanPendadaran()
+    {
+        // code...
+    }
 
     public function deleterequirementexam($id)
     {

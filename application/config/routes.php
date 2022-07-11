@@ -51,7 +51,7 @@ $route['dsn/dashboard/update-penguji-pendadaran'] = 'backend/dosen/Pendadaran/Up
 $route['dsn/dashboard/pelaksanaan-pendadaran'] = 'backend/dosen/Pendadaran/PelaksanaanPendadaran';
 $route['dsn/dashboard/detail-pelaksanaan-pendadaran/(:any)'] = 'backend/dosen/Pendadaran/DetailPelaksanaanPendadaran/$1';
 $route['dsn/dashboard/save-feedback-pendadaran'] = 'backend/dosen/Pendadaran/SaveFeedbackPendadaran';
-// $route['dsn/dashboard/download-file-pendadaran/(:any)'] = 'backend/dosen/Pendadaran/DownloadFilePendadaran/$1';
+$route['dsn/dashboard/save-pengumuman-pendadaran'] = 'backend/dosen/Pendadaran/SavePengumumanPendadaran';
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';
