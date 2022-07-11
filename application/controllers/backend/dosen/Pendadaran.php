@@ -213,7 +213,17 @@ public $result = [
 
     public function SavePengumumanPendadaran()
     {
-        // code...
+        $nim = $this->input->post('nim');
+        $Data = array(
+                'avarage' => $this->input->post('nilaiangka'),
+                'letter_value' => $this->input->post('nilaihuruf'),
+                'catatan_akhir' => $this->input->post('note'),
+                'status_pendadaran' => "2"
+            );
+            $this->M_examthesis->_SetData('tb_thesisreceived',$Data, 'nim', $nim);
+            $this->session->set_flashdata('msg',"Announcement of exam thesis has been added successfully no file");
+            $this->session->set_flashdata('msg_class','alert-success');
+        redirect(site_url('dsn/dashboard/mahasiswa-pendadaran'));
     }
 
     public function deleterequirementexam($id)
