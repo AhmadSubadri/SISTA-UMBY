@@ -190,6 +190,14 @@ class M_student extends CI_Model
         return $query->result();
     }
 
+    public function GetHasilUjianPendadaran()
+    {
+        $nim = $this->session->userdata('username');
+        $this->db->select('*')->where('nim', $nim)->from('tb_thesisreceived');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function delete($tabel,$col,$id){
         $this->db->where($col,$id);
         $action = $this->db->delete($tabel);
