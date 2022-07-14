@@ -20,7 +20,8 @@ class Pendadaran extends CI_Controller
 	{
 		$data = [
             'Data' => $this->M_student->checkstatusBimbingan(),
-            'DataSyarat' => $this->M_student->GetRequirementPendadaran()
+            'DataSyarat' => $this->M_student->GetRequirementPendadaran(),
+            'DataDokumenAkhir' => $this->M_student->GetDokumenAkhir()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/mahasiswa/pendadaran/index',$data);
@@ -30,7 +31,7 @@ class Pendadaran extends CI_Controller
 	public function UploadDokumenPendadaran()
 	{
 		$username = $this->session->userdata('username');
-		$id_syarat = $this->input->post('id_syarat');
+        $id_syarat = $this->input->post('id_syarat');
 		mkdir ('_uploads/pendadaran/'.$this->session->userdata('name')); 
         $name =  $this->session->userdata('name');//nama file menggunakan nama mahasiswa
         $config['file_name'] = "$username-$name-Syarat-$id_syarat-".date("Y-d-m");
@@ -57,6 +58,37 @@ class Pendadaran extends CI_Controller
         redirect(site_url('mhs/dashboard/syarat-pendadaran'));
 	}
 
+    public function UploadDokumenlaporanAkhir()
+    {
+        $username = $this->session->userdata('username');
+        mkdir ('_uploads/laporanakhir/'.$this->session->userdata('name')); 
+        $name =  $this->session->userdata('name');//nama file menggunakan nama mahasiswa
+        $config['file_name'] = "$username-$name-Laporan akhir-".date("Y-d-m");
+        $config['upload_path'] = '_uploads/laporanakhir/'.$this->session->userdata('name');
+        $config['allowed_types'] = 'pdf|docx|xls';
+        // $config['max_size'] = 5000;
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload('file')){
+            $this->session->set_flashdata('msg',"final report document cannot be empty");
+            $this->session->set_flashdata('msg_class','alert-danger');
+            redirect(site_url('mhs/dashboard/syarat-pendadaran'));
+        }else{
+            $this->M_student->_SetData('tb_thesisreceived', ['laporan_akhir' => $this->upload->file_name], 'nim', $username);
+            $this->session->set_flashdata('msg',"final report document has been added successfully");
+            $this->session->set_flashdata('msg_class','alert-success');
+            redirect(site_url('mhs/dashboard/syarat-pendadaran'));
+        }
+        redirect(site_url('mhs/dashboard/syarat-pendadaran'));
+    }
+
+    public function Daftarpendadaransekarang($id)
+    {
+        $this->M_student->_SetData('tb_thesisreceived', ['status_daftar' => "1"], 'nim', $id);
+        $this->session->set_flashdata('msg',"Thesis exam registration successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+        redirect(site_url('mhs/dashboard/syarat-pendadaran'));
+    }
+
     public function deleteDocumentSyarat($id)
     {
         $dt = $this->db->select('*')->where('id', $id)->from('tb_uploadrequirementexam')->get()->row();
@@ -64,14 +96,26 @@ class Pendadaran extends CI_Controller
         unlink($path);
         $this->M_requirement->delete('tb_uploadrequirementexam','id',$id);
         $this->session->set_flashdata('msg',"Delete Document successfully");
-        $this->session->set_flashdata('msg_class','alert-danger');
+        $this->session->set_flashdata('msg_class','alert-success');
+        redirect(site_url('mhs/dashboard/syarat-pendadaran'));
+    }
+
+    public function deletedokumenlaporanakhir($id)
+    {
+        $da = $this->db->select('*')->where('id', $id)->from('tb_thesisreceived')->get()->row();
+        $path = '_uploads/laporanakhir/'.$this->session->userdata('name').'/'.$da->laporan_akhir;
+        unlink($path);
+        $this->M_student->_SetData('tb_thesisreceived', ['laporan_akhir' => ""], 'id', $id);
+        $this->session->set_flashdata('msg',"Delete Document successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('mhs/dashboard/syarat-pendadaran'));
     }
 
 	public function JadwalPendadaran()
 	{
 		$data = [
-            
+            'DataJadwal' => $this->M_student->GetDokumenAkhir(),
+            'DataPenguji' => $this->M_student->GetPengujidanHasil()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/mahasiswa/pendadaran/jadwal_pendadaran',$data);

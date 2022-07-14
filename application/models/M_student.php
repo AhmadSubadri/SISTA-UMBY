@@ -173,9 +173,33 @@ class M_student extends CI_Model
         return $query;
     }
 
+    public function GetDokumenAkhir()
+    {
+        $nim = $this->session->userdata('username');
+        $this->db->select('*')->where('nim', $nim)->from('tb_thesisreceived');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function GetPengujidanHasil()
+    {
+        $nim = $this->session->userdata('username');
+        $this->db->select('d.id, d.id_thesisreceived, d.nilai, d.note, d.file, l.fullname as nameLecturer, d.nim')
+        ->where('nim', $nim)->from('tb_detail_pendadaran d')->join('tb_lecturers l', 'l.username = d.penguji');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function delete($tabel,$col,$id){
         $this->db->where($col,$id);
         $action = $this->db->delete($tabel);
         return $action;
+    }
+
+    public function _SetData($tabel, $array, $col, $id){
+        $this->db->set($array);
+        $this->db->where($col, $id);
+        $query = $this->db->update($tabel);
+        return $query;
     }
 }
