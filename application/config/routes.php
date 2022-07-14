@@ -17,6 +17,8 @@ $route['mhs/dashboard/save-bimbingan'] = 'backend/mahasiswa/Bimbingan/GuidanceSa
 $route['mhs/dashboard/syarat-pendadaran'] = 'backend/mahasiswa/Pendadaran';
 $route['mhs/dashboard/jadwal-pendadaran'] = 'backend/mahasiswa/Pendadaran/JadwalPendadaran';
 $route['mhs/dashboard/pengumuman-pendadaran'] = 'backend/mahasiswa/Pendadaran/PengumumanPendadaran';
+$route['mhs/dashboard/save-document'] = 'backend/mahasiswa/Pendadaran/UploadDokumenPendadaran';
+$route['mhs/dashboard/delete-document/(:any)'] = 'backend/mahasiswa/Pendadaran/deleteDocumentSyarat/$1';
 
 // Skripsi Dosen
 $route['dsn/dashboard/data-pengajuan-skripsi'] = 'backend/dosen/Skripsi';
