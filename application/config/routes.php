@@ -18,7 +18,10 @@ $route['mhs/dashboard/syarat-pendadaran'] = 'backend/mahasiswa/Pendadaran';
 $route['mhs/dashboard/jadwal-pendadaran'] = 'backend/mahasiswa/Pendadaran/JadwalPendadaran';
 $route['mhs/dashboard/pengumuman-pendadaran'] = 'backend/mahasiswa/Pendadaran/PengumumanPendadaran';
 $route['mhs/dashboard/save-document'] = 'backend/mahasiswa/Pendadaran/UploadDokumenPendadaran';
+$route['mhs/dashboard/save-laporan-akhir'] = 'backend/mahasiswa/Pendadaran/UploadDokumenlaporanAkhir';
 $route['mhs/dashboard/delete-document/(:any)'] = 'backend/mahasiswa/Pendadaran/deleteDocumentSyarat/$1';
+$route['mhs/dashboard/delete-document-laporan-akhir/(:any)'] = 'backend/mahasiswa/Pendadaran/deletedokumenlaporanakhir/$1';
+$route['mhs/dashboard/daftar-pendadaran-sekarang/(:any)'] = 'backend/mahasiswa/Pendadaran/Daftarpendadaransekarang/$1';
 
 // Skripsi Dosen
 $route['dsn/dashboard/data-pengajuan-skripsi'] = 'backend/dosen/Skripsi';
