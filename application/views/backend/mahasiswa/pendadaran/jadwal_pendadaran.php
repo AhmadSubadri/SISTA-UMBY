@@ -1,7 +1,7 @@
 <div class="col-xl-12">
 	<div class="card">
 		<div class="card-header">
-			Jadwal pendadaran
+			<h6>Jadwal pendadaran</h6>
 		</div>
 		<div class="card-block">
 			

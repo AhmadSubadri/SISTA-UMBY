@@ -157,6 +157,7 @@ class M_student extends CI_Model
         $this->db->select('*')
         ->where('major', $id)
         ->where('type', "1")
+        ->where('status', "1")
         ->from('tb_requirements');
         $query = $this->db->get();
         return $query->result();

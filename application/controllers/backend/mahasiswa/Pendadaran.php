@@ -50,7 +50,7 @@ class Pendadaran extends CI_Controller
                 'file' => $this->upload->file_name
             );
             $this->M_bimbingan->add('tb_uploadrequirementexam',$datae);
-            $this->session->set_flashdata('msg',"Document has been added successfully no file");
+            $this->session->set_flashdata('msg',"Document has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
             redirect(site_url('mhs/dashboard/syarat-pendadaran'));
         }
@@ -64,7 +64,7 @@ class Pendadaran extends CI_Controller
         unlink($path);
         $this->M_requirement->delete('tb_uploadrequirementexam','id',$id);
         $this->session->set_flashdata('msg',"Delete Document successfully");
-        $this->session->set_flashdata('msg_class','alert-success');
+        $this->session->set_flashdata('msg_class','alert-danger');
         redirect(site_url('mhs/dashboard/syarat-pendadaran'));
     }
 

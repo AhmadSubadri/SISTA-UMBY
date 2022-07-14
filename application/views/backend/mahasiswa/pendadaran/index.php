@@ -1,70 +1,107 @@
 <div class="col-xl-12">
+    <div class="card">
+        <div class="card-block">
+            <blockquote class="blockquote mb-0">
+                <p class="text-c-red"><b>Note.</b> Pastikan semua dokumen sudah anda upload sesuai dengan ketentuan, agar tombol <code>Daftar pendadaran sekarang</code> di pojok kanan atas di bawah ini bisa aktif. <code>Setelah aktif</code> silahkan di klik agar anda terdaftar. Tanda anda sudah terdaftar jika tombol berubah menjadi <code>Sudah terdaftar di pendadaran</code>.</p>
+            </blockquote>
+        </div>
+    </div>
     <?php $this->load->view('backend/partials_/alert_success.php');?>
     <div class="card">
         <div class="card-header">
             <h6>Unggah dokumen syarat pendadaran</h6>
+            <div class="card-header-right">
+                <?php $Document = $this->db->select('*')->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get()->result();?>
+                <?php if(count($DataSyarat) == count($Document)):?>
+                <?php $thesis = $this->db->select('*')->where('nim', $this->session->userdata('username'))->from('tb_thesisreceived')->get()->result();?>
+                <?php foreach($thesis as $ths):?>
+                    <?php if($ths->status_daftar == null):?>
+                        <a href="" class="btn btn-mini btn-outline-primary" data-toggle="tooltip" data-placement="left" data-original-title="Klik Daftar pendadaran sekarang">Daftar pendadaran sekarang</a>
+                    <?php else:?>
+                        <a href="" class="btn btn-mini btn-outline-warning disabled" data-toggle="tooltip" data-placement="left" data-original-title="Anda sudah daftar pendadaran sekarang">Sudah terdaftar di pendadaran</a>
+                    <?php endif;?>
+                <?php endforeach;?>
+            <?php else:?>
+                <a href="" class="btn btn-mini btn-outline-danger disabled">Belum bisa daftar pendadaran</a>
+            <?php endif;?>
         </div>
-        <div class="card-block">
-            <div class="row">
-                <div class="col-sm-12 col-xl-8 sub-title">
-                    #Jenis dokumen
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-12 col-xl-8 sub-title">
+                #Jenis dokumen
+            </div>
+            <div class="col-sm-12 col-xl-2 sub-title text-center">
+                Status
+            </div>
+            <div class="col-sm-12 col-xl-2 sub-title text-center">
+                Aksi
+            </div>
+            <!-- Data -->
+            <?php if(count($Data) != 0):?>
+                <?php $i=1; foreach($DataSyarat as $syarat):?>
+                <div class="col-sm-12 col-xl-8">
+                    <b><?= $i++;?>. <?= $syarat->requirements;?><i class="text-danger">(wajib)</i></b>
                 </div>
-                <div class="col-sm-12 col-xl-2 sub-title text-center">
-                    Status
+                <?php $Doc = $this->db->select('*')->where('id_requirement', $syarat->id)->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get();?>
+                <div class="col-sm-12 col-xl-2 text-center">
+                    <?php if(!empty($Doc->result())):?>
+                        <?php foreach($Doc->result() as $doct):?>
+                            <label class="label label-mini label-success">Sudah upload</label>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <label class="label label-mini label-danger">Belum upload</label>
+                    <?php endif;?>
                 </div>
-                <div class="col-sm-12 col-xl-2 sub-title text-center">
-                    Aksi
+                <div class="col-sm-12 col-xl-2">
+                    <?php if(!empty($Doc->result())):?>
+                        <?php foreach($Doc->result() as $docu):?>
+                            <a id="Modal-Tourist" data-toggle="modal" data-target="#modal_see<?= $docu->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i> Lihat</a>
+                            <a href="<?= site_url('mhs/dashboard/delete-document/'.$docu->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Ubah</a>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <?php echo form_open_multipart('mhs/dashboard/save-document');?>
+                            <a href="" class="btn btn-mini btn-outline-success disabled"><i class="ti-na"></i> Lihat</a>
+                            <input name="id_syarat" class="form-bg-null" value="<?= $syarat->id?>" hidden/>
+                            <div class="fileUpload btn btn-mini btn-grd-inverse">
+                                <span><i class="ti-upload"></i>Upload</span>
+                                <input id="uploadBtna" type="file" name="file" class="upload" onchange="javascript:this.form.submit();" />
+                            </div>
+                        </form>
+                    <?php endif;?>
                 </div>
-                <!-- Data -->
-                <?php if(count($Data) != 0):?>
-                    <?php $i=1; foreach($DataSyarat as $syarat):?>
-                    <div class="col-sm-12 col-xl-8">
-                        <b><?= $i++;?>. <?= $syarat->requirements;?><i class="text-danger">(wajib)</i></b>
+                <div class="sub-title col-sm-12 col-xl-12"></div>
+                <?php foreach($Doc->result_array() as $l): $idty = $l['id'];$file = $l['file'];?>
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal_see<?= $idty;?>" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Document pendadaran</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <object data="<?=base_url('_uploads/pendadaran/'.$this->session->userdata('name').'/'.$file);?>" width="100%" height="500"></object>
+                        </div>
                     </div>
-                    <?php $Doc = $this->db->select('*')->where('id_requirement', $syarat->id)->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get()->result();?>
-                    <div class="col-sm-12 col-xl-2 text-center">
-                        <?php if(!empty($Doc)):?>
-                            <?php foreach($Doc as $doct):?>
-                                <label class="label label-mini label-success">Sudah upload</label>
-                            <?php endforeach;?>
-                        <?php else:?>
-                            <label class="label label-mini label-danger">Belum upload</label>
-                        <?php endif;?>
-                    </div>
-                    <div class="col-sm-12 col-xl-2">
-                        <?php if(!empty($Doc)):?>
-                            <?php foreach($Doc as $docu):?>
-                                <a href="" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i> Lihat</a>
-                                <a href="<?= site_url('mhs/dashboard/delete-document/'.$docu->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Ubah</a>
-                            <?php endforeach;?>
-                        <?php else:?>
-                            <?php echo form_open_multipart('mhs/dashboard/save-document');?>
-                                <a href="" class="btn btn-mini btn-outline-success disabled"><i class="ti-na"></i> Lihat</a>
-                                <input name="id_syarat" class="form-bg-null" value="<?= $syarat->id?>" hidden/>
-                                <div class="fileUpload btn btn-mini btn-grd-inverse">
-                                    <span><i class="ti-upload"></i>Upload</span>
-                                    <input id="uploadBtna" type="file" name="file" class="upload" onchange="javascript:this.form.submit();" />
-                                </div>
-                            </form>
-                        <?php endif;?>
-                    </div>
-                    <div class="sub-title col-sm-12 col-xl-12"></div>
-                    <?php endforeach;?>
-                <?php else:?>
-                    <div class="sub-title col-sm-12 col-xl-12 text-center">Data not availabel</div>
-                <?php endif;?>
+                </div>
+                <?php endforeach;?>
+                <?php endforeach;?>
+            <?php else:?>
+                <div class="sub-title col-sm-12 col-xl-12 text-center">Data not availabel</div>
+            <?php endif;?>
             </div>
         </div>
     </div>
 </div>
+
 <!-- <form action="upload.php" method="post" enctype="multipart/form-data">
 <input type="file" name="filename" onchange="javascript:this.form.submit();">
 </form> -->
 <style>
     .fileUpload {
         position: relative;
-        overflow: hidden;
-        /* margin: 10px; */
+        overflow: hidden; 
     }
 
     .fileUpload input.upload {
