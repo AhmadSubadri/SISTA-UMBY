@@ -5,8 +5,8 @@
     "\\application\\views",
     "\\application\\views\\backend",
     "\\application\\views\\backend\\mahasiswa",
-    "\\application\\views\\backend\\mahasiswa\\pendadaran"
+    "\\application\\views\\backend\\mahasiswa\\pendadaran",
+    "\\application\\views\\backend\\mahasiswa\\skripsi"
   ],
-  "SelectedNode": "\\application\\views\\backend\\mahasiswa\\pendadaran\\index.php",
   "PreviewInSolutionExplorer": false
 }
