@@ -125,7 +125,8 @@ class Pendadaran extends CI_Controller
 	public function PengumumanPendadaran()
 	{
 		$data = [
-            
+            'DataHasil' => $this->M_student->GetHasilUjianPendadaran(),
+            'DataPenguji' => $this->M_student->GetPengujidanHasil()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/mahasiswa/pendadaran/pengumuman_pendadaran',$data);
