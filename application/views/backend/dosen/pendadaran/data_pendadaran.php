@@ -1,17 +1,11 @@
+<?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
-	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
-		<div class="card-block" style="background-color: #FFE3C7;">
+		<div class="card-header" style="background-color: #FFE3C7;">
 			<b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah menyelesaikan masa bimbingan dan sudah di <code>Approved</code> oleh masing-masing pembimbing.
 		</div>
-	</div>
-</div>
-<div class="col-xl-12">
-	<div class="card">
-		<div class="card-header">
-			<h6>Data pendadaran</h6>
-		</div>
 		<div class="card-block">
+			<h6 class="sub-title">Data mahasiswa pendadaran</h6>
 			<div class="row">
 				<div class="col-sm-12 col-xl-6 sub-title">
 					# Profil
