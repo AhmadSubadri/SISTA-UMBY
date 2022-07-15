@@ -51,6 +51,10 @@ $route['publish-requirementyudisium/(:any)'] = 'backend/dosen/Yudisium/publishre
 $route['unpublish-requirementyudisium/(:any)'] = 'backend/dosen/Yudisium/unpublishrequirementyudisium/$1';
 $route['dsn/dashboard/update-syarat-yudisium'] = 'backend/dosen/Yudisium/updateRequirementyudisium';
 
+
+$route['dsn/dashboard/mahasiswa-yudisium'] = 'backend/dosen/Yudisium/GetMahasiswaYudisium';
+
+
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';
 $route['dsn/dashboard/Form-Bimbingan'] = 'backend/dosen/Bimbingan/formfedbackGuidance';

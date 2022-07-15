@@ -1,10 +1,10 @@
 <?php $this->load->view('backend/partials_/alert_success.php');?>
-<div class="card-block col-sm-12">
+<div class="card-block col-sm-12" style="background-color: #FFE3C7;">
     <div class="card">
         <blockquote class="blockquote mb-0">
-            <p class="text-c-red"><b>Note.</b> Sebelum melakukan pengajuan judul & proposal pastikan sudah anda siapkan
-                dan anda konsultasikan ke dosen akademik anda.</p>
-            <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite></footer>
+            <b>Note.</b> Sebelum melakukan pengajuan judul & proposal pastikan sudah anda siapkan
+                dan anda konsultasikan ke dosen akademik anda.
+            <!-- <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite></footer> -->
         </blockquote>
     </div>
 </div>

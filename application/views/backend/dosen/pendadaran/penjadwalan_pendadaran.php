@@ -1,8 +1,8 @@
 <?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
 	<div class="card">
-		<div class="card-header">
-			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah melakukan<code>pendaftaran dan upload</code>syarat pendadaran, dilanjutkan untuk pemilihan dosen penguji pendadaran dan jadwal pelaksanaan.</p>
+		<div class="card-header" style="background-color: #FFE3C7;">
+			<b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah melakukan<code>pendaftaran dan upload</code>syarat pendadaran, dilanjutkan untuk pemilihan dosen penguji pendadaran dan jadwal pelaksanaan.
 		</div>
 		<div class="card-block">
 			<h6 class="sub-title">Daftar mahasiswa tahap ploting penguji dan penjadwalan</h6>

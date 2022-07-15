@@ -1,7 +1,7 @@
 <div class="col-xl-12">
     <div class="card">
-        <div class="card-header text-danger">
-            <h5>Note. Pastikan persyaratan yudisium di publish setelah masa pendadaran di laksanakan.</h5>
+        <div class="card-header" style="background-color: #FFE3C7;">
+            Note. Pastikan persyaratan yudisium di publish setelah masa pendadaran di laksanakan.
         </div>
     </div>
 </div>
