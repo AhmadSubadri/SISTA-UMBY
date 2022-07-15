@@ -44,6 +44,13 @@ $route['dsn/dashboard/update-syarat'] = 'backend/dosen/Pendadaran/updateRequirem
 $route['publish-requirementexam/(:any)'] = 'backend/dosen/Pendadaran/publishrequirement/$1';
 $route['unpublish-requirementexam/(:any)'] = 'backend/dosen/Pendadaran/unpublishrequirement/$1';
 
+// Yudisium
+$route['dsn/dashboard/syarat-yudisium'] = 'backend/dosen/Yudisium';
+$route['dsn/dashboard/delete-syarat-yudisium/(:any)'] = 'backend/dosen/Yudisium/deleterequirementyudisium/$1';
+$route['publish-requirementyudisium/(:any)'] = 'backend/dosen/Yudisium/publishrequirementyudisium/$1';
+$route['unpublish-requirementyudisium/(:any)'] = 'backend/dosen/Yudisium/unpublishrequirementyudisium/$1';
+$route['dsn/dashboard/update-syarat-yudisium'] = 'backend/dosen/Yudisium/updateRequirementyudisium';
+
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';
 $route['dsn/dashboard/Form-Bimbingan'] = 'backend/dosen/Bimbingan/formfedbackGuidance';
