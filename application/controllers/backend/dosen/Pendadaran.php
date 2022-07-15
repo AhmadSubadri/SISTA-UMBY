@@ -46,8 +46,12 @@ public $result = [
                     $i++;
                 }
             }
+            $this->session->set_flashdata('msg',"Data has been added successfully");
+            $this->session->set_flashdata('msg_class','alert-success');
             redirect(site_url('dsn/dashboard/syarat-pendadaran'));
         }
+        $this->session->set_flashdata('msg',"Data has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('dsn/dashboard/syarat-pendadaran'));
     }
 
@@ -229,6 +233,8 @@ public $result = [
     public function deleterequirementexam($id)
     {
         $this->M_requirement->delete('tb_requirements','id',$id);
+        $this->session->set_flashdata('msg',"Data has been delete successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('dsn/dashboard/syarat-pendadaran'));
     }
 

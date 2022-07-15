@@ -133,6 +133,29 @@
                     </li>
                 </ul>
             </li>
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-cloud-up"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Yudisium</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class=" ">
+                        <a href="<?= site_url('dsn/dashboard/syarat-yudisium');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Syarat yudisium</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class=" ">
+                        <a href="<?= site_url('dsn/dashboard/mahasiswa-yudisium');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Mahasiswa yudisium</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <?php elseif($this->session->userdata('level') == '2'):?>
             <!-- Menu sidebar dosen / Prodi -->
             <li class="pcoded-hasmenu">

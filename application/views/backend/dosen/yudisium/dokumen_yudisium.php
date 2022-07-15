@@ -1,17 +1,24 @@
+<div class="col-xl-12">
+    <div class="card">
+        <div class="card-header text-danger">
+            <h5>Note. Pastikan persyaratan yudisium di publish setelah masa pendadaran di laksanakan.</h5>
+        </div>
+    </div>
+</div>
 <?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
-    <div id="popsuccess"></div>
-    <div class="card">
-        <div class="card-header">
-            <div class="card-header-right">
-                <a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalrequirement">+ Tambah persyaratan</a>
-            </div>
-        </div>
-        <div class="card-block">
-            <h4 class="sub-title text-center">PERSYARATAN PENDADARAN</h4>
-            <div class="row">
-                <div class="col-sm-12 col-xl-7 sub-title">
-                    <h6># Syarat pendadaran</h6>
+	<div id="popsuccess"></div>
+	<div class="card">
+		<div class="card-header">
+			<h5>Data syarat yudisium</h5>
+			<div class="card-header-right">
+				<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalrequirement">+ Tambah persyaratan</a>
+			</div>
+		</div>
+		<div class="card-block">
+			<div class="row">
+				<div class="col-sm-12 col-xl-7 sub-title">
+                    <h6># Syarat yudisium</h6>
                 </div>
                 <div class="col-sm-12 col-xl-2 sub-title text-center">
                     <h6>Qty</h6>
@@ -20,36 +27,36 @@
                     <h6>Aksi</h6>
                 </div>
                 <?php if(!empty($Data->result())):?>
-                <?php $i=1; foreach($Data->result() as $row):?>
-                <div class="col-sm-12 col-xl-7 sub-title">
-                    <h6><?= $i++;?>. <?= $row->requirements;?></h6>
-                </div>
-                <div class="col-sm-12 col-xl-2 sub-title text-center">
-                    <h6><?= $row->qty;?></h6>
-                </div>
-                <div class="col-sm-12 col-xl-3 sub-title">
-                    <a href="" class="btn btn-mini btn-outline-warning" id="Modal-Tourist" data-toggle="modal" data-target="#modal_edit<?= $row->id;?>">Edit</a>
-                    <a href="<?= site_url('dsn/dashboard/delete-syarat/'.$row->id);?>"
-                        class="btn btn-mini btn-outline-danger">Delete</a>
-                    <?php if ($row->status != 0) :?>
-                    <a href="<?= site_url('unpublish-requirementexam/'.$row->id);?>"
-                        class="btn btn-mini btn-outline-success">
-                        <i class="ti-close"> Unpublish</i>
-                    </a>
-                    <?php else:?>
-                    <a href="<?= site_url('publish-requirementexam/'.$row->id);?>"
-                        class="btn btn-mini btn-outline-primary"><i class="ti-world"> Publish</i></a>
-                    <?php endif;?>
-                </div>
-                <?php endforeach;?>
-                <?php else:?>
-                    <div class="col-sm-12 col-xl-12 sub-title text-center">
-                        Data not availabel
-                    </div>
-                <?php endif;?>
-            </div>
-        </div>
-    </div>
+	                <?php $i=1; foreach($Data->result() as $row):?>
+		                <div class="col-sm-12 col-xl-7 sub-title">
+		                    <h6><?= $i++;?>. <?= $row->requirements;?></h6>
+		                </div>
+		                <div class="col-sm-12 col-xl-2 sub-title text-center">
+		                    <h6><?= $row->qty;?></h6>
+		                </div>
+		                <div class="col-sm-12 col-xl-3 sub-title">
+		                    <a href="" class="btn btn-mini btn-outline-warning" id="Modal-Tourist" data-toggle="modal" data-target="#modal_edit<?= $row->id;?>">Edit</a>
+		                    <a href="<?= site_url('dsn/dashboard/delete-syarat-yudisium/'.$row->id);?>"
+		                        class="btn btn-mini btn-outline-danger">Delete</a>
+		                    <?php if ($row->status != 0) :?>
+		                    <a href="<?= site_url('unpublish-requirementyudisium/'.$row->id);?>"
+		                        class="btn btn-mini btn-outline-success">
+		                        <i class="ti-close"> Unpublish</i>
+		                    </a>
+		                    <?php else:?>
+		                    <a href="<?= site_url('publish-requirementyudisium/'.$row->id);?>"
+		                        class="btn btn-mini btn-outline-primary"><i class="ti-world"> Publish</i></a>
+		                    <?php endif;?>
+		                </div>
+		            <?php endforeach;?>
+		        <?php else:?>
+		        	<div class="col-sm-12 col-xl-12 sub-title text-center">
+	                    Data not availabel
+	                </div>
+		        <?php endif;?>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Modal insert Requirements -->
@@ -69,7 +76,7 @@
                         table</a>
                     <table class="table table-bordered" id="tableLoop">
                         <input type="text" name="major" value="<?= $this->session->userdata("major")?>" hidden>
-                        <input type="text" name="type" value="1" hidden>
+                        <input type="text" name="type" value="2" hidden>
                         <tbody></tbody>
                     </table>
                 </div>
@@ -81,6 +88,7 @@
         </div>
     </div>
 </div>
+
 <?php foreach($Data->result_array() as $i):
         $id = $i['id'];
         $requirement = $i['requirements'];
@@ -96,7 +104,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url('dsn/dashboard/update-syarat');?>" method="post">
+            <form action="<?= site_url('dsn/dashboard/update-syarat-yudisium');?>" method="post">
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="col-10">
@@ -119,8 +127,5 @@
     </div>
 </div>
 <?php endforeach;?>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<?php echo base_url()?>assets/js/modal-syarat.js"></script>

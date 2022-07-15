@@ -154,7 +154,7 @@
 															?>
 														<?php endforeach;?>
 															<input type="text" name="nilaiangka"
-															value="<?php if($notnull != 0):?><?php if($hasil >= 50):echo number_format($hasil,1);else:echo $number_format($hasil,1);endif;?><?php else:?>0<?php endif;?>" class="form-control" readonly>
+															value="<?php if($notnull != 0):?><?php if($hasil >= 50):echo number_format($hasil,1);else:echo number_format($hasil,1);endif;?><?php else:?>0<?php endif;?>" class="form-control" readonly>
 															<span class="form-bar"></span>
 															<label class="float-label text-primary">Nilai rata-rata akhir (angka)</label>
 														</div>
