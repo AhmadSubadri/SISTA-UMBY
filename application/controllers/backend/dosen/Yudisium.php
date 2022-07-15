@@ -59,7 +59,8 @@ class Yudisium extends CI_Controller {
     public function GetMahasiswaYudisium()
     {
         $data = [
-            'Data' => $this->M_yudisium->getRequirementYudisium()
+            'DataNilai' => $this->M_yudisium->GetNilaiAkhirpendadaran(),
+            'DataSyarat' => $this->M_yudisium->getRequirementYudisiumBystatus()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/yudisium/mahasiswa_yudisium', $data);

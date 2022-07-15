@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="card-block">
-            <h4 class="sub-title text-center">PERSYARATAN PENDADARAN</h4>
+            <h4 class="sub-title">PERSYARATAN PENDADARAN</h4>
             <div class="row">
                 <div class="col-sm-12 col-xl-7 sub-title">
                     <h6># Syarat pendadaran</h6>
