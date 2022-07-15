@@ -1,8 +1,8 @@
 <div class="col-xl-12">
     <div class="card">
-        <div class="card-block">
+        <div class="card-block" style="background-color: #FFE3C7;">
             <blockquote class="blockquote mb-0">
-                <p class="text-c-red"><b>Note.</b> Pastikan semua dokumen sudah anda upload sesuai dengan ketentuan, agar tombol <code>Daftar pendadaran sekarang</code> di pojok kanan atas di bawah ini bisa aktif. <code>Setelah aktif</code> silahkan di klik agar anda terdaftar. Tanda anda sudah terdaftar jika tombol berubah menjadi <code>Sudah terdaftar di pendadaran</code>.</p>
+                <b>Note.</b> Pastikan semua dokumen sudah anda upload sesuai dengan ketentuan, agar tombol <code>Daftar pendadaran sekarang</code> di pojok kanan atas di bawah ini bisa aktif. <code>Setelah aktif</code> silahkan di klik agar anda terdaftar. Tanda anda sudah terdaftar jika tombol berubah menjadi <code>Sudah terdaftar di pendadaran</code>.
             </blockquote>
         </div>
     </div>

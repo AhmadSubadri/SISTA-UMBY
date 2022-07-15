@@ -1,8 +1,8 @@
 <div class="col-xl-12">
 	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
-		<div class="card-header">
-			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang akan anda uji sidang pendadaran, pastikan tanggal dan jam pelaksanaan pendadaran sudah di pahami.<code> Jika tanggal pelaksaan berkedip berwarna merah, itu menandakan ada jadwal sidang pendadaran untuk anda di hari ini.</code></p>
+		<div class="card-header" style="background-color: #FFE3C7;">
+			<b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang akan anda uji sidang pendadaran, pastikan tanggal dan jam pelaksanaan pendadaran sudah di pahami.<code> Jika tanggal pelaksaan berkedip berwarna merah, itu menandakan ada jadwal sidang pendadaran untuk anda di hari ini.</code>
 		</div>
 		<div class="card-block">
 			<h6 class="sub-title">Daftar mahasiswa siap anda uji pendadaran</h6>

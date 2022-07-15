@@ -1,8 +1,8 @@
 <div class="col-xl-12">
 	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
-		<div class="card-block">
-			<p class="text-danger"><b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah menyelesaikan masa bimbingan dan sudah di <code>Approved</code> oleh masing-masing pembimbing.</p>
+		<div class="card-block" style="background-color: #FFE3C7;">
+			<b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah menyelesaikan masa bimbingan dan sudah di <code>Approved</code> oleh masing-masing pembimbing.
 		</div>
 	</div>
 </div>

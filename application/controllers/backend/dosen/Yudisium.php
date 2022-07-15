@@ -55,4 +55,14 @@ class Yudisium extends CI_Controller {
         $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('dsn/dashboard/syarat-yudisium'));
     }
+
+    public function GetMahasiswaYudisium()
+    {
+        $data = [
+            'Data' => $this->M_yudisium->getRequirementYudisium()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/yudisium/mahasiswa_yudisium', $data);
+        $this->load->view('backend/partials_/footer');
+    }
 }
