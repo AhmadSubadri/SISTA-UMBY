@@ -48,13 +48,13 @@
 								<a class="accordion-msg b-none waves-effect waves-light">Data hasil ujian pendadaran</a>
 								<div class="accordion-desc">
 									<div class="row">
-										<div class="col-sm-12 col-xl-4 sub-title">
+										<div class="col-sm-12 col-xl-4 sub-title text-primary">
 											# Penguji
 										</div>
-										<div class="col-sm-12 col-xl-2 sub-title text-center">
+										<div class="col-sm-12 col-xl-2 sub-title text-center text-primary">
 											Nilai
 										</div>
-										<div class="col-sm-12 col-xl-6 sub-title">
+										<div class="col-sm-12 col-xl-6 sub-title text-primary">
 											Catatan
 										</div>
 										<!-- Data -->

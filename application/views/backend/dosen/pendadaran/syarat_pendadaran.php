@@ -10,13 +10,13 @@
         <div class="card-block">
             <h4 class="sub-title">PERSYARATAN PENDADARAN</h4>
             <div class="row">
-                <div class="col-sm-12 col-xl-7 sub-title">
+                <div class="col-sm-12 col-xl-7 sub-title text-primary">
                     <h6># Syarat pendadaran</h6>
                 </div>
-                <div class="col-sm-12 col-xl-2 sub-title text-center">
+                <div class="col-sm-12 col-xl-2 sub-title text-center text-primary">
                     <h6>Qty</h6>
                 </div>
-                <div class="col-sm-12 col-xl-3 sub-title">
+                <div class="col-sm-12 col-xl-3 sub-title text-primary">
                     <h6>Aksi</h6>
                 </div>
                 <?php if(!empty($Data->result())):?>

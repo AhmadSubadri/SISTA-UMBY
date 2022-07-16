@@ -169,10 +169,10 @@
         <div class="card-block">
             <h4 class="sub-title text-center">Card Bimbingan Skripsi</h4>
             <div class="row">
-                <div class="col-sm-12 col-xl-10 sub-title">
+                <div class="col-sm-12 col-xl-10 sub-title text-primary">
                     <h6># Poin bimbingan</h6>
                 </div>
-                <div class="col-sm-12 col-xl-2 sub-title">
+                <div class="col-sm-12 col-xl-2 sub-title text-primary">
                     <h6>Created at</h6>
                 </div>
                 <?php $i=1; foreach($DataChatCard as $card):?>

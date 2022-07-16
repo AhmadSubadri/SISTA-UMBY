@@ -7,16 +7,16 @@
 		<div class="card-block">
 			<h6 class="sub-title">Daftar mahasiswa tahap ploting penguji dan penjadwalan</h6>
 			<div class="row sub-title">
-				<div class="col-sm-12 col-xl-3 sub-title">
+				<div class="col-sm-12 col-xl-3 sub-title text-primary">
 					# profil
 				</div>
-				<div class="col-sm-12 col-xl-3 sub-title">
+				<div class="col-sm-12 col-xl-3 sub-title text-primary">
 					Jadwal
 				</div>
-				<div class="col-sm-12 col-xl-4 sub-title">
+				<div class="col-sm-12 col-xl-4 sub-title text-primary">
 					Penguji
 				</div>
-				<div class="col-sm-12 col-xl-2 sub-title">
+				<div class="col-sm-12 col-xl-2 sub-title text-primary">
 					Aksi
 				</div>
 				<!-- Data -->

@@ -34,9 +34,7 @@ class M_yudisium extends CI_Model
     {
         $major = $this->session->userdata('major');
         $this->db->select('*')
-        ->where('type', "2")
-        ->where('status', "1")
-        ->where('major', $major)
+        ->where('type', "2")->where('status', "1")->where('major', $major)
         ->from('tb_requirements');
         $query = $this->db->get();
         return $query;

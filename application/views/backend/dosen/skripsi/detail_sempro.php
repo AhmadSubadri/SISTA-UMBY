@@ -68,13 +68,13 @@
 </div>
 </div><br>
 <div class="row">
-    <div class="col-md-4 sub-title">
+    <div class="col-md-4 sub-title text-primary">
         <h6># Dosen</h6>
     </div>
-    <div class="col-md-2 sub-title">
+    <div class="col-md-2 sub-title text-primary">
         <h6>Feedback</h6>
     </div>
-    <div class="col-md-6 sub-title">
+    <div class="col-md-6 sub-title text-primary">
         <h6>Catatan</h6>
     </div><br><br>
     <?php if(count($Data) == null):?>
