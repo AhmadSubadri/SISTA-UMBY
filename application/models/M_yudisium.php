@@ -41,4 +41,22 @@ class M_yudisium extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function _SetData($tabel, $array, $col, $id){
+        $this->db->set($array);
+        $this->db->where($col, $id);
+        $query = $this->db->update($tabel);
+        return $query;
+    }
+
+    public function add($tabel,$data){
+        $Q =$this->db->insert($tabel,$data);
+        return $Q;
+    }
+
+    public function delete($tabel,$col,$id){
+        $this->db->where($col,$id);
+        $action = $this->db->delete($tabel);
+        return $action;
+    }
 }

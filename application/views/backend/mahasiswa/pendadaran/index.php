@@ -1,15 +1,8 @@
 <div class="col-xl-12">
-    <div class="card">
-        <div class="card-block" style="background-color: #FFE3C7;">
-            <blockquote class="blockquote mb-0">
-                <b>Note.</b> Pastikan semua dokumen sudah anda upload sesuai dengan ketentuan, agar tombol <code>Daftar pendadaran sekarang</code> di pojok kanan atas di bawah ini bisa aktif. <code>Setelah aktif</code> silahkan di klik agar anda terdaftar. Tanda anda sudah terdaftar jika tombol berubah menjadi <code>Sudah terdaftar di pendadaran</code>.
-            </blockquote>
-        </div>
-    </div>
     <?php $this->load->view('backend/partials_/alert_success.php');?>
     <div class="card">
-        <div class="card-header">
-            <h6>Unggah dokumen syarat pendadaran</h6>
+        <div class="card-header" style="background-color: #FFE3C7;">
+            <b>Note.</b> Pastikan semua dokumen sudah anda upload sesuai dengan ketentuan, agar tombol <code>Daftar pendadaran sekarang</code> di pojok kanan atas di bawah ini bisa aktif. <code>Setelah aktif</code> silahkan di klik agar anda terdaftar. Tanda anda sudah terdaftar jika tombol berubah menjadi <code>Sudah terdaftar di pendadaran</code>.
             <div class="card-header-right">
                 <?php $Document = $this->db->select('*')->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get()->result();?>
                 <?php if(count($DataSyarat) == count($Document)):?>
@@ -27,6 +20,7 @@
         </div>
     </div>
     <div class="card-block">
+        <h6 class="sub-title">Unggah dokumen syarat pendadaran</h6>
         <div class="row">
             <div class="col-sm-12 col-xl-8 sub-title">
                 #Jenis dokumen

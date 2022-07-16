@@ -20,29 +20,11 @@
 								else:
 									echo "<label class='text-danger'>".number_format($values,1)."</label>";
 								endif;?> dengan nilai huruf  
-									<?php
-									if($values >= 85):
-										echo " (A) dan di nyatakan <u class='text-primary'>LULUS</u>";
-									elseif($values >= 80 && $values <=84.99):
-										echo " (A-) dan di nyatakan <u class='text-primary'>LULUS</u>";
-									elseif($values >= 70 && $values <= 79.99):
-										echo " (B+) dan di nyatakan <u class='text-primary'>LULUS</u>";
-									elseif($values >= 65 && $values <= 69.99):
-										echo " (B) dan di nyatakan <u class='text-primary'>LULUS</u>";
-									elseif($values >= 60 && $values <= 64.99):
-										echo " (B-) dan di nyatakan <u class='text-primary'>LULUS</u>";
-									elseif($values >= 50 && $values <= 59.99):
-										echo " (C+) dan di nyatakan <u class='text-primary'>LULUS</u>";
-									elseif($values >= 40 && $values <= 49.99):
-										echo " (C) dan di nyatakan <u class='text-danger'>TIDAL LULUS</u>";
-									elseif($values >= 20 && $values <=39.99):
-										echo " (D) dan di nyatakan <u class='text-danger'>TIDAL LULUS</u>";
-									elseif($values <= 19.99):
-										echo " (E) dan di nyatakan <u class='text-danger'>TIDAL LULUS</u>";
-									else:
-										echo "NULL";
-									endif;
-									?>
+									<?php if(number_format($values,1) >= 50):?>
+										<label class="text-primary">(<?= $hasil->letter_value;?>)</label> dan di nyatakan <u class='text-primary'>LULUS</u>
+									<?php else:?>
+										<label class="text-danger">(<?= $hasil->letter_value;?>)</label> dan di nyatakan <u class='text-danger'>TIDAK LULUS</u>"
+									<?php endif;?>
 							</h4>
 							<?php if($hasil->catatan_akhir != null):?>
 								<h6><b>Catatan : <?= $hasil->catatan_akhir;?></b></h6>
