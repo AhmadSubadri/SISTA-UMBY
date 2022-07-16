@@ -66,4 +66,9 @@ class Yudisium extends CI_Controller {
         $this->load->view('backend/dosen/yudisium/mahasiswa_yudisium', $data);
         $this->load->view('backend/partials_/footer');
     }
+
+    public function DeleteDataMhsTidakLulus($nim)
+    {
+        
+    }
 }
