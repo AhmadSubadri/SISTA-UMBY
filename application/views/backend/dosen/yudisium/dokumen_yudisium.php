@@ -11,22 +11,22 @@
 		<div class="card-block">
             <h6 class="sub-title">Data syarat yudisium</h6>
 			<div class="row">
-				<div class="col-sm-12 col-xl-7 sub-title">
+				<div class="col-sm-12 col-xl-7 sub-title text-primary">
                     <h6># Syarat yudisium</h6>
                 </div>
-                <div class="col-sm-12 col-xl-2 sub-title text-center">
+                <div class="col-sm-12 col-xl-2 sub-title text-center text-primary">
                     <h6>Qty</h6>
                 </div>
-                <div class="col-sm-12 col-xl-3 sub-title">
+                <div class="col-sm-12 col-xl-3 sub-title text-primary">
                     <h6>Aksi</h6>
                 </div>
                 <?php if(!empty($Data->result())):?>
 	                <?php $i=1; foreach($Data->result() as $row):?>
 		                <div class="col-sm-12 col-xl-7 sub-title">
-		                    <h6><?= $i++;?>. <?= $row->requirements;?></h6>
+		                    <?= $i++;?>. <?= $row->requirements;?>
 		                </div>
 		                <div class="col-sm-12 col-xl-2 sub-title text-center">
-		                    <h6><?= $row->qty;?></h6>
+		                    <?= $row->qty;?>
 		                </div>
 		                <div class="col-sm-12 col-xl-3 sub-title">
 		                    <a href="" class="btn btn-mini btn-outline-warning" id="Modal-Tourist" data-toggle="modal" data-target="#modal_edit<?= $row->id;?>">Edit</a>

@@ -58,7 +58,7 @@
             <div class="table-responsive">
                 <table class="table table-hover m-b-0 without-header">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="text-center text-primary">
                             <th>#</th>
                             <th>
                                 <input type="checkbox" class="form-check-input" name="nim[]" onchange="checkAll(this)">

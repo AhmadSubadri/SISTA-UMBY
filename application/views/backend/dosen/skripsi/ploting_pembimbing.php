@@ -14,10 +14,10 @@
 				</select>
 			</div>
 			<div class="row">
-				<div class="col-sm-12 col-xl-10 sub-title">
+				<div class="col-sm-12 col-xl-10 sub-title text-primary">
 					<h6># Profil</h6>
 				</div>
-				<div class="col-sm-12 col-xl-2 sub-title">
+				<div class="col-sm-12 col-xl-2 sub-title text-primary">
 					<h6>Check box</h6>
 				</div>
 				<?php if(count($thesisFix->result()) == null):?>
@@ -67,10 +67,10 @@
 		<div class="card-block table-border-style">
 			<h4 class="sub-title text-center">DATA MAHASISWA DAN PEMBIMBING</h4>
 			<div class="row">
-				<div class="col-sm-12 col-xl-10 sub-title">
+				<div class="col-sm-12 col-xl-10 sub-title text-primary">
 					<h6># Profil</h6>
 				</div>
-				<div class="col-sm-12 col-xl-2 sub-title">
+				<div class="col-sm-12 col-xl-2 sub-title text-primary">
 					<h6>Pembimbing</h6>
 				</div>
 				<?php if(count($DataThesis->result()) == null):?>

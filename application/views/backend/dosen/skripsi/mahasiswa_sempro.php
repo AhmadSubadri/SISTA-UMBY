@@ -8,7 +8,7 @@
             <div class="table-responsive">
                 <table class="table table-hover m-b-0 without-header">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="text-center text-primary">
                             <th>#</th>
                             <th>Profil</th>
                             <th>Jadwal sempro</th>

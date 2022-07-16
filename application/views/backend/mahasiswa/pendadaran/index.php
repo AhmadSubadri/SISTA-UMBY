@@ -22,13 +22,13 @@
     <div class="card-block">
         <h6 class="sub-title">Unggah dokumen syarat pendadaran</h6>
         <div class="row">
-            <div class="col-sm-12 col-xl-8 sub-title">
+            <div class="col-sm-12 col-xl-8 sub-title text-primary">
                 #Jenis dokumen
             </div>
-            <div class="col-sm-12 col-xl-2 sub-title text-center">
+            <div class="col-sm-12 col-xl-2 sub-title text-center text-primary">
                 Status
             </div>
-            <div class="col-sm-12 col-xl-2 sub-title text-center">
+            <div class="col-sm-12 col-xl-2 sub-title text-center text-primary">
                 Aksi
             </div>
             <!-- Data -->

@@ -7,16 +7,16 @@
 		<div class="card-block">
 			<h6 class="sub-title">Data mahasiswa pendadaran</h6>
 			<div class="row">
-				<div class="col-sm-12 col-xl-6 sub-title">
+				<div class="col-sm-12 col-xl-6 sub-title text-primary">
 					# Profil
 				</div>
-				<div class="col-sm-12 col-xl-2 sub-title">
+				<div class="col-sm-12 col-xl-2 sub-title text-primary">
 					Status daftar
 				</div>
-				<div class="col-sm-12 col-xl-2 sub-title">
+				<div class="col-sm-12 col-xl-2 sub-title text-primary">
 					Status pendadaran
 				</div>
-				<div class="col-sm-12 col-xl-2 sub-title">
+				<div class="col-sm-12 col-xl-2 sub-title text-primary">
 					Aksi
 				</div>
 
