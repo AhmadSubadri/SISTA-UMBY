@@ -81,7 +81,7 @@
 							<?php if($row->avarage >= "50"):?>
 								<a href="" class="btn btn-mini btn-outline-primary"><i class="ti-eye"> Detail</i></a>
 							<?php else:?>
-								<a href="<?= site_url('dsn/dashboard/delete-data-mhs-tidaklulus'.$row->nim);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"> Delete</i></a>
+								<a href="<?= site_url('dsn/dashboard/delete-data-mhs-tidaklulus/'.$row->nim);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"> Delete</i></a>
 								<a class="btn btn-mini btn-outline-danger" data-toggle="tooltip" data-placement="left" data-original-title="Klik delete untuk hapus data skripsi dan persilahkan <?= $row->fullname;?> untuk mengulang skripsinya dari pengajuan judul dan proposal kembali.">?</a>
 							<?php endif;?>
 						</div>

@@ -69,6 +69,6 @@ class Yudisium extends CI_Controller {
 
     public function DeleteDataMhsTidakLulus($nim)
     {
-        
+        // $this->
     }
 }
