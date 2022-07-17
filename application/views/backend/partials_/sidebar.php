@@ -200,8 +200,23 @@
                         </a>
                     </li>
 
+                    <!-- Tata usaha -->
                 <?php elseif($this->session->userdata('level') == '3'):?>
-                    hallo
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Data user</div>
+                    <li>
+                        <a href="<?= site_url('TU/dashboard/data-mahasiswa');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-list"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Data mahasiswa</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= site_url('TU/dashboard/data-dosen');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-list"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Data dosen</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 <?php else:?>
                     <!-- Menu sidebar Mahasiswa -->
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Bimbingan</div>

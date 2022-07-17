@@ -78,10 +78,10 @@
                     <?php $uu = $this->db->select('*')->where('major', $this->session->userdata('major'))->from('tb_thesisreceived t')->get()->result();?>
                     <?php if($this->session->userdata('level') == 3):?>
                         <h4 class="text-c-red"><?php echo count($tt);?></h4>
-                        <h6 class="text-muted m-b-0">Bimbingan/Pendadaran</h6>
+                        <h6 class="text-muted m-b-0">Bimbingan/Sidang</h6>
                     <?php else:?>
                         <h4 class="text-c-red"><?php echo count($uu);?></h4>
-                        <h6 class="text-muted m-b-0">Bimbingan/Pendadaran</h6>
+                        <h6 class="text-muted m-b-0">Bimbingan/Sidang</h6>
                     <?php endif;?>
                 </div>
                 <div class="col-4 text-right">
