@@ -61,6 +61,18 @@ class M_yudisium extends CI_Model
         return $query;
     }
 
+    public function GetAllStudentByMajor($major)
+    {
+         $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image, t.avarage, t.letter_value, t.status_daftar_yudisium')
+        ->where('t.status_daftar_yudisium', '1')
+        ->where('t.major', $this->session->userdata('major'))
+        ->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim')
+        ->join('tb_lecturers l', 'l.username = t.nidn');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function GetMyDatastudent()
     {
         $nim = $this->session->userdata('username');

@@ -154,6 +154,13 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+                    <li class=" ">
+                        <a href="<?= site_url('dsn/dashboard/progres-upload-dokumen');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Progres upload document</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <?php elseif($this->session->userdata('level') == '2'):?>
