@@ -85,4 +85,13 @@ class M_bimbingan extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function GetAllDataThesisRecheived()
+    {
+        $major = $this->session->userdata('major');
+        $this->db->select('t.id, t.nim, s.fullname, t.title, s.image')->where('major', $major)->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
