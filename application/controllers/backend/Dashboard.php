@@ -17,7 +17,9 @@ class Dashboard extends CI_Controller
 	public function Index()
 	{
 		$data = [
-            'data' => $this->M_student->getAllStudent()
+            'data' => $this->M_user->getAllStudent(),
+            'Pendadaran' => $this->M_user->GetSumPendadaran(),
+            'Yudisium' => $this->M_user->GetSumYudisium()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/partials_/dashboard',$data);

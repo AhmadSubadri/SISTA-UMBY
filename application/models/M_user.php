@@ -101,4 +101,34 @@ class M_user extends CI_Model
     public function isNotLogin(){
         return $this->session->userdata('user_logged') === null;
     }
+
+    public function getAllStudent()
+    {
+        $id = $this->session->userdata('major');
+        $this->db->select('*')
+        ->where('id_major', $id)
+        ->from('tb_student');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function GetSumPendadaran()
+    {
+        $id = $this->session->userdata('major');
+        $this->db->select('*')
+        ->where('id_major', $id)
+        ->from('tb_student');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function GetSumYudisium()
+    {
+        $id = $this->session->userdata('major');
+        $this->db->select('*')
+        ->where('id_major', $id)
+        ->from('tb_student');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
