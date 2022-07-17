@@ -112,16 +112,6 @@
                                       </a>
                                   </li>
                                   <li class="waves-effect waves-light">
-                                      <a href="email-inbox.html">
-                                          <i class="ti-email"></i> My Messages
-                                      </a>
-                                  </li>
-                                  <li class="waves-effect waves-light">
-                                      <a href="auth-lock-screen.html">
-                                          <i class="ti-lock"></i> Lock Screen
-                                      </a>
-                                  </li>
-                                  <li class="waves-effect waves-light">
                                       <a href="#!" data-target="#logoutmodal" data-toggle="modal">
                                         <i class="ti-layout-sidebar-left"></i> Logout
                                       </a>

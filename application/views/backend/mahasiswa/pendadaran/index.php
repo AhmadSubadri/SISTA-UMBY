@@ -59,6 +59,7 @@
                             <a id="Modal-Tourist" data-toggle="modal" data-target="#modal_see_laporanakhir<?= $dda->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i> Lihat</a>
                             <a href="<?= site_url('mhs/dashboard/delete-document-laporan-akhir/'.$dda->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Ubah</a>
                         </div>
+                        <!-- modal modal_see_laporanakhir -->
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal_see_laporanakhir<?= $dda->id;?>" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">

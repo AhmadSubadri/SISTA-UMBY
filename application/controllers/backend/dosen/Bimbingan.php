@@ -79,4 +79,14 @@ public $result = [
         }
         redirect(site_url('dsn/dashboard/Bimbingan'));
     }
+
+    public function GetProgresBimbingan()
+    {
+        $data = [
+            'Data' => $this->M_bimbingan->GetAllDataThesisRecheived()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/bimbingan/progres_bimbingan',$data);
+        $this->load->view('backend/partials_/footer');
+    }
 }
