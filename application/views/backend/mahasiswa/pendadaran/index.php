@@ -35,7 +35,7 @@
             <?php foreach($DataDokumenAkhir as $dda):?>
                 <?php if($dda->laporan_akhir == null):?>
                     <div class="col-sm-12 col-xl-8 sub-title">
-                        Upload dokumen laporan akhir skripsi yang sudah di acc oleh pembimbing untuk daftar pendadaran.<label class="text-italic text-danger">(wajib .pdf)</label>
+                        Upload dokumen laporan akhir skripsi yang sudah di acc oleh pembimbing untuk daftar pendadaran.<label class="text-italic text-danger" style="font-size: 8px;">(wajib .pdf)</label>
                     </div>
                     <div class="col-sm-12 col-xl-2 sub-title text-center">
                         <label class="label label-mini label-danger">Belum upload</label>
@@ -50,7 +50,7 @@
                     </div>
                 <?php else:?>
                     <div class="col-sm-12 col-xl-8 sub-title">
-                            # Dokumen laporan akhir skripsi yang sudah di acc oleh pembimbing untuk daftar pendadaran.<label class="text-italic text-danger">(wajib .pdf)</label>
+                            # Dokumen laporan akhir skripsi yang sudah di acc oleh pembimbing untuk daftar pendadaran.<i class="text-danger" style="font-size: 8px;">(*wajib)</i>
                         </div>
                         <div class="col-sm-12 col-xl-2 sub-title text-center">
                             <label class="label label-mini label-success">Sudah upload</label>
@@ -74,8 +74,11 @@
                         </div>
                     <?php if(count($Data) != 0):?>
                         <?php $i=1; foreach($DataSyarat as $syarat):?>
-                        <div class="col-sm-12 col-xl-8">
-                            <b><?= $i++;?>. <?= $syarat->requirements;?><i class="text-danger">(wajib)</i></b>
+                        <div class="col-sm-12 col-xl-8 sub-title">
+                            <div class="media">
+                                <label class="badge-top-right">S<?=$i++;?>. </label>
+                                <?= $syarat->requirements;?><i class="text-danger" style="font-size: 8px;">(*wajib)</i>
+                            </div>
                         </div>
                         <?php $Doc = $this->db->select('*')->where('id_requirement', $syarat->id)->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get();?>
                         <div class="col-sm-12 col-xl-2 text-center">
