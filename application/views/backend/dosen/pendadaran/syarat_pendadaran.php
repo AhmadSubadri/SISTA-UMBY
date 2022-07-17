@@ -22,7 +22,10 @@
                 <?php if(!empty($Data->result())):?>
                 <?php $i=1; foreach($Data->result() as $row):?>
                 <div class="col-sm-12 col-xl-7 sub-title">
-                    <h6><?= $i++;?>. <?= $row->requirements;?></h6>
+                    <div class="media">
+                        <label class="badge-top-right">S<?=$i++;?>. </label>
+                        <?= $row->requirements;?>
+                    </div>
                 </div>
                 <div class="col-sm-12 col-xl-2 sub-title text-center">
                     <h6><?= $row->qty;?></h6>

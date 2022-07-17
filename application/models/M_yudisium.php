@@ -34,8 +34,17 @@ class M_yudisium extends CI_Model
     {
         $major = $this->session->userdata('major');
         $this->db->select('*')
-        ->where('type', "2")->where('status', "1")->where('major', $major)
+        ->where('type', "2")->where('status', "1")->where('major', $major)->order_by('id', 'ASC')
         ->from('tb_requirements');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function GetDataStudent($nim)
+    {
+        $this->db->select('*')
+        ->where('username', $nim)
+        ->from('tb_student');
         $query = $this->db->get();
         return $query;
     }

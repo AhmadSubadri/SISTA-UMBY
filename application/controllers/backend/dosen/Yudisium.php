@@ -75,7 +75,8 @@ class Yudisium extends CI_Controller {
     public function DetailUploadedYudisium($nim)
     {
         $data = [
-            'DataSyarat' => $this->M_yudisium->getRequirementYudisiumByStatus()
+            'DataSyarat' => $this->M_yudisium->getRequirementYudisiumByStatus(),
+            'DataStudent' => $this->M_yudisium->GetDataStudent($nim)
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/yudisium/detail_dokumen_yudisium', $data);
