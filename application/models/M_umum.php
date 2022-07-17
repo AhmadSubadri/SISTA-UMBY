@@ -93,6 +93,19 @@ class M_umum extends CI_Model
         return $query->result();
     }
 
+    public function GetDataPendaranBypenguji()
+    {
+        $penguji = $this->session->userdata('username');
+        $this->db->select('t.id, s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image')
+        ->where('d.penguji', $penguji)
+        ->from('tb_detail_pendadaran d')
+        ->order_by('t.date', 'ASC')
+        ->join('tb_student s','s.username = d.nim')
+        ->join('tb_thesisreceived t','t.id = d.id_thesisreceived');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function delete($tabel,$col,$id)
     {
         $this->db->where($col,$id);

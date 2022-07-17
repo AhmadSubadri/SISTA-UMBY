@@ -82,4 +82,16 @@ class Yudisium extends CI_Controller {
         $this->load->view('backend/dosen/yudisium/detail_dokumen_yudisium', $data);
         $this->load->view('backend/partials_/footer');
     }
+
+    public function ProgresUploadedDokumen()
+    {
+        $major = $this->session->userdata('major');
+        $data = [
+            'DataSyarat' => $this->M_yudisium->getRequirementYudisiumByStatus(),
+            'DataStudent' => $this->M_yudisium->GetAllStudentByMajor($major)
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/dosen/yudisium/progres_upload_dokumen', $data);
+        $this->load->view('backend/partials_/footer');
+    }
 }

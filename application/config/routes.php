@@ -54,8 +54,8 @@ $route['dsn/dashboard/update-syarat-yudisium'] = 'backend/dosen/Yudisium/updateR
 
 $route['dsn/dashboard/mahasiswa-yudisium'] = 'backend/dosen/Yudisium/GetMahasiswaYudisium';
 $route['dsn/dashboard/delete-data-mhs-tidaklulus/(:any)'] = 'backend/dosen/Yudisium/DeleteDataMhsTidakLulus/$1';
-
 $route['dsn/dashboard/detail-uploaded-yudisium/(:any)'] = 'backend/dosen/Yudisium/DetailUploadedYudisium/$1';
+$route['dsn/dashboard/progres-upload-dokumen'] = 'backend/dosen/Yudisium/ProgresUploadedDokumen';
 
 // Yudisium mahasiswa
 $route['mhs/dashboard/syarat-yudisium'] = 'backend/mahasiswa/Yudisium';
@@ -84,6 +84,8 @@ $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';
 $route['dsn/dashboard/proses-sempro/(:any)'] = 'backend/umum/Skripsi/ProsesSempro/$1';
 $route['dsn/dashboard/save-feedback'] = 'backend/umum/Skripsi/SaveFeedbackSubmission';
 $route['dsn/dashboard/Bimbingan'] = 'backend/umum/Skripsi/Bimbingan';
+// pendadaran
+$route['dsn/dashboard/data-mahasiswa-pendadaran'] = 'backend/umum/Pendadaran';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

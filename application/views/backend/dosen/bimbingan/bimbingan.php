@@ -1,10 +1,10 @@
 <div class="col-xl-12">
     <div class="card">
         <div class="card-block table-border-style" style="display:block; height:600px; overflow:auto;">
-            <h4 class="sub-title text-center">Daftar mahasiswa bimbingan</h4>
             <?php if( !empty($Data->result()) ) :?>
             <div class="row">
                 <div class="col-sm-12 col-xl-3">
+                    <h4 class="sub-title text-center">Daftar mahasiswa bimbingan</h4>
                     <?php foreach($Data->result() as $row):?>
                     <div class="media sub-title" id="tabchat" onclick="idFunction(<?= $row->nim;?>)">
                         <?php if($row->image == null):?>
@@ -22,6 +22,7 @@
                     <?php endforeach;?>
                 </div>
                 <div class="col-sm-12 col-xl-9" id="formfedbackchat">
+                    <h4 class="sub-title text-center">Form bimbingan</h4>
                     <div class="text-center">
                         <img class="img-200" src="<?php echo base_url()?>assets/images/chat.png" height="200px"
                             alt="User-Profile-Image">
