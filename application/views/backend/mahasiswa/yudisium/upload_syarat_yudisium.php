@@ -60,6 +60,7 @@
 						</table>
 					</div>
 					<div class="row">
+						<div class="col-sm-12 col-xl-12 sub-title"></div>
 						<div class="col-sm-12 col-xl-8 sub-title text-primary">
 							<h6># Syarat yudisium</h6>
 						</div>
