@@ -74,7 +74,7 @@
 									<?php endif;?>
 								<?php endif;?>
 							<?php else:?>
-								<label class="label label-mini label-danger">Belum ada upload</label>
+								<label class="label label-mini label-danger">Belum terdaftar</label>
 							<?php endif;?>
 						</div>
 						<div class="col-sm-12 col-xl-2 sub-title">
