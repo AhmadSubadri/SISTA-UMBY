@@ -59,6 +59,8 @@ $route['dsn/dashboard/detail-uploaded-yudisium/(:any)'] = 'backend/dosen/Yudisiu
 
 // Yudisium mahasiswa
 $route['mhs/dashboard/syarat-yudisium'] = 'backend/mahasiswa/Yudisium';
+$route['mhs/dashboard/save-document-yudisium'] = 'backend/mahasiswa/Yudisium/SaveDokumenYudisium';
+$route['mhs/dashboard/delete-document-yudisium/(:any)'] = 'backend/mahasiswa/Yudisium/DeleteDokumenYudisium/$1';
 
 // Bimbingan
 $route['dsn/dashboard/Bimbingan'] = 'backend/dosen/Bimbingan';

@@ -49,7 +49,7 @@
 					<table class="table">
 						<thead>
 							<tr class="text-primary">
-								<th># Name</th>
+								<th># Profil</th>
 								<?php $i=1; foreach($DataSyarat->result() as $syarat):?>
 									<th data-toggle="tooltip" data-placement="left" data-original-title="<?= $syarat->requirements;?>">S<?= $i++;?></th>
 								<?php endforeach;?>
