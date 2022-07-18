@@ -76,6 +76,7 @@
 								<div class="media">
 									<label class="badge-top-right">S<?=$i++;?>. </label>
 									<?= $syarat->requirements;?>
+									<label class="text-italic text-danger" style="font-size: 8px;">(wajib)</label>
 								</div>
 							</div>
 							<div class="col-sm-12 col-xl-2 sub-title text-center">

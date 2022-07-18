@@ -300,6 +300,21 @@
                             </li>
                         </ul>
                     </li>
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Progres</div>
+                    <li>
+                        <a href="<?= site_url('mhs/dashboard/me-progres-bimbingan');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-bar-chart"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Progres bimbingan</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= site_url('mhs/dashboard/me-progres-yudisium');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-bar-chart"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Progres yudisium</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 <?php endif;?>
             </ul>
             <!-- end layout sidebar -->

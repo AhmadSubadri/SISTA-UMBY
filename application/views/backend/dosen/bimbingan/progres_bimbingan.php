@@ -74,7 +74,7 @@
 			                                &nbsp<?= $bim->message;?>
 			                            </div>
 	                                    <?php endforeach;?>
-	                                    <br><br><h6 class="sub-title text-primary">Data feedback bimbingan</h6>
+	                                    <br><br><h6 class="sub-title text-primary">Data feedback pembimbing</h6>
 	                                    <?php $l=1; foreach($totalFeedback as $feed):?>
 	                                    	<div class="media">
 				                                &nbsp&nbsp&nbsp<label class="badge-top-right"><?=$l++;?>. </label>
