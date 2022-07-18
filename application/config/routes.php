@@ -92,6 +92,8 @@ $route['dsn/dashboard/data-mahasiswa-pendadaran'] = 'backend/umum/Pendadaran';
 // Tata usaha
 $route['TU/dashboard/data-mahasiswa'] = 'backend/tu/Index/GetDataMahasiswa';
 $route['TU/dashboard/data-dosen'] = 'backend/tu/Index/GetDataDosen';
+$route['TU/dashboard/import-data-dosen'] = 'backend/tu/Index/ImportDataDosen';
+$route['TU/dashboard/export-format-dosen'] = 'backend/tu/Index/ExportFormatDosen';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

@@ -38,15 +38,15 @@ class M_tatausaha extends CI_Model
 	}
 	
 	public function GetDataMahasiswa(){
-		$this->db->select('*')
-		->from('tb_student s')->join('tb_major m','m.id = s.id_major')->join('tb_faculty f','f.id = m.id_faculty');
+		$this->db->select('*,m.name as major, f.name as fac')
+		->from('tb_student s')->where('f.id', $this->session->userdata('faculty'))->join('tb_major m','m.id = s.id_major')->join('tb_faculty f','f.id = m.id_faculty');
 		$query = $this->db->get();
 		return $query->result();
 	}
 
 	public function GetDataDosen(){
-		$this->db->select('*')
-		->from('tb_lecturers l')->join('tb_major m','m.id = l.id_major')->join('tb_faculty f','f.id = m.id_faculty');
+		$this->db->select('*, m.name as major, f.name as fac')
+		->from('tb_lecturers l')->where('f.id', $this->session->userdata('faculty'))->join('tb_major m','m.id = l.id_major')->join('tb_faculty f','f.id = m.id_faculty');
 		$query = $this->db->get();
 		return $query->result();
 	}
