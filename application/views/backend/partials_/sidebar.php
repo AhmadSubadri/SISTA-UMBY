@@ -225,7 +225,21 @@
                         </a>
                     </li>
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component</div>
-
+                    <li>
+                        <a href="#" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-write"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Daftar yudisium</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Setting</div>
+                    <li>
+                        <a href="#" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-settings"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Setting jadwal</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
 
                 <?php else:?>
                     <!-- Menu sidebar Mahasiswa -->
