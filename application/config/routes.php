@@ -22,6 +22,8 @@ $route['mhs/dashboard/save-laporan-akhir'] = 'backend/mahasiswa/Pendadaran/Uploa
 $route['mhs/dashboard/delete-document/(:any)'] = 'backend/mahasiswa/Pendadaran/deleteDocumentSyarat/$1';
 $route['mhs/dashboard/delete-document-laporan-akhir/(:any)'] = 'backend/mahasiswa/Pendadaran/deletedokumenlaporanakhir/$1';
 $route['mhs/dashboard/daftar-pendadaran-sekarang/(:any)'] = 'backend/mahasiswa/Pendadaran/Daftarpendadaransekarang/$1';
+$route['mhs/dashboard/me-progres-bimbingan'] = 'backend/mahasiswa/Progres/ProgresBimbingan';
+$route['mhs/dashboard/me-progres-yudisium'] = 'backend/mahasiswa/Progres/ProgresYudisium';
 
 // Skripsi Dosen
 $route['dsn/dashboard/data-pengajuan-skripsi'] = 'backend/dosen/Skripsi';
