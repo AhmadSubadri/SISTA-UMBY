@@ -59,7 +59,7 @@
 					<div class="col-sm-12 col-xl-2 sub-title">
 						<a href="" class="btn btn-mini btn-outline-primary"><i class="ti-eye"></i></a>
 						<a href="" class="btn btn-mini btn-outline-warning"><i class="ti-pencil"></i></a>
-						<a href="" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i></a>
+						<a href="<?= site_url('TU/dashboard/delete-data-dosen/'.$row->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i></a>
 					</div>
 				<?php endforeach;?>
 			</div>
@@ -118,7 +118,6 @@
                 </div>
                 <div class="modal-footer">
                 	<button class="btn btn-mini btn-outline-primary" type="submit"><i class="ti-upload"></i> Import</button>
-                    <!-- <a class="btn btn-mini btn-outline-primary" type="submit"><i class="ti-upload"></i> Import</a> -->
                 </div>
             </form>
         </div>

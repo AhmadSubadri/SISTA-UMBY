@@ -134,4 +134,20 @@ class Index extends CI_Controller
 	{
 		force_download('_uploads/format_excel/FormatMahasiswa.xlsx', NULL);
 	}
+
+	public function DeleteDataDosen($id)
+	{
+		$this->M_tatausaha->delete('tb_lecturers', 'id', $id);
+		$this->session->set_flashdata('msg',"Delete data lecturer has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+		redirect(site_url('TU/dashboard/data-dosen'));
+	}
+
+	public function DeleteDataMahasiswa($id)
+	{
+		$this->M_tatausaha->delete('tb_student', 'id', $id);
+		$this->session->set_flashdata('msg',"Delete data student has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+		redirect(site_url('TU/dashboard/data-mahasiswa'));
+	}
 }
