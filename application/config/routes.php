@@ -92,6 +92,10 @@ $route['dsn/dashboard/data-mahasiswa-pendadaran'] = 'backend/umum/Pendadaran';
 
 
 // Tata usaha
+$route['TU/dashboard/data-tata-usaha'] = 'backend/tu/Index/GetDataTataUsaha';
+$route['TU/dashboard/insert-data-tatausaha-master'] = 'backend/tu/Index/InsertDataTatausahaMaster';
+$route['TU/dashboard/delete-data-tatausaha/(:any)'] = 'backend/tu/Index/DeleteDataTatausaha/$1';
+$route['TU/dashboard/update-data-tatausaha-master/(:any)'] = 'backend/tu/Index/UpdateDataTatausahaMaster/$1';
 $route['TU/dashboard/data-mahasiswa'] = 'backend/tu/Index/GetDataMahasiswa';
 $route['TU/dashboard/data-dosen'] = 'backend/tu/Index/GetDataDosen';
 $route['TU/dashboard/import-data-dosen'] = 'backend/tu/Index/ImportDataDosen';

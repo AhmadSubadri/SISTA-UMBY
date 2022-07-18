@@ -15,6 +15,68 @@ class Index extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
+	public function GetDataTataUsaha()
+	{
+		$data = [
+			'Data' => $this->M_tatausaha->GetDataTatausaha(),
+			'DataJurusan' => $this->M_tatausaha->GetDataJurusan()
+		];
+		$this->load->view('backend/partials_/head');
+		$this->load->view('backend/tu/data_tata_usaha', $data);
+		$this->load->view('backend/partials_/footer');
+	}
+
+	public function DeleteDataTatausaha($id)
+	{
+		$this->M_tatausaha->delete('tb_staff', 'id', $id);
+		$this->session->set_flashdata('msg',"Delete data staff has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
+		redirect(site_url('TU/dashboard/data-tata-usaha'));
+	}
+
+	public function InsertDataTatausahaMaster()
+	{
+		$datab = array(
+			'username' => $this->input->post('nidn'),
+			'fullname' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'password' => password_hash($this->input->post('nidn'), PASSWORD_BCRYPT),
+			'role_id' => "3",
+			'id_faculty' => $this->input->post('faculty')
+		);
+		$insert = $this->M_tatausaha->save('tb_staff', $datab);
+		if($insert){
+			$this->session->set_flashdata('msg',"Insert data Staff has been added successfully");
+	        $this->session->set_flashdata('msg_class','alert-success');
+			redirect(site_url('TU/dashboard/data-tata-usaha'));
+		}else{
+			$this->session->set_flashdata('msg',"Insert data Staff has been added failed");
+	        $this->session->set_flashdata('msg_class','alert-danger');
+			redirect(site_url('TU/dashboard/data-tata-usaha'));
+		}
+	}
+
+	public function UpdateDataTatausahaMaster($id)
+	{
+		$datac = array(
+			'fullname' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'password' => password_hash($this->input->post('nidn'), PASSWORD_BCRYPT),
+			'role_id' => "3",
+			'id_faculty' => $this->input->post('faculty')
+		);
+		$update = $this->M_tatausaha->update('tb_staff', $datac, 'username', $id);
+		if($update){
+			$this->session->set_flashdata('msg',"Update data Staff has been added successfully");
+	        $this->session->set_flashdata('msg_class','alert-success');
+			redirect(site_url('TU/dashboard/data-tata-usaha'));
+		}else{
+			$this->session->set_flashdata('msg',"Update data Staff has been added failed");
+	        $this->session->set_flashdata('msg_class','alert-danger');
+			redirect(site_url('TU/dashboard/data-tata-usaha'));
+		}
+	}
+
 	public function GetDataMahasiswa()
 	{
 		$data = [

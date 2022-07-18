@@ -202,11 +202,11 @@
 
                     <!-- Tata usaha -->
                 <?php elseif($this->session->userdata('level') == '3'):?>
-                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Data user</div>
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Data master user</div>
                     <li>
-                        <a href="<?= site_url('TU/dashboard/data-mahasiswa');?>" class="waves-effect waves-dark">
+                        <a href="<?= site_url('TU/dashboard/data-tata-usaha');?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-list"></i><b>FC</b></span>
-                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Data mahasiswa</span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Data tata usaha</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
@@ -217,6 +217,16 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= site_url('TU/dashboard/data-mahasiswa');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-list"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Data mahasiswa skripsi</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component</div>
+
+
                 <?php else:?>
                     <!-- Menu sidebar Mahasiswa -->
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Bimbingan</div>
