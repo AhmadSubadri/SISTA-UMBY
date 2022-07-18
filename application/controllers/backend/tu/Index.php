@@ -64,11 +64,11 @@ class Index extends CI_Controller
 			}
 			$insert = $this->M_tatausaha->add('tb_lecturers', $temp_data);
 			if($insert){
-				$this->session->set_flashdata('msg',"Import has been added successfully");
+				$this->session->set_flashdata('msg',"Import file lecturer has been added successfully");
             	$this->session->set_flashdata('msg_class','alert-success');
 				redirect(site_url('TU/dashboard/data-dosen'));
 			}else{
-				$this->session->set_flashdata('msg',"Import has been added failed");
+				$this->session->set_flashdata('msg',"Import file lecturer has been added failed");
             	$this->session->set_flashdata('msg_class','alert-danger');
 				redirect(site_url('TU/dashboard/data-dosen'));
 			}
@@ -76,6 +76,52 @@ class Index extends CI_Controller
 			$this->session->set_flashdata('msg',"No files uploaded");
             $this->session->set_flashdata('msg_class','alert-danger');
 			redirect(site_url('TU/dashboard/data-dosen'));
+		}
+	}
+
+	public function ImportDataMahasiswa()
+	{
+		if (isset($_FILES["fileExcel"]["name"])) {
+			$path = $_FILES["fileExcel"]["tmp_name"];
+			$object = PHPExcel_IOFactory::load($path);
+			foreach($object->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				$highestColumn = $worksheet->getHighestColumn();	
+				for($row=2; $row<=$highestRow; $row++)
+				{
+					$nim = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+					$nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+					$email = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$password = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$jurusan = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+					$class = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+					$role = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+					$temp_data[] = array(
+						'username'	=> $nim,
+						'fullname'	=> $nama,
+						'email'	=> $email,
+						'password'	=> password_hash($password, PASSWORD_BCRYPT),
+						'id_major' => $jurusan,
+						'class' => $class,
+						'role_id'	=> $role
+					);
+				}
+			}
+			$insert = $this->M_tatausaha->add('tb_student',$temp_data);
+			if($insert){
+				$this->session->set_flashdata('msg',"Import file lecturer has been added successfully");
+            	$this->session->set_flashdata('msg_class','alert-success');
+				redirect(site_url('TU/dashboard/data-mahasiswa'));
+			}else{
+				$this->session->set_flashdata('msg',"Import file lecturer has been added failed");
+            	$this->session->set_flashdata('msg_class','alert-danger');
+				redirect(site_url('TU/dashboard/data-mahasiswa'));
+			}
+		}else{
+			$this->session->set_flashdata('msg',"No files uploaded");
+            $this->session->set_flashdata('msg_class','alert-danger');
+			redirect(site_url('TU/dashboard/data-mahasiswa'));
 		}
 	}
 

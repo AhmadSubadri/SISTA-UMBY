@@ -4,10 +4,8 @@
 		<div class="card-header">
 			<h5>Data dosen</h5>
 			<div class="card-header-right">
-				<a class="btn btn-mini btn-outline-primary" data-toggle="modal"
-            data-target="#tambahlistdosen">Tambah data dosen</a>
-            <a class="btn btn-mini btn-outline-primary" data-toggle="modal"
-            data-target="#importlistdosen">Import data dosen</a>
+				<a class="btn btn-mini btn-outline-primary" data-toggle="modal" data-target="#tambahlistdosen">Tambah data dosen</a>
+            	<a class="btn btn-mini btn-outline-primary" data-toggle="modal" data-target="#importlistdosen">Import data dosen</a>
 			</div>
 		</div>
 		<div class="card-block">
@@ -61,6 +59,7 @@
 					<div class="col-sm-12 col-xl-2 sub-title">
 						<a href="" class="btn btn-mini btn-outline-primary"><i class="ti-eye"></i></a>
 						<a href="" class="btn btn-mini btn-outline-warning"><i class="ti-pencil"></i></a>
+						<a href="" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i></a>
 					</div>
 				<?php endforeach;?>
 			</div>
