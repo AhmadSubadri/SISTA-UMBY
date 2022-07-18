@@ -26,7 +26,7 @@
 					Aksi
 				</div>
 				<!-- Data -->
-				<?php $i=1; foreach($Data as $row):?>
+				<?php $i=1; foreach($Data->result() as $row):?>
 					<div class="col-sm-12 col-xl-4 sub-title">
 						<div class="media">
 							<label class="badge-top-right"><?=$i++;?>.</label>
@@ -57,44 +57,139 @@
 						<?php endforeach;?>
 					</div>
 					<div class="col-sm-12 col-xl-2 sub-title">
-						<a href="" class="btn btn-mini btn-outline-primary"><i class="ti-eye"></i></a>
-						<a href="" class="btn btn-mini btn-outline-warning"><i class="ti-pencil"></i></a>
-						<a href="<?= site_url('TU/dashboard/delete-data-dosen/'.$row->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i></a>
+						<a href="" class="btn btn-mini btn-outline-warning" data-toggle="modal" data-target="#editlistdosen<?= $row->username;?>"><i class="ti-pencil"></i>Edit</a>
+						<a href="<?= site_url('TU/dashboard/delete-data-dosen/'.$row->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Delete</a>
 					</div>
 				<?php endforeach;?>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div class="modal fade" id="tambahlistdosen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Modal tambah data dosen -->
+<div class="modal fade bd-example-modal-lg" id="tambahlistdosen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah data Dosen</h5>
+                <h5 id="exampleModalLabel">Tambah data Dosen</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="<?= site_url('TU/dashboard/import-data-dosen'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= site_url('TU/dashboard/insert-data-dosen-master'); ?>" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <i class="fa fa-file-excel"></i>
-                        <a href="<?= site_url('dashboard/Format_datadsn')?>">Download Format Excel</a>
+                    <i class="fa fa-file-excel sub-title text-primary">Form tambah data dosen</i>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">NIDN</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="nidn" class="form-control" maxlength="11" required>
+                        </div>
+                        <label class="col-sm-2 col-form-label">Full Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Upload File Excel</label>
-                        <input type="file" name="fileExcel">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Jurusan</label>
+                            <div class="col-sm-4">
+                                <select name="major" class="form-control" required>
+                                    <option value="opt1">Select Jurusan</option>
+                                    <?php foreach ($DataJurusan as $key):?>
+                                    <option value="<?= $key->id;?>"><?= $key->major;?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        <label class="col-sm-2 col-form-label">Level</label>
+                            <div class="col-sm-4">
+                                <select name="level" class="form-control" required>
+                                    <option value="opt1">Select Level</option>
+                                    <option value="1">Kepala program studi</option>
+                                    <option value="2">Dosen pengajar</option>
+                                </select>
+                            </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-mini btn-outline-primary" type="submit"><i class="ti-upload"></i> Import</a>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="ti-save"></i> Save data</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<!-- Modal update data dosen -->
+<?php foreach($Data->result_array() as $i):
+        $nidn = $i['username'];
+        $name = $i['fullname'];
+        $email=$i['email'];
+        $level =$i['role_id'];
+        $major =$i['id_major'];
+?>
+<div class="modal fade bd-example-modal-lg" id="editlistdosen<?= $nidn;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="exampleModalLabel">Edit data Dosen</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="<?= site_url('TU/dashboard/update-data-dosen-master/'.$nidn); ?>" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <i class="fa fa-file-excel sub-title text-primary">Form edit data dosen</i>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">NIDN</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="nidn" value="<?= $nidn;?>" class="form-control" maxlength="11" readonly>
+                        </div>
+                        <label class="col-sm-2 col-form-label">Full Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="name" value="<?= $name;?>" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="email" value="<?= $email;?>" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Jurusan</label>
+                            <div class="col-sm-4">
+                                <select name="major" class="form-control" required>
+                                    <option value="opt1">Select Jurusan</option>
+                                    <?php foreach ($DataJurusan as $key):?>
+                                    <option value="<?= $key->id;?>"><?= $key->major;?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        <label class="col-sm-2 col-form-label">Level</label>
+                            <div class="col-sm-4">
+                                <select name="level" class="form-control" required>
+                                    <option value="opt1">Select Level</option>
+                                    <option value="1">Kepala program studi</option>
+                                    <option value="2">Dosen pengajar</option>
+                                </select>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                	<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="ti-save"></i> Update data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php endforeach;?>
+<!-- Modal import data dosen -->
 <div class="modal fade" id="importlistdosen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
