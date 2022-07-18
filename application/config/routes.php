@@ -100,6 +100,10 @@ $route['TU/dashboard/import-data-mahasiswa'] = 'backend/tu/Index/ImportDataMahas
 $route['TU/dashboard/export-format-mahasiswa'] = 'backend/tu/Index/ExportFormatMahasiswa';
 $route['TU/dashboard/delete-data-dosen/(:any)'] = 'backend/tu/Index/DeleteDataDosen/$1';
 $route['TU/dashboard/delete-data-mahasiswa/(:any)'] = 'backend/tu/Index/DeleteDataMahasiswa/$1';
+$route['TU/dashboard/insert-data-dosen-master'] = 'backend/tu/Index/InsertDataDosenMaster';
+$route['TU/dashboard/update-data-dosen-master/(:any)'] = 'backend/tu/Index/UpdateDataDosenMaster/$1';
+$route['TU/dashboard/insert-data-mahasiswa-master'] = 'backend/tu/Index/InsertDataMahasiswaMaster';
+$route['TU/dashboard/update-data-mahasiswa-master/(:any)'] = 'backend/tu/Index/UpdateDataMahasiswaMaster/$1';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

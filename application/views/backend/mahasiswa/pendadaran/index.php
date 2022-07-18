@@ -75,7 +75,7 @@
                         </div>
                     <?php if(count($Data) != 0):?>
                         <?php $i=1; foreach($DataSyarat as $syarat):?>
-                        <div class="col-sm-12 col-xl-8 sub-title">
+                        <div class="col-sm-12 col-xl-8">
                             <div class="media">
                                 <label class="badge-top-right">S<?=$i++;?>. </label>
                                 <?= $syarat->requirements;?><i class="text-danger" style="font-size: 8px;">(*wajib)</i>

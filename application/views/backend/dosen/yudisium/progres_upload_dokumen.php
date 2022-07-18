@@ -17,7 +17,7 @@
 					<tbody>
 						<?php $j=1; foreach($DataStudent as $data):?>
 							<tr>
-								<th>
+								<th class="text-primary">
 									<div class="media">
 										<label class="badge-top-right"><?=$j++;?>.</label>
 										<?php if($data->image == null):?>

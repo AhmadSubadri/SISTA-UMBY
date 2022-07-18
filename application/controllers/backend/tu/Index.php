@@ -18,7 +18,8 @@ class Index extends CI_Controller
 	public function GetDataMahasiswa()
 	{
 		$data = [
-			'Data' => $this->M_tatausaha->GetDataMahasiswa()
+			'Data' => $this->M_tatausaha->GetDataMahasiswa(),
+			'DataJurusan' => $this->M_tatausaha->GetDataJurusan()
 		];
 		$this->load->view('backend/partials_/head');
 		$this->load->view('backend/tu/data_mahasiswa', $data);
@@ -28,7 +29,8 @@ class Index extends CI_Controller
 	public function GetDataDosen()
 	{
 		$data = [
-			'Data' => $this->M_tatausaha->GetDataDosen()
+			'Data' => $this->M_tatausaha->GetDataDosen(),
+			'DataJurusan' => $this->M_tatausaha->GetDataJurusan()
 		];
 		$this->load->view('backend/partials_/head');
 		$this->load->view('backend/tu/data_dosen', $data);
@@ -149,5 +151,93 @@ class Index extends CI_Controller
 		$this->session->set_flashdata('msg',"Delete data student has been added successfully");
         $this->session->set_flashdata('msg_class','alert-success');
 		redirect(site_url('TU/dashboard/data-mahasiswa'));
+	}
+
+	public function InsertDataDosenMaster()
+	{
+		$dataa = array(
+			'username' => $this->input->post('nidn'),
+			'fullname' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'password' => password_hash($this->input->post('nidn'), PASSWORD_BCRYPT),
+			'id_major' => $this->input->post('major'),
+			'role_id' => $this->input->post('level'),
+		);
+		$insert = $this->M_tatausaha->save('tb_lecturers', $dataa);
+		if($insert){
+			$this->session->set_flashdata('msg',"Insert data lecturer has been added successfully");
+	        $this->session->set_flashdata('msg_class','alert-success');
+			redirect(site_url('TU/dashboard/data-dosen'));
+		}else{
+			$this->session->set_flashdata('msg',"Insert data lecturer has been added failed");
+	        $this->session->set_flashdata('msg_class','alert-danger');
+			redirect(site_url('TU/dashboard/data-dosen'));
+		}
+	}
+
+	public function UpdateDataDosenMaster($nidn)
+	{
+		$dataa = array(
+			'fullname' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'password' => password_hash($this->input->post('nidn'), PASSWORD_BCRYPT),
+			'id_major' => $this->input->post('major'),
+			'role_id' => $this->input->post('level'),
+		);
+		$update = $this->M_tatausaha->update('tb_lecturers', $dataa, 'username', $nidn);
+		if($update){
+			$this->session->set_flashdata('msg',"Update data lecturer has been added successfully");
+	        $this->session->set_flashdata('msg_class','alert-success');
+			redirect(site_url('TU/dashboard/data-dosen'));
+		}else{
+			$this->session->set_flashdata('msg',"Update data lecturer has been added failed");
+	        $this->session->set_flashdata('msg_class','alert-danger');
+			redirect(site_url('TU/dashboard/data-dosen'));
+		}
+	}
+
+	public function InsertDataMahasiswaMaster()
+	{
+		$data = array(
+			'username' => $this->input->post('nim'),
+			'fullname' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'password' => password_hash($this->input->post('nim'), PASSWORD_BCRYPT),
+			'id_major' => $this->input->post('major'),
+			'role_id' => "4",
+			'class' => $this->input->post('Angkatan')
+		);
+		$insert = $this->M_tatausaha->save('tb_student', $data);
+		if($insert){
+			$this->session->set_flashdata('msg',"Insert data student has been added successfully");
+	        $this->session->set_flashdata('msg_class','alert-success');
+			redirect(site_url('TU/dashboard/data-mahasiswa'));
+		}else{
+			$this->session->set_flashdata('msg',"Insert data student has been added failed");
+	        $this->session->set_flashdata('msg_class','alert-danger');
+			redirect(site_url('TU/dashboard/data-mahasiswa'));
+		}
+	}
+
+	public function UpdateDataMahasiswaMaster($nim)
+	{
+		$data = array(
+			'fullname' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'password' => password_hash($this->input->post('nim'), PASSWORD_BCRYPT),
+			'id_major' => $this->input->post('major'),
+			'role_id' => "4",
+			'class' => $this->input->post('Angkatan')
+		);
+		$update = $this->M_tatausaha->update('tb_student', $data, 'username', $nim);
+		if($update){
+			$this->session->set_flashdata('msg',"Update data student has been added successfully");
+	        $this->session->set_flashdata('msg_class','alert-success');
+			redirect(site_url('TU/dashboard/data-mahasiswa'));
+		}else{
+			$this->session->set_flashdata('msg',"Update data student has been added failed");
+	        $this->session->set_flashdata('msg_class','alert-danger');
+			redirect(site_url('TU/dashboard/data-mahasiswa'));
+		}
 	}
 }
