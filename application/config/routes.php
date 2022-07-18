@@ -7,6 +7,15 @@ $route['login_verify'] = 'backend/Authentication/DoLogin';
 $route['Logout'] = 'backend/Authentication/Logout';
 $route['Dashboard'] = 'backend/Dashboard';
 
+// frontend
+$route['Login-user'] = 'frontend/Auth';
+$route['Home'] = 'frontend/Welcome';
+$route['About'] = 'frontend/Welcome/About';
+$route['Timeline'] = 'frontend/Welcome/Timeline';
+$route['Announcement'] = 'frontend/Welcome/Announcement';
+$route['Download'] = 'frontend/Welcome/Download';
+$route['Contact'] = 'frontend/Welcome/Contact';
+
 
 // Skripsi mahasiswa
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';
@@ -92,6 +101,10 @@ $route['dsn/dashboard/data-mahasiswa-pendadaran'] = 'backend/umum/Pendadaran';
 
 
 // Tata usaha
+$route['TU/dashboard/data-tata-usaha'] = 'backend/tu/Index/GetDataTataUsaha';
+$route['TU/dashboard/insert-data-tatausaha-master'] = 'backend/tu/Index/InsertDataTatausahaMaster';
+$route['TU/dashboard/delete-data-tatausaha/(:any)'] = 'backend/tu/Index/DeleteDataTatausaha/$1';
+$route['TU/dashboard/update-data-tatausaha-master/(:any)'] = 'backend/tu/Index/UpdateDataTatausahaMaster/$1';
 $route['TU/dashboard/data-mahasiswa'] = 'backend/tu/Index/GetDataMahasiswa';
 $route['TU/dashboard/data-dosen'] = 'backend/tu/Index/GetDataDosen';
 $route['TU/dashboard/import-data-dosen'] = 'backend/tu/Index/ImportDataDosen';
@@ -105,6 +118,6 @@ $route['TU/dashboard/update-data-dosen-master/(:any)'] = 'backend/tu/Index/Updat
 $route['TU/dashboard/insert-data-mahasiswa-master'] = 'backend/tu/Index/InsertDataMahasiswaMaster';
 $route['TU/dashboard/update-data-mahasiswa-master/(:any)'] = 'backend/tu/Index/UpdateDataMahasiswaMaster/$1';
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'frontend/Welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

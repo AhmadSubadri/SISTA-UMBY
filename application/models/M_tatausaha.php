@@ -62,6 +62,13 @@ class M_tatausaha extends CI_Model
 		return $query;
 	}
 
+	public function GetDataTatausaha(){
+		$this->db->select('*, l.id as id, f.name as fac, f.id as facid')
+		->from('tb_staff l')->where('l.id_faculty', $this->session->userdata('faculty'))->join('tb_faculty f','f.id = l.id_faculty');
+		$query = $this->db->get();
+		return $query;
+	}
+
 	public function GetDataJurusan(){
 		$this->db->select('*, m.id as id, m.name as major')
 		->from('tb_major m')->where('f.id', $this->session->userdata('faculty'))->join('tb_faculty f','f.id = m.id_faculty');
