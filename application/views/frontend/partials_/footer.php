@@ -98,7 +98,6 @@
 
   <!-- Template Main JS File -->
   <script src="<?php base_url()?>frontend/js/main.js"></script>
-
 </body>
 
 </html>
