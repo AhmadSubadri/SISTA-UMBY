@@ -346,32 +346,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="media" style="margin-right: 18px;">
-                                    <div class="col-xl-1">
-                                        <label class="badge-top-right"><h5 class="text-danger"><b>22</b></h5>
-                                            <?php if ( str_word_count("Juni") > 0 ):
-                                                echo substr("Juni",0,3);?>
-                                            <?php else :?>
-                                                Juni
-                                            <?php endif;?>
-                                        </label>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="media-body">
-                                            <h6 class="text-primary">Pendadaran</h6>
-                                            <?php if ( str_word_count("Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022") > 5 ):
-                                                    echo substr("<p class='text-muted m-b-0'>Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>",0,100)."...<a href='' class='text-primary'> <u>read more</u></a>";?>
-                                                <?php else :?>
-                                                    <p class="text-muted m-b-0">Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>
-                                                <?php endif;?>
-                                            <br><label class="label label-mini label-default text-muted">Activity</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

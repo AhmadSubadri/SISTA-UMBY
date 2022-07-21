@@ -61,8 +61,8 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="text-c-green">$30200</h4>
-                                <h6 class="text-muted m-b-0">All Earnings</h6>
+                                <h4 class="text-c-green">2</h4>
+                                <h6 class="text-muted m-b-0">Sudah upload</h6>
                             </div>
                             <div class="col-4 text-right">
                                 <i class="fa fa-bar-chart f-28"></i>
@@ -72,7 +72,7 @@
                     <div class="card-footer bg-c-green">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <p class="text-white m-b-0">% change</p>
+                                <p class="text-white m-b-0">Sistem Informasi</p>
                             </div>
                             <div class="col-3 text-right">
                                 <i class="fa fa-line-chart text-white f-16"></i>
@@ -86,8 +86,8 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="text-c-red">$30200</h4>
-                                <h6 class="text-muted m-b-0">All Earnings</h6>
+                                <h4 class="text-c-red">5</h4>
+                                <h6 class="text-muted m-b-0">Belum upload</h6>
                             </div>
                             <div class="col-4 text-right">
                                 <i class="fa fa-bar-chart f-28"></i>
@@ -97,7 +97,7 @@
                     <div class="card-footer bg-c-red">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <p class="text-white m-b-0">% change</p>
+                                <p class="text-white m-b-0">Sistem Informasi</p>
                             </div>
                             <div class="col-3 text-right">
                                 <i class="fa fa-line-chart text-white f-16"></i>
