@@ -46,8 +46,11 @@
                                 <?php if($row->tanggal == 0):?>
                                 <label class="label label-mini label-danger">Belum terjadwal</label>
                                 <?php else:?>
-                                <h6>Hari/Tanggal : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?>
-                                </h6>
+                                    <?php if(format_tanggal(date($row->tanggal)) == format_tanggal(date('Y-m-d'))):?>
+                                        <h6 class="text-danger" id="warningschedule">Hari ini : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?></h6>
+                                    <?php else:?>
+                                        <h6>Hari/Tanggal : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?></h6>
+                                    <?php endif;?>
                                 <h6>Tempat : <?= $row->tempat;?></h6>
                                 <h6>Kegiatan : <?= $row->kegiatan;?></h6>
                                 <?php endif;?>
@@ -81,3 +84,10 @@
         </div>
     </div>
 </div>
+
+<style type="text/css">
+    #warningschedule {
+  animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;  
+}
+@keyframes blinker2 { to { opacity: 0; } }
+</style>

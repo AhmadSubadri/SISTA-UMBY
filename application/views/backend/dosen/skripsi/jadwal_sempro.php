@@ -1,5 +1,5 @@
 <div class="col-xl-12">
-    <a href="<?= site_url('dsn/dashboard/data-sempro-skripsi');?>" class="btn btn-mini btn-grd-primary"><i class="ti-back-left"></i>Kembali</a>
+    <a href="<?= site_url('dsn/dashboard/data-sempro-skripsi');?>" class="btn btn-mini btn-outline-primary"><i class="ti-back-left"></i>Kembali</a>
     <div class="card">
         <div class="card-block">
             <?php foreach($Data as $row):?>
