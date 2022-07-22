@@ -4,6 +4,32 @@
         <div class="card-block">
             <div class="row align-items-center">
                 <div class="col-8">
+                    <?php $allData = $this->db->select('*')->from('tb_student')->get()->result();?>
+                    <h4 class="text-c-green"><?php echo count($allData);?></h4>
+                    <h6 class="text-muted m-b-0">Semua mahasiswa</h6>
+                </div>
+                <div class="col-4 text-right">
+                    <i class="fa fa-file-text-o f-28"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-c-green">
+            <div class="row align-items-center">
+                <div class="col-9">
+                    <p class="text-white m-b-0">Data semua fakultas</p>
+                </div>
+                <div class="col-3 text-right">
+                    <i class="fa fa-line-chart text-white f-16"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xl-3 col-md-6">
+    <div class="card">
+        <div class="card-block">
+            <div class="row align-items-center">
+                <div class="col-8">
                     <?php if($this->session->userdata('level') == 3):?>
                         <?php $fakultas = $this->db->select('*')->where('id', $this->session->userdata('faculty'))->from('tb_faculty')->get()->result();?>
                         <?php $mhs = $this->db->select('*')->where('f.id', $this->session->userdata('faculty'))->from('tb_student s')->join('tb_major m', 'm.id = s.id_major')->join('tb_faculty f', 'f.id = m.id_faculty')->get()->result();?>
@@ -43,33 +69,6 @@
         </div>
     </div>
 </div>
-
-<div class="col-xl-3 col-md-6">
-    <div class="card">
-        <div class="card-block">
-            <div class="row align-items-center">
-                <div class="col-8">
-                    <?php $allData = $this->db->select('*')->from('tb_student')->get()->result();?>
-                    <h4 class="text-c-green"><?php echo count($allData);?></h4>
-                    <h6 class="text-muted m-b-0">Semua data skripsi</h6>
-                </div>
-                <div class="col-4 text-right">
-                    <i class="fa fa-file-text-o f-28"></i>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer bg-c-green">
-            <div class="row align-items-center">
-                <div class="col-9">
-                    <p class="text-white m-b-0">Data semua Fakultas</p>
-                </div>
-                <div class="col-3 text-right">
-                    <i class="fa fa-line-chart text-white f-16"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="col-xl-3 col-md-6">
     <div class="card">
         <div class="card-block">
@@ -79,10 +78,10 @@
                     <?php $uu = $this->db->select('*')->where('major', $this->session->userdata('major'))->from('tb_thesisreceived t')->get()->result();?>
                     <?php if($this->session->userdata('level') == 3):?>
                         <h4 class="text-c-red"><?php echo count($tt);?></h4>
-                        <h6 class="text-muted m-b-0">Bimbingan/Sidang</h6>
+                        <h6 class="text-muted m-b-0">Bimbingan</h6>
                     <?php else:?>
                         <h4 class="text-c-red"><?php echo count($uu);?></h4>
-                        <h6 class="text-muted m-b-0">Bimbingan/Sidang</h6>
+                        <h6 class="text-muted m-b-0">Bimbingan</h6>
                     <?php endif;?>
                 </div>
                 <div class="col-4 text-right">

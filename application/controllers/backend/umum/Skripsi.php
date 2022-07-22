@@ -19,6 +19,7 @@ class Skripsi extends CI_Controller
 
 	public function Index()
 	{
+        $this->db->truncate('source_pengajuan');
 		$data = [
 			'Data' => $this->M_umum->Index()
 		];
@@ -31,7 +32,7 @@ class Skripsi extends CI_Controller
     {
         $cekhsl = $this->M_umum->getresultrabin($id)->num_rows();
         if($cekhsl == 0){
-            $kgram = 3;
+            $kgram = 5;
             $basis = 3;
             $this->db->select('title, nim, id');
             $this->db->where('id', $id);
