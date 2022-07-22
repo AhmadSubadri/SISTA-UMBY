@@ -66,16 +66,14 @@
                                 <a href="<?= site_url('dsn/dashboard/data-pengajuan-skripsi');?>"
                                     class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Data pengajuan judul &
-                                    proposal</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Data pengajuan tugas akhir</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
                             <li class="<?php if($this->uri->uri_string() == 'dsn/dashboard/data-sempro-skripsi') { echo 'active'; } ?>">
                                 <a href="<?= site_url('dsn/dashboard/data-sempro-skripsi');?>" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Schedule &
-                                    pengumuman hasil sempro</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Penentuan jadwal & pengumuman hasil</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -83,8 +81,7 @@
                                 <a href="<?= site_url('dsn/dashboard/data-sempro-mahasiswa');?>"
                                     class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Data mahasiswa seminar
-                                    proposal</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Pelaksanaan seminar proposal</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -92,7 +89,7 @@
                                 <a href="<?= site_url('dsn/dashboard/ploting-dosen-pembimbing');?>"
                                     class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Ploting dosen
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Pemilihan dosen
                                     pembimbing</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
@@ -117,14 +114,14 @@
                             <li class="<?php if($this->uri->uri_string() == 'dsn/dashboard/mahasiswa-pendadaran') { echo 'active'; } ?>">
                                 <a href="<?= site_url('dsn/dashboard/mahasiswa-pendadaran');?>" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Mahasiswa pendadaran</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Data mahasiswa pendadaran</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
                             <li class="<?php if($this->uri->uri_string() == 'dsn/dashboard/penentuan-jadwal-pendadaran') { echo 'active'; } ?>">
                                 <a href="<?= site_url('dsn/dashboard/penentuan-jadwal-pendadaran');?>" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Penentuan jadwal & penguji</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Penentuan jadwal & penguji sidang</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -190,7 +187,7 @@
                     <li class="<?php if($this->uri->uri_string() == 'dsn/dashboard/pelaksanaan-sempro') { echo 'active'; } ?>">
                         <a href="<?= site_url('dsn/dashboard/pelaksanaan-sempro');?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
-                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Mahasiswa sempro</span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Pelaksanaan sempro</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
@@ -198,7 +195,7 @@
                     <li class="<?php if($this->uri->uri_string() == 'dsn/dashboard/data-mahasiswa-pendadaran') { echo 'active'; } ?>">
                         <a href="<?= site_url('dsn/dashboard/data-mahasiswa-pendadaran');?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-write"></i><b>FC</b></span>
-                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Mahasiswa pendadaran</span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Pelaksanaan pendadaran</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

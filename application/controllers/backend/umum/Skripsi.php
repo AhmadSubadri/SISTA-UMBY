@@ -19,6 +19,9 @@ class Skripsi extends CI_Controller
 
 	public function Index()
 	{
+        $this->db->truncate('source_pengajuan');
+        $this->db->truncate('tb_resultrabintest');
+        $this->db->truncate('source_pembanding');
 		$data = [
 			'Data' => $this->M_umum->Index()
 		];
@@ -27,64 +30,68 @@ class Skripsi extends CI_Controller
 		$this->load->view('backend/partials_/footer');
 	}
 
-    public function ProsesSempro($id=0)
+    public function ProsesSempro($id)
     {
-        $cekhsl = $this->M_umum->getresultrabin($id)->num_rows();
-        if($cekhsl == 0){
-            $kgram = 3;
+        $cekhsl = $this->M_umum->GetSourcePembanding()->num_rows();
+        $cekhs2 = $this->M_umum->GetSourcePengajuan()->num_rows();
+        if($cekhsl  == 0 && $cekhs2  == 0){
+            $kgram = 5;
             $basis = 3;
-            $this->db->select('title, nim, id');
-            $this->db->where('id', $id);
-            $submisson = $this->db->get('tb_ideasubmission')->row();
-            $nim = $submisson->nim;
-            $Token = hapus_simbol($submisson->title);
-            // $x2 = katahubung($dq); 
-            $readngram2 = hasing("$Token","$kgram","$basis");
-
-            $juduluji = $this->M_umum->getSourcetitle('tb_sourcetitle')->result_array();
-            $array_abstrak = array();
-            foreach($juduluji as $key => $value){
-                // $id_dokumen = $value["id"];
-                $keys=   $array_abstrak[$key] = $value["rabin"];
-                $readngram1 = hasing("$keys","$kgram","$basis");            
-                $resultintersect = array_intersect($readngram1,$readngram2);  
-                $totals=count($resultintersect);
-
-                $jtotalarray=count($readngram1);
-                $jtotalarray2=count($readngram2); 
-                $x=((2*$totals)/($jtotalarray+$jtotalarray2)*100);
-                // var_dump($x);
-                $dtal = array(
-                    'id_sourcetitle' => $value["id"],
-                    'id_ideasubmission' => $id,
-                    'nim' => $nim,
-                    'title' => $value["title"],
-                    'name' => $value["name"],
-                    'result' => $x
-                );
-                $this->db->insert('tb_resultrabintest', $dtal);
-            }
-            $this->M_umum->_SetData('tb_ideasubmission', ['rabin'=>$Token], 'id' ,$id);
-            $result = $this->M_umum->slectmax($id);
-            foreach($result as $hsl){
-                $array = array($hsl->result);
-                $maxhs = $this->M_umum->nilaiMax($array);
-                $this->M_umum->_SetData('tb_ideasubmission', ['result_test'=>$maxhs], 'id' ,$id);
+            $key = md5(rand());
+            // source pembanding
+            $this->M_umum->_SetData('tb_ideasubmission', ['keyy' => $key], 'id', $id);
+            $sourceTitle = $this->M_umum->getSourcetitle('tb_sourcetitle')->result();
+            foreach($sourceTitle as $source){
+                $src = hapus_simbol($source->title);
+                $length=strlen($src);
+                $teksSplit=null;
+                if(strlen($src) < $kgram){
+                    $teksSplit[]=$src;
+                }else{
+                    for($i=0;$i<=$length-$kgram;$i++){
+                        $teksSplit[]=substr($src,$i,$kgram);
+                        $aaa = array(
+                            'id_pembanding' => $source->id,
+                            'source' => $teksSplit[$i],
+                            'kunci' => $key
+                        );
+                        $this->db->insert('source_pembanding', $aaa);
+                    }
+                }
             }
 
-            $chart_data = $this->M_chart->read($id);
+            // Data title pengajuan
+            $p = $this->db->select('*')->where('id', $id)->from('tb_ideasubmission')->get()->result();
+            foreach($p as $pengajuan){
+                $de = hapus_simbol($pengajuan->title);
+                $lengthe=strlen($de);
+                $teksSplite=null;
+                if(strlen($de) < $kgram){
+                    $teksSplite[]=$de;
+                }else{
+                    for($j=0;$j<=$lengthe-$kgram;$j++){
+                        $teksSplite[]=substr($de,$j,$kgram);
+                        $bbb = array(
+                            'id_pengajuan' => $pengajuan->id,
+                            'source' => $teksSplite[$j],
+                            'kunci' => $key
+                        );
+                        $this->db->insert('source_pengajuan', $bbb);
+                    }
+                }
+            }
             $all = [
+                'DataSource' => $this->M_umum->getSourcetitle('tb_sourcetitle'),
                 'DetailId' => $this->M_umum->DetailByIdIdea($id),
-                'chart_data' => $chart_data,
-                'data' => $this->M_umum->_getbyIdPreview($id),
-                'resultTest' => $this->M_umum->getresultrabin($id)->result()
+                // 'chartdata' => $this->M_chart->read($id),
+                'data' => $this->M_umum->_getbyIdPreview($id)
+                // 'resultTest' => $this->M_umum->getresultrabin($id)
             ];
             $this->load->view('backend/partials_/head');
             $this->load->view('backend/umum/proses_sempro', $all);
             $this->load->view('backend/partials_/footer');
         }else{
-            $this->M_umum->delete('tb_resultrabintest','id_ideasubmission', $id);
-            redirect(site_url('dsn/dashboard/proses-sempro/'.$id));
+            redirect(site_url('dsn/dashboard/pelaksanaan-sempro'));
         }
     }
 

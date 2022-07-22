@@ -38,9 +38,24 @@ class M_umum extends CI_Model
     {
         $this->db->select('*')
         ->where('id_ideasubmission', $id)
-        ->order_by('result', 'DESC');
+        ->order_by('result', 'DESC')
+        ->from('tb_resultrabintest');
         $this->db->limit(5);
-        $query = $this->db->get('tb_resultrabintest');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function GetSourcePembanding()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('source_pembanding');
+        return $query;
+    }
+
+    public function GetSourcePengajuan()
+    {
+        $this->db->select('*');
+        $query = $this->db->get('source_pengajuan');
         return $query;
     }
 
