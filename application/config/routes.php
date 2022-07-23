@@ -111,6 +111,10 @@ $route['TU/dashboard/update-data-dosen-master/(:any)'] = 'backend/tu/Index/Updat
 $route['TU/dashboard/insert-data-mahasiswa-master'] = 'backend/tu/Index/InsertDataMahasiswaMaster';
 $route['TU/dashboard/update-data-mahasiswa-master/(:any)'] = 'backend/tu/Index/UpdateDataMahasiswaMaster/$1';
 
+$route['TU/dashboard/daftar-yudisium-mahasiswa'] = 'backend/tu/Index/DaftarYudisiumMahasiswa';
+$route['TU/dashboard/daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Index/DaftarkanYudisiumMahasiswa/$1';
+$route['TU/dashboard/batal-daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Index/BatalkanDaftarkanYudisiumMahasiswa/$1';
+
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

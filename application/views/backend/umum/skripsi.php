@@ -67,11 +67,11 @@
                                 <a href="#" class="btn btn-mini btn-grd-inverse btn-disabled disabled"><i
                                         class="ti-na"></i>Lihat</a>
                                 <a href="<?= site_url('dsn/dashboard/proses-sempro/'.$row->ididea);?>"
-                                    class="btn btn-mini btn-grd-info btn-info"><i class="ti-pencil"></i>Proses
+                                    class="btn btn-mini btn-outline-info btn-info"><i class="ti-settings"></i>Proses
                                     sempro</a>
                                 <?php else:?>
-                                <a href="#" class="btn btn-mini btn-grd-success"><i class="ti-eye"></i>Lihat</a>
-                                <a href="#" class="btn btn-mini btn-grd-info btn-disabled disabled"><i
+                                <a href="#" data-toggle="modal" data-target="#modal_lihata<?= $row->id;?>" class="btn btn-mini btn-outline-success" class="btn btn-mini btn-outline-primary"><i class="ti-eye"></i>Lihat</a>
+                                <a href="#" class="btn btn-mini btn-outline-primary btn-disabled disabled"><i
                                         class="ti-na"></i>Sudah sempro</a>
                                 <?php endif;?>
                             </td>
@@ -84,7 +84,43 @@
         </div>
     </div>
 </div>
-
+<?php foreach($Data as $i):
+        $id = $i->id;
+        $feedback = $i->feedback;
+        $note = $i->note;
+?>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    id="modal_lihata<?= $id;?>" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Feedback seminar proposal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                <div class="col-sm-12 col-xl-10 sub-title">
+                    <h6><?= $note;?></h6>
+                </div>
+                <div class="col-sm-12 col-xl-2 sub-title">
+                    <?php if ($feedback == '0'): ?>
+                    <label class="label label-md label-warning">Waiting</label>
+                    <?php elseif ($feedback == '1'):?>
+                    <label class="label label-md label-success">Diterima</label>
+                    <?php elseif ($feedback == '2'):?>
+                    <label class="label label-md label-success">Diterima dengan revisi</label>
+                    <?php else:?>
+                    <label class="label label-md label-danger">Ditolak</label>
+                    <?php endif;?>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach;?>
 <style type="text/css">
     #warningschedule {
   animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;  

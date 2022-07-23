@@ -78,11 +78,12 @@
         <!-- <form class="form-inline"> -->
 
         <?php foreach($Mahasiswa as $mhs):?>
-        <?php if($mhs->status_bimbingan != 0):?>
-        <div class="form-inline" style="pointer-events: none; opacity: 0.4;">
             <input name="name" class="form-bg-null" value="<?= $mhs->fullname;?>" hidden />
             <input name="receiver" class="form-bg-null" value="<?= $mhs->username;?>" hidden />
             <input name="sender" class="form-bg-null" value="<?= $this->session->userdata('username');?>" hidden />
+        <?php if($mhs->status_bimbingan != 0):?>
+        <div class="form-inline" style="pointer-events: none; opacity: 0.4;">
+            
             <div class="form-group">
                 <input type="file" name="file" class="form-bg-null" placeholder="name file..." hidden />
                 <div class="fileUpload btn btn-sm btn-grd-inverse">

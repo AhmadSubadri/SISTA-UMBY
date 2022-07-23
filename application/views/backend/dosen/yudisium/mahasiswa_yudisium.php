@@ -52,7 +52,7 @@
 							<?php endif;?>
 						</div>
 						<div class="col-sm-12 col-xl-2 sub-title">
-							<?php if($row->status_daftar_yudisium == null):?>
+							<?php if($row->status_daftar_yudisium == 0):?>
 								<label class="label label-mini label-danger text-center">Belum terdaftar yudisium</label>
 							<?php else:?>
 								<label class="label label-mini label-success text-center">Sudah terdaftar yudisium</label>
@@ -60,7 +60,7 @@
 						</div>
 						<div class="col-sm-12 col-xl-2 sub-title">
 							<?php $Progres = $this->db->select('*')->where('nim', $row->nim)->from('tb_uploadrequirementyudisium')->get()->result();?>
-							<?php if($row->status_daftar_yudisium != null):?>
+							<?php if($row->status_daftar_yudisium != 0):?>
 								<?php if(count($DataSyarat->result()) == 0):?>
 									<label class="label label-mini label-danger">Document requirement yudisium is NULL</label>
 								<?php else:?>

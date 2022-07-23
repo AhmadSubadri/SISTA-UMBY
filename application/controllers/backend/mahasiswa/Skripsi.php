@@ -21,7 +21,8 @@ class Skripsi extends CI_Controller
 		$data = [
 			'DataDosen' => $this->M_student->GetDosenByMajor($major),
 			'CountThesisAcc' => $this->M_student->_getsThesisReceived(),
-			'DataUpload' => $this->M_student->getdatasubmission($username)
+			'DataUpload' => $this->M_student->getdatasubmission($username),
+			'DataCard' => $this->M_student->getdataCaed($username)
 		];
 		$this->load->view('backend/partials_/head');
 		$this->load->view('backend/mahasiswa/skripsi/skripsi', $data);
@@ -53,8 +54,6 @@ class Skripsi extends CI_Controller
 	        		'nidn' => $this->input->post('nidn'),
 	        		'status' => "0",
 					'note' => " ",
-					'rabin' => " ",
-					'result_test' => " ",
 					'to_check' => "0",
 					'kegiatan' => "0",
 					'tempat' => "0",
@@ -97,8 +96,6 @@ class Skripsi extends CI_Controller
 	        		'status' => "0",
 					'status' => "0",
 					'note' => " ",
-					'rabin' => " ",
-					'result_test' => " ",
 					'to_check' => "0",
 					'kegiatan' => "0",
 					'tempat' => "0",

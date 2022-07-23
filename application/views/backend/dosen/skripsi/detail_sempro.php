@@ -5,68 +5,60 @@
         <div class="card">
             <div class="card-header">
                 <h5>Detail feedback dosen penguji seminar proposal</h5>
-                <div class="card-header-right">
-                    <?php foreach($DataTitle as $a):?>
-                        <?php if ($a->status_sempro == 2):?>
-                            <a href="#!" class="btn text-primary disabled" data-target="#modalpengumuman" data-toggle="modal"><i class="ti-na text-primary"></i> Sudah kirim pengumuman sempro
-                            </a>
-                        <?php else:?>
-                            <a href="#!" class="btn btn-mini text-primary" data-target="#modalpengumuman" data-toggle="modal">
-                                <i class="ti-layout-sidebar-left text-primary"></i> + Kirim pengumuman sempro
-                            </a>
-                        <?php endif;?>
-                    <?php endforeach;?>
-                </div>
             </div>
             <div class="card-block">
                 <div class="accordion-block  color-accordion-block">
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="accordion-panel">
                             <div class="accordion-heading" role="tab" id="headingOne">
-                                <h3 class="card-title accordion-title">
-                                    <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                    data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne">
-                                Diagram BAR hasil cek plagiat</a>
-                            </h3>
-                        </div>
+                                <h3 class="card-title accordion-title" style="background-color: #FFB6C1;">
+                                    <?php foreach($DataTitle as $a):?>
+                                    <?php if ($a->status_sempro == 2):?>
+                                        <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse" data-parent="" href="" aria-expanded="true" aria-controls="collapseOne"> Form Sudah kirim pengumuman hasil seminar proposal</a>
+                                    <?php else:?>
+                                        <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Form pengumuman untuk mahasiswa hasil seminar proposal</a>
+                                    <?php endif;?>
+                                    <?php endforeach;?>
+                                </h3>
+                            </div>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                         aria-labelledby="headingOne">
                         <div class="accordion-content accordion-desc">
-                            <canvas id="myChart"></canvas>
+                            <form action="<?= site_url('dsn/dashboard/save-pengumuman-sempro');?>" class="form-material" method="post">
+                                <div class="modal-body">
+                                    <?php foreach($DataTitle as $row):?>
+                                        <input type="hidden" name="title" id="title" value="<?= $row->title;?>">
+                                        <input type="hidden" name="name" id="name" value="<?= $row->name;?>">
+                                        <input type="hidden" name="id_major" id="id_major" value="<?= $row->id_major;?>">
+                                        <input type="hidden" name="year" id="year" value="<?= date('Y');?>">
+                                    <?php endforeach;?>
+                                    <?php foreach($Data as $data):?>
+                                        <input type="text" name="nim" id="nim" value="<?= $data->nim;?>" hidden>
+                                    <?php endforeach;?>
+                                    <!-- <label for="">Feedback</label> -->
+                                    <div class="form-group form-default form-static-label">
+                                        <select name="status" class="form-control">
+                                            <option value="1">Diterima</option>
+                                            <option value="2">Diterima dengan revisi</option>
+                                            <option value="3">Ditolak</option>
+                                        </select>
+                                        <span class="form-bar"></span>
+                                        <label class="float-label">Feedback</label>
+                                    </div>
+                                    <div class="form-group form-default form-static-label">
+                                        <textarea name="note" id="ckeditor" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-sm btn-grd-primary btn-block"><i class="ti-save"></i>
+                                    Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headingTwo">
-                        <h3 class="card-title accordion-title">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                            data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                            aria-controls="collapseTwo">
-                        5 Judul persentase tertinggi</a>
-                    </h3>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                aria-labelledby="headingTwo">
-                <div class="accordion-content accordion-desc"><br>
-                    <div class="row">
-                        <?php $i = 1; foreach($resultTest as $row):?>
-                        <div class="col-md-6">
-                            <h6><?= $row->title;?></h6>
-                        </div>
-                        <div class="col-md-4"><?= $row->name;?></div>
-                        <div class="col-md-2">
-                            <p class="text-danger"><?= number_format($row->result,2);?>%</p>
-                        </div>
-                        <hr />
-                        <br><br><br>
-                    <?php endforeach;?>
-                </div>
+                </div> 
             </div>
-        </div>
-    </div>
-</div>
-</div><br>
+        </div><br>
 <div class="row">
     <div class="col-md-4 sub-title text-primary">
         <h6># Dosen</h6>

@@ -24,7 +24,9 @@ public $result = [
         $data = [
             'Data' => $this->M_lecturer->GetDataAjuanJudul($major),
             'DataDosen' => $this->M_lecturer->_getallLecturers(),
-            'DataDataSempro' => $this->M_lecturer->GetDataSempro()
+            'DataDataSempro' => $this->M_lecturer->GetDataSempro(),
+            'AllDataMahasiswa' => $this->M_lecturer->_getallStudent()->result(),
+            'Major' => $this->M_lecturer->GetIdMajor($major)->result(),
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/dosen/skripsi/skripsi',$data);
@@ -140,13 +142,14 @@ public $result = [
             $this->db->where('nim', $nim);
             $this->db->update('tb_ideasubmission', $data);
 
-            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'rabin' => $this->input->post('rabin'), 'id_major' => $this->input->post('id_major')]);
+            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'id_major' => $this->input->post('id_major')]);
+
+            $this->M_lecturer->add('tb_submissioncard',['nim' => $nim, 'title' => $this->input->post('title'), 'status'=> $this->input->post('status')]);
 
             $this->db->set('status', "1");
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
             $this->M_lecturer->add('tb_thesisreceived',['nim' => $this->input->post('nim'), 'title' => $this->input->post('title'), 'major' => $this->input->post('id_major'), 'status' => "0"]);
-            $this->M_lecturer->delete('tb_resultrabintest','nim', $nim);
 
             $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
@@ -160,13 +163,14 @@ public $result = [
             $this->db->where('nim', $nim);
             $this->db->update('tb_ideasubmission', $data);
 
-            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'rabin' => $this->input->post('rabin'), 'id_major' => $this->input->post('id_major')]);
+            $this->M_lecturer->add('tb_sourcetitle',['title' => $this->input->post('title'), 'name' => $this->input->post('name'), 'year' => $this->input->post('year'), 'id_major' => $this->input->post('id_major')]);
+
+            $this->M_lecturer->add('tb_submissioncard',['nim' => $nim, 'title' => $this->input->post('title'), 'status'=> $this->input->post('status')]);
 
             $this->db->set('status', "1");
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
             $this->M_lecturer->add('tb_thesisreceived',['nim' => $this->input->post('nim'), 'title' => $this->input->post('title'), 'major' => $this->input->post('id_major'), 'status' => "0"]);
-            $this->M_lecturer->delete('tb_resultrabintest','nim', $nim);
 
             $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
@@ -183,8 +187,8 @@ public $result = [
             $this->db->set('status', "1");
             $this->db->where('nim_student', $nim);
             $this->db->update('tb_detail_sempro');
-            $this->M_lecturer->delete('tb_resultrabintest','nim', $nim);
 
+            $this->M_lecturer->add('tb_submissioncard',['nim' => $nim, 'title' => $this->input->post('title'), 'status'=> $this->input->post('status')]);
             $this->session->set_flashdata('msg',"Announcement details sempro has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
             redirect(site_url('dsn/dashboard/detail-hasil-sempro/'.$nim));

@@ -20,7 +20,7 @@ class M_lecturer extends CI_Model
 
     public function GetDataRabinResult($id)
     {
-        $this->db->select('i.id as id, i.nim as nim, i.title as title, s.fullname as name, s.id_major, i.rabin, i.status as status, i.status_sempro as status_sempro')
+        $this->db->select('i.id as id, i.nim as nim, i.title as title, s.fullname as name, s.id_major, i.status as status, i.status_sempro as status_sempro')
         ->where('i.nim', $id)
         ->join('tb_student s', 's.username = i.nim')
         ->order_by('i.created_at', 'DESC')
@@ -68,7 +68,7 @@ class M_lecturer extends CI_Model
 
     public function GetDataByIdAjuan($id)
     {
-        $this->db->select('i.id as id, i.nim as nim, i.title as title, i.rabin as rabin, s.id_major as id_major, s.fullname as name, i.file as file, s.image as image, i.created_at as date, i.to_check as to_check')
+        $this->db->select('i.id as id, i.nim as nim, i.title as title, s.id_major as id_major, s.fullname as name, i.file as file, s.image as image, i.created_at as date, i.to_check as to_check')
         ->where('i.nim', $id)
         ->join('tb_student s', 's.username = i.nim')
         ->order_by('i.created_at', 'DESC')
@@ -101,7 +101,7 @@ class M_lecturer extends CI_Model
     public function SemproSaya()
     {
         $username = $this->session->userdata('username');
-        $this->db->select('d.id_detail as id, s.fullname as name, i.title as title, i.tanggal as tanggal, i.jam as jam, i.tempat as tempat, s.image as image, d.nim_student as nim, i.kegiatan as kegiatan, d.feedback as feedback, i.id as ididea')
+        $this->db->select('d.id_detail as id, s.fullname as name, i.title as title, i.tanggal as tanggal, i.jam as jam, i.tempat as tempat, s.image as image, d.nim_student as nim, i.kegiatan as kegiatan, d.feedback as feedback, i.id as ididea, d.note as note')
         ->where('d.nidn_lecturer', $username)
         ->order_by('i.tanggal', 'ASC')
         ->order_by('i.jam', 'ASC')
@@ -112,8 +112,24 @@ class M_lecturer extends CI_Model
         return $query->result();
     }
 
+    public function GetIdMajor($major)
+    {
+        $this->db->select('*')->where('id', $major)->from('tb_major');
+        $query = $this->db->get();
+        return $query;
+    }
+
     //GET DOSEN BY JURUSAN
     public function _getallLecturers(){
+        $id = $this->session->userdata('major');
+        $this->db->select('*');
+        $this->db->where('id_major', $id);
+        $this->db->from('tb_lecturers');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function _getallStudent(){
         $id = $this->session->userdata('major');
         $this->db->select('*');
         $this->db->where('id_major', $id);

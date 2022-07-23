@@ -34,8 +34,9 @@
 				</div>
 				<div class="col-sm-12 col-xl-4">
 					<p class="sub-title">Jadwal pendadaran</p>
-					<?php if(count($DataJadwal) != 0):?>
+					
 						<?php foreach($DataJadwal as $jadwal):?>
+						<?php if($jadwal->date != 0):?>
 							<?php if(format_tanggal(date($jadwal->date)) == format_tanggal(date('Y-m-d'))):?>
 								<span class="text-danger" id="warningjadwal">Hari ini : <?php echo format_tanggal(date($jadwal->date));?></span><br>Jam : <?= $jadwal->time;?><br>
 							<?php else:?>
@@ -44,10 +45,11 @@
 							<?php endif;?>
 								Kegiatan : <?= $jadwal->kegiatan;?><br>
 								Lokasi : <?= $jadwal->tempat;?>
+						<?php else:?>
+							<label class="label label-mini label-danger">Belum ada jadwal ujian</label>
+						<?php endif;?>
 						<?php endforeach;?>
-					<?php else:?>
-						<label class="label label-mini label-danger">Belum ada jadwal ujian</label>
-					<?php endif;?>
+					
 				</div>
 			</div>
 		</div>

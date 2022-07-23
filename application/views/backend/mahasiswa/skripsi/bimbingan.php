@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" id="uploadFile" name="message"
-                                        class="form-control form-bg-default" required style="width: 560px"></textarea>
+                                        class="form-control form-bg-default" required style="width: 730px"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-sm btn-grd-primary"><i
                                         class="ti-location-arrow"></i>Send</button>
@@ -164,7 +164,9 @@
             <?php endif;?>
         </div>
     </div>
+</div>
 
+<div class="col-xl-12">
     <div class="card">
         <div class="card-block">
             <h4 class="sub-title text-center">Card Bimbingan Skripsi</h4>

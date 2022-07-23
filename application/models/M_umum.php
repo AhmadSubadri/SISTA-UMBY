@@ -10,7 +10,7 @@ class M_umum extends CI_Model
     public function Index()
     {
         $username = $this->session->userdata('username');
-        $this->db->select('d.id_detail as id, s.fullname as name, i.title as title, i.tanggal as tanggal, i.jam as jam, i.tempat as tempat, s.image as image, d.nim_student as nim, i.kegiatan as kegiatan, d.feedback as feedback, i.id as ididea')
+        $this->db->select('d.id_detail as id, s.fullname as name, i.title as title, i.tanggal as tanggal, i.jam as jam, i.tempat as tempat, s.image as image, d.nim_student as nim, i.kegiatan as kegiatan, d.feedback as feedback, i.id as ididea, d.note as note')
         ->where('d.nidn_lecturer', $username)
         ->order_by('i.tanggal', 'ASC')
         ->order_by('i.jam', 'ASC')
@@ -72,7 +72,7 @@ class M_umum extends CI_Model
     public function getSourcetitle($table)
     {
         $id = $this->session->userdata('major');
-        $this->db->select('id, title, rabin, id_major, name')
+        $this->db->select('id, title, id_major, name')
         ->where('id_major', $id);
         $query = $this->db->get($table);
         return $query;
@@ -98,7 +98,7 @@ class M_umum extends CI_Model
 
     public function _getbyIdPreview($id=0)
     {
-        $this->db->select('i.id as id, i.title as title, i.file as file, s.fullname as nameStudent, l.fullname as nameLecturer, m.name as nameMajor, i.status as status, i.nim as nim, i.nidn as nidn, i.id_major as major, i.rabin as rabin, s.image as image');
+        $this->db->select('i.id as id, i.title as title, i.file as file, s.fullname as nameStudent, l.fullname as nameLecturer, m.name as nameMajor, i.status as status, i.nim as nim, i.nidn as nidn, i.id_major as major, s.image as image');
         $this->db->where('i.id', $id);
         $this->db->from('tb_ideasubmission i');
         $this->db->join('tb_lecturers l', 'l.username = i.nidn');
