@@ -77,7 +77,7 @@
 <div class="col-md-8">
     <div class="card ">
         <div class="card-header">
-            <h5>Riwayat pengajuan</h5>
+            <h5>Daftar pengajuan</h5>
             <div class="card-header-right">
                 <ul class="list-unstyled card-option">
                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -117,7 +117,45 @@
         </div>
     </div>
 </div>
-
+<div class="col-xl-12">
+<div class="card">
+    <div class="card-header">
+        <h5>Riwayat pengajuan</h5>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-12 col-xl-10 sub-title">
+                # Judul
+            </div>
+            <div class="col-sm-12 col-xl-2 sub-title">
+                Catatan
+            </div>
+            <?php if(count($DataCard) != 0):?>
+            <?php $k=1; foreach($DataCard as $card):?>
+                <div class="col-sm-12 col-xl-10 sub-title">
+                    <?= $k++;?>. <?= $card->title;?>
+                </div>
+                <div class="col-sm-12 col-xl-2 sub-title">
+                    <?php if ($card->status == '0'): ?>
+                    <label class="label label-md label-warning">Waiting</label>
+                    <?php elseif ($card->status == '1'):?>
+                    <label class="label label-md label-success">Diterima</label>
+                    <?php elseif ($card->status == '2'):?>
+                    <label class="label label-md label-success">Diterima dengan revisi</label>
+                    <?php else:?>
+                    <label class="label label-md label-danger">Ditolak</label>
+                    <?php endif;?>
+                </div>
+            <?php endforeach;?>
+            <?php else:?>
+                 <div class="col-sm-12 col-xl-12 text-center sub-title">
+                    Data not availabel
+                 </div>
+            <?php endif;?>
+        </div>
+    </div>
+</div>
+</div>
 
 <style>
 .fileUpload {

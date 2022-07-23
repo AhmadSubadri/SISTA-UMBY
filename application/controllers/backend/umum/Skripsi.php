@@ -83,9 +83,7 @@ class Skripsi extends CI_Controller
             $all = [
                 'DataSource' => $this->M_umum->getSourcetitle('tb_sourcetitle'),
                 'DetailId' => $this->M_umum->DetailByIdIdea($id),
-                // 'chartdata' => $this->M_chart->read($id),
                 'data' => $this->M_umum->_getbyIdPreview($id)
-                // 'resultTest' => $this->M_umum->getresultrabin($id)
             ];
             $this->load->view('backend/partials_/head');
             $this->load->view('backend/umum/proses_sempro', $all);
@@ -105,7 +103,8 @@ class Skripsi extends CI_Controller
         $this->db->where('id_detail', $id);
         $this->db->update('tb_detail_sempro', $data);
         $this->M_umum->_SetData('tb_ideasubmission',['status_sempro'=>"1"], 'nim', $this->input->post('nim'));
-
+        $this->session->set_flashdata('msg',"Feedback details sempro has been added successfully");
+        $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('dsn/dashboard/pelaksanaan-sempro'));
     }
 

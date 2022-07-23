@@ -18,7 +18,7 @@
                     <div class="col-md-2 text-center">
                         <div class="d-inline-block label-icon text-center">
                             <?php if($row->to_check == 0):?>
-                                <input type="checkbox" class="form-check-input" name="nim[]" value="<?= $row->nim; ?>">
+                                <input type="checkbox" class="form-check-input" name="nim[]" value="<?= $row->nim; ?>" disabled>
                             <?php else:?>
                                 <input type="checkbox" class="form-check-input" name="nim[]" value="<?= $row->nim; ?>" checked disabled>
                             <?php endif;?>
@@ -36,7 +36,7 @@
                         <h6><?= $row->title;?></h6>
                         <p class="font-italic">
                             <label class="label label-primary label-mini"><?= $row->name;?> <i class="ti-calendar"> <?= $row->date;?></i></label>
-                            <a href="<?=base_url('_uploads/submission/'.$row->name.'/'.$row->file);?>" target="_blank" class="btn btn-mini btn-info"><i class="ti-eye"></i>Lihat file</a>
+                            <a href="<?=base_url('_uploads/submission/'.$row->name.'/'.$row->file);?>" target="_blank" class="btn btn-mini btn-outline-info"><i class="ti-eye"></i>Lihat file</a>
                         </p>
                     </div>
                 <?php endforeach;?>
@@ -61,7 +61,7 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="text-c-green">2</h4>
+                                <h4 class="text-c-green"><?= count($Data);?></h4>
                                 <h6 class="text-muted m-b-0">Sudah upload</h6>
                             </div>
                             <div class="col-4 text-right">
@@ -72,7 +72,9 @@
                     <div class="card-footer bg-c-green">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <p class="text-white m-b-0">Sistem Informasi</p>
+                                <?php foreach($Major as $mjr):?>
+                                <p class="text-white m-b-0"><?= $mjr->name;?></p>
+                            <?php endforeach;?>
                             </div>
                             <div class="col-3 text-right">
                                 <i class="fa fa-line-chart text-white f-16"></i>
@@ -86,7 +88,7 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="text-c-red">5</h4>
+                                <h4 class="text-c-red"><?= count($AllDataMahasiswa)-count($Data) ;?></h4>
                                 <h6 class="text-muted m-b-0">Belum upload</h6>
                             </div>
                             <div class="col-4 text-right">
@@ -97,7 +99,9 @@
                     <div class="card-footer bg-c-red">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <p class="text-white m-b-0">Sistem Informasi</p>
+                            <?php foreach($Major as $mjr):?>
+                                <p class="text-white m-b-0"><?= $mjr->name;?></p>
+                            <?php endforeach;?>
                             </div>
                             <div class="col-3 text-right">
                                 <i class="fa fa-line-chart text-white f-16"></i>

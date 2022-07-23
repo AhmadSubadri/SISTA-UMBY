@@ -45,13 +45,16 @@ class M_student extends CI_Model
         return $query->result();
     }
 
+    public function getdataCaed($nim)
+    {
+        $this->db->select('*')->where('nim', $nim)->from('tb_submissioncard');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function getdatasubmissioncard($id=0)
     {
-        $this->db->select('t.id as id, t.nim as nim, t.note as note, t.file as file, t.status as status, t.created_at as created_at, s.fullname as name')
-        ->where('t.nim', $id)
-        ->order_by('t.id','DESC')
-        ->join('tb_student s','s.username = t.nim')
-        ->from('tb_submissioncard t');
+        $this->db->select('t.id as id, t.nim as nim, t.note as note, t.file as file, t.status as status, t.created_at as created_at, s.fullname as name')->where('t.nim', $id)->order_by('t.id','DESC')->join('tb_student s','s.username = t.nim')->from('tb_submissioncard t');
         $query = $this->db->get();
         return $query->result();
     }
@@ -59,10 +62,7 @@ class M_student extends CI_Model
     public function GetDataPengujiSempro()
     {
         $id = $this->session->userdata('username');
-        $this->db->select('d.id_detail as id, d.nidn_lecturer as nidn, l.fullname as name, d.nim_student as nim')
-        ->where('d.nim_student', $id)
-        ->join('tb_lecturers l', 'l.username = d.nidn_lecturer')
-        ->from('tb_detail_sempro d');
+        $this->db->select('d.id_detail as id, d.nidn_lecturer as nidn, l.fullname as name, d.nim_student as nim')->where('d.nim_student', $id)->join('tb_lecturers l', 'l.username = d.nidn_lecturer')->from('tb_detail_sempro d');
         $query = $this->db->get();
         return $query->result();
     }
