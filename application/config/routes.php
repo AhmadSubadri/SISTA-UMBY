@@ -114,6 +114,7 @@ $route['TU/dashboard/update-data-mahasiswa-master/(:any)'] = 'backend/tu/Index/U
 $route['TU/dashboard/daftar-yudisium-mahasiswa'] = 'backend/tu/Index/DaftarYudisiumMahasiswa';
 $route['TU/dashboard/daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Index/DaftarkanYudisiumMahasiswa/$1';
 $route['TU/dashboard/batal-daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Index/BatalkanDaftarkanYudisiumMahasiswa/$1';
+$route['TU/dashboard/daftar-pendadaran-mahasiswa'] = 'backend/tu/Index/DaftarPendadaranMahasiswa';
 
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';

@@ -2,13 +2,13 @@
 	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
 		<div class="card-header">
-			<h5>Mahasiswa daftar yudisium periode <?= date('Y');?></h5>
+			<h5>Mahasiswa daftar pendadaran periode <?= date('Y');?></h5>
 		</div>
 		<div class="card-block">
-			<input type="text" id="InputSearchyudisium" class="form-control" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+			<input type="text" id="InputSearchpendadaran" class="form-control" onkeyup="myFunctions()" placeholder="Search for names.." title="Type in a name">
 			<div class="table-border-style">
 				<div class="table-responsive">
-					<table class="table table-hover" id="tabelfilterYudisium">
+					<table class="table table-hover" id="tabelfilterPendadaran">
 						<thead>
 							<tr class="text-primary">
 								<th># Profil</th>
@@ -58,11 +58,11 @@
 </div>
 
 <script>
-	function myFunction() {
+	function myFunctions() {
 		var input, filter, table, tr, td, i, txtValue;
-		input = document.getElementById("InputSearchyudisium");
+		input = document.getElementById("InputSearchpendadaran");
 		filter = input.value.toUpperCase();
-		table = document.getElementById("tabelfilterYudisium");
+		table = document.getElementById("tabelfilterPendadaran");
 		tr = table.getElementsByTagName("tr");
 		for (i = 0; i < tr.length; i++) {
 			td = tr[i].getElementsByTagName("td")[0];

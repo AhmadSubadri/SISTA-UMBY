@@ -19,7 +19,7 @@
 				<div class="col-sm-12 col-xl-2 sub-title text-primary">
 					Aksi
 				</div>
-
+				<?php if(count($Data) != 0):?>
 				<?php $i=1; foreach($Data as $row):?>
 					<div class="col-sm-12 col-xl-6 sub-title">
 						<div class="media">
@@ -61,6 +61,11 @@
 						<?php endif;?>
 					</div>
 				<?php endforeach;?>
+				<?php else:?>
+					<div class="col-sm-12 col-xl-12 sub-title text-center">
+						Data not availabel
+					</div>
+				<?php endif;?>
 			</div>
 		</div>
 	</div>
