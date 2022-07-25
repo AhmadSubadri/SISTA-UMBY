@@ -173,6 +173,7 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+
                 <?php elseif($this->session->userdata('level') == '2'):?>
                     <!-- Layout sidebar -->
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Bimbingan</div>
@@ -226,8 +227,15 @@
                     </li>
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component</div>
                     <li>
-                        <a href="<?= site_url('TU/dashboard/daftar-yudisium-mahasiswa');?>" class="waves-effect waves-dark">
+                        <a href="<?= site_url();?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-write"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Daftar pendadaran</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= site_url('TU/dashboard/daftar-yudisium-mahasiswa');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>FC</b></span>
                             <span class="pcoded-mtext" data-i18n="nav.form-components.main">Daftar yudisium</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
