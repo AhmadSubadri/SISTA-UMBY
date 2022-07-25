@@ -7,14 +7,19 @@
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
+						<?php if(count($DataSyarat->result()) != 0):?>
 						<tr class="text-primary">
 							<th># Profil</th>
 							<?php $i=1; foreach($DataSyarat->result() as $syarat):?>
 								<th data-toggle="tooltip" data-placement="left" data-original-title="<?= $syarat->requirements;?>">S<?= $i++;?></th>
 							<?php endforeach;?>
 						</tr>
+						<?php else:?>
+							<label class="col-xl-12 text-center sub-title">Data not availabel</label>
+						<?php endif;?>
 					</thead>
 					<tbody>
+						<?php if(count($DataStudent) != 0):?>
 						<?php $j=1; foreach($DataStudent as $data):?>
 							<tr>
 								<th class="text-primary">
@@ -45,6 +50,13 @@
 								<?php endforeach;?>
 							</tr>
 						<?php endforeach;?>
+						<?php else:?>
+							<tr>
+								<td colspan="3">
+									<label class="col-xl-12 text-center sub-title">Data not availabel</label>
+								</td>
+							</tr>
+						<?php endif;?>
 					</tbody>
 				</table>
 			</div>

@@ -87,8 +87,8 @@
 						</div>
 					<?php endforeach;?>
 				<?php else:?>
-					<div class="col-sm-12 col-xl-12 sub-title">
-						<h6 class="text-center">Data not availabel</h6>
+					<div class="col-sm-12 col-xl-12 sub-title text-center">
+						Data not availabel
 					</div>
 				<?php endif;?>
 			</div>

@@ -5,6 +5,7 @@
 			<h5>Data upload syarat yudisium</h5>
 		</div>
 		<div class="card-block">
+			<?php if(count($DataNilai) != 0):?>
 			<?php foreach($DataNilai as $statusYudisium):?>
 				<?php if($statusYudisium->status_daftar_yudisium == 0):?>
 					<div class="card-block" style="background-color: #FFE3C7;">Note. Anda belum terdaftar di yudisium, silahkan <code>konfirmasi ke pihak Tata Usaha (TU)</code> untuk daftar yudisium.</div>
@@ -119,6 +120,9 @@
 					</div>
 				<?php endif;?>
 			<?php endforeach;?>
+			<?php else:?>
+				<label class="text-center sub-title col-xl-12">Data not availabel</label>
+			<?php endif;?>
 		</div>
 	</div>
 </div>
