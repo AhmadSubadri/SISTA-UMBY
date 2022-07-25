@@ -6,8 +6,8 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header">
-            <h5>Daftar pendadaran sekarang</h5>
+        <div class="card-header" style="background-color: #75A8FE;">
+            <h5 style="color: white;">Daftar pendadaran sekarang</h5>
             <div class="card-header-right">
                 <?php if(count($Data) != 0):?>
                     <?php $Document = $this->db->select('*')->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get()->result();?>

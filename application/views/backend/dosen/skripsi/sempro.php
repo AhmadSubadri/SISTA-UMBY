@@ -51,8 +51,8 @@
 </div>
 <div class="col-xl-12">
     <div class="card">
-        <div class="card-header">
-            <h5>Ploting dan pelaksanaan sempro</h5>
+        <div class="card-header" style="background-color: #75A8FE;">
+            <h5 style="color: white;">Ploting dan pelaksanaan sempro</h5>
         </div>
         <div class="card-block table-border-style">
             <div class="table-responsive">

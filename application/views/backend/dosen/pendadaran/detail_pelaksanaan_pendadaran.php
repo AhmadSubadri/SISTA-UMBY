@@ -2,7 +2,7 @@
 	<a href="<?= site_url('dsn/dashboard/pelaksanaan-pendadaran');?>" class="btn btn-mini"><i
 		class="ti-back-left"></i>Kembali</a>
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header" style="background-color: #75A8FE;">
 				<h6>Pelaksanaan ujian pendadaran</h6>
 			</div>
 			<div class="card-block">

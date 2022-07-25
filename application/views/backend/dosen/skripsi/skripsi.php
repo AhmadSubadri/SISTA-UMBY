@@ -1,10 +1,8 @@
 <div class="col-md-8">
     <!-- Label size card start -->
     <div class="card">
-        <div class="card-header">
-            <div class="card-header-left">
-                <h5>Data pengajuan judul & proposal skripsi terbaru</h5>
-            </div>
+            <div class="card-header" style="background-color: #75A8FE;">
+                <h5 style="color: white;">Data pengajuan judul & proposal skripsi terbaru</h5>
             <div class="card-header-right"> <i class="icofont icofont-spinner-alt-5"></i> </div>
         </div>
         <div class="card-block" style="display:block; height: 370px; overflow:auto;">
@@ -49,10 +47,8 @@
 <div class="col-md-4">
     <!-- Badge size card start -->
     <div class="card">
-        <div class="card-header">
-            <div class="card-header-left">
-                <h5>Progres upload judul & proposal skripsi</h5>
-            </div>
+        <div class="card-header" style="background-color: #75A8FE;">
+            <h5 style="color: white;">Progres upload judul & proposal skripsi</h5>
             <div class="card-header-right"> <i class="icofont icofont-spinner-alt-5"></i> </div>
         </div>
         <div class="card-block">

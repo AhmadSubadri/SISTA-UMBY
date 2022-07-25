@@ -205,17 +205,8 @@
     <div class="row">
         <div class="col-xl-8">
             <div class="card table-card">
-                <div class="card-header">
-                        <h5>Daftar mahasiswa skripsi periode <?= date('Y');?> Program studi <?= $prodi->name?></h5>
-                    <div class="card-header-right">
-                        <ul class="list-unstyled card-option">
-                            <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                            <li><i class="fa fa-window-maximize full-card"></i></li>
-                            <li><i class="fa fa-minus minimize-card"></i></li>
-                            <li><i class="fa fa-refresh reload-card"></i></li>
-                            <li><i class="fa fa-trash close-card"></i></li>
-                        </ul>
-                    </div>
+                <div class="card-header" style="background-color: #75A8FE;">
+                    <h5 style="color: white;">Daftar mahasiswa skripsi periode <?= date('Y');?> Program studi <?= $prodi->name?></h5>
                 </div>
                 <div class="card-block" style="height:600px; display:block; overflow: auto;">
                     <div class="table-responsive">
@@ -253,17 +244,8 @@
         </div>
         <div class="col-xl-4">
             <div class="card">
-                <div class="card-header">
-                        <h5>Calender event</h5>
-                    <div class="card-header-right">
-                        <ul class="list-unstyled card-option">
-                            <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                            <li><i class="fa fa-window-maximize full-card"></i></li>
-                            <li><i class="fa fa-minus minimize-card"></i></li>
-                            <li><i class="fa fa-refresh reload-card"></i></li>
-                            <li><i class="fa fa-trash close-card"></i></li>
-                        </ul>
-                    </div>
+                <div class="card-header" style="background-color: #75A8FE;">
+                    <h5 style="color: white;">Calender event</h5>
                 </div>
                 <div class="card-block" style="height:600px; display:block; overflow: auto;">
                     <div class="row">

@@ -1,8 +1,8 @@
 <?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
     <div class="card">
-        <div class="card-header">
-            <h5>Data mahasiswa seminar proposal</h5>
+        <div class="card-header" style="background-color: #75A8FE;">
+            <h5 style="color: white;">Data mahasiswa seminar proposal</h5>
         </div>
         <div class="card-block table-border-style">
             <div class="table-responsive">
@@ -19,7 +19,7 @@
                     <tbody>
                         <?php if(count($Data) == null):?>
                         <tr>
-                            <td colspan="4" class="col text-center">
+                            <td colspan="5" class="col text-center">
                                 <h6>Data not available</h6>
                             </td>
                         </tr>

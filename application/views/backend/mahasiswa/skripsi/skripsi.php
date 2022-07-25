@@ -7,10 +7,10 @@
         </div>
     </div>
 </div>
-<div class="col-md-4">
+<div class="col-md-5">
     <div class="card">
-        <div class="card-header">
-            <h5>Form pengajuan judul dan proposal skripsi</h5>
+        <div class="card-header" style="background-color: #75A8FE;">
+            <h5 style="color: white;">Form pengajuan judul dan proposal skripsi</h5>
         </div>
         <?php if (count($CountThesisAcc) > 0):?>
         <div class="card-block" style="pointer-events: none; opacity: 0.4;">
@@ -74,19 +74,10 @@
     </div>
 </div>
 
-<div class="col-md-8">
+<div class="col-md-7">
     <div class="card ">
-        <div class="card-header">
-            <h5>Daftar pengajuan</h5>
-            <div class="card-header-right">
-                <ul class="list-unstyled card-option">
-                    <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                    <li><i class="fa fa-window-maximize full-card"></i></li>
-                    <li><i class="fa fa-minus minimize-card"></i></li>
-                    <li><i class="fa fa-refresh reload-card"></i></li>
-                    <li><i class="fa fa-trash close-card"></i></li>
-                </ul>
-            </div>
+        <div class="card-header" style="background-color: #75A8FE;">
+            <h5 style="color: white;">Daftar pengajuan</h5>
         </div>
         <div class="card-block" style="display:block; height: 330px; overflow:auto;">
             <div class="row">
@@ -96,11 +87,11 @@
                 </div>
                 <?php else:?>
                 <?php foreach($DataUpload as $row):?>
-                <div class="col-md-10">
+                <div class="col-sm-10">
                     <h6><?= $row->title;?></h6>
                     <p class="font-italic"><i class="ti-calendar"> Update : <?= $row->created_at;?></i></p>
                 </div>
-                <div class="col text-center">
+                <div class="col-sm-2 text-center">
                     <?php if ($row->status == '0'): ?>
                     <label class="label label-md label-warning">Waiting</label>
                     <?php elseif ($row->status == '1'):?>
@@ -119,21 +110,21 @@
 </div>
 <div class="col-xl-12">
 <div class="card">
-    <div class="card-header">
-        <h5>Riwayat pengajuan</h5>
+    <div class="card-header" style="background-color: #75A8FE;">
+        <h5 style="color: white;">Riwayat pengajuan</h5>
     </div>
     <div class="card-block">
         <div class="row">
-            <div class="col-sm-12 col-xl-10 sub-title">
+            <div class="col-sm-12 col-xl-10 sub-title text-primary">
                 # Judul
             </div>
-            <div class="col-sm-12 col-xl-2 sub-title">
+            <div class="col-sm-12 col-xl-2 sub-title text-primary">
                 Catatan
             </div>
             <?php if(count($DataCard) != 0):?>
             <?php $k=1; foreach($DataCard as $card):?>
                 <div class="col-sm-12 col-xl-10 sub-title">
-                    <?= $k++;?>. <?= $card->title;?>
+                    <h6><?= $k++;?>. <?= $card->title;?></h6>
                 </div>
                 <div class="col-sm-12 col-xl-2 sub-title">
                     <?php if ($card->status == '0'): ?>

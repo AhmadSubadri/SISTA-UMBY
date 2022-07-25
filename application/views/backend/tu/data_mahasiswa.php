@@ -1,11 +1,11 @@
 <div class="col-xl-12">
 	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
-		<div class="card-header">
-			<h5>Data mahasiswa skripsi</h5>
+		<div class="card-header" style="background-color: #75A8FE;">
+			<h5 style="color: white;">Data mahasiswa skripsi</h5>
 			<div class="card-header-right">
-				<a class="btn btn-mini btn-outline-primary" data-toggle="modal" data-target="#tambahlistmahasiswa">Tambah data mahasiswa</a>
-            	<a class="btn btn-mini btn-outline-primary" data-toggle="modal" data-target="#importlistmahasiswa">Import data mahasiswa</a>
+				<a class="btn btn-mini btn-outline-danger" data-toggle="modal" data-target="#tambahlistmahasiswa">Tambah data mahasiswa</a>
+            	<a class="btn btn-mini btn-outline-danger" data-toggle="modal" data-target="#importlistmahasiswa">Import data mahasiswa</a>
 			</div>
 		</div>
 		<div class="card-block">

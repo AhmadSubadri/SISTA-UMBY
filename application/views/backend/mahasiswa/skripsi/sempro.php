@@ -1,6 +1,7 @@
-<div class="card col-sm-12">
-    <div class="card-header">
-        <h5>Detail seminar proposal</h5>
+<div class="col-xl-12">
+    <div class="card">
+    <div class="card-header" style="background-color: #75A8FE;">
+        <h5 style="color: white;">Detail seminar proposal</h5>
     </div>
     <div class="card-block">
         <div class="row">
@@ -44,10 +45,9 @@
         </div>
     </div>
 </div>
-
-<div class="card col-sm-12">
-    <div class="card-header">
-        <h5>Pengumuman hasil seminar proposal</h5>
+<div class="card">
+    <div class="card-header" style="background-color: #75A8FE;">
+        <h5 style="color: white;">Pengumuman hasil seminar proposal</h5>
     </div>
     <div class="card-block">
         <div class="row">
@@ -128,4 +128,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
