@@ -20,22 +20,21 @@
                         <div class="accordion-content accordion-desc"><br>
                             <div class="row">
                                 <?php $kgram = "5";$basis = "3";?>
-                                <div class="col-md-6">
-                                    <h6 class="sub-title text-primary">Judul yang di ajukan</h6>
+                                <div class="col-md-6 sub-title">
+                                    <h6 class="text-primary">Judul yang di ajukan</h6>
                                     <?php $i=1; foreach($data as $dtpengajuan):?>
-                                        <?= $i++;?>. <h6><?= $z= hapus_simbol($dtpengajuan->title);?></h6>
+                                        <h6><?= $z= hapus_simbol($dtpengajuan->title);?></h6>
                                         <h6><?= kgram($z, $kgram);?></h6>
                                         <hr>
                                     <?php endforeach;?>
                                 </div>
-                                <div class="col-md-6">
-                                    <h6 class="sub-title text-primary">Judul pembanding</h6>
-                                    <?php $i=1; foreach($DataSource->result() as $dtpenguji):?>
-                                        <h6><?= $i++;?>. <?= $x= hapus_simbol($dtpenguji->title);?></h6>
+                                <?php $i=1; foreach($DataSource->result() as $dtpenguji):?>
+                                    <div class="col-md-6 sub-title">
+                                    <h6 class="text-primary">Judul pembanding (<?= $dtpenguji->id;?>)</h6>
+                                        <h6><?= $i++; $x= hapus_simbol($dtpenguji->title);?></h6>
                                         <h6><?= kgram($x, $kgram);?></h6>
-                                        <hr>
-                                    <?php endforeach;?>
-                                </div>
+                                    </div>
+                                <?php endforeach;?>
                             </div>
                         </div>
                     </div>
@@ -113,27 +112,27 @@
                             <div class="row">
                                 <?php $kgram =5; $basis = 3; $d = array();?>
                                 <div class='col-md-4'>
-                                    <h6 class="sub-title text-primary">Judul di ajukan</h6>
+                                    <h6 class="text-danger">Judul di ajukan</h6>
                                     <?php $v_pnga = $this->db->select('*')->from('source_pengajuan')->group_by('source')->get()->result();?>
-                                    <h6>Total skema hash Text judul di ajukan = <?php echo count($v_pnga);?></h6>
+                                    <h6 class="text-primary sub-title">Total skema hash Text judul di ajukan = <?php echo count($v_pnga);?></h6>
                                     <h6>
                                         <?php foreach($v_pnga as $pnga):?>
-                                            {<?= hasing($pnga->source, $kgram, $basis);?>}
+                                            <?= hasing($pnga->source, $kgram, $basis);?>
                                         <?php endforeach;?>
                                     </h6>
                                 </div>
-                                <div class='col-md-8'>
-                                    <h6 class="sub-title text-primary">Judul pembanding</h6>
                                 <?php foreach($DataSource->result() as $dtpengujiaa):?>
+                                    <div class="sub-title col-md-4">
+                                    <h6 class="text-primary">Judul pembanding (<?= $dtpengujiaa->id;?>)</h6>
                                     <?php $v_pmba = $this->db->select('source, id')->where('id_pembanding', $dtpengujiaa->id)->from('source_pembanding')->group_by('source')->get()->result();?>
-                                        <h6>Total skema hash Text pembanding (<?= $dtpengujiaa->id;?>) = <?php echo count($v_pmba);?></h6>
+                                        <h6 class="text-primary sub-title">Total skema hash Text pembanding (<?= $dtpengujiaa->id;?>) = <?php echo count($v_pmba);?></h6>
                                         <h6>
                                             <?php foreach($v_pmba as $pmba):?>
                                                 <?= hasing($pmba->source, $kgram, $basis);?>
                                             <?php endforeach;?>
                                         </h6>
+                                        </div>
                                 <?php endforeach;?>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,7 +163,7 @@
                                     <h6>Skema hash Text judul diajukan = <?= count($v_pngaff);?></h6>
                                     <h6>Skema hash Text judul pembanding = <?= count($v_pmbabbb);?></h6>
                                     <h6>Skema Hash sama Text diajukan dan Text pembanding (diajukan ᴖ pembanding) = <?= count($v_pmbaaaa);?></h6>
-                                    <h6>Hasil Similarity (2 * diajukan ᴖ pembanding / (diajukan + pembanding <?= $dtpengujiaaa->id;?>)) * 100 = 
+                                    <h6>Hasil Similarity (2 * <?= count($v_pmbaaaa);?> / (<?= count($v_pngaff);?> + <?= count($v_pmbabbb);?>)) * 100 = 
                                         <b class="text-primary"><?php echo $hasil;?> %</b>
                                         <?php $i=1; foreach($data as $dtpengajuan):?>
                                             <?php $dtal = array(
@@ -212,6 +211,18 @@
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="accordion-content accordion-desc"><br>
                             <div class="row">
+                                <div class="col-md-4 sub-title text-primary">
+                                    #Judul pembanding
+                                </div>
+                                <div class="col-md-4 sub-title text-primary">
+                                    Pemilik judul
+                                </div>
+                                <div class="col-md-2 sub-title text-primary">
+                                    Total
+                                </div>
+                                <div class="col-md-2 sub-title text-primary">
+                                    Hasil
+                                </div>
                                 <?php foreach($data as $dtpengajuan):?>
                                     <?php $v_dataresult = $this->db->select('*')->where('id_ideasubmission', $dtpengajuan->id)->from('tb_resultrabintest')->order_by('result', 'DESC')->limit(5)->get()->result();?>
                                     <?php foreach($v_dataresult as $ff):?>
