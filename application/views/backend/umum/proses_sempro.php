@@ -3,7 +3,7 @@
             class="ti-back-left"></i>Kembali</a>
     <div class="card">
         <div class="card-header" style="background-color: #75A8FE;">
-            <h5 class="card-header-text" style="color: white;">Hasil test plagiarisme</h5>
+            <h5 class="card-header-text" style="color: white;">HASIL TEST PLAGIARISME</h5>
         </div>
         <div class="card-block accordion-block  color-accordion-block">
             <div id="accordion" role="tablist" aria-multiselectable="true">

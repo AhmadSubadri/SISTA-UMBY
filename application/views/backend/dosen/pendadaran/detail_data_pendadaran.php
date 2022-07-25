@@ -3,7 +3,7 @@
 		class="ti-back-left"></i>Kembali</a>
 		<div class="card">
 			<div class="card-header" style="background-color: #75A8FE;">
-				<h6>Detail data pendadaran mahasiswa</h6>
+				<h6>DETAIL DATA PENDADARAN MAHASISWA</h6>
 			</div>
 			<div class="card-block">
 				<div class="row">

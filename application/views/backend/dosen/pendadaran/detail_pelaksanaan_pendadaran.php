@@ -3,7 +3,7 @@
 		class="ti-back-left"></i>Kembali</a>
 		<div class="card">
 			<div class="card-header" style="background-color: #75A8FE;">
-				<h6>Pelaksanaan ujian pendadaran</h6>
+				<h6>PELAKSANAAN UJIAN PENDADARAN</h6>
 			</div>
 			<div class="card-block">
 				<div class="row">

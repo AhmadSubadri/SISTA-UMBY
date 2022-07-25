@@ -1,7 +1,7 @@
 <div class="col-xl-12">
 	<div class="card">
 		<div class="card-header" style="background-color: #75A8FE;">
-			<h5 style="color: white;">Data progres upload dokumen yudisium mahasiswa</h5>
+			<h5 style="color: white;">DATA PROGRES UPLOAD DOKUMEN YUDISIUM MAHASISWA</h5>
 		</div>
 		<div class="card-block">
 			<div class="table-responsive">
