@@ -2,8 +2,8 @@
     <a href="<?= site_url('dsn/dashboard/pelaksanaan-sempro');?>" class="btn btn-mini btn-outline-primary"><i
             class="ti-back-left"></i>Kembali</a>
     <div class="card">
-        <div class="card-header">
-            <h5 class="card-header-text">Hasil test plagiarisme</h5>
+        <div class="card-header" style="background-color: #75A8FE;">
+            <h5 class="card-header-text" style="color: white;">Hasil test plagiarisme</h5>
         </div>
         <div class="card-block accordion-block  color-accordion-block">
             <div id="accordion" role="tablist" aria-multiselectable="true">

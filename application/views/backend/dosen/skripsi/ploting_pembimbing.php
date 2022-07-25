@@ -1,8 +1,10 @@
 <?php $this->load->view('backend/partials_/alert_success.php');?>
 <div class="col-xl-12">
 	<div class="card">
+		<div class="card-header" style="background-color: #75A8FE;">
+			<h5 style="color: white;">PLOTING DOSEN PEMBIMBING SKRIPSI</h5>
+		</div>
 		<div class="card-block table-border-style">
-			<h4 class="sub-title text-center">PLOTING DOSEN PEMBIMBING SKRIPSI</h4>
 			<?= form_open_multipart('dsn/dashboard/save-ploting-dospem'); ?>
 			<div class="form-group form-default form-static-label">
 				<button type="submit" class="btn btn-grd-primary btn-mini waves-effect waves-light"><i class="ti-save"></i>Simpan ploting</button>
@@ -64,8 +66,10 @@
 
 <div class="col-xl-12">
 	<div class="card">
+		<div class="card-header" style="background-color: #75A8FE;">
+			<h5 style="color: white;">DATA MAHASISWA DAN PEMBIMBING</h5>
+		</div>
 		<div class="card-block table-border-style">
-			<h4 class="sub-title text-center">DATA MAHASISWA DAN PEMBIMBING</h4>
 			<div class="row">
 				<div class="col-sm-12 col-xl-10 sub-title text-primary">
 					<h6># Profil</h6>

@@ -3,8 +3,8 @@
 	<a href="<?= site_url('dsn/dashboard/mahasiswa-yudisium');?>" class="btn btn-mini"><i
 		class="ti-back-left"></i>Kembali</a>
 		<div class="card">
-			<div class="card-header">
-				<h5>Detail data upload syarat yudisium</h5>
+			<div class="card-header" style="background-color: #75A8FE;">
+				<h5 style="color: white;">Detail data upload syarat yudisium</h5>
 			</div>
 			<div class="card-block">
 				<div class="accordion-block">

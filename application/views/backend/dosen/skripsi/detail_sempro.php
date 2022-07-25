@@ -3,8 +3,8 @@
     <a href="<?= site_url('dsn/dashboard/data-sempro-skripsi');?>" class="btn btn-mini"><i
         class="ti-back-left"></i>Kembali</a>
         <div class="card">
-            <div class="card-header">
-                <h5>Detail feedback dosen penguji seminar proposal</h5>
+            <div class="card-header" style="background-color: #75A8FE;">
+                <h5 style="color: white;">Detail feedback dosen penguji seminar proposal</h5>
             </div>
             <div class="card-block">
                 <div class="accordion-block  color-accordion-block">

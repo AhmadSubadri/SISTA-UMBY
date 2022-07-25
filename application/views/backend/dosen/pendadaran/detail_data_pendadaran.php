@@ -2,7 +2,7 @@
 	<a href="<?= site_url('dsn/dashboard/mahasiswa-pendadaran');?>" class="btn btn-mini"><i
 		class="ti-back-left"></i>Kembali</a>
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header" style="background-color: #75A8FE;">
 				<h6>Detail data pendadaran mahasiswa</h6>
 			</div>
 			<div class="card-block">
