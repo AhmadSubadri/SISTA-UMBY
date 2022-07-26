@@ -18,81 +18,81 @@
                     </thead>
                     <tbody>
                         <?php if(count($Data) == null):?>
-                        <tr>
-                            <td colspan="5" class="col text-center">
-                                <h6>Data not available</h6>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td colspan="5" class="col text-center">
+                                    <h6>Data not available</h6>
+                                </td>
+                            </tr>
                         <?php else:?>
-                        <?php $i=1; foreach($Data as $row):?>
-                        <tr>
-                            <th scope="row"><?= $i++;?></th>
-                            <td>
-                                <div class="media">
-                                    <?php if($row->image == null):?>
-                                    <img class="img-radius img-40 align-top m-r-15"
-                                        src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
-                                    <?php else:?>
-                                    <img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>"
-                                        alt="user image" class="img-radius img-40 align-top m-r-15">
-                                    <?php endif;?>
-                                    <div class="media-body">
-                                        <h5 class="notification-user"><?= $row->name;?></h5>
-                                        <p class="notification-msg"><?= $row->nim;?></p>
+                            <?php $i=1; foreach($Data as $row):?>
+                            <tr>
+                                <th scope="row"><?= $i++;?></th>
+                                <td>
+                                    <div class="media">
+                                        <?php if($row->image == null):?>
+                                            <img class="img-radius img-40 align-top m-r-15"
+                                            src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
+                                        <?php else:?>
+                                            <img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>"
+                                            alt="user image" class="img-radius img-40 align-top m-r-15">
+                                        <?php endif;?>
+                                        <div class="media-body">
+                                            <h5 class="notification-user"><?= $row->name;?></h5>
+                                            <p class="notification-msg"><?= $row->nim;?></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <?php if($row->tanggal == 0):?>
-                                <label class="label label-mini label-danger">Belum terjadwal</label>
-                                <?php else:?>
-                                    <?php if(format_tanggal(date($row->tanggal)) == format_tanggal(date('Y-m-d'))):?>
+                                </td>
+                                <td>
+                                    <?php if($row->tanggal == 0):?>
+                                        <label class="label label-mini label-danger">Belum terjadwal</label>
+                                    <?php else:?>
+                                        <?php if(format_tanggal(date($row->tanggal)) == format_tanggal(date('Y-m-d'))):?>
                                         <h6 class="text-danger" id="warningschedule">Hari ini : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?></h6>
                                     <?php else:?>
                                         <h6>Hari/Tanggal : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?></h6>
                                     <?php endif;?>
-                               
+
                                 </h6>
                                 <h6>Tempat : <?= $row->tempat;?></h6>
                                 <h6>Kegiatan : <?= $row->kegiatan;?></h6>
-                                <?php endif;?>
-                            </td>
-                            <td>
-                                <?php if($row->feedback == null):?>
+                            <?php endif;?>
+                        </td>
+                        <td>
+                            <?php if($row->feedback == null):?>
                                 <label class="label label-mini label-danger">Belum sempro</label>
-                                <?php else:?>
+                            <?php else:?>
                                 <label class="label label-mini label-success">Sudah sempro</label>
-                                <?php endif;?>
-                            </td>
-                            <td>
-                                <?php if($row->feedback == 0):?>
+                            <?php endif;?>
+                        </td>
+                        <td>
+                            <?php if($row->feedback == 0):?>
                                 <a href="#" class="btn btn-mini btn-grd-inverse btn-disabled disabled"><i
-                                        class="ti-na"></i>Lihat</a>
-                                <a href="<?= site_url('dsn/dashboard/proses-sempro/'.$row->ididea);?>"
-                                    class="btn btn-mini btn-outline-info btn-info"><i class="ti-settings"></i>Proses
-                                    sempro</a>
+                                    class="ti-na"></i>Lihat</a>
+                                    
+                                    <a href="<?= site_url('dsn/dashboard/proses-sempro/'.$row->ididea);?>" class="btn btn-mini btn-outline-info btn-info menu" id="idj"><i class="ti-settings"></i>Proses sempros</a>
+
                                 <?php else:?>
-                                <a href="#"  id="Modal-Tourist" data-toggle="modal" data-target="#modal_lihats<?= $row->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i>Lihat</a>
-                                <a href="#" class="btn btn-mini btn-outline-info btn-disabled disabled"><i
+                                    <a href="#"  id="Modal-Tourist" data-toggle="modal" data-target="#modal_lihats<?= $row->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i>Lihat</a>
+                                    <a href="#" class="btn btn-mini btn-outline-info btn-disabled disabled"><i
                                         class="ti-na"></i>Sudah sempro</a>
-                                <?php endif;?>
-                            </td>
-                        </tr>
+                                    <?php endif;?>
+                                </td>
+                            </tr>
                         <?php endforeach;?>
-                        <?php endif;?>
-                    </tbody>
-                </table>
-            </div>
+                    <?php endif;?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+</div>
 
 <?php foreach($Data as $i):
-        $id = $i->id;
-        $feedback = $i->feedback;
-        $note = $i->note;
-?>
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    $id = $i->id;
+    $feedback = $i->feedback;
+    $note = $i->note;
+    ?>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     id="modal_lihats<?= $id;?>" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -104,30 +104,33 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                <div class="col-sm-12 col-xl-10 sub-title">
-                    <h6><?= $note;?></h6>
+                    <div class="col-sm-12 col-xl-10 sub-title">
+                        <h6><?= $note;?></h6>
+                    </div>
+                    <div class="col-sm-12 col-xl-2 sub-title">
+                        <?php if ($feedback == '0'): ?>
+                            <label class="label label-md label-warning">Waiting</label>
+                        <?php elseif ($feedback == '1'):?>
+                            <label class="label label-md label-success">Diterima</label>
+                        <?php elseif ($feedback == '2'):?>
+                            <label class="label label-md label-success">Diterima dengan revisi</label>
+                        <?php else:?>
+                            <label class="label label-md label-danger">Ditolak</label>
+                        <?php endif;?>
+                    </div>
                 </div>
-                <div class="col-sm-12 col-xl-2 sub-title">
-                    <?php if ($feedback == '0'): ?>
-                    <label class="label label-md label-warning">Waiting</label>
-                    <?php elseif ($feedback == '1'):?>
-                    <label class="label label-md label-success">Diterima</label>
-                    <?php elseif ($feedback == '2'):?>
-                    <label class="label label-md label-success">Diterima dengan revisi</label>
-                    <?php else:?>
-                    <label class="label label-md label-danger">Ditolak</label>
-                    <?php endif;?>
-                </div>
-            </div>
             </div>
         </div>
     </div>
 </div>
 <?php endforeach;?>
 
+<div id="loading">
+</div>
+
 <style type="text/css">
     #warningschedule {
-  animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;  
-}
-@keyframes blinker2 { to { opacity: 0; } }
+      animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;  
+  }
+  @keyframes blinker2 { to { opacity: 0; } }
 </style>

@@ -60,10 +60,7 @@
                     <thead>
                         <tr class="text-center text-primary">
                             <th>#</th>
-                            <th>
-                                <input type="checkbox" class="form-check-input" name="nim[]" onchange="checkAll(this)">
-                                Profil
-                            </th>
+                            <th>Profil</th>
                             <th>Jadwal sempro</th>
                             <th>Status sempro</th>
                             <th width="10px">Aksi</th>

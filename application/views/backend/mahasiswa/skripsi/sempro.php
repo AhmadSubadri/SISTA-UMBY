@@ -24,12 +24,16 @@
                 <ul>
                     <?php foreach($DataDataSempro as $row):?>
                     <li>
-                        <?php if($row->tanggal == 0):?>
+                        <?php if($row->tempat == null):?>
                         <label class="label label-mini label-danger">Belum terjadwal</label>
                         <?php else:?>
                         <h6>
-                            <i class="icofont ti-hand-point-right text-success"></i> Hari/tgl :
-                            <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?>
+                            <i class="icofont ti-hand-point-right text-success"></i> 
+                            <?php if(format_tanggal(date($row->tanggal)) == format_tanggal(date('Y-m-d'))):?>
+                                <b class="text-danger" id="warningscheduleM">Hari ini : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?></b>
+                            <?php else:?>
+                                Hari/Tanggal : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?>
+                            <?php endif;?>
                         </h6>
                         <h6>
                             <i class="icofont ti-hand-point-right text-success"></i> Tempat : <?= $row->tempat;?>
@@ -62,16 +66,15 @@
                         </div>
                         <?php elseif($row->status == 1):?>
                         <div class="sub-title">
-                            <h4 class="sub-title text-center">*Judul dan proposal anda
-                                <label class="label label-mini label-success">diterima,</label>
+                            <h4 class="sub-title">*Judul dan proposal anda
+                                <label class="label label-mini label-success">diterima</label>
                             </h4>
+                            Catatan : 
                             <?= $row->note;?>
                         </div>
-                        <blockquote class="blockquote mb-0">
-                            <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting dosen
-                                pembimbing skripsi sudah di sahkan</p>
-                            <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite></footer>
-                        </blockquote>
+                        <div style="background-color: #FFE3C7; font-size: 13px;">
+                            <i><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting dosen pembimbing skripsi sudah di sahkan</i>
+                        </div>
                         <?php elseif($row->status == 2):?>
                         <div class="text-center">
                             <h4 class="sub-title text-center">*Judul dan proposal anda <label
@@ -79,12 +82,9 @@
                                 <?= $row->note;?>
                             </h4>
                         </div>
-                        <blockquote class="blockquote mb-0">
-                            <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting
-                                dosen pembimbing skripsi sudah di sahkan</p>
-                            <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite>
-                            </footer>
-                        </blockquote>
+                        <div style="background-color: #FFE3C7; font-size: 13px;">
+                            <i><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi setelah ploting dosen pembimbing skripsi sudah di sahkan</i>
+                        </div>
                         <?php else:?>
                         <div class="text-center">
                             <h4 class="sub-title text-center">*Judul dan proposal anda <label
@@ -92,12 +92,10 @@
                                 <?= $row->note;?>
                             </h4>
                         </div>
-                        <blockquote class="blockquote mb-0">
-                            <p class="text-c-red"><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi belum bisa di
-                                lanjutkan, silahkan ajukan judul dan proposal kembali</p>
-                            <footer class="blockquote-footer"><cite title="Source Title">vital Records</cite>
-                            </footer>
-                        </blockquote>
+                        <div style="background-color: #FFE3C7; font-size: 13px;">
+                            <i class=""><b>Note.</b> Tahap lanjutan ke Bimbingan skripsi belum bisa di
+                                lanjutkan, silahkan ajukan judul dan proposal kembali</i>
+                        </div>
                         <?php endif;?>
                     </li>
                     <?php endforeach;?>
@@ -130,3 +128,10 @@
     </div>
 </div>
 </div>
+
+<style type="text/css">
+    #warningscheduleM {
+  animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;  
+}
+@keyframes blinker2 { to { opacity: 0; } }
+</style>

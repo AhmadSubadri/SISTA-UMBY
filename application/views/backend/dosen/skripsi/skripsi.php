@@ -5,7 +5,7 @@
                 <h5 style="color: white;">DATA PENGAJUAN JUDUL & PROPOSAL SKRIPSI TERBARU</h5>
             <div class="card-header-right"> <i class="icofont icofont-spinner-alt-5"></i> </div>
         </div>
-        <div class="card-block" style="display:block; height: 370px; overflow:auto;">
+        <div class="card-block" style="display:block; overflow:auto;">
             <div class="row">
                 <?php if(count($Data) == null):?>
                     <div class="col text-center"><br>

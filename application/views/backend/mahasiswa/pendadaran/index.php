@@ -88,7 +88,7 @@
                     <div class="col-sm-12 col-xl-8">
                         <div class="media">
                             <label class="badge-top-right">S<?=$i++;?>. </label>
-                            <?= $syarat->requirements;?><i class="text-danger" style="font-size: 8px;">(*wajib)</i>
+                            <h6><?= $syarat->requirements;?></h6><i class="text-danger" style="font-size: 8px;">(*wajib)</i>
                         </div>
                     </div>
                     <?php $Doc = $this->db->select('*')->where('id_requirement', $syarat->id)->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get();?>
