@@ -6,8 +6,8 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header" style="background-color: #75A8FE;">
-            <h5 style="color: white;">Daftar pendadaran sekarang</h5>
+        <div class="card-header">
+            <h5>Daftar pendadaran sekarang</h5>
             <div class="card-header-right">
                 <?php if(count($Data) != 0):?>
                     <?php $Document = $this->db->select('*')->where('nim', $this->session->userdata('username'))->from('tb_uploadrequirementexam')->get()->result();?>
@@ -16,8 +16,10 @@
                         <?php foreach($thesis as $ths):?>
                             <?php if($ths->status_daftar == null):?>
                                 <a href="<?= site_url('mhs/dashboard/daftar-pendadaran-sekarang/'.$this->session->userdata('username'));?>" class="btn btn-mini btn-outline-primary" data-toggle="tooltip" data-placement="left" data-original-title="Klik Daftar pendadaran sekarang">Daftar pendadaran sekarang</a>
+                            <?php elseif($ths->status_daftar == 1):?>
+                                <a href="" class="btn btn-mini btn-outline-danger disabled" data-toggle="tooltip" data-placement="left" data-original-title="Sedang dalam pemeriksaan dokumen">Sedang dalam pemeriksaan dokumen</a>
                             <?php else:?>
-                                <a href="" class="btn btn-mini btn-outline-warning disabled" data-toggle="tooltip" data-placement="left" data-original-title="Anda sudah daftar pendadaran sekarang">Sudah terdaftar di pendadaran</a>
+                                <a href="" class="btn btn-mini btn-outline-danger disabled" data-toggle="tooltip" data-placement="left" data-original-title="Dokumn diterima">Dokumn diterima</a>
                             <?php endif;?>
                         <?php endforeach;?>
                     <?php else:?>
@@ -28,6 +30,16 @@
                 <?php endif;?>
             </div>
         </div>
+        <?php $thesias = $this->db->select('*')->where('nim', $this->session->userdata('username'))->from('tb_thesisreceived')->get()->result();?>
+        <?php foreach($thesias as $tyd):?>
+                <?php if($tyd->status_daftar == 0):?>
+                    
+                <?php elseif($tyd->status_daftar == 1):?>
+                    <label class="label label-mini label-danger"><h6 class="align-middle text-center">Sedang dalam proses pemeriksaan dokumen</h6></label>
+                <?php else:?>
+                    <label class="label label-mini label-success"><h6 class="align-middle text-center">Dokumen diterima</h6></label>
+                <?php endif;?>
+        <?php endforeach;?>
         <div class="card-block">
         <h6 class="sub-title">Unggah dokumen syarat pendadaran</h6>
         <div class="row">
@@ -104,8 +116,12 @@
                     <div class="col-sm-12 col-xl-2 text-center">
                         <?php if(!empty($Doc->result())):?>
                             <?php foreach($Doc->result() as $docu):?>
-                                <a id="Modal-Tourist" data-toggle="modal" data-target="#modal_see<?= $docu->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i> Lihat</a>
-                                <a href="<?= site_url('mhs/dashboard/delete-document/'.$docu->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Ubah</a>
+                                <?php if($docu->status == 0):?>
+                                    <a id="Modal-Tourist" data-toggle="modal" data-target="#modal_see<?= $docu->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i> Lihat</a>
+                                    <a href="<?= site_url('mhs/dashboard/delete-document/'.$docu->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Ubah</a>
+                                <?php else:?>
+                                    <a href="" class="btn btn-mini btn-outline-success disabled"><i class="ti-check"></i>Dokumen approved</a>
+                                <?php endif;?>
                             <?php endforeach;?>
                         <?php else:?>
                             <?php echo form_open_multipart('mhs/dashboard/save-document');?>

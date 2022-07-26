@@ -111,10 +111,17 @@ $route['TU/dashboard/update-data-dosen-master/(:any)'] = 'backend/tu/Index/Updat
 $route['TU/dashboard/insert-data-mahasiswa-master'] = 'backend/tu/Index/InsertDataMahasiswaMaster';
 $route['TU/dashboard/update-data-mahasiswa-master/(:any)'] = 'backend/tu/Index/UpdateDataMahasiswaMaster/$1';
 
-$route['TU/dashboard/daftar-yudisium-mahasiswa'] = 'backend/tu/Index/DaftarYudisiumMahasiswa';
-$route['TU/dashboard/daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Index/DaftarkanYudisiumMahasiswa/$1';
-$route['TU/dashboard/batal-daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Index/BatalkanDaftarkanYudisiumMahasiswa/$1';
-$route['TU/dashboard/daftar-pendadaran-mahasiswa'] = 'backend/tu/Index/DaftarPendadaranMahasiswa';
+$route['TU/dashboard/daftar-yudisium-mahasiswa'] = 'backend/tu/Daftaryudisium/DaftarYudisiumMahasiswa';
+$route['TU/dashboard/daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Daftaryudisium/DaftarkanYudisiumMahasiswa/$1';
+$route['TU/dashboard/batal-daftarkan-yudisium-mahasiswa/(:any)'] = 'backend/tu/Daftaryudisium/BatalkanDaftarkanYudisiumMahasiswa/$1';
+$route['TU/dashboard/batal-daftarkan-pendadaran-mahasiswa/(:any)'] = 'backend/tu/Daftarpendadaran/BatalkanDaftarkanPendadaranMahasiswa/$1';
+
+$route['TU/dashboard/daftar-pendadaran-mahasiswa'] = 'backend/tu/Daftarpendadaran/DaftarPendadaranMahasiswa';
+$route['TU/dashboard/cek-dokumen-pendadaran/(:any)'] = 'backend/tu/Daftarpendadaran/CekDokumenPendadaran/$1';
+$route['TU/dashboard/approved-dokumen'] = 'backend/tu/Daftarpendadaran/ApprovedDokumen';
+$route['TU/dashboard/kirim-revisi-dokumen'] = 'backend/tu/Daftarpendadaran/KirimRevisiDokumen';
+$route['TU/dashboard/delete-byid-uploaded'] = 'backend/tu/Daftarpendadaran/DeleteByIdNotif';
+$route['TU/dashboard/daftarkan-mahasiswa-ini'] = 'backend/tu/Daftarpendadaran/DaftarkanMahasiswaIni';
 
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';
