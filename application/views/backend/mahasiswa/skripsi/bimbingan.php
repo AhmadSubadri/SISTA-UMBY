@@ -63,7 +63,7 @@
                                         class="ti-check-box"></i>Approved</button>
                                 <?php else:?>
                                 <button class="btn btn-mini waves-effect waves-light disabled btn-disabled"
-                                    data-toggle="tooltip" data-placement="top" title="Click to finished the guidance"><i
+                                    data-toggle="tooltip" data-placement="top" title="On going"><i
                                         class="ti-check-box text-primary"></i>On going</button>
                                 <?php endif;?>
                             </div>

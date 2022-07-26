@@ -2,10 +2,10 @@
     <!-- Label size card start -->
     <div class="card">
             <div class="card-header" style="background-color: #75A8FE;">
-                <h5 style="color: white;">Data pengajuan judul & proposal skripsi terbaru</h5>
+                <h5 style="color: white;">DATA PENGAJUAN JUDUL & PROPOSAL SKRIPSI TERBARU</h5>
             <div class="card-header-right"> <i class="icofont icofont-spinner-alt-5"></i> </div>
         </div>
-        <div class="card-block" style="display:block; height: 370px; overflow:auto;">
+        <div class="card-block" style="display:block; overflow:auto;">
             <div class="row">
                 <?php if(count($Data) == null):?>
                     <div class="col text-center"><br>
@@ -48,7 +48,7 @@
     <!-- Badge size card start -->
     <div class="card">
         <div class="card-header" style="background-color: #75A8FE;">
-            <h5 style="color: white;">Progres upload judul & proposal skripsi</h5>
+            <h5 style="color: white;">PROGRES UPLOAD JUDUL & PROPOSAL SKRIPSI</h5>
             <div class="card-header-right"> <i class="icofont icofont-spinner-alt-5"></i> </div>
         </div>
         <div class="card-block">

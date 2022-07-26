@@ -2,7 +2,7 @@
 	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
 		<div class="card-header" style="background-color: #75A8FE;">
-			<h5 style="color: white;">Mahasiswa daftar pendadaran periode <?= date('Y');?></h5>
+			<h5 style="color: white;">MAHASISWA DAFTAR PENDADARAN PERIODE <?= date('Y');?></h5>
 		</div>
 		<div class="card-block">
 			<input type="text" id="InputSearchpendadaran" class="form-control" onkeyup="myFunctions()" placeholder="Search for names.." title="Type in a name">
@@ -14,6 +14,7 @@
 								<th># Profil</th>
 								<th>Program studi</th>
 								<th>Angkatan</th>
+								<th>Status daftar</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -37,13 +38,22 @@
 								</td>
 								<td class="align-middle"><?= $row->major;?></td>
 								<td class="align-middle"><?= $row->class;?></td>
-								<td>
+								<td class="align-middle">
+									<?php if($row->status_daftar == 0):?>
+										<label class="label label-mini label-danger">Belum mendaftar</label>
+									<?php elseif($row->status_daftar == 1):?>
+										<label class="label label-mini label-primary">Checking document</label>
+									<?php else:?>
+										<label class="label label-mini label-success">Sudah terdaftar</label>
+									<?php endif;?>
+								</td>
+								<td class="align-middle">
 									<?php $thesis = $this->db->select('*')->where('nim', $row->username)->from('tb_thesisreceived')->get()->result();?>
 									<?php foreach($thesis as $t):?>
-										<?php if($t->status_daftar_yudisium == 0):?>
-											<a href="<?= site_url('TU/dashboard/daftarkan-yudisium-mahasiswa/'.$row->username);?>" class="btn btn-mini btn-outline-primary"><i class="ti-settings"></i>Daftar yudisium</a>
+										<?php if($t->status_daftar == 1):?>
+											<a href="<?= site_url('TU/dashboard/cek-dokumen-pendadaran/'.$row->username);?>" class="btn btn-mini btn-outline-primary"><i class="ti-reload"></i>Cek dokumen</a>
 										<?php else:?>
-											<a href="<?= site_url('TU/dashboard/batal-daftarkan-yudisium-mahasiswa/'.$row->username);?>" class="btn btn-mini btn-outline-danger"><i class="ti-settings"></i>Batalkan Daftar</a>
+											<a class="btn btn-mini btn-outline-primary disabled"><i class="ti-na"></i>Sudah terdaftar</a>
 										<?php endif;?>
 									<?php endforeach;?>
 								</td>

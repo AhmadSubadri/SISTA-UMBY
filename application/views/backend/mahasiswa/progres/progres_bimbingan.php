@@ -1,7 +1,7 @@
 <div class="col-xl-12">
 	<div class="card">
 		<div class="card-header" style="background-color: #75A8FE;">
-			<h5 style="color: white;">Progres bimbingan skripsi ku</h5>
+			<h5 style="color: white;">PROGRES BIMBINGAN SKRIPSI</h5>
 		</div>
 		<div class="card-block">
 			<div class="row">

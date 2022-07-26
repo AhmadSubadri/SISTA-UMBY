@@ -2,7 +2,7 @@
 	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
 		<div class="card-header" style="background-color: #75A8FE;">
-			<h5 style="color: white;">Data dosen</h5>
+			<h5 style="color: white;">DATA DOSEN</h5>
 			<div class="card-header-right">
 				<a class="btn btn-mini btn-outline-danger" data-toggle="modal" data-target="#tambahlistdosen">Tambah data dosen</a>
             	<a class="btn btn-mini btn-outline-danger" data-toggle="modal" data-target="#importlistdosen">Import data dosen</a>

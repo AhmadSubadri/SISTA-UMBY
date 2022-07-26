@@ -3,7 +3,7 @@
     <div id="popsuccess"></div>
     <div class="card">
         <div class="card-header" style="background-color: #75A8FE;">
-                <h5 style="color: white;">Data syarat pendadaran</h5>
+                <h5 style="color: white;">DATA SYARAT PENDADARAN</h5>
             <div class="card-header-right">
                 <a href="" class="btn btn-mini btn-outline-danger" id="Modal-Tourist" data-toggle="modal" data-target="#modalrequirement">+ Tambah persyaratan</a>
             </div>

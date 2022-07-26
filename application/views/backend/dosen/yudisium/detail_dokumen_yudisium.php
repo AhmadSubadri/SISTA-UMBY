@@ -4,7 +4,7 @@
 		class="ti-back-left"></i>Kembali</a>
 		<div class="card">
 			<div class="card-header" style="background-color: #75A8FE;">
-				<h5 style="color: white;">Detail data upload syarat yudisium</h5>
+				<h5 style="color: white;">DETAIL DATA UPLOAD SYARAT YUDISIUM</h5>
 			</div>
 			<div class="card-block">
 				<div class="accordion-block">

@@ -52,7 +52,7 @@
 <div class="col-xl-12">
     <div class="card">
         <div class="card-header" style="background-color: #75A8FE;">
-            <h5 style="color: white;">Ploting dan pelaksanaan sempro</h5>
+            <h5 style="color: white;">PLOTING DOSEN PENGUJI DAN PELAKSANAAN SEMINAR PROPOSAL</h5>
         </div>
         <div class="card-block table-border-style">
             <div class="table-responsive">
@@ -60,10 +60,7 @@
                     <thead>
                         <tr class="text-center text-primary">
                             <th>#</th>
-                            <th>
-                                <input type="checkbox" class="form-check-input" name="nim[]" onchange="checkAll(this)">
-                                Profil
-                            </th>
+                            <th>Profil</th>
                             <th>Jadwal sempro</th>
                             <th>Status sempro</th>
                             <th width="10px">Aksi</th>

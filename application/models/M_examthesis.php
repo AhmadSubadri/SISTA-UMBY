@@ -121,7 +121,7 @@ class M_examthesis extends CI_Model
         $major = $this->session->userdata('major');
         $this->db->select('t.id, s.fullname as nameStudent, s.username, t.kegiatan, t.tempat, t.date, t.time, s.image')
         ->where('t.major', $major)
-        ->where('t.status_daftar', 1)
+        ->where('t.status_daftar', 2)
         ->from('tb_thesisreceived t')
         ->join('tb_student s', 's.username = t.nim');
         $query = $this->db->get();

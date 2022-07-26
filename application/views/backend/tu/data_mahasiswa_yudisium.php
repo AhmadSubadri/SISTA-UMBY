@@ -2,7 +2,7 @@
 	<?php $this->load->view('backend/partials_/alert_success.php');?>
 	<div class="card">
 		<div class="card-header" style="background-color: #75A8FE;">
-			<h5 style="color: white;">Mahasiswa daftar yudisium periode <?= date('Y');?></h5>
+			<h5 style="color: white;">MAHASISWA DAFTAR YUDISIUM PERIODE <?= date('Y');?></h5>
 		</div>
 		<div class="card-block">
 			<input type="text" id="InputSearchyudisium" class="form-control" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
