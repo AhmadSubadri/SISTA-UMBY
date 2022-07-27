@@ -109,7 +109,7 @@ class Daftarpendadaran extends CI_Controller
 		if($this->input->post('status') == 1){
 			$nim = $this->input->post('nim');
 	        $Data = array(
-	            'status_pendadaran' => "2",
+	            'status_pendadaran' => "4",
 	            'hasil_pendadaran' => $this->input->post('status'),
 	            'catatan_akhir' => $this->input->post('note')
 	        );

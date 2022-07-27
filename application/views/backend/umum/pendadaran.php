@@ -54,17 +54,21 @@
 							<label class="label label-mini label-success">Sudah pendadaran</label>
 						<?php elseif($data->status_pendadaran == 2):?>
 							<label class="label label-mini label-primary">Sudah pengumuman</label>
+						<?php elseif($data->status_pendadaran == 4):?>
+							<label class="label label-mini label-success">Revisi approved</label>
 						<?php else:?>
 							<label class="label label-mini label-danger">Dalam proses revisi</label>
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-1">
-						<?php if ($data->status_pendadaran == 0):?>
-							<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Ujian</a>
-						<?php elseif($data->status_pendadaran == 1):?>
-							<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Edit hasil</a>
+						<?php if($data->status == 1):?>
+							<a href="" class="btn btn-mini btn-outline-success disabled"><i class="ti-na"></i>Lulus</a>
+						<?php elseif($data->status == 2 || $data->status == 4):?>
+							<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran-umum/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Ulang ujian</a>
+						<?php elseif($data->status == 3):?>
+							<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran-umum/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Edit hasil</a>
 						<?php else:?>
-							<a href="" class="btn btn-mini btn-outline-danger disabled"><i class="ti-na"></i>Done</a>
+							<a href="<?= site_url('dsn/dashboard/detail-pelaksanaan-pendadaran-umum/'.$data->id);?>" class="btn btn-mini btn-outline-primary">Ujian</a>
 						<?php endif;?>
 					</div>
 					<div class="sub-title col-sm-12 col-xl-12"></div>

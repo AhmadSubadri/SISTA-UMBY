@@ -65,10 +65,14 @@
 							<?php endif;?>
 						</div>
 						<div class="col-sm-12 col-xl-2">
-							<?php if (!empty(count($penguji))):?>
-								<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalEditPendadaran<?=$val->id;?>">Edit ploting</a>
+							<?php if ($val->status_pendadaran != 2):?>
+								<?php if (!empty(count($penguji))):?>
+									<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalEditPendadaran<?=$val->id;?>">Edit ploting</a>
+								<?php else:?>
+									<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalPendadaran<?=$val->id;?>">Ploting</a>
+								<?php endif;?>
 							<?php else:?>
-								<a href="" class="btn btn-mini btn-outline-primary" id="Modal-Tourist" data-toggle="modal" data-target="#modalPendadaran<?=$val->id;?>">Ploting</a>
+								<a href="" class="btn btn-mini btn-outline-danger disabled"><i class="ti-na"></i>Done</a>
 							<?php endif;?>
 						</div>
 						<div class="sub-title col-sm-12 col-xl-12"></div>

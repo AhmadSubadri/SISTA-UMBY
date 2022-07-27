@@ -27,12 +27,16 @@
 						</div>
 
 						<!-- Data -->
-						<div class="col-sm-12 col-xl-4 sub-title text-primary">
-							# Penguji
-						</div>
-						<div class="col-sm-12 col-xl-8 sub-title text-primary">
-							Catatan
-						</div>
+						<?php foreach($DataPenguji as $hasil):?>
+							<div class="col-sm-12 col-xl-4">
+								<h6><i class="icofont ti-angle-double-right text-success"></i> <?= $hasil->nameLecturer;?></h6>
+							</div>
+							<div class="col-sm-12 col-xl-8">
+								<h6><?= $hasil->note;?></h6>
+							</div>
+							<div class="col-sm-12 col-xl-12 sub-title"></div>
+
+						<?php endforeach;?>
 					</div>
 				<?php else:?>
 					<h6 class="sub-title text-center text-danger">Belum ada pengumuman hasil ujian pendadaran</h6>

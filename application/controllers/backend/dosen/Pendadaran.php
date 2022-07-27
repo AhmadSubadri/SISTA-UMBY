@@ -224,6 +224,7 @@ public $result = [
                 'avarage' => $this->input->post('nilaiangka'),
                 'letter_value' => $this->input->post('nilaihuruf'),
                 'catatan_akhir' => $this->input->post('note'),
+                'pernyataan' => $this->input->post('hasilnyakan'),
                 'status_pendadaran' => "2"
             );
             $this->M_examthesis->_SetData('tb_thesisreceived',$Data, 'nim', $nim);
