@@ -4,62 +4,40 @@
 			<h5 style="color: white;">PENGUMUMAN HASIL UJIAN PENDADARAN</h5>
 		</div>
 		<div class="card-block">
-			<div class="row">
-				<div class="col-sm-12 col-xl-12">
-					<h4 class="sub-title text-center">Pengumuman hasil sidang pendadaran</h4>
-					<?php foreach($DataHasil as $hasil):?>
-						<?php if($hasil->avarage == null):?>
-							<h4 class="sub-title text-center"><label class="label label-mini label-danger text-center">Belum ada pengumuman hasil ujian</label></h4>
+			<?php foreach($status as $data):?>
+				<?php if($data->status_pendadaran == 3 || $data->status_pendadaran == 2 ):?>
+					<div class="text-center">
+						<?php if ($data->status_pendadaran == 0):?>
+							<label class="label label-mini label-warning">Belum pendadaran</label>
+						<?php elseif($data->status_pendadaran == 1):?>
+							<label class="label label-mini label-success">Sudah pendadaran</label>
+						<?php elseif($data->status_pendadaran == 2):?>
+							<label class="label label-mini label-primary">Sudah pengumuman</label>
 						<?php else:?>
-							<?php $values = $hasil->avarage ;?>
-							<h4 class="sub-title text-center">
-								Hasil sidang pendadaran anda dengan nilai rata-rata 
-								<?php
-								if(number_format($values,1) >= 50):
-									echo "<label class='text-primary'>".number_format($values,1)."</label>";
-								else:
-									echo "<label class='text-danger'>".number_format($values,1)."</label>";
-								endif;?> dengan nilai huruf  
-									<?php if(number_format($values,1) >= 50):?>
-										<label class="text-primary">(<?= $hasil->letter_value;?>)</label> dan di nyatakan <u class='text-primary'>LULUS</u>
-									<?php else:?>
-										<label class="text-danger">(<?= $hasil->letter_value;?>)</label> dan di nyatakan <u class='text-danger'>TIDAK LULUS</u>"
-									<?php endif;?>
-							</h4>
-							<?php if($hasil->catatan_akhir != null):?>
-								<h6><b>Catatan : <?= $hasil->catatan_akhir;?></b></h6>
-							<?php else:?>
-								<label class="label label-mini label-warning">Tidak ada catatan akhir</label>
-							<?php endif;?>
+							<label class="label label-mini label-danger">Status anda Dalam proses revisi</label>
 						<?php endif;?>
-						<?php if($hasil->status_pendadaran == 2):?>
-							<div class="row">
-								<div class="col-sm-12 col-xl-4 sub-title">
-									# Penguji sidang
-								</div>
-								<div class="col-sm-12 col-xl-8 sub-title">
-									Catatan
-								</div>
-								<!-- Data -->
-								<?php $i=1; foreach($DataPenguji as $penguji):?>
-								<div class="col-sm-12 col-xl-4 sub-title">
-									<?= $i++;?>. <?= $penguji->nameLecturer;?>
-								</div>
-								<div class="col-sm-12 col-xl-8 sub-title">
-									<?php if($penguji->note != null):?>
-										<?= $penguji->note;?>
-									<?php else:?>
-										<label class="label label-mini label-warning">Belum ada catatan</label>
-									<?php endif;?>
-								</div>
-								<?php endforeach;?>
-							</div>
-						<?php else:?>
+					</div><br><br>
+					Catatan di bawah ini ada jika di beri catatan :
+					<div class="row">
+						<div class="col-sm-12 col-xl-4 sub-title text-primary">
+							# Penguji
+						</div>
+						<div class="col-sm-12 col-xl-8 sub-title text-primary">
+							Catatan
+						</div>
 
-						<?php endif;?>
-					<?php endforeach;?>
-				</div>
-			</div>
+						<!-- Data -->
+						<div class="col-sm-12 col-xl-4 sub-title text-primary">
+							# Penguji
+						</div>
+						<div class="col-sm-12 col-xl-8 sub-title text-primary">
+							Catatan
+						</div>
+					</div>
+				<?php else:?>
+					<h6 class="sub-title text-center text-danger">Belum ada pengumuman hasil ujian pendadaran</h6>
+				<?php endif;?>
+			<?php endforeach;?>
 		</div>
 	</div>
 </div>

@@ -43,7 +43,7 @@
 						<?php elseif($row->status_daftar == 1):?>
 							<label class="label label-danger">Pemeriksaan dokumen</label>
 						<?php else:?>
-							<label class="label label-success">Dokumen approved</label>
+							<label class="label label-success ">Dokumen approved</label>
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-2 sub-title">
@@ -63,7 +63,7 @@
 						<?php elseif($row->status_daftar == 1):?>
 							<a href="" class="btn btn-mini btn-outline-danger btn-disabled disabled"><i class="ti-reload"></i>Checking data</a>
 						<?php else:?>
-							<a href="<?= site_url('dsn/dashboard/detail-data-pendadaran/'.$row->id);?>" class="btn btn-mini btn-outline-primary">Lihat hasil</a>
+							<a href="<?= site_url('TU/dashboard/detail-hasil-pendadaran/'.$row->id);?>" class="btn btn-mini btn-outline-primary">Lihat hasil</a>
 						<?php endif;?>
 					</div>
 				<?php endforeach;?>

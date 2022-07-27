@@ -45,16 +45,20 @@
       </ul>
       <ul class="nav-right">
         <li class="header-notification">
+          <?php $notif = $this->db->select('*')->where('penerima', $this->session->userdata('username'))->from('tb_notification')->get()->result();?>
           <a href="#!" class="waves-effect waves-light">
             <i class="ti-bell"></i>
+            <?php if(count($notif) != 0):?>
             <span class="badge bg-c-red"></span>
+            <?php else:?>
+              
+            <?php endif;?>
           </a>
           <ul class="show-notification">
             <li>
               <h6>Notifications</h6>
               <label class="label label-danger">New</label>
             </li>
-            <?php $notif = $this->db->select('*')->where('penerima', $this->session->userdata('username'))->from('tb_notification')->get()->result();?>
             <?php if(count($notif) != 0):?>
               <?php foreach($notif as $not):?>
                 <li class="waves-effect waves-light" onclick="fungsi(<?= $not->id;?>)">

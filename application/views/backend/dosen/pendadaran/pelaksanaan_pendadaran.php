@@ -52,8 +52,10 @@
 							<label class="label label-mini label-warning">Belum pendadaran</label>
 						<?php elseif($data->status_pendadaran == 1):?>
 							<label class="label label-mini label-success">Sudah pendadaran</label>
-						<?php else:?>
+						<?php elseif($data->status_pendadaran == 2):?>
 							<label class="label label-mini label-primary">Sudah pengumuman</label>
+						<?php else:?>
+							<label class="label label-mini label-danger">Dalam proses revisi</label>
 						<?php endif;?>
 					</div>
 					<div class="col-sm-12 col-xl-1">
