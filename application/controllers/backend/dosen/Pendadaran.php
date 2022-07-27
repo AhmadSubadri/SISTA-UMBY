@@ -189,7 +189,8 @@ public $result = [
         if(!$this->upload->do_upload('file')){
             $Data = array(
                 'nilai' => $this->input->post('nilai'),
-                'note' => $this->input->post('note')
+                'note' => $this->input->post('note'),
+                'status' => $this->input->post('status')
             );
             $this->db->where('penguji', $penguji);
             $this->db->where('nim', $nim);
@@ -202,6 +203,7 @@ public $result = [
             $datae = array(
                 'nilai' => $this->input->post('nilai'),
                 'note' => $this->input->post('note'),
+                'status' => $this->input->post('status'),
                 'file' => $this->upload->file_name
             );
             $this->db->where('penguji', $penguji);

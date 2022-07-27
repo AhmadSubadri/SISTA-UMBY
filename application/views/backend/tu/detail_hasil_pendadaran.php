@@ -1,5 +1,5 @@
 <div class="col-xl-12">
-	<a href="<?= site_url('dsn/dashboard/mahasiswa-pendadaran');?>" class="btn btn-mini"><i
+	<a href="<?= site_url('TU/dashboard/hasil-pendadaran');?>" class="btn btn-mini"><i
 		class="ti-back-left"></i>Kembali</a>
 		<div class="card">
 			<div class="card-header" style="background-color: #75A8FE;">
@@ -149,80 +149,79 @@
 								<?php endif;?>
 							</div>
 						</div>
-						<?php foreach($Data as $dtas):?>
-							<?php if($dtas->hasil_pendadaran != 3):?>
-								<a class="accordion-msg bg-dark-primary b-none waves-effect waves-light">Kirim pengumuman akhir hasil ujian pendadaran kepada mahasiswa</a>
-								<div class="accordion-desc">
-									<div class="row">
-										<div class="col-sm-12 col-xl-12 sub-title">
-											<!-- <form class="form-material" method="post" id="savedata"> -->
-												<?= form_open_multipart('dsn/dashboard/save-pengumuman-pendadaran'); ?>
-												<div class="card">
-													<div class="form-material">
-														<div class="card-block">
-															<?php foreach($Data as $dt):?>
-																<input type="text" name="nim" class="form-control" value="<?= $dt->nim;?>" hidden>
-															<?php endforeach;?>
-															<div class="form-group form-default row">
-																<div class="form-group col-sm-6 form-default form-static-label">
-																	<?php $notnull = count($MeanNilai);?>
-																	<?php $sum = 0; foreach($MeanNilai as $as):?>
-																	<?php $sum += str_replace(",", "", $as->total);
-																	$hasil = $sum/$notnull;
-																	?>
-																<?php endforeach;?>
-																	<input type="text" name="nilaiangka"
-																	value="<?php if($notnull != 0):?><?php if($hasil >= 50):echo number_format($hasil,1);else:echo number_format($hasil,1);endif;?><?php else:?>0<?php endif;?>" class="form-control" readonly>
-																	<span class="form-bar"></span>
-																	<label class="float-label text-primary">Nilai rata-rata akhir (angka)</label>
-																</div>
-																<div class="form-group col-sm-6 form-default form-static-label text-center">
-																	<input type="text" name="nilaihuruf"
-																	value="<?php if($notnull != 0):?><?php if($hasil >= 85):
-																		echo "A";
-																	elseif($hasil >= 80 && $hasil <=84.99):
-																		echo "A-";
-																	elseif($hasil >= 70 && $hasil <= 79.99):
-																		echo "B+";
-																	elseif($hasil >= 65 && $hasil <= 69.99):
-																		echo "B";
-																	elseif($hasil >= 60 && $hasil <= 64.99):
-																		echo "B-";
-																	elseif($hasil >= 50 && $hasil <= 59.99):
-																		echo "C+";
-																	elseif($hasil >= 40 && $hasil <= 49.99):
-																		echo "C";
-																	elseif($hasil >= 20 && $hasil <=39.99):
-																		echo "D";
-																	elseif($hasil <= 19.99):
-																		echo "E";
-																	else:
-																		echo "NULL";
-																	endif;?><?php else:?>-<?php endif;?>" class="form-control" readonly required="">
-																	<span class="form-bar"></span>
-																	<label class="float-label text-primary">Nilai rata-rata akhir (huruf)</label>
-																</div>
-															</div>
-															<div class="form-group form-default row">
-																<div class="form-group col-sm-12 form-default form-static-label">
-																	<textarea name="note" id="catatanPengumuman" required=""></textarea>
-																</div>
-															</div>
-															<div class="form-group form-default row">
-																<button type="submit" class="btn btn-mini btn-outline-primary"><i class="ti-save"></i> Kirim pengumuman hasil pendadaran</button>
-															</div>
+						<a class="accordion-msg bg-dark-primary b-none waves-effect waves-light">Kirim pengumuman form revisi hasil ujian pendadaran kepada mahasiswa</a>
+						<div class="accordion-desc">
+							<div class="row">
+								<div class="col-sm-12 col-xl-12 sub-title">
+									<!-- <form class="form-material" method="post" id="savedata"> -->
+										<?= form_open_multipart('TU/dashboard/save-pengumuman-pendadaran-tu'); ?>
+										<div class="card">
+											<div class="form-material">
+												<div class="card-block">
+													<?php foreach($Data as $dt):?>
+														<input type="text" name="nim" class="form-control" value="<?= $dt->nim;?>" hidden>
+													<?php endforeach;?>
+													<!-- <div class="form-group form-default row"> -->
+														<!-- <div class="form-group col-sm-6 form-default form-static-label"> -->
+															<?php $notnull = count($MeanNilai);?>
+															<?php $sum = 0; foreach($MeanNilai as $as):?>
+															<?php $sum += str_replace(",", "", $as->total);
+															$hasil = $sum/$notnull;
+															?>
+														<?php endforeach;?>
+															<input type="hidden" name="nilaiangka"
+															value="<?php if($notnull != 0):?><?php if($hasil >= 50):echo number_format($hasil,1);else:echo number_format($hasil,1);endif;?><?php else:?>0<?php endif;?>" class="form-control" readonly>
+														<!-- </div> -->
+														<!-- <div class="form-group col-sm-6 form-default form-static-label text-center"> -->
+															<input type="hidden" name="nilaihuruf"
+															value="<?php if($notnull != 0):?><?php if($hasil >= 85):
+																echo "A";
+															elseif($hasil >= 80 && $hasil <=84.99):
+																echo "A-";
+															elseif($hasil >= 70 && $hasil <= 79.99):
+																echo "B+";
+															elseif($hasil >= 65 && $hasil <= 69.99):
+																echo "B";
+															elseif($hasil >= 60 && $hasil <= 64.99):
+																echo "B-";
+															elseif($hasil >= 50 && $hasil <= 59.99):
+																echo "C+";
+															elseif($hasil >= 40 && $hasil <= 49.99):
+																echo "C";
+															elseif($hasil >= 20 && $hasil <=39.99):
+																echo "D";
+															elseif($hasil <= 19.99):
+																echo "E";
+															else:
+																echo "NULL";
+															endif;?><?php else:?>-<?php endif;?>" class="form-control" readonly required="">
+														<!-- </div> -->
+													<!-- </div> -->
+													<div class="form-group form-default row">
+														<label class="col-sm-1 col-form-label text-primary">Status</label>
+														<select name="status" class="form-control" required>
+									                        <option value="1">Lulus ujian</option>
+									                        <option value="3">Menunggu (panding)</option>
+									                        <option value="2">Mengulang pendadaran periode berikutnya</option>
+									                        <option value="4">Mengulang skripsi semester depan</option>
+									                    </select>
+													</div>
+													<div class="form-group form-default row">
+														<div class="form-group col-sm-12 form-default form-static-label">
+															<textarea name="note" id="catatanPengumuman" required=""></textarea>
 														</div>
 													</div>
+													<div class="form-group form-default row">
+														<button type="submit" class="btn btn-mini btn-outline-primary"><i class="ti-save"></i> Kirim pengumuman hasil pendadaran</button>
+													</div>
 												</div>
-												<?= form_close();?>
-												<!-- </form> -->
 											</div>
 										</div>
+										<?= form_close();?>
+										<!-- </form> -->
 									</div>
-								<?php else:?>
-									<a>Kirim pengumuman akhir hasil ujian pendadaran kepada mahasiswa</a>
-								<?php endif;?>
-							<?php endforeach;?>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

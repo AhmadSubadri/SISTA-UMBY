@@ -226,19 +226,51 @@
                         </a>
                     </li>
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component</div>
-                    <li>
-                        <a href="<?= site_url('TU/dashboard/daftar-pendadaran-mahasiswa');?>" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-write"></i><b>FC</b></span>
-                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Daftar pendadaran</span>
+                    <li class="pcoded-hasmenu <?php if($this->uri->uri_string() == 'TU/dashboard/daftar-pendadaran-mahasiswa' || $this->uri->uri_string() == 'TU/dashboard/hasil-pendadaran') { echo 'active'; } ?>">
+                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-write"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Pendadaran</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
+                        <ul class="pcoded-submenu">
+                            <li class="<?php if($this->uri->uri_string() == 'TU/dashboard/daftar-pendadaran-mahasiswa') { echo 'active'; } ?>">
+                                <a href="<?= site_url('TU/dashboard/daftar-pendadaran-mahasiswa');?>" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Daftar pendadaran</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="<?php if($this->uri->uri_string() == 'TU/dashboard/hasil-pendadaran') { echo 'active'; } ?>">
+                                <a href="<?= site_url('TU/dashboard/hasil-pendadaran');?>" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Hasil pendadaran</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="<?= site_url('TU/dashboard/daftar-yudisium-mahasiswa');?>" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>FC</b></span>
-                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Daftar yudisium</span>
+                    <li class="pcoded-hasmenu <?php if($this->uri->uri_string() == 'TU/dashboard/daftar-yudisium-mahasiswa') { echo 'active'; } ?>">
+                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Yudisium</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
+                        <ul class="pcoded-submenu">
+                            <li class="<?php if($this->uri->uri_string() == 'TU/dashboard/daftar-yudisium-mahasiswa') { echo 'active'; } ?>">
+                                <a href="<?= site_url('TU/dashboard/daftar-yudisium-mahasiswa');?>" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Daftar yudisium</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Hasil yudisium</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Setting</div>
                     <li class="">

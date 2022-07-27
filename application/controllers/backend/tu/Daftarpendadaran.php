@@ -10,6 +10,7 @@ class Daftarpendadaran extends CI_Controller
 		parent::__construct();
 		$this->load->library(array('excel','session'));
 		$this->load->model('M_tatausaha');
+		$this->load->model('M_examthesis');
 		$this->load->model('M_user');
 		if($this->M_user->isNotLogin()) redirect(site_url(''));
 		$this->load->library('form_validation');
@@ -79,5 +80,68 @@ class Daftarpendadaran extends CI_Controller
 		$this->session->set_flashdata('msg',"Data set has been update successfully");
         $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('TU/dashboard/daftar-pendadaran-mahasiswa'));
+	}
+
+	public function HasilPendadaran()
+	{
+		 $data = [
+            'Data' => $this->M_tatausaha->GetDataHasilPendadaran()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/tu/data_hasil_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+	}
+
+	public function DetailHasilPendadaran($id)
+	{
+		 $data = [
+            'Data' => $this->M_examthesis->DetailDataPendadaran($id),
+            'DetailPenguji' => $this->M_examthesis->DetailPenguji($id)->result(),
+            'MeanNilai' => $this->M_examthesis->MeanNilaiPendadaran($id)->result()
+        ];
+        $this->load->view('backend/partials_/head');
+        $this->load->view('backend/tu/detail_hasil_pendadaran', $data);
+        $this->load->view('backend/partials_/footer');
+	}
+
+	public function SavePengumumanPendadaranTU()
+	{
+		if($this->input->post('status') == 1){
+			$nim = $this->input->post('nim');
+	        $Data = array(
+	            'status_pendadaran' => "2",
+	            'hasil_pendadaran' => $this->input->post('status'),
+	            'catatan_akhir' => $this->input->post('note')
+	        );
+	        $this->db->insert('tb_notification', ['pengirim' => $this->session->userdata('name'), 'penerima' => $nim, 'pesan' => $this->input->post('note'), 'url' => "mhs/dashboard/pengumuman-pendadaran"]);
+	        $this->M_examthesis->_SetData('tb_thesisreceived',$Data, 'nim', $nim);
+			$this->session->set_flashdata('msg',"Announcement of exam thesis has been added successfully no file");
+			$this->session->set_flashdata('msg_class','alert-success');
+	        redirect(site_url('TU/dashboard/hasil-pendadaran'));
+		}elseif($this->input->post('status') == 3){
+			$nim = $this->input->post('nim');
+	        $Data = array(
+	            'status_pendadaran' => "3",
+	            'hasil_pendadaran' => $this->input->post('status'),
+	            'catatan_akhir' => $this->input->post('note')
+	        );
+	        $this->db->insert('tb_notification', ['pengirim' => $this->session->userdata('name'), 'penerima' => $nim, 'pesan' => $this->input->post('note'), 'url' => "mhs/dashboard/pengumuman-pendadaran"]);
+	        $this->M_examthesis->_SetData('tb_thesisreceived',$Data, 'nim', $nim);
+			$this->session->set_flashdata('msg',"Announcement of exam thesis has been added successfully no file");
+			$this->session->set_flashdata('msg_class','alert-success');
+	        redirect(site_url('TU/dashboard/hasil-pendadaran'));
+		}else{
+			$nim = $this->input->post('nim');
+	        $Data = array(
+	            'status_pendadaran' => "2",
+	            'hasil_pendadaran' => $this->input->post('status'),
+	            'catatan_akhir' => $this->input->post('note')
+	        );
+	        $this->db->insert('tb_notification', ['pengirim' => $this->session->userdata('name'), 'penerima' => $nim, 'pesan' => $this->input->post('note'), 'url' => "mhs/dashboard/pengumuman-pendadaran"]);
+	        $this->M_examthesis->_SetData('tb_thesisreceived',$Data, 'nim', $nim);
+			$this->session->set_flashdata('msg',"Announcement of exam thesis has been added successfully no file");
+			$this->session->set_flashdata('msg_class','alert-success');
+	        redirect(site_url('TU/dashboard/hasil-pendadaran'));
+		}
 	}
 }

@@ -21,7 +21,7 @@ class M_examthesis extends CI_Model
 
     public function DetailDataPendadaran($id)
     {
-        $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image, t.kegiatan, t.tempat, t.date, t.time, l.fullname as nameLecturer, l.image as imageDosen, l.username as nidn, l.email, l.phone')
+        $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image, t.kegiatan, t.tempat, t.date, t.time, l.fullname as nameLecturer, l.image as imageDosen, l.username as nidn, l.email, l.phone, t.hasil_pendadaran')
         ->where('t.id', $id)
         ->from('tb_thesisreceived t')
         ->join('tb_student s', 's.username = t.nim')
@@ -56,7 +56,7 @@ class M_examthesis extends CI_Model
 
     public function DetailPenguji($id)
     {
-        $this->db->select('l.fullname, p.nilai, p.file, p.note, p.penguji, s.fullname as nameStudent')
+        $this->db->select('l.fullname, p.nilai, p.file, p.note, p.penguji, s.fullname as nameStudent, p.status')
         ->where('p.id_thesisreceived', $id)
         ->from('tb_detail_pendadaran p')
         ->join('tb_student s','s.username = p.nim')

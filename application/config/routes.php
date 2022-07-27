@@ -123,6 +123,12 @@ $route['TU/dashboard/kirim-revisi-dokumen'] = 'backend/tu/Daftarpendadaran/Kirim
 $route['TU/dashboard/delete-byid-uploaded'] = 'backend/tu/Daftarpendadaran/DeleteByIdNotif';
 $route['TU/dashboard/daftarkan-mahasiswa-ini'] = 'backend/tu/Daftarpendadaran/DaftarkanMahasiswaIni';
 
+
+
+$route['TU/dashboard/hasil-pendadaran'] = 'backend/tu/Daftarpendadaran/HasilPendadaran';
+$route['TU/dashboard/detail-hasil-pendadaran/(:any)'] = 'backend/tu/Daftarpendadaran/DetailHasilPendadaran/$1';
+$route['TU/dashboard/save-pengumuman-pendadaran-tu'] = 'backend/tu/Daftarpendadaran/SavePengumumanPendadaranTU';
+
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

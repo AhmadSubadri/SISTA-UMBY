@@ -97,4 +97,17 @@ class M_tatausaha extends CI_Model
 		$query = $this->db->select('u.id as idoc, r.requirements, u.file, s.username, s.fullname, u.status')->from('tb_uploadrequirementexam u')->where('u.nim', $nim)->join('tb_requirements r', 'r.id = u.id_requirement')->join('tb_student s', 's.username = u.nim')->get();
 		return $query;
 	}
+
+	public function GetDataHasilPendadaran()
+	{
+		$major = $this->db->select('*')->where('id_faculty', $this->session->userdata('faculty'))->from('tb_major')->get()->row();
+		$this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image')
+        ->where('t.status_bimbingan', '1')
+        ->where('t.major', $major->id)
+        ->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim')
+        ->join('tb_lecturers l', 'l.username = t.nidn');
+        $query = $this->db->get();
+        return $query->result();
+	}
 }
