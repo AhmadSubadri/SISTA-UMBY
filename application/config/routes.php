@@ -91,6 +91,8 @@ $route['dsn/dashboard/save-feedback'] = 'backend/umum/Skripsi/SaveFeedbackSubmis
 $route['dsn/dashboard/Bimbingan'] = 'backend/umum/Skripsi/Bimbingan';
 // pendadaran
 $route['dsn/dashboard/data-mahasiswa-pendadaran'] = 'backend/umum/Pendadaran';
+$route['dsn/dashboard/detail-pelaksanaan-pendadaran-umum/(:any)'] = 'backend/umum/Pendadaran/DetailPelaksanaanPendadaranUmum/$1';
+$route['dsn/dashboard/save-feedback-pendadaran-umum'] = 'backend/umum/Pendadaran/SaveFeedbackPendadaranUmum';
 
 
 // Tata usaha

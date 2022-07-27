@@ -200,8 +200,8 @@
 													<div class="form-group form-default row">
 														<label class="col-sm-1 col-form-label text-primary">Status</label>
 														<select name="status" class="form-control" required>
-									                        <option value="1">Lulus ujian</option>
-									                        <option value="3">Menunggu (panding)</option>
+									                        <option value="1">Approved revisi</option>
+									                        <option value="3">Menunggu (dalam masa revisi)</option>
 									                        <option value="2">Mengulang pendadaran periode berikutnya</option>
 									                        <option value="4">Mengulang skripsi semester depan</option>
 									                    </select>

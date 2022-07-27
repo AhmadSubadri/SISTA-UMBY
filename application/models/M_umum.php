@@ -111,7 +111,7 @@ class M_umum extends CI_Model
     public function GetDataPendaranBypenguji()
     {
         $penguji = $this->session->userdata('username');
-        $this->db->select('t.id, s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image')
+        $this->db->select('t.id, s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image, d.status')
         ->where('d.penguji', $penguji)
         ->from('tb_detail_pendadaran d')
         ->order_by('t.date', 'ASC')

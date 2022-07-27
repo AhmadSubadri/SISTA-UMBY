@@ -53,6 +53,8 @@
 							<label class="label label-mini label-success">Sudah pendadaran</label>
 						<?php elseif($row->status_pendadaran == 2):?>
 							<label class="label label-mini label-primary">Sudah pengumuman</label>
+						<?php elseif($row->status_pendadaran == 4):?>
+							<label class="label label-mini label-success">Revisi approved</label>
 						<?php else:?>
 							<label class="label label-mini label-danger">Dalam proses revisi</label>
 						<?php endif;?>

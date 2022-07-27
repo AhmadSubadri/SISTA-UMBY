@@ -150,7 +150,7 @@
 							</div>
 						</div>
 						<?php foreach($Data as $dtas):?>
-							<?php if($dtas->hasil_pendadaran != 3):?>
+							<?php if($dtas->hasil_pendadaran == 1):?>
 								<a class="accordion-msg bg-dark-primary b-none waves-effect waves-light">Kirim pengumuman akhir hasil ujian pendadaran kepada mahasiswa</a>
 								<div class="accordion-desc">
 									<div class="row">
@@ -202,6 +202,11 @@
 																	<span class="form-bar"></span>
 																	<label class="float-label text-primary">Nilai rata-rata akhir (huruf)</label>
 																</div>
+															</div>
+															<div class="form-group form-default form-static-label">
+																<input type="text" class="form-control" name="hasilnyakan" value="<?php if($notnull != 0):if($hasil >= 50):echo "Lulus";else:echo "Tidak lulus";endif;else:echo "-";endif;?>" readonly required="">
+																<span class="form-bar"></span>
+																<label class="float-label text-primary">Pernyataan</label>
 															</div>
 															<div class="form-group form-default row">
 																<div class="form-group col-sm-12 form-default form-static-label">

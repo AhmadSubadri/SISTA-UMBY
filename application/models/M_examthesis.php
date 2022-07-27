@@ -44,7 +44,7 @@ class M_examthesis extends CI_Model
     public function GetDataPendaranBypenguji()
     {
         $penguji = $this->session->userdata('username');
-        $this->db->select('t.id, s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image')
+        $this->db->select('t.id, s.fullname, d.nim, t.kegiatan, t.tempat, t.date, t.time, t.title, t.status_pendadaran, t.id as id_thesisreceived, s.image, d.status')
         ->where('d.penguji', $penguji)
         ->from('tb_detail_pendadaran d')
         ->order_by('t.date', 'ASC')
@@ -119,7 +119,7 @@ class M_examthesis extends CI_Model
     public function getPengujiFix()
     {
         $major = $this->session->userdata('major');
-        $this->db->select('t.id, s.fullname as nameStudent, s.username, t.kegiatan, t.tempat, t.date, t.time, s.image')
+        $this->db->select('t.id, s.fullname as nameStudent, s.username, t.kegiatan, t.tempat, t.date, t.time, s.image, t.status_pendadaran, t.hasil_pendadaran')
         ->where('t.major', $major)
         ->where('t.status_daftar', 2)
         ->from('tb_thesisreceived t')
