@@ -10,8 +10,7 @@
                                     <img class="img-radius img-40 align-top m-r-15"
                                     src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                                 <?php else:?>
-                                    <img src="<?php echo base_url('_uploads/profile/student/').$this->session->userdata('image');?>" alt="user image"
-                                    class="img-radius img-40 align-top m-r-15">
+                                    <img src="<?php echo base_url('_uploads/profile/student/').$this->session->userdata('image');?>" alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                                 <?php endif;?>
                                 <div class="media-body">
                                     <h6 class="text-primary"><?= $this->session->userdata('name');?>/<?= $this->session->userdata('username');?></h6>
@@ -28,7 +27,7 @@
                                     <img class="img-radius img-40 align-top m-r-15"
                                     src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                                 <?php else:?>
-                                    <img src="<?php echo base_url('_uploads/profile/staff/').$row->image;?>" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                    <img src="<?php echo base_url('_uploads/profile/staff/').$row->image;?>" alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                                 <?php endif;?>
                                 <div class="media-body">
                                     <h6 class="text-primary"><?= $row->fullname;?>/<?= $row->username;?></h6>
@@ -48,7 +47,7 @@
                                     src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                                 <?php else:?>
                                 <img src="<?php echo base_url('_uploads/profile/staff/').$dsn->image;?>"
-                                    alt="user image" class="img-radius img-40 align-top m-r-15">
+                                    alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                                 <?php endif;?>
                                 <div class="media-body">
                                     <h5 class="notification-user"><?= $dsn->fullname;?></h5>
@@ -96,7 +95,7 @@
                                             src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                                         <?php else:?>
                                         <img src="<?php echo base_url('_uploads/profile/student/').$isi->image;?>"
-                                            alt="user image" class="img-radius img-40 align-top m-r-15">
+                                            alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                                         <?php endif;?>
                                         <div class="media-body">
                                             <p class="text-italic"><?= $isi->created_at;?></p>

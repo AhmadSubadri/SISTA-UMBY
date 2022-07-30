@@ -141,7 +141,7 @@
                                     <div class="row">
                                         <div class="col-md-10">
                                             <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                            <p class="text-inverse text-left"><a href="index.html"><b>Back to website</b></a></p>
+                                            <p class="text-inverse text-left"><a href="<?= site_url('Home');?>"><b>Back to website</b></a></p>
                                         </div>
                                         <div class="col-md-2">
                                             <img src="<?php echo base_url()?>assets/logo/sista51.png" alt="sista51.png">

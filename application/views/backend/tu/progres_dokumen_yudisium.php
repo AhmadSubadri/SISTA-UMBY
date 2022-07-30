@@ -24,7 +24,7 @@
 									<?php if($data->image == null):?>
 										<img class="img-radius img-40 align-top m-r-15" src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
 									<?php else:?>
-										<img src="<?php echo base_url('_uploads/profile/student/').$data->image;?>" alt="user image" class="img-radius img-40 align-top m-r-15">
+										<img src="<?php echo base_url('_uploads/profile/student/').$data->image;?>" alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
 									<?php endif;?>
 									<div class="media-body align-middle">
 										<?= $data->fullname;?> / <?= $data->username;?><br>

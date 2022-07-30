@@ -22,11 +22,9 @@
 					<div class="col-sm-12 col-xl-4 sub-title text-primary">
 						<div class="media">
 							<?php if($this->session->userdata('image') == null):?>
-								<img class="img-radius img-40 align-top m-r-15"
-								src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
+								<img class="img-radius img-40 align-top m-r-15" src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
 							<?php else:?>
-								<img src="<?php echo base_url('_uploads/profile/student/').$this->session->userdata('image');?>" alt="user image"
-								class="img-radius img-40 align-top m-r-15">
+								<img src="<?php echo base_url('_uploads/profile/student/').$this->session->userdata('image');?>" alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
 							<?php endif;?>
 							<div class="media-body align-middle">
 								<h6 class="text-primary"><?= $this->session->userdata('name');?> / <?= $this->session->userdata('username');?></h6>

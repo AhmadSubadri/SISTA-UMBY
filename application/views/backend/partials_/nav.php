@@ -127,10 +127,10 @@
             <?php if($this->session->userdata('foto') == null):?>
               <img class="img-80 img-radius" src="<?php echo base_url()?>_uploads/profile/profile.png" alt="User-Profile-Image">
             <?php else:?>
-              <?php if($this->session->userdata('level') == '1'):?>
-                <img class="img-80 img-radius" src="<?= base_url('_uploads/profile/staff/').$this->session->userdata('foto');?>" alt="User-Profile-Image">
+              <?php if($this->session->userdata('level') == '1' || $this->session->userdata('level') == '2' || $this->session->userdata('level') == '3' || $this->session->userdata('level') == '5'):?>
+                <img class="img-80 img-radius" width="40px" height="40px" src="<?php echo base_url('_uploads/profile/staff/'.$this->session->userdata('foto'));?>" alt="User-Profile-Image">
               <?php else:?>
-                <img class="img-80 img-radius" src="<?= base_url('_uploads/profile/student/').$this->session->userdata('foto');?>" alt="User-Profile-Image">
+                <img class="img-80 img-radius" width="40px" height="40px" src="<?= base_url('_uploads/profile/student/'.$this->session->userdata('foto'));?>" alt="User-Profile-Image">
               <?php endif;?>
             <?php endif;?>
             <span><?= $this->session->userdata('name');?></span>
@@ -138,12 +138,12 @@
           </a>
           <ul class="show-notification profile-notification">
             <li class="waves-effect waves-light">
-              <a href="#!">
+              <a href="<?= site_url('setting-profile');?>">
                 <i class="ti-settings"></i> Settings
               </a>
             </li>
             <li class="waves-effect waves-light">
-              <a href="user-profile.html">
+              <a href="<?= site_url('user-profile');?>">
                 <i class="ti-user"></i> Profile
               </a>
             </li>

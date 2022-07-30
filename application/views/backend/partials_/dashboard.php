@@ -1,4 +1,6 @@
 <!-- task, page, download counter  start -->
+<?php if($this->session->userdata('level') == 5):?>
+<?php else:?>
 <div class="col-xl-3 col-md-6">
     <div class="card">
         <div class="card-block">
@@ -181,7 +183,7 @@
                                             src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                                         <?php else:?>
                                             <img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>"
-                                            alt="user image" class="img-radius img-40 align-top m-r-15">
+                                            alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                                         <?php endif;?>
                                         <div class="d-inline-block">
                                             <h6><?= $row->fullname;?></h6>
@@ -222,7 +224,7 @@
                                                     src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                                                 <?php else:?>
                                                     <img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>"
-                                                    alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                    alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                                                 <?php endif;?>
                                                 <div class="d-inline-block">
                                                     <h6><?= $row->fullname;?></h6>
@@ -333,4 +335,5 @@
         </div>
     </div>
 </div>
+<?php endif;?>
 <?php endif;?>
