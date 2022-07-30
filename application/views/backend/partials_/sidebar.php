@@ -249,7 +249,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="pcoded-hasmenu <?php if($this->uri->uri_string() == 'TU/dashboard/daftar-yudisium-mahasiswa') { echo 'active'; } ?>">
+                    <li class="pcoded-hasmenu
+                    <?php if($this->uri->uri_string() == 'TU/dashboard/daftar-yudisium-mahasiswa' || $this->uri->uri_string() == 'TU/dashboard/progres-yudisium-mahasiswa') { echo 'active'; } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                             <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Yudisium</span>
@@ -263,10 +264,10 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
-                            <li class="">
-                                <a href="#" class="waves-effect waves-dark">
+                            <li class="<?php if($this->uri->uri_string() == 'TU/dashboard/progres-yudisium-mahasiswa') { echo 'active'; } ?>">
+                                <a href="<?= site_url('TU/dashboard/progres-yudisium-mahasiswa');?>" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Hasil yudisium</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Progres yudisium</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>

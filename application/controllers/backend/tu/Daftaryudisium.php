@@ -18,7 +18,7 @@ class Daftaryudisium extends CI_Controller
 	public function DaftarYudisiumMahasiswa()
 	{
 		$data = [
-			'Data' => $this->M_tatausaha->GetDataMahasiswa(),
+			'Data' => $this->M_tatausaha->GetDataMahasiswaByHasilPendadaran(),
 			'DataJurusan' => $this->M_tatausaha->GetDataJurusan()
 		];
 		$this->load->view('backend/partials_/head');
@@ -41,5 +41,16 @@ class Daftaryudisium extends CI_Controller
 		$this->session->set_flashdata('msg',"Data set has been update successfully");
         $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('TU/dashboard/daftar-yudisium-mahasiswa'));
+	}
+
+	public function ProgresYudisiumMahasiswa()
+	{
+		$data = [
+			'Data' => $this->M_tatausaha->GetDataMahasiswaByHasilPendadaran(),
+			'DataJurusan' => $this->M_tatausaha->GetDataJurusan()
+		];
+		$this->load->view('backend/partials_/head');
+		$this->load->view('backend/tu/progres_dokumen_yudisium', $data);
+		$this->load->view('backend/partials_/footer');
 	}
 }

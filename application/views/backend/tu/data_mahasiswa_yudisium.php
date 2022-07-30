@@ -14,6 +14,7 @@
 								<th># Profil</th>
 								<th>Program studi</th>
 								<th>Angkatan</th>
+								<th>hasil pendadaran</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -37,6 +38,13 @@
 								</td>
 								<td class="align-middle"><?= $row->major;?></td>
 								<td class="align-middle"><?= $row->class;?></td>
+								<td class="align-middle">
+									<?php if($row->pernyataan == "Lulus"):?>
+										<label class="label label-mini label-success"><?= $row->pernyataan;?></label>
+									<?php else:?>
+										<label class="label label-mini label-danger"><?= $row->pernyataan;?></label>
+									<?php endif;?>
+								</td>
 								<td>
 									<?php $thesis = $this->db->select('*')->where('nim', $row->username)->from('tb_thesisreceived')->get()->result();?>
 									<?php foreach($thesis as $t):?>

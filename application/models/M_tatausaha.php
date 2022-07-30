@@ -86,6 +86,16 @@ class M_tatausaha extends CI_Model
         return $query;
 	}
 
+	public function GetDataMahasiswaByHasilPendadaran()
+	{
+		$this->db->where('id_faculty', $this->session->userdata('faculty'));
+        $sqlb = $this->db->get('tb_major')->row();
+        $this->db->select('t.id, s.fullname, s.username, s.email, s.image, s.class, m.name as major, t.status_daftar, t.pernyataan')->where('t.major', $sqlb->id)->from('tb_thesisreceived t')
+        ->join('tb_student s', 's.username = t.nim')->join('tb_major m', 'm.id = t.major');
+        $query = $this->db->get();
+        return $query;
+	}
+
 	public function GetMahasiswaByNIM($nim)
 	{
 		$query = $this->db->select('*')->from('tb_student')->where('username', $nim)->get();

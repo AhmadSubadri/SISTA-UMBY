@@ -221,15 +221,16 @@ public $result = [
     {
         $nim = $this->input->post('nim');
         $Data = array(
-                'avarage' => $this->input->post('nilaiangka'),
-                'letter_value' => $this->input->post('nilaihuruf'),
-                'catatan_akhir' => $this->input->post('note'),
-                'pernyataan' => $this->input->post('hasilnyakan'),
-                'status_pendadaran' => "2"
-            );
-            $this->M_examthesis->_SetData('tb_thesisreceived',$Data, 'nim', $nim);
-            $this->session->set_flashdata('msg',"Announcement of exam thesis has been added successfully no file");
-            $this->session->set_flashdata('msg_class','alert-success');
+            'avarage' => $this->input->post('nilaiangka'),
+            'letter_value' => $this->input->post('nilaihuruf'),
+            'catatan_akhir' => $this->input->post('note'),
+            'pernyataan' => $this->input->post('hasilnyakan'),
+            'status_pendadaran' => "2"
+        );
+        $this->db->insert('tb_notification', ['pengirim' => $this->session->userdata('name'), 'penerima' => $nim, 'pesan' => $this->input->post('note'), 'url' => "mhs/dashboard/pengumuman-pendadaran"]);
+        $this->M_examthesis->_SetData('tb_thesisreceived',$Data, 'nim', $nim);
+        $this->session->set_flashdata('msg',"Announcement of exam thesis has been added successfully no file");
+        $this->session->set_flashdata('msg_class','alert-success');
         redirect(site_url('dsn/dashboard/mahasiswa-pendadaran'));
     }
 

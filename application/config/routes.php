@@ -130,6 +130,7 @@ $route['TU/dashboard/daftarkan-mahasiswa-ini'] = 'backend/tu/Daftarpendadaran/Da
 $route['TU/dashboard/hasil-pendadaran'] = 'backend/tu/Daftarpendadaran/HasilPendadaran';
 $route['TU/dashboard/detail-hasil-pendadaran/(:any)'] = 'backend/tu/Daftarpendadaran/DetailHasilPendadaran/$1';
 $route['TU/dashboard/save-pengumuman-pendadaran-tu'] = 'backend/tu/Daftarpendadaran/SavePengumumanPendadaranTU';
+$route['TU/dashboard/progres-yudisium-mahasiswa'] = 'backend/tu/Daftaryudisium/ProgresYudisiumMahasiswa';
 
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';

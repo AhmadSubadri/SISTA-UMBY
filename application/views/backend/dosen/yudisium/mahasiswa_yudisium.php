@@ -2,7 +2,7 @@
 <div class="col-xl-12">
 	<div class="card">
 		<div class="card-header" style="background-color: #FFE3C7;">
-			<b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah menyelesaikan masa sidang pendadaran dan di nyatakan <code>Lulus ujian pendadaran.</code>
+			<b>Note.</b> Data dibawah ini merupakan daftar mahasiswa yang sudah menyelesaikan masa sidang pendadaran dan di nyatakan <code>Lulus ujian pendadaran.</code> dan sudah terdaftar sebagai mahasiswa yudisium.
 		</div>
 		<div class="card-block">
 			<h6 class="sub-title">Data mahasiswa yudisium</h6>
