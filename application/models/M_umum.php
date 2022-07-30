@@ -69,12 +69,14 @@ class M_umum extends CI_Model
         return $query;
     }
 
-    public function getSourcetitle($table)
+    public function getSourcetitle()
     {
-        $id = $this->session->userdata('major');
-        $this->db->select('id, title, id_major, name')
-        ->where('id_major', $id);
-        $query = $this->db->get($table);
+        $this->db->where('id', $this->session->userdata('major'));
+        $sqlc = $this->db->get('tb_major')->row();
+        $this->db->select('tb_sourcetitle.id, tb_sourcetitle.title, tb_sourcetitle.id_major, tb_sourcetitle.name')
+        ->where('tb_faculty.id', $sqlc->id_faculty)->join('tb_major', 'tb_major.id = tb_sourcetitle.id_major')
+        ->join('tb_faculty', 'tb_faculty.id = tb_major.id_faculty');
+        $query = $this->db->get('tb_sourcetitle');
         return $query;
     }
 

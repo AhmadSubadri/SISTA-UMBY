@@ -24,7 +24,7 @@
                 <ul>
                     <?php foreach($DataDataSempro as $row):?>
                     <li>
-                        <?php if($row->tempat == null):?>
+                        <?php if($row->tempat == 0):?>
                         <label class="label label-mini label-danger">Belum terjadwal</label>
                         <?php else:?>
                         <h6>
