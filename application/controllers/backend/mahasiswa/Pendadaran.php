@@ -51,6 +51,14 @@ class Pendadaran extends CI_Controller
                 'file' => $this->upload->file_name
             );
             $this->M_bimbingan->add('tb_uploadrequirementexam',$datae);
+            $dataNot = array(
+                'pengirim' => $this->session->userdata('name'),
+                'penerima' => "3",
+                'pesan' => "Upload baru dokumen pendadaran",
+                'url' => "TU/dashboard/cek-dokumen-pendadaran/".$username,
+                'major' => $this->session->userdata('major'),
+            );
+            $this->db->insert('tb_notification', $dataNot);
             $this->session->set_flashdata('msg',"Document has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
             redirect(site_url('mhs/dashboard/syarat-pendadaran'));
