@@ -35,9 +35,9 @@
 														Sudah upload : <label class="badge badge-success"><?= count($Progres)?></label><br>
 														Belum upload : <label class="badge badge-danger"><?= count($DataSyarat->result())-count($Progres)?></label>
 													<?php else:?>
-														Sudah upload : <label class="badge badge-success"><?= count($Progres);?></label>
+														Sudah upload : <label class="badge badge-success"><?= count($Progres);?></label><br>
 														Belum upload : <label class="badge badge-danger"><?= count($DataSyarat->result())-count($Progres);?></label>
-														<label class="label label-mini label-success">Sudah upload dokumen</label>
+														<br><label class="label label-mini label-success">Sudah upload semua dokumen</label>
 													<?php endif;?>
 												<?php endif;?>
 											<?php else:?>
@@ -51,7 +51,11 @@
 												<td class="justify-content-center"><i class="ti-close text-danger text-mini"></i></td>
 											<?php else:?>
 												<?php foreach($value as $dt):?>
-													<td class="justify-content-center"><i class="ti-check text-primary text-mini"></i></td>
+													<?php if($dt->status != 0):?>
+														<td class="justify-content-center"><i class="ti-check text-primary text-mini"></i></td>
+													<?php else:?>
+														<td class="justify-content-center"><i class="ti-stats-up text-primary text-mini"></i></td>
+													<?php endif;?>
 												<?php endforeach;?>
 											<?php endif;?>
 										<?php endforeach;?>
@@ -83,21 +87,25 @@
 							<div class="col-sm-12 col-xl-2 sub-title text-center">
 								<?= $syarat->qty;?>
 							</div>
-							<div class="col-sm-12 col-xl-2">
+							<div class="col-sm-12 col-xl-2 text-center">
 								<?php $dtsyarat = $this->db->select('*')->where('nim', $this->session->userdata('username'))->where('id_requirement', $syarat->id)->from('tb_uploadrequirementyudisium')->get();?>
 								<?php if(count($dtsyarat->result()) == 0):?>
 									<?php echo form_open_multipart('mhs/dashboard/save-document-yudisium');?>
-									<a href="" class="btn btn-mini btn-outline-success disabled"><i class="ti-na"></i> Lihat</a>
-									<input name="id_syarat" class="form-bg-null" value="<?= $syarat->id?>" hidden/>
-									<div class="fileUpload btn btn-mini btn-grd-inverse">
-										<span><i class="ti-upload"></i>Upload</span>
-										<input id="uploadBtna" type="file" name="file" class="upload" onchange="javascript:this.form.submit();" />
-									</div>
+										<a href="" class="btn btn-mini btn-outline-success disabled"><i class="ti-na"></i> Lihat</a>
+										<input name="id_syarat" class="form-bg-null" value="<?= $syarat->id?>" hidden/>
+										<div class="fileUpload btn btn-mini btn-grd-inverse">
+											<span><i class="ti-upload"></i>Upload</span>
+											<input id="uploadBtna" type="file" name="file" class="upload" onchange="javascript:this.form.submit();" />
+										</div>
 									</form>
 								<?php else:?>
 									<?php foreach($dtsyarat->result() as $docu):?>
-										<a id="Modal-Tourist" data-toggle="modal" data-target="#modal_seeY<?= $docu->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i> Lihat</a>
-										<a href="<?= site_url('mhs/dashboard/delete-document-yudisium/'.$docu->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Ubah</a>
+										<?php if($docu->status != 0):?>
+											<a href="" class="btn btn-mini btn-outline-success disabled"><i class="ti-na"></i>Approved</a>
+										<?php else:?>
+											<a id="Modal-Tourist" data-toggle="modal" data-target="#modal_seeY<?= $docu->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i> Lihat</a>
+											<a href="<?= site_url('mhs/dashboard/delete-document-yudisium/'.$docu->id);?>" class="btn btn-mini btn-outline-danger"><i class="ti-trash"></i>Ubah</a>
+									<?php endif;?>
 									<?php endforeach;?>
 								<?php endif;?>
 							</div>

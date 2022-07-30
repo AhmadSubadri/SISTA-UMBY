@@ -52,7 +52,7 @@ class Daftarpendadaran extends CI_Controller
 		$data = array(
 			'pengirim' => $this->input->post('pengirim'),
 			'penerima' => $this->input->post('penerima'),
-			'pesan' => $this->input->post('pesan'),
+			'pesan' => $this->input->post('pesan')." syarat yudisium",
 			'url' => "mhs/dashboard/syarat-pendadaran",
 		);
 		$this->db->insert('tb_notification', $data);

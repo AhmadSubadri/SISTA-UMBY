@@ -108,16 +108,39 @@ class M_tatausaha extends CI_Model
 		return $query;
 	}
 
+	public function GetDokumenByNIMYudisium($nim)
+	{
+		$query = $this->db->select('u.id as idoc, r.requirements, u.file, s.username, s.fullname, u.status')->from('tb_uploadrequirementyudisium u')->where('u.nim', $nim)->join('tb_requirements r', 'r.id = u.id_requirement')->join('tb_student s', 's.username = u.nim')->get();
+		return $query;
+	}
+
 	public function GetDataHasilPendadaran()
 	{
 		$major = $this->db->select('*')->where('id_faculty', $this->session->userdata('faculty'))->from('tb_major')->get()->row();
 		$this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image')
-        ->where('t.status_bimbingan', '1')
-        ->where('t.major', $major->id)
-        ->from('tb_thesisreceived t')
-        ->join('tb_student s', 's.username = t.nim')
-        ->join('tb_lecturers l', 'l.username = t.nidn');
+        ->where('t.status_bimbingan', '1')->where('t.major', $major->id)->from('tb_thesisreceived t')->join('tb_student s', 's.username = t.nim')->join('tb_lecturers l', 'l.username = t.nidn');
         $query = $this->db->get();
         return $query->result();
 	}
+
+	public function GetMahasiswaDaftarYudisium()
+	{
+		$this->db->where('id_faculty', $this->session->userdata('faculty'));
+        $sqlc = $this->db->get('tb_major')->row();
+		$this->db->select('t.id, t.status_daftar_yudisium, t.title, t.nim, t.nidn, s.fullname, s.image, l.fullname as nameLecturer, s.email')->where('t.status_daftar_yudisium', "1")->where('t.major', $sqlc->id)->from('tb_thesisreceived t')
+		->join('tb_student s', 's.username = t.nim')->join('tb_lecturers l', 'l.username = t.nidn');
+		$query = $this->db->get();
+        return $query->result();
+	}
+
+	public function getRequirementYudisiumBystatus()
+    {
+        $this->db->where('id_faculty', $this->session->userdata('faculty'));
+        $sqld = $this->db->get('tb_major')->row();
+        $this->db->select('*')
+        ->where('type', "2")->where('status', "1")->where('major', $sqld->id)->order_by('id', 'ASC')
+        ->from('tb_requirements');
+        $query = $this->db->get();
+        return $query;
+    }
 }

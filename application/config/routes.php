@@ -121,9 +121,12 @@ $route['TU/dashboard/batal-daftarkan-pendadaran-mahasiswa/(:any)'] = 'backend/tu
 $route['TU/dashboard/daftar-pendadaran-mahasiswa'] = 'backend/tu/Daftarpendadaran/DaftarPendadaranMahasiswa';
 $route['TU/dashboard/cek-dokumen-pendadaran/(:any)'] = 'backend/tu/Daftarpendadaran/CekDokumenPendadaran/$1';
 $route['TU/dashboard/approved-dokumen'] = 'backend/tu/Daftarpendadaran/ApprovedDokumen';
+$route['TU/dashboard/approved-dokumen-yudisium'] = 'backend/tu/Daftaryudisium/ApprovedDokumenYudisium';
 $route['TU/dashboard/kirim-revisi-dokumen'] = 'backend/tu/Daftarpendadaran/KirimRevisiDokumen';
+$route['TU/dashboard/kirim-revisi-dokumen-yudisium'] = 'backend/tu/Daftaryudisium/KirimRevisiDokumenYudisium';
 $route['TU/dashboard/delete-byid-uploaded'] = 'backend/tu/Daftarpendadaran/DeleteByIdNotif';
 $route['TU/dashboard/daftarkan-mahasiswa-ini'] = 'backend/tu/Daftarpendadaran/DaftarkanMahasiswaIni';
+$route['TU/dashboard/cek-dokumen-yudisium/(:any)'] = 'backend/tu/Daftaryudisium/CekDokumenYudisium/$1';
 
 
 

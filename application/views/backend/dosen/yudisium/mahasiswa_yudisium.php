@@ -60,6 +60,7 @@
 						</div>
 						<div class="col-sm-12 col-xl-2 sub-title">
 							<?php $Progres = $this->db->select('*')->where('nim', $row->nim)->from('tb_uploadrequirementyudisium')->get()->result();?>
+							<?php $Progresa = $this->db->select('*')->where('nim', $row->nim)->where('status', "1")->from('tb_uploadrequirementyudisium')->get()->result();?>
 							<?php if($row->status_daftar_yudisium != 0):?>
 								<?php if(count($DataSyarat->result()) == 0):?>
 									<label class="label label-mini label-danger">Document requirement yudisium is NULL</label>
@@ -68,9 +69,12 @@
 										Sudah upload : <label class="badge badge-success"><?= count($Progres)?></label>
 										Belum upload : <label class="badge badge-danger"><?= count($DataSyarat->result())-count($Progres)?></label>
 									<?php else:?>
-										Sudah upload : <label class="badge badge-success"><?= count($Progres);?></label>
-										Belum upload : <label class="badge badge-danger"><?= count($DataSyarat->result())-count($Progres);?></label>
-										<label class="label label-mini label-success">Sudah upload dokumen</label>
+										
+										<?php if(count($Progresa) != count($DataSyarat->result())):?>
+											<label class="label label-mini label-primary"><i class="ti-reload"></i> Checking document</label>
+										<?php else:?>
+											<label class="label label-mini label-success"><i class="ti-check-box"></i> Approved document</label>
+										<?php endif;?>
 									<?php endif;?>
 								<?php endif;?>
 							<?php else:?>

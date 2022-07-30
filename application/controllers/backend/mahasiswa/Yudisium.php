@@ -52,7 +52,7 @@ class Yudisium extends CI_Controller
             $dataNot = array(
                 'pengirim' => $this->session->userdata('name'),
                 'penerima' => "3",
-                'pesan' => "Upload baru dokumen pendadaran",
+                'pesan' => "Upload baru dokumen yudisium",
                 'url' => "TU/dashboard/cek-dokumen-yudisium/".$username,
                 'major' => $this->session->userdata('major'),
             );

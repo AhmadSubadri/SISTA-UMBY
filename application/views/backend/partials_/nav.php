@@ -75,7 +75,7 @@
               <?php if($this->session->userdata('level') == 3):?>
                 <?php $major = $this->db->select('*')->where('id_faculty', $this->session->userdata('faculty'))->from('tb_major')->get()->result();?>
                 <?php foreach($major as $mjr):?>
-                  <?php $notiftu = $this->db->select('*')->where('penerima', $this->session->userdata('level'))->where('major', $mjr->id)->from('tb_notification')->get()->result();?>
+                  <?php $notiftu = $this->db->select('*')->where('penerima', $this->session->userdata('level'))->where('major', $mjr->id)->order_by('created_at', 'ASC')->from('tb_notification')->get()->result();?>
                   <?php if(count($notiftu) != 0):?>
                     <?php foreach($notiftu as $nTU):?>
                       <li class="waves-effect waves-light" onclick="fungsi(<?= $nTU->id;?>)">
@@ -98,7 +98,7 @@
                   <?php endif;?>
                 <?php endforeach;?>
               <?php else:?>
-                <?php $notifMhs = $this->db->select('*')->where('penerima', $this->session->userdata('username'))->from('tb_notification')->get()->result();?>
+                <?php $notifMhs = $this->db->select('*')->where('penerima', $this->session->userdata('username'))->order_by('created_at', 'ASC')->from('tb_notification')->get()->result();?>
                 <?php if(count($notifMhs) != 0):?>
                   <?php foreach($notifMhs as $not):?>
                     <li class="waves-effect waves-light" onclick="fungsi(<?= $not->id;?>)">
