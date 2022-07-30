@@ -19,7 +19,7 @@
                             <?php elseif($ths->status_daftar == 1):?>
                                 <a href="" class="btn btn-mini btn-outline-danger disabled" data-toggle="tooltip" data-placement="left" data-original-title="Sedang dalam pemeriksaan dokumen">Sedang dalam pemeriksaan dokumen</a>
                             <?php else:?>
-                                <a href="" class="btn btn-mini btn-outline-danger disabled" data-toggle="tooltip" data-placement="left" data-original-title="Dokumn diterima">Dokumn diterima</a>
+                                <a href="" class="btn btn-mini btn-outline-danger disabled" data-toggle="tooltip" data-placement="left" data-original-title="Dokumn diterima">All document approved</a>
                             <?php endif;?>
                         <?php endforeach;?>
                     <?php else:?>
@@ -37,7 +37,7 @@
                 <?php elseif($tyd->status_daftar == 1):?>
                     <label class="label label-mini label-danger"><h6 class="align-middle text-center">Sedang dalam proses pemeriksaan dokumen</h6></label>
                 <?php else:?>
-                    <label class="label label-mini label-success"><h6 class="align-middle text-center">Dokumen diterima</h6></label>
+                    <label class="label label-mini label-success"><h6 class="align-middle text-center">All document approved</h6></label>
                 <?php endif;?>
         <?php endforeach;?>
         <div class="card-block">

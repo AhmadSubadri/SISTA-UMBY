@@ -28,10 +28,10 @@
                                         <hr>
                                     <?php endforeach;?>
                                 </div>
-                                <?php $i=1; foreach($DataSource->result() as $dtpenguji):?>
+                                <?php $j=1; foreach($DataSource->result() as $dtpenguji):?>
                                     <div class="col-md-6 sub-title">
-                                    <h6 class="text-primary">Judul pembanding (<?= $dtpenguji->id;?>)</h6>
-                                        <h6><?= $i++; $x= hapus_simbol($dtpenguji->title);?></h6>
+                                    <h6 class="text-primary">Judul pembanding (<?= $j++;;?>)</h6>
+                                        <h6><?= $x= hapus_simbol($dtpenguji->title);?></h6>
                                         <h6><?= kgram($x, $kgram);?></h6>
                                     </div>
                                 <?php endforeach;?>
@@ -62,8 +62,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="sub-title text-primary">Judul pembanding</h6>
-                                    <?php foreach($DataSource->result() as $dtpenguji):?>
-                                        <h6><?= $dtpenguji->id;?>. <?= $v= hapus_simbol($dtpenguji->title);?></h6>
+                                    <?php $k=1; foreach($DataSource->result() as $dtpenguji):?>
+                                        <h6><?= $k++;?>. <?= $v= hapus_simbol($dtpenguji->title);?></h6>
                                         <h6><?= hasing($v, $kgram, $basis);?></h6>
                                         <hr>
                                     <?php endforeach;?>
@@ -85,9 +85,9 @@
                         <div class="accordion-content accordion-desc"><br>
                             <div class="row">
                                 <?php $kgram =5; $basis = 3;?>
-                                <?php foreach($DataSource->result() as $dtpengujia):?>
+                                <?php $l=1; $o=1;foreach($DataSource->result() as $dtpengujia):?>
                                     <div class='col-md-4'>
-                                        <h6 class="text-primary sub-title">Skema hash sama antara judul diajukan dengan pembanding <?= $dtpengujia->id;?> (A ᴖ <?= $dtpengujia->id;?>)</h6>
+                                        <h6 class="text-primary sub-title">Skema hash sama antara judul diajukan dengan pembanding <?= $o++;?> (A ᴖ <?= $l++;?>)</h6>
                                         <?php $v_pmb = $this->db->select('source_pembanding.source, source_pembanding.id')->where('source_pembanding.id_pembanding', $dtpengujia->id)->from('source_pembanding')->group_by('source_pembanding.source')->group_by('source_pengajuan.source')->join('source_pengajuan','source_pengajuan.source = source_pembanding.source')->get()->result();?>
                                         <?php foreach($v_pmb as $pmb):?>
                                             <?= hasing($pmb->source, $kgram, $basis);?>
@@ -121,11 +121,11 @@
                                         <?php endforeach;?>
                                     </h6>
                                 </div>
-                                <?php foreach($DataSource->result() as $dtpengujiaa):?>
+                                <?php $m=1; $p=1; foreach($DataSource->result() as $dtpengujiaa):?>
                                     <div class="sub-title col-md-4">
-                                    <h6 class="text-primary">Judul pembanding (<?= $dtpengujiaa->id;?>)</h6>
+                                    <h6 class="text-primary">Judul pembanding (<?= $p++;?>)</h6>
                                     <?php $v_pmba = $this->db->select('source, id')->where('id_pembanding', $dtpengujiaa->id)->from('source_pembanding')->group_by('source')->get()->result();?>
-                                        <h6 class="text-primary sub-title">Total skema hash Text pembanding (<?= $dtpengujiaa->id;?>) = <?php echo count($v_pmba);?></h6>
+                                        <h6 class="text-primary sub-title">Total skema hash Text pembanding (<?= $m++;?>) = <?php echo count($v_pmba);?></h6>
                                         <h6>
                                             <?php foreach($v_pmba as $pmba):?>
                                                 <?= hasing($pmba->source, $kgram, $basis);?>
@@ -151,14 +151,14 @@
                             <div class="row">
                                 <?php $kgram =5; $basis = 3; $d = array();?>
                                 <div class='col-md-12'>
-                                <?php foreach($DataSource->result() as $dtpengujiaaa):?>
+                                <?php $q=1;foreach($DataSource->result() as $dtpengujiaaa):?>
                                     <?php $v_pmbaaaa = $this->db->select('source_pembanding.source, source_pembanding.id')->where('source_pembanding.id_pembanding', $dtpengujiaaa->id)->from('source_pembanding')->group_by('source_pembanding.source')->group_by('source_pengajuan.source')->join('source_pengajuan','source_pengajuan.source = source_pembanding.source')->get()->result();?>
 
                                     <?php $v_pmbabbb = $this->db->select('source, id')->where('id_pembanding', $dtpengujiaaa->id)->from('source_pembanding')->group_by('source')->get()->result();?>
 
                                     <?php $v_pngaff = $this->db->select('*')->from('source_pengajuan')->group_by('source')->get()->result();?>
                                     <?php $hasil = round((2*count($v_pmbaaaa)/(count($v_pngaff)+count($v_pmbabbb)))*100,2);?>
-                                    <h6 class="text-primary">Hasil similarity dari judul diajukan dengan pembanding <?= $dtpengujiaaa->id;?></h6>
+                                    <h6 class="text-primary">Hasil similarity dari judul diajukan dengan pembanding <?= $q++;?></h6>
                                     <h6>Judul pembanding : "<?= $dtpengujiaaa->title;?>"</h6>
                                     <h6>Skema hash Text judul diajukan = <?= count($v_pngaff);?></h6>
                                     <h6>Skema hash Text judul pembanding = <?= count($v_pmbabbb);?></h6>

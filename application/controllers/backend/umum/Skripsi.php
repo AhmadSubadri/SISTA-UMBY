@@ -40,7 +40,7 @@ class Skripsi extends CI_Controller
             $key = md5(rand());
             // source pembanding
             $this->M_umum->_SetData('tb_ideasubmission', ['keyy' => $key], 'id', $id);
-            $sourceTitle = $this->M_umum->getSourcetitle('tb_sourcetitle')->result();
+            $sourceTitle = $this->M_umum->getSourcetitle()->result();
             foreach($sourceTitle as $source){
                 $src = hapus_simbol($source->title);
                 $length=strlen($src);
