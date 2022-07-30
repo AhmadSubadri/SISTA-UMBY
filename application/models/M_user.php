@@ -20,6 +20,9 @@ class M_user extends CI_Model
         $this->db->where('email', $email);
         $sqlc = $this->db->get('tb_staff')->row();
 
+        $this->db->where('email', $email);
+        $sqld = $this->db->get('tb_administrator')->row();
+
         if ($sqla) {
             $passwordTrue = password_verify($pass, $sqla->password);
             if($passwordTrue && $sqla->role_id == "2"){
@@ -93,6 +96,25 @@ class M_user extends CI_Model
             }else{
                 echo "<alert>Username/password not found</alert>";
             }
+        }elseif($sqld) {
+            $password = password_verify($pass, $sqld->password);
+            if($password && $sqld->role_id == "5"){
+                $this->session->set_userdata('username',$sqld->username);
+                $this->session->set_userdata('name',$sqld->fullname);
+                $this->session->set_userdata('gender',$sqld->gender);
+                $this->session->set_userdata('major',$sqld->id_major);
+                $this->session->set_userdata('email',$sqld->email);
+                $this->session->set_userdata('password',$sqld->password);
+                $this->session->set_userdata('faculty',$sqld->id_faculty);
+                $this->session->set_userdata('phone',$sqld->phone);
+                $this->session->set_userdata('level',$sqld->role_id);
+                $this->session->set_userdata('foto',$sqld->image);
+                $this->session->set_userdata('active',$sqld->is_active);
+                $this->session->set_userdata(['user_logged' => $sqld]);
+                return $sqld;
+            }else{
+                echo "<alert>Username/password not found</alert>";
+            }
         }else{
             echo "<alert>You are not entitled to enter on this page</alert>";
         }
@@ -130,5 +152,12 @@ class M_user extends CI_Model
         ->from('tb_student');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function update($tabel, $array, $col, $id){
+        $this->db->set($array);
+        $this->db->where($col, $id);
+        $query = $this->db->update($tabel);
+        return $query;
     }
 }

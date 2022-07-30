@@ -9,6 +9,9 @@ $route['Dashboard'] = 'backend/Dashboard';
 
 // frontend
 $route['Login-user'] = 'Auth';
+$route['user-profile'] = 'backend/Dashboard/UserProfile';
+$route['setting-profile'] = 'backend/Dashboard/SettingUserProfile';
+$route['update-profile'] = 'backend/Dashboard/UpdateProfile';
 
 // Skripsi mahasiswa
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';

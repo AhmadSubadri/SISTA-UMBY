@@ -6,7 +6,7 @@
                 <img class="img-80 img-radius" src="<?php echo base_url()?>_uploads/profile/profile.png" width="50px"
                 height="60px" alt="User-Profile-Image">
             <?php else:?>
-                <?php if($this->session->userdata('level') == '1'):?>
+                <?php if($this->session->userdata('level') == 1 || $this->session->userdata('level') == 2 || $this->session->userdata('level') == 3 || $this->session->userdata('level') == 5):?>
                     <img class="img-80 img-radius" width="50px" height="60px"
                     src="<?= base_url('_uploads/profile/staff/').$this->session->userdata('foto');?>"
                     alt="User-Profile-Image">
@@ -24,8 +24,8 @@
         <div class="main-menu-content">
             <ul>
                 <li class="more-details">
-                    <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>
-                    <a href="#!"><i class="ti-settings"></i>Settings</a>
+                    <a href="<?= site_url('user-profile');?>"><i class="ti-user"></i>View Profile</a>
+                    <a href="<?= site_url('setting-profile');?>"><i class="ti-settings"></i>Settings</a>
                     <a href="#!" data-target="#logoutmodal" data-toggle="modal"><i
                         class="ti-layout-sidebar-left"></i>Logout</a>
                     </li>
@@ -275,13 +275,14 @@
                     </li>
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Setting</div>
                     <li class="">
-                        <a href="#" class="waves-effect waves-dark">
+                        <a href="" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-settings"></i><b>FC</b></span>
                             <span class="pcoded-mtext" data-i18n="nav.form-components.main">Setting jadwal</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-
+                <?php elseif($this->session->userdata('level') == '5'):?>
+                    hallo
                 <?php else:?>
                     <!-- Menu sidebar Mahasiswa -->
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Bimbingan</div>

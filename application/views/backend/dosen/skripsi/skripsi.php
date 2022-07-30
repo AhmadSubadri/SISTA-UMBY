@@ -25,7 +25,7 @@
                                 src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                             <?php else:?>
                                 <img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>"
-                                alt="user image" class="img-radius img-40 align-top m-r-15">
+                                alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                             <?php endif;?>
                             <label class="badge badge-primary badge-bottom-right"><?= $i++;?></label>
                         </div>

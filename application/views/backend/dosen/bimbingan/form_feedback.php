@@ -7,7 +7,7 @@
                 alt="user image">
             <?php else:?>
             <img src="<?php echo base_url('_uploads/profile/student/').$mhs->image;?>" alt="user image"
-                class="img-radius img-40 align-top m-r-15">
+                class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
             <?php endif;?>
             <div class="media-body">
                 <h5 class="notification-user"><?= $mhs->fullname;?></h5>
@@ -53,7 +53,7 @@
                         src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
                     <?php else:?>
                     <img src="<?php echo base_url('_uploads/profile/student/').$isi->image;?>" alt="user image"
-                        class="img-radius img-40 align-top m-r-15">
+                        class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
                     <?php endif;?>
                     <div class="media-body">
                         <p class="text-italic"><?= $isi->created_at;?></p>
