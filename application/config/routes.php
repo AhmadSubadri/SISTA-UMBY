@@ -121,15 +121,19 @@ $route['TU/dashboard/batal-daftarkan-pendadaran-mahasiswa/(:any)'] = 'backend/tu
 $route['TU/dashboard/daftar-pendadaran-mahasiswa'] = 'backend/tu/Daftarpendadaran/DaftarPendadaranMahasiswa';
 $route['TU/dashboard/cek-dokumen-pendadaran/(:any)'] = 'backend/tu/Daftarpendadaran/CekDokumenPendadaran/$1';
 $route['TU/dashboard/approved-dokumen'] = 'backend/tu/Daftarpendadaran/ApprovedDokumen';
+$route['TU/dashboard/approved-dokumen-yudisium'] = 'backend/tu/Daftaryudisium/ApprovedDokumenYudisium';
 $route['TU/dashboard/kirim-revisi-dokumen'] = 'backend/tu/Daftarpendadaran/KirimRevisiDokumen';
+$route['TU/dashboard/kirim-revisi-dokumen-yudisium'] = 'backend/tu/Daftaryudisium/KirimRevisiDokumenYudisium';
 $route['TU/dashboard/delete-byid-uploaded'] = 'backend/tu/Daftarpendadaran/DeleteByIdNotif';
 $route['TU/dashboard/daftarkan-mahasiswa-ini'] = 'backend/tu/Daftarpendadaran/DaftarkanMahasiswaIni';
+$route['TU/dashboard/cek-dokumen-yudisium/(:any)'] = 'backend/tu/Daftaryudisium/CekDokumenYudisium/$1';
 
 
 
 $route['TU/dashboard/hasil-pendadaran'] = 'backend/tu/Daftarpendadaran/HasilPendadaran';
 $route['TU/dashboard/detail-hasil-pendadaran/(:any)'] = 'backend/tu/Daftarpendadaran/DetailHasilPendadaran/$1';
 $route['TU/dashboard/save-pengumuman-pendadaran-tu'] = 'backend/tu/Daftarpendadaran/SavePengumumanPendadaranTU';
+$route['TU/dashboard/progres-yudisium-mahasiswa'] = 'backend/tu/Daftaryudisium/ProgresYudisiumMahasiswa';
 
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';

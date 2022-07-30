@@ -54,7 +54,7 @@
 											<?php if($t->status_daftar == 1):?>
 												<a href="<?= site_url('TU/dashboard/cek-dokumen-pendadaran/'.$row->username);?>" class="btn btn-mini btn-outline-primary"><i class="ti-reload"></i>Cek dokumen</a>
 											<?php else:?>
-												<a class="btn btn-mini btn-outline-primary disabled"><i class="ti-na"></i>Sudah terdaftar</a>
+												<a href="<?= site_url('TU/dashboard/cek-dokumen-pendadaran/'.$row->username);?>" class="btn btn-mini btn-outline-success disabled"><i class="ti-na"></i>Sudah terdaftar</a>
 											<?php endif;?>
 										<?php endforeach;?>
 									</td>

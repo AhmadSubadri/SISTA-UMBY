@@ -22,6 +22,7 @@ class M_yudisium extends CI_Model
     {
         $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image, t.avarage, t.letter_value, t.status_daftar_yudisium')
         ->where('t.status_pendadaran', '2')
+        ->where('t.pernyataan', "Lulus")
         ->where('t.major', $this->session->userdata('major'))
         ->from('tb_thesisreceived t')
         ->join('tb_student s', 's.username = t.nim')
@@ -32,8 +33,9 @@ class M_yudisium extends CI_Model
 
     public function GetNilaiAkhirForStudent()
     {
-        $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image, t.avarage, t.letter_value, t.status_daftar_yudisium')
+        $this->db->select('t.id, t.status_bimbingan, t.title, t.nim, t.nidn, t.status_daftar, t.status_pendadaran, s.fullname, s.image, t.avarage, t.letter_value, t.status_daftar_yudisium, t.pernyataan')
         ->where('t.status_pendadaran', '2')
+        ->where('t.pernyataan', "Lulus")
         ->where('t.nim', $this->session->userdata('username'))
         ->from('tb_thesisreceived t')
         ->join('tb_student s', 's.username = t.nim')

@@ -27,9 +27,9 @@
 										Sudah upload : <label class="badge badge-success"><?= count($Progres)?></label><br>
 										Belum upload : <label class="badge badge-danger"><?= count($DataSyarat->result())-count($Progres)?></label>
 										<?php else:?>
-										Sudah upload : <label class="badge badge-success"><?= count($Progres);?></label>
-										Belum upload : <label class="badge badge-danger"><?= count($DataSyarat->result())-count($Progres);?></label>
-										<label class="label label-mini label-success">Sudah upload dokumen</label>
+										Sudah upload : <label class="badge badge-success"><?= count($Progres);?></label><br>
+										Belum upload : <label class="badge badge-danger"><?= count($DataSyarat->result())-count($Progres);?></label><br>
+										<label class="label label-mini label-success">Sudah upload semua dokumen</label>
 										<?php endif;?>
 									<?php endif;?>
 								<?php else:?>
@@ -43,7 +43,11 @@
 									<td class="justify-content-center"><i class="ti-close text-danger text-mini"></i></td>
 								<?php else:?>
 									<?php foreach($value as $dt):?>
-										<td class="justify-content-center"><i class="ti-check text-primary text-mini"></i></td>
+										<?php if($dt->status != 0):?>
+											<td class="justify-content-center"><i class="ti-check text-primary text-mini"></i></td>
+										<?php else:?>
+											<td class="justify-content-center"><i class="ti-stats-up text-primary text-mini"></i></td>
+										<?php endif;?>
 									<?php endforeach;?>
 								<?php endif;?>
 							<?php endforeach;?>

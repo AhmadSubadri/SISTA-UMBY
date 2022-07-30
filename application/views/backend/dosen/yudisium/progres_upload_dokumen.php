@@ -44,7 +44,11 @@
 										<td><i class="ti-close text-danger text-mini"></i></td>
 									<?php else:?>
 										<?php foreach($value as $dt):?>
-											<td><i class="ti-check text-primary text-mini"></i></td>
+											<?php if($dt->status != 0):?>
+												<td class="justify-content-center"><i class="ti-check text-primary text-mini"></i></td>
+											<?php else:?>
+												<td class="justify-content-center"><i class="ti-stats-up text-primary text-mini"></i></td>
+											<?php endif;?>
 										<?php endforeach;?>
 									<?php endif;?>
 								<?php endforeach;?>

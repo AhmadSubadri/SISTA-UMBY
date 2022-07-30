@@ -45,13 +45,26 @@
       </ul>
       <ul class="nav-right">
         <li class="header-notification">
-          <?php $notif = $this->db->select('*')->where('penerima', $this->session->userdata('username'))->from('tb_notification')->get()->result();?>
+          <?php $notif = $this->db->select('*')->from('tb_notification')->get()->result();?>
           <a href="#!" class="waves-effect waves-light">
             <i class="ti-bell"></i>
-            <?php if(count($notif) != 0):?>
-            <span class="badge bg-c-red"></span>
+            <?php if($this->session->userdata('level') == 3):?>
+              <?php $majori = $this->db->select('*')->where('id_faculty', $this->session->userdata('faculty'))->from('tb_major')->get()->result();?>
+                <?php foreach($majori as $mjr):?>
+                  <?php $notiftui = $this->db->select('*')->where('penerima', $this->session->userdata('level'))->where('major', $mjr->id)->from('tb_notification')->get()->result();?>
+                  <?php if(count($notiftui) != 0):?>
+                    <span class="badge bg-c-red"></span>
+                  <?php else:?>
+                    
+                  <?php endif;?>
+                <?php endforeach;?>
             <?php else:?>
-              
+              <?php $notifMhsi = $this->db->select('*')->where('penerima', $this->session->userdata('username'))->from('tb_notification')->get()->result();?>
+              <?php if(count($notifMhsi) != 0):?>
+              <span class="badge bg-c-red"></span>
+              <?php else:?>
+                
+              <?php endif;?>
             <?php endif;?>
           </a>
           <ul class="show-notification">
@@ -59,26 +72,54 @@
               <h6>Notifications</h6>
               <label class="label label-danger">New</label>
             </li>
-            <?php if(count($notif) != 0):?>
-              <?php foreach($notif as $not):?>
-                <li class="waves-effect waves-light" onclick="fungsi(<?= $not->id;?>)">
-                  <a href="<?= site_url();?><?= $not->url;?>">
-                    <div class="media">
-                      <img class="d-flex align-self-center img-radius" src="<?php echo base_url()?>_uploads/profile/profile.png" alt="Generic placeholder image">
-                      <div class="media-body">
-                        <h5 class="notification-user"><?= $not->pengirim;?></h5>
-                        <p class="notification-msg"><?= $not->pesan;?></p>
-                        <span class="notification-time">30 minutes ago</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              <?php endforeach;?>
-            <?php else:?>
-              <li class="text-center">
-                pesan kosong
-              </li>
-            <?php endif;?>
+              <?php if($this->session->userdata('level') == 3):?>
+                <?php $major = $this->db->select('*')->where('id_faculty', $this->session->userdata('faculty'))->from('tb_major')->get()->result();?>
+                <?php foreach($major as $mjr):?>
+                  <?php $notiftu = $this->db->select('*')->where('penerima', $this->session->userdata('level'))->where('major', $mjr->id)->order_by('created_at', 'ASC')->from('tb_notification')->get()->result();?>
+                  <?php if(count($notiftu) != 0):?>
+                    <?php foreach($notiftu as $nTU):?>
+                      <li class="waves-effect waves-light" onclick="fungsi(<?= $nTU->id;?>)">
+                        <a href="<?= site_url();?><?= $nTU->url;?>">
+                          <div class="media">
+                            <img class="d-flex align-self-center img-radius" src="<?php echo base_url()?>_uploads/profile/profile.png" alt="Generic placeholder image">
+                            <div class="media-body">
+                              <h5 class="notification-user"><?= $nTU->pengirim;?></h5>
+                              <p class="notification-msg"><?= $nTU->pesan;?></p>
+                              <span class="notification-time">30 minutes ago</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    <?php endforeach;?>
+                  <?php else:?>
+                    <li class="text-center">
+                      <!-- pesan kosong -->
+                    </li>
+                  <?php endif;?>
+                <?php endforeach;?>
+              <?php else:?>
+                <?php $notifMhs = $this->db->select('*')->where('penerima', $this->session->userdata('username'))->order_by('created_at', 'ASC')->from('tb_notification')->get()->result();?>
+                <?php if(count($notifMhs) != 0):?>
+                  <?php foreach($notifMhs as $not):?>
+                    <li class="waves-effect waves-light" onclick="fungsi(<?= $not->id;?>)">
+                      <a href="<?= site_url();?><?= $not->url;?>">
+                        <div class="media">
+                          <img class="d-flex align-self-center img-radius" src="<?php echo base_url()?>_uploads/profile/profile.png" alt="Generic placeholder image">
+                          <div class="media-body">
+                            <h5 class="notification-user"><?= $not->pengirim;?></h5>
+                            <p class="notification-msg"><?= $not->pesan;?></p>
+                            <span class="notification-time">30 minutes ago</span>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  <?php endforeach;?>
+                <?php else:?>
+                  <li class="text-center">
+                    pesan kosong
+                  </li>
+                <?php endif;?>
+              <?php endif;?>
           </ul>
         </li>
         <li class="user-profile header-notification">
