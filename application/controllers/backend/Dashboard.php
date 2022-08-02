@@ -19,7 +19,12 @@ class Dashboard extends CI_Controller
 		$data = [
             'data' => $this->M_user->getAllStudent(),
             'Pendadaran' => $this->M_user->GetSumPendadaran(),
-            'Yudisium' => $this->M_user->GetSumYudisium()
+            'Yudisium' => $this->M_user->GetSumYudisium(),
+            'Student' => $this->M_user->GetSumSiswa(),
+            'Dosen' => $this->M_user->GetSumDosen(),
+            'Tu' => $this->M_user->GetSumTu(),
+            'Faculty' => $this->M_user->GetSumFaculty(),
+            'Major' => $this->M_user->GetSumMajor()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/partials_/dashboard',$data);

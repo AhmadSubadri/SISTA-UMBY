@@ -160,4 +160,34 @@ class M_user extends CI_Model
         $query = $this->db->update($tabel);
         return $query;
     }
+
+    public function GetSumSiswa()
+    {
+        $GetSumSiswa = $this->db->select('*')->from('tb_student')->get()->result();
+        return $GetSumSiswa;
+    }
+
+    public function GetSumDosen()
+    {
+        $GetSumDosen = $this->db->select('*')->from('tb_lecturers')->get()->result();
+        return $GetSumDosen;
+    }
+
+    public function GetSumTu()
+    {
+        $GetSumTu = $this->db->select('*')->from('tb_staff')->get()->result();
+        return $GetSumTu;
+    }
+
+    public function GetSumFaculty()
+    {
+        $GetSumFaculty = $this->db->select('*')->from('tb_faculty')->get()->result();
+        return $GetSumFaculty;
+    }
+
+    public function GetSumMajor()
+    {
+        $GetSumMajor = $this->db->select('*')->from('tb_major')->get()->result();
+        return $GetSumMajor;
+    }
 }

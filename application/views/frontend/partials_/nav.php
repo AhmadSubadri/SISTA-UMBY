@@ -8,8 +8,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Home"){echo "active";};?>" href="<?= site_url('Home');?>">Home</a></li>
+          <a class="nav-link scrollto <?php if($this->uri->segment(1)=="Home"){echo "active";};?>" href="<?= site_url('Home');?>"><li class="bx bx-home"></li></a>
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="About"){echo "active";};?>" href="<?= site_url('About');?>">About</a></li>
+          <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Requirement"){echo "active";};?>" href="<?= site_url('Requirement');?>">Requirements</a></li>
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Timeline"){echo "active";};?>" href="<?= site_url('Timeline');?>">Timeline</a></li>
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Announcement"){echo "active";};?>" href="<?= site_url('Announcement');?>">Announcement</a></li>
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Download"){echo "active";};?>" href="<?= site_url('Download');?>">Download</a></li>
