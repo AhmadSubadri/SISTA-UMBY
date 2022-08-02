@@ -36,7 +36,7 @@
 										<img class="img-radius img-40 align-top m-r-15"
 										src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
 									<?php else:?>
-										<img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>"
+										<img src="<?php echo base_url('_uploads/profile/student/'.$row['image']);?>"
 										alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
 									<?php endif;?>
 									<div class="media-body">
@@ -89,11 +89,11 @@
 								<img class="img-radius img-40 align-top m-r-15"
 								src="<?php echo base_url()?>_uploads/profile/profile.png" alt="user image">
 							<?php else:?>
-								<img src="<?php echo base_url('_uploads/profile/student/').$row->image;?>"
+								<img src="<?php echo base_url('_uploads/profile/student/').$row['image'];?>"
 								alt="user image" class="img-radius img-40 align-top m-r-15" width="40px" height="40px">
 							<?php endif;?>
 							<div class="media-body">
-								<h5 class=""><?= $row['nameStudent'];?> / <?= $row['nim'];?></h5><br>
+								<h5 class=""><?= $row['nameStudent'];?> / <?= $row['nim'];?></h5>
 								<h6>"<?= $row['title'];?>"</h6>
 							</div>
 						</div>

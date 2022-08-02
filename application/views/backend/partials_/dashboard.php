@@ -1,5 +1,106 @@
 <!-- task, page, download counter  start -->
 <?php if($this->session->userdata('level') == 5):?>
+<div class="col-xl-3 col-md-6">
+    <div class="card">
+        <div class="card-block">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h4 class="text-c-green"><?php echo count($Student)+count($Dosen)+count($Tu);?></h4>
+                    <h6 class="text-muted m-b-0">Total User</h6>
+                </div>
+                <div class="col-4 text-right">
+                    <i class="ti-user f-28"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-c-green">
+            <div class="row align-items-center">
+                <div class="col-9">
+                    <p class="text-white m-b-0">Data User Terdaftar</p>
+                </div>
+                <div class="col-3 text-right">
+                    <i class="fa fa-line-chart text-white f-16"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xl-3 col-md-6">
+    <div class="card">
+        <div class="card-block">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h4 class="text-c-yellow"><?php echo count($Faculty);?></h4>
+                    <h6 class="text-muted m-b-0">Total Fakultas</h6>
+                </div>
+                <div class="col-4 text-right">
+                    <i class="f-28">FA</i>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-c-yellow">
+            <div class="row align-items-center">
+                <div class="col-9">
+                    <p class="text-white m-b-0">Data Semua Fakultas</p>
+                </div>
+                <div class="col-3 text-right">
+                    <i class="fa fa-line-chart text-white f-16"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xl-3 col-md-6">
+    <div class="card">
+        <div class="card-block">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h4 class="text-c-red"><?php echo count($Major);?></h4>
+                    <h6 class="text-muted m-b-0">Semua Jurusan</h6>
+                </div>
+                <div class="col-4 text-right">
+                    <i class="f-28">PD</i>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-c-red">
+            <div class="row align-items-center">
+                <div class="col-9">
+                    <p class="text-white m-b-0">Data Semua Jurusan</p>
+                </div>
+                <div class="col-3 text-right">
+                    <i class="fa fa-line-chart text-white f-16"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xl-3 col-md-6">
+    <div class="card">
+        <div class="card-block">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <?php $allData = $this->db->select('*')->from('tb_student')->get()->result();?>
+                    <h4 class="text-c-blue"><?php echo count($allData);?></h4>
+                    <h6 class="text-muted m-b-0">Semua mahasiswa</h6>
+                </div>
+                <div class="col-4 text-right">
+                    <i class="fa fa-file-text-o f-28"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-c-blue">
+            <div class="row align-items-center">
+                <div class="col-9">
+                    <p class="text-white m-b-0">Data semua fakultas</p>
+                </div>
+                <div class="col-3 text-right">
+                    <i class="fa fa-line-chart text-white f-16"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php else:?>
 <div class="col-xl-3 col-md-6">
     <div class="card">

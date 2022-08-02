@@ -36,7 +36,7 @@ class Pendadaran extends CI_Controller
         $name =  $this->session->userdata('name');//nama file menggunakan nama mahasiswa
         $config['file_name'] = "$username-$name-Syarat-$id_syarat-".date("Y-d-m");
         $config['upload_path'] = '_uploads/pendadaran/'.$this->session->userdata('name');
-        $config['allowed_types'] = 'pdf|docx|xls';
+        $config['allowed_types'] = 'pdf|docx|xls|jpg|JPG|JPEG|jpeg|PNG|png|zip|rar';
         // $config['max_size'] = 5000;
         $this->load->library('upload', $config);
         if(!$this->upload->do_upload('file')){
@@ -73,7 +73,7 @@ class Pendadaran extends CI_Controller
         $name =  $this->session->userdata('name');//nama file menggunakan nama mahasiswa
         $config['file_name'] = "$username-$name-Laporan akhir-".date("Y-d-m");
         $config['upload_path'] = '_uploads/laporanakhir/'.$this->session->userdata('name');
-        $config['allowed_types'] = 'pdf|docx|xls';
+        $config['allowed_types'] = 'pdf|docx|xls|jpg|JPG|JPEG|jpeg|PNG|png|zip|rar';
         // $config['max_size'] = 5000;
         $this->load->library('upload', $config);
         if(!$this->upload->do_upload('file')){

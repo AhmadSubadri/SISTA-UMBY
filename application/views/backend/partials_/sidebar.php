@@ -282,7 +282,28 @@
                         </a>
                     </li>
                 <?php elseif($this->session->userdata('level') == '5'):?>
-                    hallo
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component settings web</div>
+                    <li class="<?php if($this->uri->uri_string() == 'Home/Settings') { echo 'active'; } ?>">
+                        <a href="<?= site_url('Home/Settings');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-home"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Home</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if($this->uri->uri_string() == 'About/Settings') { echo 'active'; } ?>">
+                        <a href="<?= site_url('About/Settings');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-help"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">About</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if($this->uri->uri_string() == 'Contact/Settings') { echo 'active'; } ?>">
+                        <a href="<?= site_url('Contact/Settings');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-email"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Contact</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 <?php else:?>
                     <!-- Menu sidebar Mahasiswa -->
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Bimbingan</div>
