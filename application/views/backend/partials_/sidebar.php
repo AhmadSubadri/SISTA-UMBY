@@ -273,11 +273,25 @@
                             </li>
                         </ul>
                     </li>
-                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Setting</div>
-                    <li class="">
-                        <a href="" class="waves-effect waves-dark">
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Setting's</div>
+                    <li class="<?php if($this->uri->uri_string() == 'TU/dashboard/timeline') { echo 'active'; } ?>">
+                        <a href="<?= site_url('TU/dashboard/timeline');?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-settings"></i><b>FC</b></span>
-                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Setting jadwal</span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Setting timeline</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if($this->uri->uri_string() == 'Announcement/data-announcement') { echo 'active'; } ?>">
+                        <a href="<?= site_url('Announcement/data-announcement');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-settings"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Setting announcement</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if($this->uri->uri_string() == 'Download/data-download') { echo 'active'; } ?>">
+                        <a href="<?= site_url('Download/data-download');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-settings"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Setting download</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

@@ -23,7 +23,7 @@
   <link href="<?php base_url()?>frontend/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="<?php base_url()?>frontend/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="<?php base_url()?>frontend/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/icon/themify-icons/themify-icons.css">
   <!-- Template Main CSS File -->
   <link href="<?php base_url()?>frontend/css/style.css" rel="stylesheet">
 </head>

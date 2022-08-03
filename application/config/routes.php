@@ -138,6 +138,26 @@ $route['TU/dashboard/detail-hasil-pendadaran/(:any)'] = 'backend/tu/Daftarpendad
 $route['TU/dashboard/save-pengumuman-pendadaran-tu'] = 'backend/tu/Daftarpendadaran/SavePengumumanPendadaranTU';
 $route['TU/dashboard/progres-yudisium-mahasiswa'] = 'backend/tu/Daftaryudisium/ProgresYudisiumMahasiswa';
 
+// Timeline
+$route['TU/dashboard/timeline'] = 'backend/tu/Timeline/Index';
+$route['TU/dashboard/insert-timeline'] = 'backend/tu/Timeline/InsertTimeLine';
+$route['TU/dashboard/Delete-timeline-id/(:any)'] = 'backend/tu/Timeline/DeleteTimelineById/$1';
+$route['TU/dashboard/update-timeline'] = 'backend/tu/Timeline/UpdateTimelineById';
+
+// Announcement
+$route['Announcement/data-announcement'] = 'Announcement/DataAnnouncement';
+$route['Announcement/save-announcement'] = 'Announcement/SaveAnnouncement';
+$route['Announcement/delete-announcement/(:any)'] = 'Announcement/DeleteAnnouncement/$1';
+$route['Announcement/update-announcement/(:any)'] = 'Announcement/UpdateAnnouncement/$1';
+
+// Download
+$route['Download/data-download'] = 'Download/DataDownload';
+$route['Download/save-download'] = 'Download/SaveDownload';
+$route['Download/delete-download/(:any)'] = 'Download/DeleteDownload/$1';
+$route['Download/update-download/(:any)'] = 'Download/UpdateDownload/$1';
+$route['Download/searcha'] = 'Download/search';
+
+
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

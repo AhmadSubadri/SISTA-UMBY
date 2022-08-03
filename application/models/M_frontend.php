@@ -54,4 +54,28 @@ class M_frontend extends CI_Model
         $datag = $this->db->select('*')->from('contact')->get()->result();
         return $datag;
     }
+
+    public function GetAnnouncement()
+    {
+        $datah = $this->db->select('*')->from('tb_announcement')->get()->result();
+        return $datah;
+    }
+
+    public function GetDownload()
+    {
+        $datai = $this->db->select('*')->from('tb_download')->get()->result();
+        return $datai;
+    }
+
+    public function search($keyword)
+    {
+        if(!$keyword){
+            return null;
+        }
+        $this->db->select('*');
+        $this->db->like('judul', $keyword,'both');
+        $this->db->or_like('deskripsi', $keyword,'both');
+        $result = $this->db->get('tb_download')->result(); // Tampilkan data siswa berdasarkan keyword
+        return $result; 
+    }
 }

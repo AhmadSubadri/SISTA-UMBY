@@ -143,4 +143,18 @@ class M_tatausaha extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function GetDataTimeline()
+    {
+    	$this->db->where('id_faculty', $this->session->userdata('faculty'));
+        $sqlh = $this->db->get('tb_major')->row();
+    	$ab = $this->db->select('*')->where('major', $sqlh->id)->from('tb_timeline')->get();
+    	return $ab;
+    }
+
+    public function GetMajorByFaculty()
+    {
+    	$abc = $this->db->select('*')->where('id_faculty', $this->session->userdata('faculty'))->from('tb_major')->get();
+    	return $abc;
+    }
 }

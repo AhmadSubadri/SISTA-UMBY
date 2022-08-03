@@ -37,13 +37,13 @@
 										<div class="col-sm-12 col-xl-2 sub-title text-center">
 											<?= $syarat->qty;?>
 										</div>
-									<?php endforeach;?>
+										<?php endforeach;?>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			<div class="card-block table-border-style">
 				<div class="table-responsive">
 					<table class="table">

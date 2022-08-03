@@ -11,8 +11,11 @@ public function __construct()
     
 	public function Index()
 	{
+		$data = [
+			'Faculty' => $this->M_frontend->Faculty()
+		];
 		$this->load->view('frontend/partials_/head');
-		$this->load->view('frontend/content/timeline');
+		$this->load->view('frontend/content/timeline', $data);
 		$this->load->view('frontend/partials_/footer');
 	}
 }

@@ -140,7 +140,7 @@ public function __construct()
 				'type' => "3"
 			];
 			$this->db->insert('about', $dataqs);
-			$this->session->set_flashdata('msg',"Insert data has been added successfully no file");
+			$this->session->set_flashdata('msg',"Insert data has been added successfully");
             $this->session->set_flashdata('msg_class','alert-success');
             redirect(site_url('About/Settings'));
 		}
@@ -149,7 +149,7 @@ public function __construct()
 	public function DeleteIcon($id)
 	{
 		$this->db->where('id', $id)->delete('about');
-		$this->session->set_flashdata('msg',"Delete data has been added successfully no file");
+		$this->session->set_flashdata('msg',"Delete data has been added successfully");
 	    $this->session->set_flashdata('msg_class','alert-success');
 	    redirect(site_url('About/Settings'));
 	}
