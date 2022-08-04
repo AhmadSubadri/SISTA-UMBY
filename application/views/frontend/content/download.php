@@ -30,7 +30,7 @@
 								<div class="card-body">
 									<h5 class="card-title"><?= $announc->judul;?> <a href="<?= base_url('_uploads/download/'.$announc->file);?>" class="btn btn-sm btn-outline-primary" target="_blank"><i class="ti-download"></i> Download file</a></h5>
 									<p class='card-text'><?= $announc->deskripsi ;?></p>
-									<p class="card-text"><small class="text-muted"><i class="ti-user"> <em><?= $announc->uploader;?></em> </i><i class="ti-calendar"> <em><?= $announc->created_at;?></em></i></small></p>
+									<p class="card-text"><small class="text-muted"><i class="ti-user"> <em><?= $announc->uploader;?></em> </i><i class="ti-calendar"> <em><?php echo date('F d Y', strtotime($announc->created_at));?></em></i></small></p>
 								</div>
 							</div>
 						</div>

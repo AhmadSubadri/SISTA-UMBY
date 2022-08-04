@@ -24,7 +24,8 @@ class Dashboard extends CI_Controller
             'Dosen' => $this->M_user->GetSumDosen(),
             'Tu' => $this->M_user->GetSumTu(),
             'Faculty' => $this->M_user->GetSumFaculty(),
-            'Major' => $this->M_user->GetSumMajor()
+            'Major' => $this->M_user->GetSumMajor(),
+            'Announcement' => $this->M_user->GetAnnouncement()
         ];
         $this->load->view('backend/partials_/head');
         $this->load->view('backend/partials_/dashboard',$data);
@@ -35,6 +36,16 @@ class Dashboard extends CI_Controller
 	{
 		$this->load->view('backend/partials_/head');
         $this->load->view('backend/partials_/profile');
+        $this->load->view('backend/partials_/footer');
+	}
+
+	public function DetailAnnouncementDashboard($id)
+	{
+		$data = [
+			'Data' => $this->db->select('*')->where('id', $id)->from('tb_announcement')->get()->result()
+		];
+		$this->load->view('backend/partials_/head');
+        $this->load->view('backend/umum/detai_event', $data);
         $this->load->view('backend/partials_/footer');
 	}
 

@@ -296,7 +296,7 @@
                         </a>
                     </li>
                 <?php elseif($this->session->userdata('level') == '5'):?>
-                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component settings web</div>
+                    <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component settings</div>
                     <li class="<?php if($this->uri->uri_string() == 'Home/Settings') { echo 'active'; } ?>">
                         <a href="<?= site_url('Home/Settings');?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-home"></i><b>FC</b></span>
@@ -315,6 +315,14 @@
                         <a href="<?= site_url('Contact/Settings');?>" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-email"></i><b>FC</b></span>
                             <span class="pcoded-mtext" data-i18n="nav.form-components.main">Contact</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Component settings WEB</div>
+                    <li class="<?php if($this->uri->uri_string() == 'Web/Settings') { echo 'active'; } ?>">
+                        <a href="<?= site_url('Web/Settings');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-settings"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Website</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

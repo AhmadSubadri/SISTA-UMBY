@@ -348,89 +348,42 @@
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-header" style="background-color: #75A8FE;">
-                    <h5 style="color: white;">Calender event</h5>
+                    <h5 style="color: white;">Announcement</h5>
                 </div>
                 <div class="card-block" style="height:600px; display:block; overflow: auto;">
-                    <div class="row">
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="media" style="margin-right: 18px;">
-                                    <div class="col-xl-1">
-                                        <label class="badge-top-right"><h5 class="text-danger"><b>19</b></h5>
-                                            <?php if ( str_word_count("Juni") > 0 ):
-                                                echo substr("Juni",0,3);?>
-                                            <?php else :?>
-                                                Juni
-                                            <?php endif;?>
-                                        </label>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="media-body">
-                                            <h6 class="text-primary">Pendadaran</h6>
-                                            <?php if ( str_word_count("Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022") > 5 ):
-                                                    echo substr("<p class='text-muted m-b-0'>Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>",0,100)."...<a href='' class='text-primary'> <u>read more</u></a>";?>
-                                                <?php else :?>
-                                                    <p class="text-muted m-b-0">Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>
-                                                <?php endif;?>
-                                            <br><label class="label label-mini label-default text-muted">Activity</label>
+                    <?php foreach($Announcement as $announce):?>
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="media" style="margin-right: 18px;">
+                                        <div class="col-xl-1">
+                                            <label class="badge-top-right">
+                                                <h6 class="text-danger">
+                                                    <?php if ( str_word_count($announce->created_at) > 0 ):
+                                                        echo substr(date('d F Y', strtotime($announce->created_at)),0,6);?>
+                                                    <?php else :?>
+                                                        <?= $announce->created_at;?>
+                                                    <?php endif;?>
+                                                </h6>
+                                            </label>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="media-body">
+                                                <h6 class="text-primary"><?= $announce->title;?></h6>
+                                                <?php if ( str_word_count($announce->description) > 5 ):
+                                                        echo substr("<p class='text-muted m-b-0'>".$announce->description."</p>",0,150)."...";?>
+                                                        <a href="<?= site_url('Detail-announcement/'.$announce->id);?>" class="text-primary"> <u>read more</u></a>
+                                                    <?php else :?>
+                                                        <p class="text-muted m-b-0"><?= $announce->description;?></p>
+                                                    <?php endif;?>
+                                                <br><label class="label label-mini label-default text-muted">Activity</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="media" style="margin-right: 18px;">
-                                    <div class="col-xl-1">
-                                        <label class="badge-top-right"><h5 class="text-danger"><b>20</b></h5>
-                                            <?php if ( str_word_count("Juni") > 0 ):
-                                                echo substr("Juni",0,3);?>
-                                            <?php else :?>
-                                                Juni
-                                            <?php endif;?>
-                                        </label>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="media-body">
-                                            <h6 class="text-primary">Pendadaran</h6>
-                                            <?php if ( str_word_count("Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022") > 5 ):
-                                                    echo substr("<p class='text-muted m-b-0'>Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>",0,100)."...<a href='' class='text-primary'> <u>read more</u></a>";?>
-                                                <?php else :?>
-                                                    <p class="text-muted m-b-0">Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>
-                                                <?php endif;?>
-                                            <br><label class="label label-mini label-default text-muted">Activity</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="media" style="margin-right: 18px;">
-                                    <div class="col-xl-1">
-                                        <label class="badge-top-right"><h5 class="text-danger"><b>21</b></h5>
-                                            <?php if ( str_word_count("Juni") > 0 ):
-                                                echo substr("Juni",0,3);?>
-                                            <?php else :?>
-                                                Juni
-                                            <?php endif;?>
-                                        </label>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="media-body">
-                                            <h6 class="text-primary">Pendadaran</h6>
-                                            <?php if ( str_word_count("Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022") > 5 ):
-                                                    echo substr("<p class='text-muted m-b-0'>Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>",0,100)."...<a href='' class='text-primary'> <u>read more</u></a>";?>
-                                                <?php else :?>
-                                                    <p class="text-muted m-b-0">Pelaksanaan pendadaran akan di laksanakan pada tanggal 10/02/2022 - 10/03/2022</p>
-                                                <?php endif;?>
-                                            <br><label class="label label-mini label-default text-muted">Activity</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
