@@ -12,6 +12,8 @@ $route['Login-user'] = 'Auth';
 $route['user-profile'] = 'backend/Dashboard/UserProfile';
 $route['setting-profile'] = 'backend/Dashboard/SettingUserProfile';
 $route['update-profile'] = 'backend/Dashboard/UpdateProfile';
+$route['Download-search'] = 'Download/SearchDownload';
+$route['Announcement-search'] = 'Announcement/SearchAnnouncement';
 
 // Skripsi mahasiswa
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';
@@ -155,7 +157,6 @@ $route['Download/data-download'] = 'Download/DataDownload';
 $route['Download/save-download'] = 'Download/SaveDownload';
 $route['Download/delete-download/(:any)'] = 'Download/DeleteDownload/$1';
 $route['Download/update-download/(:any)'] = 'Download/UpdateDownload/$1';
-$route['Download/searcha'] = 'Download/search';
 
 
 $route['default_controller'] = 'Home';

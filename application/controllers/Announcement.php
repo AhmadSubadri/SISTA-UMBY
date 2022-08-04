@@ -104,4 +104,15 @@ class Announcement extends CI_Controller {
 	    $this->session->set_flashdata('msg_class','alert-success');
 	    redirect(site_url('Announcement/data-announcement'));
 	}
+
+	public function SearchAnnouncement()
+	{
+		$data = [
+			'Data' => $this->M_frontend->searchDataAnn($this->input->get('keyword')),
+			'keyword' => $this->input->get('keyword')
+		];
+		$this->load->view('frontend/partials_/head');
+		$this->load->view('frontend/content/search_announcement', $data);
+		$this->load->view('frontend/partials_/footer');
+	}
 }

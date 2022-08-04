@@ -17,7 +17,7 @@
 	<section class="section-bg">
 		<div class="container">
 			<form action="<?php echo base_url('Download-search');?>" method="get">
-				<input type="text" name="keyword" class="form-control" placeholder="search"><br>
+				<input type="text" name="keyword" class="form-control" placeholder="search" value="<?= $keyword;?>"><br>
 			</form>
 			<?php if(count($Data) != 0):?>
 				<?php foreach($Data as $announc):?>
