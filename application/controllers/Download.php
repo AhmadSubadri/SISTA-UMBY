@@ -11,7 +11,7 @@ class Download extends CI_Controller {
 	public function Index()
 	{
 		$data = [
-			'Data' => $this->M_frontend->GetDownload(),
+			'Data' => $this->M_frontend->GetDownload()
 		];
 		$this->load->view('frontend/partials_/head');
 		$this->load->view('frontend/content/download', $data);
@@ -104,27 +104,14 @@ class Download extends CI_Controller {
 		redirect(site_url('Download/data-download'));
 	}
 
-	public function search()
+	public function SearchDownload()
 	{
 		$data = [
-			'Data' => $this->M_frontend->GetDownload(),
+			'Data' => $this->M_frontend->searchData($this->input->get('keyword')),
+			'keyword' => $this->input->get('keyword')
 		];
 		$this->load->view('frontend/partials_/head');
-		$this->load->view('frontend/content/search', $data);
+		$this->load->view('frontend/content/search_download', $data);
 		$this->load->view('frontend/partials_/footer');
 	}
-
-	// public function search()
-	// {
-	// 	$this->load->view('frontend/partials_/head');
-	// 	$this->load->view('frontend/content/download');
-	// 	$this->load->view('frontend/partials_/footer');
-	// 	// $keyword = $this->input->post('keyword');
-	// 	// $dataa = [
-	// 	// 	'Data' => $this->M_frontend->search($this->input->post('keyword'))
-	// 	// ];
-	// 	// $this->load->view('frontend/partials_/head');
-	// 	// $this->load->view('frontend/content/search', $dataa);
-	// 	// $this->load->view('frontend/partials_/footer');
-	// }
 }

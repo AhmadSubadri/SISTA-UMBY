@@ -16,8 +16,8 @@
 	</section><!-- End Breadcrumbs -->
 	<section class="section-bg">
 		<div class="container">
-			<form action="" method="post">
-				<input type="" name="" class="form-control" placeholder="search"><br>
+			<form action="<?php echo base_url('Announcement-search');?>" method="get">
+				<input type="text" name="keyword" class="form-control" placeholder="search"><br>
 			</form>
 			<?php if(count($Data) != 0):?>
 				<?php foreach($Data as $announc):?>

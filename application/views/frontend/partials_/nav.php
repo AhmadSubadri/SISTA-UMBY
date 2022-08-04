@@ -13,7 +13,7 @@
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Requirement"){echo "active";};?>" href="<?= site_url('Requirement');?>">Requirements</a></li>
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Timeline"){echo "active";};?>" href="<?= site_url('Timeline');?>">Timeline</a></li>
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Announcement"){echo "active";};?>" href="<?= site_url('Announcement');?>">Announcement</a></li>
-          <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Download"){echo "active";};?>" href="<?= site_url('Download');?>">Download</a></li>
+          <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Download" || $this->uri->segment(2)=="Download/ConSearch"){echo "active";};?>" href="<?= site_url('Download');?>">Download</a></li>
           <li><a class="nav-link scrollto <?php if($this->uri->segment(1)=="Contact"){echo "active";};?>" href="<?= site_url('Contact');?>">Contact</a></li>
           <li><a class="nav-link scrollto" href="<?= site_url('Login-user');?>">Login</a></li>
         </ul>

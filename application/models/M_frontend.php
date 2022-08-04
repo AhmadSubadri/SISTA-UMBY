@@ -67,15 +67,25 @@ class M_frontend extends CI_Model
         return $datai;
     }
 
-    public function search($keyword)
+    public function searchData($keyword=null)
     {
-        if(!$keyword){
-            return null;
-        }
         $this->db->select('*');
-        $this->db->like('judul', $keyword,'both');
-        $this->db->or_like('deskripsi', $keyword,'both');
-        $result = $this->db->get('tb_download')->result(); // Tampilkan data siswa berdasarkan keyword
-        return $result; 
+        $this->db->from('tb_download');
+        if(!empty($keyword)){
+            $this->db->like('judul',$keyword);
+            $this->db->or_like('deskripsi',$keyword);
+        }
+        return $this->db->get()->result();
+    }
+
+    public function searchDataAnn($keyword=null)
+    {
+        $this->db->select('title as judul, description as deskripsi, pengupload as uploader, created_at');
+        $this->db->from('tb_announcement');
+        if(!empty($keyword)){
+            $this->db->like('title',$keyword);
+            $this->db->or_like('description',$keyword);
+        }
+        return $this->db->get()->result();
     }
 }
