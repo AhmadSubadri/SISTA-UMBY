@@ -80,7 +80,7 @@ class M_frontend extends CI_Model
 
     public function searchDataAnn($keyword=null)
     {
-        $this->db->select('title as judul, description as deskripsi, pengupload as uploader, created_at');
+        $this->db->select('*');
         $this->db->from('tb_announcement');
         if(!empty($keyword)){
             $this->db->like('title',$keyword);
