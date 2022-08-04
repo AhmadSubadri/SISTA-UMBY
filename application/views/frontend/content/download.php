@@ -14,7 +14,7 @@
 
 		</div>
 	</section><!-- End Breadcrumbs -->
-	<section class="section-bg">
+	<section class="services">
 		<div class="container">
 			<form action="<?php echo base_url('Download-search');?>" method="get">
 				<input type="text" name="keyword" class="form-control" placeholder="search"><br>

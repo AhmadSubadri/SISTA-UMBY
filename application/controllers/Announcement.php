@@ -115,4 +115,14 @@ class Announcement extends CI_Controller {
 		$this->load->view('frontend/content/search_announcement', $data);
 		$this->load->view('frontend/partials_/footer');
 	}
+
+	public function DetailAnnouncement($id)
+	{
+		$datad = [
+			'Data' => $this->db->select('*')->where('id', $id)->from('tb_announcement')->get()->result()
+		];
+	    $this->load->view('frontend/partials_/head');
+		$this->load->view('frontend/content/detail_announcement', $datad);
+		$this->load->view('frontend/partials_/footer');
+	}
 }
