@@ -33,7 +33,7 @@
 										<?php else :?>
 											<p class="description"><?= $announc->description ;?></p>
 										<?php endif;?>
-										<p class="description"><small class="text-muted description"><i class="ti-user description"> <em><?= $announc->pengupload;?></em> </i><i class="ti-calendar description"> <em><?= $announc->created_at;?></em></i></small></p>
+										<p class="description"><small class="text-muted description"><i class="ti-user description"> <em><?= $announc->pengupload;?></em> </i><i class="ti-calendar description"> <em><?php echo date('F d Y', strtotime($announc->created_at));?></em></i></small></p>
 									</div>
 								</div>
 							</div>

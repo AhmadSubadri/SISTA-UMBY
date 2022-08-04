@@ -190,4 +190,16 @@ class M_user extends CI_Model
         $GetSumMajor = $this->db->select('*')->from('tb_major')->get()->result();
         return $GetSumMajor;
     }
+
+    public function GetAnnouncement()
+    {
+        $GetAnn = $this->db->select('*')->from('tb_announcement')->get()->result();
+        return $GetAnn;
+    }
+
+    public function GetDataSettingWeb()
+    {
+        $GetAnna = $this->db->select('*')->from('tb_settings')->get()->result();
+        return $GetAnna;
+    }
 }

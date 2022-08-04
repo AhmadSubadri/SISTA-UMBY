@@ -15,6 +15,8 @@ $route['update-profile'] = 'backend/Dashboard/UpdateProfile';
 $route['Download-search'] = 'Download/SearchDownload';
 $route['Announcement-search'] = 'Announcement/SearchAnnouncement';
 $route['Announcement-detail/(:any)'] = 'Announcement/DetailAnnouncement/$1';
+$route['Detail-announcement/(:any)'] = 'backend/Dashboard/DetailAnnouncementDashboard/$1';
+$route['Web/Settings'] = 'backend/Web/Index';
 
 // Skripsi mahasiswa
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';

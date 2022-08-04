@@ -1,77 +1,59 @@
 <!-- ======= Footer ======= -->
-  <footer id="footer">
-<!-- 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
+<?php $datag = $this->db->select('*')->where('type', 1)->from('tb_settings')->get()->result();?>
+<?php $datad = $this->db->select('*')->where('type', 3)->from('tb_settings')->get()->result();?>
+<?php $dataf = $this->db->select('*')->where('type', 2)->from('tb_settings')->get()->result();?>
+<?php $datah = $this->db->select('*')->from('contact')->get()->result();?>
+<footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
 
+          <div class="col-lg-3 col-md-6 footer-contact justify-content-center">
+            <?php foreach($datag as $agga):?>
+              <img width="200px" height="150px" src="<?php echo base_url('assets/logo/'.$agga->logo);?>">
+            <?php endforeach;?>
+          </div>
+
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>SISTA UMBY<span>.</span></h3>
-            <p>
-              Universitas Mercu Buana Yogyakarta <br>
-              DI Yogyakarta<br>
-              Indonesia <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@sista-umby.ac.id<br>
-            </p>
+            <?php foreach($datag as $agg):?>
+              <h4><?= $agg->kampus;?></h4>
+            <?php endforeach;?>
+            <?php foreach($datah as $ah):?>
+              <p>
+                <?= $ah->alamat;?><br><br>
+                <strong>Phone:</strong> <?= $ah->fax;?><br>
+                <strong>Email:</strong> <?= $ah->email;?><br>
+              </p>
+            <?php endforeach;?>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4><i class="bx bx-link-alt"></i> Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4><i class="bx bx bx-group"></i> Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>SISTA UMBY</h4>
-            <p>Sistem infromasi manajemen tugas akhir Universitas Mercu Buana Yogyakarta</p>
+            <?php foreach($datag as $ag):?>
+              <h4><?= $ag->nama_web;?><span class="text-primary">.</span></h4>
+              <p><?= $ag->atribut;?></p>
+            <?php endforeach;?>
             <div class="social-links mt-3">
-            <h4>SOCIAL MEDIA</h4>
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <h4>SOCIAL MEDIA</h4>
+              <?php foreach($datad as $abc):?>
+                <a href="<?= $abc->link_icon;?>" target="_blank"><i class="<?= $abc->icon;?>"></i></a>
+              <?php endforeach;?>
             </div>
           </div>
 
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4><i class="bx bx-link-alt text-primary"></i> Links</h4>
+            <ul>
+              <?php foreach($dataf as $ae):?>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?= $ae->links;?>" target="_blank"><?= $ae->nama_links;?></a></li>
+              <?php endforeach;?>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright 2022 - <?php echo date('Y');?><strong><span> SISTA UMBY</span></strong>. All Rights Reserved
+        &copy; Copyright 2022 - <?php echo date('Y');?><strong><span class="text-primary"> SISTA UMBY</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
