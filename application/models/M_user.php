@@ -83,7 +83,6 @@ class M_user extends CI_Model
                 $this->session->set_userdata('username',$sqlc->username);
                 $this->session->set_userdata('name',$sqlc->fullname);
                 $this->session->set_userdata('gender',$sqlc->gender);
-                $this->session->set_userdata('major',$sqlc->id_major);
                 $this->session->set_userdata('email',$sqlc->email);
                 $this->session->set_userdata('password',$sqlc->password);
                 $this->session->set_userdata('faculty',$sqlc->id_faculty);
