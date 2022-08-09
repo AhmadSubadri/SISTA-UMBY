@@ -46,7 +46,8 @@ public $result = [
         mkdir ('_uploads/guidance/'.$this->input->post('name')); 
         $name =  $this->input->post('name');//nama file menggunakan nama mahasiswa
         $nim = $this->input->post('receiver');
-        $config['file_name'] = "$nim-$name-Feedback-".date("Y-d-m");
+        $namaFile = uniqid('Guidance_');
+        $config['file_name'] = "$nim-$namaFile-Feedback-".date("Y-d-m");
         $config['upload_path'] = '_uploads/guidance/'.$this->input->post('name');
         $config['allowed_types'] = 'pdf|docx|xls';
         // $config['max_size'] = 5000;

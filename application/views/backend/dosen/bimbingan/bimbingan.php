@@ -24,8 +24,10 @@
                 <div class="col-sm-12 col-xl-9" id="formfedbackchat">
                     <h4 class="sub-title text-center">Form bimbingan</h4>
                     <div class="text-center">
-                        <img class="img-200" src="<?php echo base_url()?>assets/images/chat.png" height="200px"
-                            alt="User-Profile-Image">
+                        <img class="img-200" src="<?php echo base_url()?>assets/images/chat.png" height="300px" alt="User-Profile-Image">
+                        <h2 class="mt-0">Hi <?php echo $this->session->userdata('name');?>! Welcome To</h2>
+                        <h2>Real-Time Gidance Application</h2>
+                        <p class="text-center my-2">Connect to your device via Internet. Remember that you <br> must have a stable Internet Connection for a<br> greater experience.</p>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,8 @@ class Bimbingan extends CI_Controller
         mkdir ('_uploads/guidance/'.$this->input->post('name')); 
         $name =  $this->input->post('name');//nama file menggunakan nama mahasiswa
         $nim = $this->input->post('receiver');
-        $config['file_name'] = "$nim-$name-Laporan-".date("Y-d-m");
+        $namaFile = uniqid('Guidance_');
+        $config['file_name'] = "$nim-$namaFile-Laporan-".date("Y-d-m");
         $config['upload_path'] = '_uploads/guidance/'.$this->input->post('name');
         $config['allowed_types'] = 'pdf|docx|xls';
         // $config['max_size'] = 5000;
