@@ -22,25 +22,25 @@
             <div class="col-sm-12 col-xl-4">
                 <h4 class="sub-title">Jadwal seminar proposal</h4>
                 <ul>
-                    <?php foreach($DataDataSempro as $row):?>
+                    <?php foreach($DataDataSempro as $rowa):?>
                     <li>
-                        <?php if($row->tempat == 0):?>
-                        <label class="label label-mini label-danger">Belum terjadwal</label>
-                        <?php else:?>
-                        <h6>
+                        <?php if($rowa->tempat != null):?>
+                            <h6>
                             <i class="icofont ti-hand-point-right text-success"></i> 
-                            <?php if(format_tanggal(date($row->tanggal)) == format_tanggal(date('Y-m-d'))):?>
-                                <b class="text-danger" id="warningscheduleM">Hari ini : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?></b>
+                            <?php if(format_tanggal(date($rowa->tanggal)) == format_tanggal(date('Y-m-d'))):?>
+                                <b class="text-danger" id="warningscheduleM">Hari ini : <?php echo format_tanggal(date($rowa->tanggal));?> / <?= $rowa->jam;?></b>
                             <?php else:?>
-                                Hari/Tanggal : <?php echo format_tanggal(date($row->tanggal));?> / <?= $row->jam;?>
+                                Hari/Tanggal : <?php echo format_tanggal(date($rowa->tanggal));?> / <?= $rowa->jam;?>
                             <?php endif;?>
-                        </h6>
-                        <h6>
-                            <i class="icofont ti-hand-point-right text-success"></i> Tempat : <?= $row->tempat;?>
-                        </h6>
-                        <h6>
-                            <i class="icofont ti-hand-point-right text-success"></i> Kegiatan : <?= $row->kegiatan;?>
-                        </h6>
+                            </h6>
+                            <h6>
+                                <i class="icofont ti-hand-point-right text-success"></i> Tempat : <?= $rowa->tempat;?>
+                            </h6>
+                            <h6>
+                                <i class="icofont ti-hand-point-right text-success"></i> Kegiatan : <?= $rowa->kegiatan;?>
+                            </h6>
+                        <?php else:?>
+                            <label class="label label-mini label-danger">Belum terjadwal</label>
                         <?php endif;?>
                     </li>
                     <?php endforeach;?>

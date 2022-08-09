@@ -32,6 +32,7 @@ class Skripsi extends CI_Controller
 	public function UploadPengajuan()
 	{
 		$detail = $this->db->get_where('tb_detail_sempro',['nim_student' => $this->input->post('nim')])->row();
+		$notPenerima = $this->db->select('*')->where('id_major', $this->session->userdata('major'))->where('role_id', 1)->from('tb_lecturers')->get()->row();
 		$this->db->select('title, nim');
 		$this->db->where('nim', $this->input->post('nim'));
 		$submisson = $this->db->get('tb_ideasubmission')->row();
@@ -65,7 +66,14 @@ class Skripsi extends CI_Controller
 	        	);
 	        	$this->db->where('nim', $nim);
         		$this->db->update('tb_ideasubmission', $data);
-	        	// $this->M_student->insertData('tb_ideasubmission',$data);
+	        	$dataNot = array(
+	                'pengirim' => $this->session->userdata('name'),
+	                'penerima' => $notPenerima->username,
+	                'pesan' => "Upload baru pengajuan judul dan proposal skripsi",
+	                'url' => "dsn/dashboard/data-pengajuan-skripsi",
+	                'major' => $this->session->userdata('major'),
+	            );
+	            $this->db->insert('tb_notification', $dataNot);
 	        	if ($this->db->affected_rows() > 0) {
 					if($detail->nim_student > 0){
 						$this->M_student->delete('tb_detail_sempro','nim_student', $nim);
@@ -106,6 +114,14 @@ class Skripsi extends CI_Controller
 	        		'file' => $this->upload->file_name
 	        	);
 	        	$this->M_student->insertData('tb_ideasubmission',$data);
+	        	$dataNota = array(
+	                'pengirim' => $this->session->userdata('name'),
+	                'penerima' => $notPenerima->username,
+	                'pesan' => "Upload baru pengajuan judul dan proposal skripsi",
+	                'url' => "dsn/dashboard/data-pengajuan-skripsi",
+	                'major' => $this->session->userdata('major'),
+	            );
+	            $this->db->insert('tb_notification', $dataNota);
 	        	if ($this->db->affected_rows() > 0) {
 	        		$this->session->set_flashdata('msg',"Submission of title & document has been added successfully");
             		$this->session->set_flashdata('msg_class','alert-success');

@@ -39,14 +39,16 @@ class M_bimbingan extends CI_Model
         return $query->result();
     }
 
-    public function _SetData($tabel, $array, $col, $id){
+    public function _SetData($tabel, $array, $col, $id)
+    {
         $this->db->set($array);
         $this->db->where($col, $id);
         $query = $this->db->update($tabel);
         return $query;
     }
 
-    public function add($tabel,$data){
+    public function add($tabel,$data)
+    {
         $Q =$this->db->insert($tabel,$data);
         return $Q;
     }
@@ -65,10 +67,10 @@ class M_bimbingan extends CI_Model
 
     public function _getDataGuidanceMhs()
     {
-        $username = $this->session->userdata('username');
-        $this->db->select('g.id as id, g.sender as sender, g.receiver as receiver, s.fullname as name, s.image as image, g.message, l.fullname as nameLecturer, g.created_at, g.file')
+        $usernames = $this->session->userdata('username');
+        $this->db->select('g.id as id, g.sender as sender, g.receiver as receiver, s.fullname as name, s.image as image, l.image as imageDsn, g.message, l.fullname as nameLecturer, g.created_at, g.file')
         ->from('tb_guidance g')
-        ->where('g.sender= '.$username.' and g.receiver= l.username or g.sender= l.username and g.receiver=' . $username)
+        ->where('g.sender = '.$usernames.' and g.receiver = l.username or g.sender= l.username and g.receiver =' .$usernames)
         ->join('tb_student s', 's.username = g.sender OR s.username = g.receiver')
         ->join('tb_lecturers l', 'l.username = g.sender OR l.username = g.receiver');
         $query = $this->db->get();
