@@ -27,7 +27,8 @@ class Web extends CI_Controller
 	public function Plagiarisme()
 	{
 		$data = [
-			'Data' => $this->M_user->GetAllDataThesisApproved()
+			'Data' => $this->M_user->GetAllDataThesisApproved(),
+			'KeyPlag' => $this->M_user->GetAllDataThesisByKey_plag()
 		];
 		$this->load->view('backend/partials_/head');
 		$this->load->view('backend/admin/plagiarisme', $data);
@@ -44,6 +45,18 @@ class Web extends CI_Controller
 	public function UnpublishPlagiarisme($id)
 	{
 		$this->db->where('id', $id);
+		$this->db->update('tb_ideasubmission', ['key_plag' => "1"]);
+		redirect(site_url('Web/Plagiarisme'));
+	}
+
+	public function PublishAllProcessPlagiarisme()
+	{
+		$this->db->update('tb_ideasubmission', ['key_plag' => "0"]);
+		redirect(site_url('Web/Plagiarisme'));
+	}
+
+	public function UnpublishAllProcessPlagiarisme()
+	{
 		$this->db->update('tb_ideasubmission', ['key_plag' => "1"]);
 		redirect(site_url('Web/Plagiarisme'));
 	}

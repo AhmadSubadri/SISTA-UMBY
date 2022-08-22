@@ -20,6 +20,8 @@ $route['Web/Settings'] = 'backend/Web/Index';
 $route['Web/Plagiarisme'] = 'backend/Web/Plagiarisme';
 $route['Web/Public-proses-plagiarism/(:any)'] = 'backend/Web/PublishPlagiarisme/$1';
 $route['Web/Unpublic-proses-plagiarism/(:any)'] = 'backend/Web/UnpublishPlagiarisme/$1';
+$route['Web/Public-All-process'] = 'backend/Web/PublishAllProcessPlagiarisme';
+$route['Web/Unpublic-All-process'] = 'backend/Web/UnpublishAllProcessPlagiarisme';
 
 // Skripsi mahasiswa
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';
