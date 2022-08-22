@@ -7,249 +7,253 @@
         </div>
         <div class="card-block accordion-block  color-accordion-block">
             <div id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headingtoken">
-                        <h3 class="card-title accordion-title"  style="background-color: #E0FFFF;">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapsetoken" aria-expanded="false"
-                                aria-controls="collapsetoken">
-                                <b>Tokenizing K-Gram</b></a>
-                        </h3>
-                    </div>
-                    <div id="collapsetoken" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingtoken">
-                        <div class="accordion-content accordion-desc"><br>
-                            <div class="row">
-                                <?php $kgram = "5";$basis = "3";?>
-                                <div class="col-md-6 sub-title">
-                                    <h6 class="text-primary">Judul yang di ajukan</h6>
-                                    <?php $i=1; foreach($data as $dtpengajuan):?>
-                                        <h6><?= $z= hapus_simbol($dtpengajuan->title);?></h6>
-                                        <h6><?= kgram($z, $kgram);?></h6>
-                                        <hr>
-                                    <?php endforeach;?>
-                                </div>
-                                <?php $j=1; foreach($DataSource->result() as $dtpenguji):?>
-                                    <div class="col-md-6 sub-title">
-                                    <h6 class="text-primary">Judul pembanding (<?= $j++;;?>)</h6>
-                                        <h6><?= $x= hapus_simbol($dtpenguji->title);?></h6>
-                                        <h6><?= kgram($x, $kgram);?></h6>
-                                    </div>
-                                <?php endforeach;?>
+                <?php foreach($data as $rowey):?>
+                    <div class="<?php if($rowey->key_plag == 0){echo(" ");}else{echo("d-none");}?>">
+                        <div class="accordion-panel">
+                            <div class="accordion-heading" role="tab" id="headingtoken">
+                                <h3 class="card-title accordion-title"  style="background-color: #E0FFFF;">
+                                    <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapsetoken" aria-expanded="false"
+                                        aria-controls="collapsetoken">
+                                        <b>Tokenizing K-Gram</b></a>
+                                </h3>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headinghashing">
-                        <h3 class="card-title accordion-title"  style="background-color: #FAFAD2;">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapsehashing" aria-expanded="false"
-                                aria-controls="collapsehashing">
-                                <b>Hashing</b></a>
-                        </h3>
-                    </div>
-                    <div id="collapsehashing" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headinghashing">
-                        <div class="accordion-content accordion-desc"><br>
-                            <div class="row">
-                                <?php $kgram = "5";$basis = "3";?>
-                                <div class="col-md-6">
-                                    <h6 class="sub-title text-primary">Judul yang di ajukan</h6>
-                                    <?php $i=1; foreach($data as $dtpengajuan):?>
-                                    <h6><?= $i++;?>. <?= $c= hapus_simbol($dtpengajuan->title);?></h6>
-                                        <h6><?= hasing($c, $kgram, $basis);?></h6>
-                                        <hr>
-                                    <?php endforeach;?>
-                                </div>
-                                <div class="col-md-6">
-                                    <h6 class="sub-title text-primary">Judul pembanding</h6>
-                                    <?php $k=1; foreach($DataSource->result() as $dtpenguji):?>
-                                        <h6><?= $k++;?>. <?= $v= hapus_simbol($dtpenguji->title);?></h6>
-                                        <h6><?= hasing($v, $kgram, $basis);?></h6>
-                                        <hr>
-                                    <?php endforeach;?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headingFinger">
-                        <h3 class="card-title accordion-title"  style="background-color: #D3D3D3;">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapsefinger" aria-expanded="false"
-                                aria-controls="collapsefinger">
-                                <b>Skema Hash yang sama antara judul diajukan ᴖ pembanding</b></a>
-                        </h3>
-                    </div>
-                    <div id="collapsefinger" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFinger">
-                        <div class="accordion-content accordion-desc"><br>
-                            <div class="row">
-                                <?php $kgram =5; $basis = 3;?>
-                                <?php $l=1; $o=1;foreach($DataSource->result() as $dtpengujia):?>
-                                    <div class='col-md-4'>
-                                        <h6 class="text-primary sub-title">Skema hash sama antara judul diajukan dengan pembanding <?= $o++;?> (A ᴖ <?= $l++;?>)</h6>
-                                        <?php $v_pmb = $this->db->select('source_pembanding.source, source_pembanding.id')->where('source_pembanding.id_pembanding', $dtpengujia->id)->from('source_pembanding')->group_by('source_pembanding.source')->group_by('source_pengajuan.source')->join('source_pengajuan','source_pengajuan.source = source_pembanding.source')->get()->result();?>
-                                        <?php foreach($v_pmb as $pmb):?>
-                                            <?= hasing($pmb->source, $kgram, $basis);?>
-                                        <?php endforeach;?>
-                                    </div>
-                            <?php endforeach;?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headingTotal">
-                        <h3 class="card-title accordion-title"  style="background-color: #90EE90;">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapseTotal" aria-expanded="false"
-                                aria-controls="collapseTotal">
-                                <b>Total schema hash masing-masing judul</b></a>
-                        </h3>
-                    </div>
-                    <div id="collapseTotal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTotal">
-                        <div class="accordion-content accordion-desc"><br>
-                            <div class="row">
-                                <?php $kgram =5; $basis = 3; $d = array();?>
-                                <div class='col-md-4'>
-                                    <h6 class="text-danger">Judul di ajukan</h6>
-                                    <?php $v_pnga = $this->db->select('*')->from('source_pengajuan')->group_by('source')->get()->result();?>
-                                    <h6 class="text-primary sub-title">Total skema hash Text judul di ajukan = <?php echo count($v_pnga);?></h6>
-                                    <h6>
-                                        <?php foreach($v_pnga as $pnga):?>
-                                            <?= hasing($pnga->source, $kgram, $basis);?>
-                                        <?php endforeach;?>
-                                    </h6>
-                                </div>
-                                <?php $m=1; $p=1; foreach($DataSource->result() as $dtpengujiaa):?>
-                                    <div class="sub-title col-md-4">
-                                    <h6 class="text-primary">Judul pembanding (<?= $p++;?>)</h6>
-                                    <?php $v_pmba = $this->db->select('source, id')->where('id_pembanding', $dtpengujiaa->id)->from('source_pembanding')->group_by('source')->get()->result();?>
-                                        <h6 class="text-primary sub-title">Total skema hash Text pembanding (<?= $m++;?>) = <?php echo count($v_pmba);?></h6>
-                                        <h6>
-                                            <?php foreach($v_pmba as $pmba):?>
-                                                <?= hasing($pmba->source, $kgram, $basis);?>
+                            <div id="collapsetoken" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingtoken">
+                                <div class="accordion-content accordion-desc"><br>
+                                    <div class="row">
+                                        <?php $kgram = "5";$basis = "3";?>
+                                        <div class="col-md-6 sub-title">
+                                            <h6 class="text-primary">Judul yang di ajukan</h6>
+                                            <?php $i=1; foreach($data as $dtpengajuan):?>
+                                                <h6><?= $z= hapus_simbol($dtpengajuan->title);?></h6>
+                                                <h6><?= kgram($z, $kgram);?></h6>
+                                                <hr>
                                             <?php endforeach;?>
-                                        </h6>
                                         </div>
-                                <?php endforeach;?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headingSimilarity">
-                        <h3 class="card-title accordion-title" style="background-color: #FFB6C1;">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapseSimilarity" aria-expanded="false"
-                                aria-controls="collapseSimilarity">
-                                <i><b>Similarity / Hasil plagiarisme</b></i></a>
-                        </h3>
-                    </div>
-                    <div id="collapseSimilarity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSimilarity">
-                        <div class="accordion-content accordion-desc"><br>
-                            <div class="row">
-                                <?php $kgram =5; $basis = 3; $d = array();?>
-                                <div class='col-md-12'>
-                                <?php $q=1;foreach($DataSource->result() as $dtpengujiaaa):?>
-                                    <?php $v_pmbaaaa = $this->db->select('source_pembanding.source, source_pembanding.id')->where('source_pembanding.id_pembanding', $dtpengujiaaa->id)->from('source_pembanding')->group_by('source_pembanding.source')->group_by('source_pengajuan.source')->join('source_pengajuan','source_pengajuan.source = source_pembanding.source')->get()->result();?>
-
-                                    <?php $v_pmbabbb = $this->db->select('source, id')->where('id_pembanding', $dtpengujiaaa->id)->from('source_pembanding')->group_by('source')->get()->result();?>
-
-                                    <?php $v_pngaff = $this->db->select('*')->from('source_pengajuan')->group_by('source')->get()->result();?>
-                                    <?php $hasil = round((2*count($v_pmbaaaa)/(count($v_pngaff)+count($v_pmbabbb)))*100,2);?>
-                                    <h6 class="text-primary">Hasil similarity dari judul diajukan dengan pembanding <?= $q++;?></h6>
-                                    <h6>Judul pembanding : "<?= $dtpengujiaaa->title;?>"</h6>
-                                    <h6>Skema hash Text judul diajukan = <?= count($v_pngaff);?></h6>
-                                    <h6>Skema hash Text judul pembanding = <?= count($v_pmbabbb);?></h6>
-                                    <h6>Skema Hash sama Text diajukan dan Text pembanding (diajukan ᴖ pembanding) = <?= count($v_pmbaaaa);?></h6>
-                                    <h6>Hasil Similarity (2 * <?= count($v_pmbaaaa);?> / (<?= count($v_pngaff);?> + <?= count($v_pmbabbb);?>)) * 100 = 
-                                        <b class="text-primary"><?php echo $hasil;?> %</b>
-                                        <?php $i=1; foreach($data as $dtpengajuan):?>
-                                            <?php $dtal = array(
-                                                'id_sourcetitle' => $dtpengujiaaa->id,
-                                                'id_ideasubmission' => $dtpengajuan->id,
-                                                'nim' => $dtpengajuan->nim,
-                                                'title' => $dtpengujiaaa->title,
-                                                'name' => $dtpengujiaaa->name,
-                                                'result' => $hasil
-                                            );
-                                            $this->db->insert('tb_resultrabintest', $dtal);?>
+                                        <?php $j=1; foreach($DataSource->result() as $dtpenguji):?>
+                                            <div class="col-md-6 sub-title">
+                                            <h6 class="text-primary">Judul pembanding (<?= $j++;;?>)</h6>
+                                                <h6><?= $x= hapus_simbol($dtpenguji->title);?></h6>
+                                                <h6><?= kgram($x, $kgram);?></h6>
+                                            </div>
                                         <?php endforeach;?>
-                                    </h6><br><br>
-                                <?php endforeach;?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headingOne">
-                        <h3 class="card-title accordion-title" style="background-color: #FFA07A;">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-                                aria-controls="collapseOne">
-                                <b>Diagram BAR hasil cek plagiat</b></a>
-                        </h3>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                        aria-labelledby="headingOne">
-                        <div class="accordion-content accordion-desc">
-                            <canvas id="myChart"></canvas>
+                        <div class="accordion-panel">
+                            <div class="accordion-heading" role="tab" id="headinghashing">
+                                <h3 class="card-title accordion-title"  style="background-color: #FAFAD2;">
+                                    <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapsehashing" aria-expanded="false"
+                                        aria-controls="collapsehashing">
+                                        <b>Hashing</b></a>
+                                </h3>
+                            </div>
+                            <div id="collapsehashing" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headinghashing">
+                                <div class="accordion-content accordion-desc"><br>
+                                    <div class="row">
+                                        <?php $kgram = "5";$basis = "3";?>
+                                        <div class="col-md-6">
+                                            <h6 class="sub-title text-primary">Judul yang di ajukan</h6>
+                                            <?php $i=1; foreach($data as $dtpengajuan):?>
+                                            <h6><?= $i++;?>. <?= $c= hapus_simbol($dtpengajuan->title);?></h6>
+                                                <h6><?= hasing($c, $kgram, $basis);?></h6>
+                                                <hr>
+                                            <?php endforeach;?>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="sub-title text-primary">Judul pembanding</h6>
+                                            <?php $k=1; foreach($DataSource->result() as $dtpenguji):?>
+                                                <h6><?= $k++;?>. <?= $v= hapus_simbol($dtpenguji->title);?></h6>
+                                                <h6><?= hasing($v, $kgram, $basis);?></h6>
+                                                <hr>
+                                            <?php endforeach;?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="accordion-panel">
-                    <div class="accordion-heading" role="tab" id="headingTwo">
-                        <h3 class="card-title accordion-title" style="background-color: #87CEFA;">
-                            <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
-                                data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                                <b>5 Judul persentase tertinggi</b></a>
-                        </h3>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="accordion-content accordion-desc"><br>
-                            <div class="row">
-                                <div class="col-md-4 sub-title text-primary">
-                                    #Judul pembanding
-                                </div>
-                                <div class="col-md-4 sub-title text-primary">
-                                    Pemilik judul
-                                </div>
-                                <div class="col-md-2 sub-title text-primary">
-                                    Total
-                                </div>
-                                <div class="col-md-2 sub-title text-primary">
-                                    Hasil
-                                </div>
-                                <?php foreach($data as $dtpengajuan):?>
-                                    <?php $v_dataresult = $this->db->select('*')->where('id_ideasubmission', $dtpengajuan->id)->from('tb_resultrabintest')->order_by('result', 'DESC')->limit(5)->get()->result();?>
-                                    <?php foreach($v_dataresult as $ff):?>
-                                        <div class="col-md-4">
-                                            <h6><?= $ff->title;?></h6>
-                                        </div>
-                                        <div class="col-md-4"><?= $ff->name;?></div>
-                                        <div class="col-md-2">
-                                            <p class="text-danger"><?= $ff->result;?>%</p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <?php if ($ff->result >= 70):?>
-                                                <label class="label label-mini label-danger" id="blinkPlagiat">Plagiarisme berat</label>
-                                            <?php elseif($ff->result >= 30 && $ff->result <= 69.99):?>
-                                                <label class="label label-mini label-warning">Plagiarisme sedang</label>
-                                            <?php else:?>
-                                                 <label class="label label-mini label-success">Plagiarisme ringan</label>
-                                            <?php endif;?>
-                                        </div>
-                                        <hr />
-                                        <br><br><br>
+                        <div class="accordion-panel">
+                            <div class="accordion-heading" role="tab" id="headingFinger">
+                                <h3 class="card-title accordion-title"  style="background-color: #D3D3D3;">
+                                    <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapsefinger" aria-expanded="false"
+                                        aria-controls="collapsefinger">
+                                        <b>Skema Hash yang sama antara judul diajukan ᴖ pembanding</b></a>
+                                </h3>
+                            </div>
+                            <div id="collapsefinger" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFinger">
+                                <div class="accordion-content accordion-desc"><br>
+                                    <div class="row">
+                                        <?php $kgram =5; $basis = 3;?>
+                                        <?php $l=1; $o=1;foreach($DataSource->result() as $dtpengujia):?>
+                                            <div class='col-md-4'>
+                                                <h6 class="text-primary sub-title">Skema hash sama antara judul diajukan dengan pembanding <?= $o++;?> (A ᴖ <?= $l++;?>)</h6>
+                                                <?php $v_pmb = $this->db->select('source_pembanding.source, source_pembanding.id')->where('source_pembanding.id_pembanding', $dtpengujia->id)->from('source_pembanding')->group_by('source_pembanding.source')->group_by('source_pengajuan.source')->join('source_pengajuan','source_pengajuan.source = source_pembanding.source')->get()->result();?>
+                                                <?php foreach($v_pmb as $pmb):?>
+                                                    <?= hasing($pmb->source, $kgram, $basis);?>
+                                                <?php endforeach;?>
+                                            </div>
                                     <?php endforeach;?>
-                                <?php endforeach;?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-panel">
+                            <div class="accordion-heading" role="tab" id="headingTotal">
+                                <h3 class="card-title accordion-title"  style="background-color: #90EE90;">
+                                    <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseTotal" aria-expanded="false"
+                                        aria-controls="collapseTotal">
+                                        <b>Total schema hash masing-masing judul</b></a>
+                                </h3>
+                            </div>
+                            <div id="collapseTotal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTotal">
+                                <div class="accordion-content accordion-desc"><br>
+                                    <div class="row">
+                                        <?php $kgram =5; $basis = 3; $d = array();?>
+                                        <div class='col-md-4'>
+                                            <h6 class="text-danger">Judul di ajukan</h6>
+                                            <?php $v_pnga = $this->db->select('*')->from('source_pengajuan')->group_by('source')->get()->result();?>
+                                            <h6 class="text-primary sub-title">Total skema hash Text judul di ajukan = <?php echo count($v_pnga);?></h6>
+                                            <h6>
+                                                <?php foreach($v_pnga as $pnga):?>
+                                                    <?= hasing($pnga->source, $kgram, $basis);?>
+                                                <?php endforeach;?>
+                                            </h6>
+                                        </div>
+                                        <?php $m=1; $p=1; foreach($DataSource->result() as $dtpengujiaa):?>
+                                            <div class="sub-title col-md-4">
+                                            <h6 class="text-primary">Judul pembanding (<?= $p++;?>)</h6>
+                                            <?php $v_pmba = $this->db->select('source, id')->where('id_pembanding', $dtpengujiaa->id)->from('source_pembanding')->group_by('source')->get()->result();?>
+                                                <h6 class="text-primary sub-title">Total skema hash Text pembanding (<?= $m++;?>) = <?php echo count($v_pmba);?></h6>
+                                                <h6>
+                                                    <?php foreach($v_pmba as $pmba):?>
+                                                        <?= hasing($pmba->source, $kgram, $basis);?>
+                                                    <?php endforeach;?>
+                                                </h6>
+                                                </div>
+                                        <?php endforeach;?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-panel">
+                            <div class="accordion-heading" role="tab" id="headingSimilarity">
+                                <h3 class="card-title accordion-title" style="background-color: #FFB6C1;">
+                                    <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseSimilarity" aria-expanded="false"
+                                        aria-controls="collapseSimilarity">
+                                        <i><b>Similarity / Hasil plagiarisme</b></i></a>
+                                </h3>
+                            </div>
+                            <div id="collapseSimilarity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSimilarity">
+                                <div class="accordion-content accordion-desc"><br>
+                                    <div class="row">
+                                        <?php $kgram =5; $basis = 3; $d = array();?>
+                                        <div class='col-md-12'>
+                                        <?php $q=1;foreach($DataSource->result() as $dtpengujiaaa):?>
+                                            <?php $v_pmbaaaa = $this->db->select('source_pembanding.source, source_pembanding.id')->where('source_pembanding.id_pembanding', $dtpengujiaaa->id)->from('source_pembanding')->group_by('source_pembanding.source')->group_by('source_pengajuan.source')->join('source_pengajuan','source_pengajuan.source = source_pembanding.source')->get()->result();?>
+
+                                            <?php $v_pmbabbb = $this->db->select('source, id')->where('id_pembanding', $dtpengujiaaa->id)->from('source_pembanding')->group_by('source')->get()->result();?>
+
+                                            <?php $v_pngaff = $this->db->select('*')->from('source_pengajuan')->group_by('source')->get()->result();?>
+                                            <?php $hasil = round((2*count($v_pmbaaaa)/(count($v_pngaff)+count($v_pmbabbb)))*100,2);?>
+                                            <h6 class="text-primary">Hasil similarity dari judul diajukan dengan pembanding <?= $q++;?></h6>
+                                            <h6>Judul pembanding : "<?= $dtpengujiaaa->title;?>"</h6>
+                                            <h6>Skema hash Text judul diajukan = <?= count($v_pngaff);?></h6>
+                                            <h6>Skema hash Text judul pembanding = <?= count($v_pmbabbb);?></h6>
+                                            <h6>Skema Hash sama Text diajukan dan Text pembanding (diajukan ᴖ pembanding) = <?= count($v_pmbaaaa);?></h6>
+                                            <h6>Hasil Similarity (2 * <?= count($v_pmbaaaa);?> / (<?= count($v_pngaff);?> + <?= count($v_pmbabbb);?>)) * 100 = 
+                                                <b class="text-primary"><?php echo $hasil;?> %</b>
+                                                <?php $i=1; foreach($data as $dtpengajuan):?>
+                                                    <?php $dtal = array(
+                                                        'id_sourcetitle' => $dtpengujiaaa->id,
+                                                        'id_ideasubmission' => $dtpengajuan->id,
+                                                        'nim' => $dtpengajuan->nim,
+                                                        'title' => $dtpengujiaaa->title,
+                                                        'name' => $dtpengujiaaa->name,
+                                                        'result' => $hasil
+                                                    );
+                                                    $this->db->insert('tb_resultrabintest', $dtal);?>
+                                                <?php endforeach;?>
+                                            </h6><br><br>
+                                        <?php endforeach;?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="accordion-panel">
+                        <div class="accordion-heading" role="tab" id="headingOne">
+                            <h3 class="card-title accordion-title" style="background-color: #FFA07A;">
+                                <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                    data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    <b>Diagram BAR hasil cek plagiat</b></a>
+                            </h3>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                            aria-labelledby="headingOne">
+                            <div class="accordion-content accordion-desc">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-panel">
+                        <div class="accordion-heading" role="tab" id="headingTwo">
+                            <h3 class="card-title accordion-title" style="background-color: #87CEFA;">
+                                <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                    data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    <b>5 Judul persentase tertinggi</b></a>
+                            </h3>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="accordion-content accordion-desc"><br>
+                                <div class="row">
+                                    <div class="col-md-4 sub-title text-primary">
+                                        #Judul pembanding
+                                    </div>
+                                    <div class="col-md-4 sub-title text-primary">
+                                        Pemilik judul
+                                    </div>
+                                    <div class="col-md-2 sub-title text-primary">
+                                        Total
+                                    </div>
+                                    <div class="col-md-2 sub-title text-primary">
+                                        Hasil
+                                    </div>
+                                    <?php foreach($data as $dtpengajuan):?>
+                                        <?php $v_dataresult = $this->db->select('*')->where('id_ideasubmission', $dtpengajuan->id)->from('tb_resultrabintest')->order_by('result', 'DESC')->limit(5)->get()->result();?>
+                                        <?php foreach($v_dataresult as $ff):?>
+                                            <div class="col-md-4">
+                                                <h6><?= $ff->title;?></h6>
+                                            </div>
+                                            <div class="col-md-4"><?= $ff->name;?></div>
+                                            <div class="col-md-2">
+                                                <p class="text-danger"><?= $ff->result;?>%</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <?php if ($ff->result >= 70):?>
+                                                    <label class="label label-mini label-danger" id="blinkPlagiat">Plagiarisme berat</label>
+                                                <?php elseif($ff->result >= 30 && $ff->result <= 69.99):?>
+                                                    <label class="label label-mini label-warning">Plagiarisme sedang</label>
+                                                <?php else:?>
+                                                     <label class="label label-mini label-success">Plagiarisme ringan</label>
+                                                <?php endif;?>
+                                            </div>
+                                            <hr />
+                                            <br><br><br>
+                                        <?php endforeach;?>
+                                    <?php endforeach;?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach;?>
             </div>
         </div>
     </div>

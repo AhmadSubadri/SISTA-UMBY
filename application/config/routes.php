@@ -17,6 +17,7 @@ $route['Announcement-search'] = 'Announcement/SearchAnnouncement';
 $route['Announcement-detail/(:any)'] = 'Announcement/DetailAnnouncement/$1';
 $route['Detail-announcement/(:any)'] = 'backend/Dashboard/DetailAnnouncementDashboard/$1';
 $route['Web/Settings'] = 'backend/Web/Index';
+$route['Web/Plagiarisme'] = 'backend/Web/Plagiarisme';
 
 // Skripsi mahasiswa
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';

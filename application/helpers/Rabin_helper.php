@@ -26,21 +26,6 @@ function kgram($teks21,$gram) {
 	}
 }
 
-function kgrams($teks21,$gram) {
-	$length=strlen($teks21);
-	$teksSplit=null;
-	if(strlen($teks21) < $gram){
-		$teksSplit[]=$teks21;
-	}else{
-		for($i=0;$i<=$length-$gram;$i++){
-			$teksSplit[]=substr($teks21,$i,$gram);
-			echo"{";
-			echo $teksSplit[$i];
-			echo "}";
-		}
-	}
-}
-
 function rollingHash($string, $h4nk) {
 	$basis=$h4nk;
 	$pjgKarakter=strlen($string);

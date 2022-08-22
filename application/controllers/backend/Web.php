@@ -23,4 +23,14 @@ class Web extends CI_Controller
 		$this->load->view('backend/partials_/web', $data);
 		$this->load->view('backend/partials_/footer');
 	}
+
+	public function Plagiarisme()
+	{
+		$data = [
+			'Data' => $this->M_user->GetAllDataThesisApproved()
+		];
+		$this->load->view('backend/partials_/head');
+		$this->load->view('backend/admin/plagiarisme', $data);
+		$this->load->view('backend/partials_/footer');
+	}
 }

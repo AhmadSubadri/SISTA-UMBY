@@ -326,6 +326,13 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+                    <li class="<?php if($this->uri->uri_string() == 'Web/Plagiarisme') { echo 'active'; } ?>">
+                        <a href="<?= site_url('Web/Plagiarisme');?>" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-settings"></i><b>FC</b></span>
+                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Plagiarisme</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 <?php else:?>
                     <!-- Menu sidebar Mahasiswa -->
                     <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Bimbingan</div>
