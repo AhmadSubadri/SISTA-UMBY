@@ -18,6 +18,8 @@ $route['Announcement-detail/(:any)'] = 'Announcement/DetailAnnouncement/$1';
 $route['Detail-announcement/(:any)'] = 'backend/Dashboard/DetailAnnouncementDashboard/$1';
 $route['Web/Settings'] = 'backend/Web/Index';
 $route['Web/Plagiarisme'] = 'backend/Web/Plagiarisme';
+$route['Web/Public-proses-plagiarism/(:any)'] = 'backend/Web/PublishPlagiarisme/$1';
+$route['Web/Unpublic-proses-plagiarism/(:any)'] = 'backend/Web/UnpublishPlagiarisme/$1';
 
 // Skripsi mahasiswa
 $route['mhs/dashboard/pengajuan-judul-skripsi'] = 'backend/mahasiswa/Skripsi';

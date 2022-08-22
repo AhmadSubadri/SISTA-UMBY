@@ -204,7 +204,9 @@ class M_user extends CI_Model
 
     public function GetAllDataThesisApproved()
     {
-        $GetIdea = $this->db->select('*')->from('tb_ideasubmission')->get()->result();
+        $GetIdea = $this->db->select('*, i.id as id')->from('tb_ideasubmission i')
+        ->join('tb_student s', 's.username = i.nim')
+        ->get()->result();
         return $GetIdea;
     }
 }
