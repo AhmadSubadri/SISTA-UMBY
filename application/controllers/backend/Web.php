@@ -33,4 +33,18 @@ class Web extends CI_Controller
 		$this->load->view('backend/admin/plagiarisme', $data);
 		$this->load->view('backend/partials_/footer');
 	}
+
+	public function PublishPlagiarisme($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('tb_ideasubmission', ['key_plag' => "0"]);
+		redirect(site_url('Web/Plagiarisme'));
+	}
+
+	public function UnpublishPlagiarisme($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('tb_ideasubmission', ['key_plag' => "1"]);
+		redirect(site_url('Web/Plagiarisme'));
+	}
 }
