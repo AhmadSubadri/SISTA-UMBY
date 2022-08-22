@@ -3,7 +3,13 @@
 		<div class="card-header">
 			<h5>Switch button hide or show plagiarism</h5>
 			<div class="card-header-right">
-				<a href="" class="btn btn-mini btn-outline-primary"></a>
+				<?php if(count($KeyPlag) == count($Data)):?>
+					<a href="<?= site_url('Web/Public-All-process');?>" class="btn btn-mini btn-outline-primary"><label class="ti-world"></label> Public all process plagiarism</a>
+				<?php elseif(count($KeyPlag) != 0 && count($KeyPlag) < count($Data)):?>
+					<a href="<?= site_url('Web/Unpublic-All-process');?>" class="btn btn-mini btn-outline-danger"><label class="ti-power-off"></label> Unpublic all process plagiarism</a>
+				<?php else:?>
+					<a href="<?= site_url('Web/Unpublic-All-process');?>" class="btn btn-mini btn-outline-danger"><label class="ti-power-off"></label> Unpublic all process plagiarism</a>
+				<?php endif;?>
 			</div>
 		</div>
 		<div class="card-block">

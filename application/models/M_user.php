@@ -209,4 +209,10 @@ class M_user extends CI_Model
         ->get()->result();
         return $GetIdea;
     }
+
+    public function GetAllDataThesisByKey_plag()
+    {
+        $GetIdeaw = $this->db->select('*')->from('tb_ideasubmission')->where('key_plag', 1)->get()->result();
+        return $GetIdeaw;
+    }
 }
