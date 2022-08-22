@@ -201,4 +201,10 @@ class M_user extends CI_Model
         $GetAnna = $this->db->select('*')->from('tb_settings')->get()->result();
         return $GetAnna;
     }
+
+    public function GetAllDataThesisApproved()
+    {
+        $GetIdea = $this->db->select('*')->from('tb_ideasubmission')->get()->result();
+        return $GetIdea;
+    }
 }

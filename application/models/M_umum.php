@@ -100,7 +100,7 @@ class M_umum extends CI_Model
 
     public function _getbyIdPreview($id=0)
     {
-        $this->db->select('i.id as id, i.title as title, i.file as file, s.fullname as nameStudent, l.fullname as nameLecturer, m.name as nameMajor, i.status as status, i.nim as nim, i.nidn as nidn, i.id_major as major, s.image as image');
+        $this->db->select('i.id as id, i.title as title, i.file as file, s.fullname as nameStudent, l.fullname as nameLecturer, m.name as nameMajor, i.status as status, i.nim as nim, i.nidn as nidn, i.id_major as major, s.image as image, i.key_plag');
         $this->db->where('i.id', $id);
         $this->db->from('tb_ideasubmission i');
         $this->db->join('tb_lecturers l', 'l.username = i.nidn');
