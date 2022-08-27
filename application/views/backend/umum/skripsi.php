@@ -62,13 +62,13 @@
 									<label class="label label-mini label-success">Sudah sempro</label>
 								<?php endif;?>
 							</td>
-							<td>
+							<td id="prog<?= $row->ididea;?>">
 								<?php if($row->feedback == 0):?>
 									<a href="#" class="btn btn-mini btn-grd-inverse btn-disabled disabled"><i
 										class="ti-na"></i>Lihat</a>
-										<a onclick="cekPlag(<?= $row->id;?>)" class="btn btn-mini btn-outline-info btn-info" id="prog<?= $row->id;?>"><i class="ti-settings"></i>Proses sempro</a>
+									<a onclick="cekPlag(<?= $row->ididea;?>)" class="btn btn-mini btn-outline-info btn-info"><i class="ti-settings"></i>Proses sempro</a>
 									<?php else:?>
-										<a href="#" data-toggle="modal" data-target="#modal_lihata<?= $row->id;?>" class="btn btn-mini btn-outline-success" class="btn btn-mini btn-outline-primary"><i class="ti-eye"></i>Lihat</a>
+										<a href="#" data-toggle="modal" data-target="#modal_lihata<?= $row->ididea;?>" class="btn btn-mini btn-outline-success" class="btn btn-mini btn-outline-primary"><i class="ti-eye"></i>Lihat</a>
 										<a href="#" class="btn btn-mini btn-outline-primary btn-disabled disabled"><i
 											class="ti-na"></i>Sudah sempro</a>
 										<?php endif;?>
@@ -120,12 +120,6 @@
 </div>
 <?php endforeach;?>
 
-<div class="form-group" id="process">dfdf
-	<div class="progress">
-		<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="">
-		</div>
-	</div>
-</div>
 <style type="text/css">
 	#warningschedule {
 		animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;  
@@ -133,55 +127,10 @@
 	@keyframes blinker2 { to { opacity: 0; } }
 </style>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		function cekPlag(id){
-			event.preventDefault();
-			var count_error = 0;
-			if(count_error == 0)
-			{
-				$.ajax({
-					url:"<?= site_url('dsn/dashboard/proses-sempro');?>",
-					method:"POST",
-					data: {
-                            id: id
-                        },
-					beforeSend:function()
-					{
-						$('#prog'+id).attr('disabled', 'disabled');
-						$('#process').css('display', 'block');
-					},
-					success:function(data)
-					{
-						var percentage = 0;
-
-						var timer = setInterval(function(){
-							percentage = percentage + 20;
-							progress_bar_process(percentage, timer);
-						}, 1000);
-					}
-				})
-			}
-			else
-			{
-				return false;
-			}
-
-			function progress_bar_process(percentage, timer)
-			{
-				$('.progress-bar').css('width', percentage + '%');
-				if(percentage > 100)
-				{
-					clearInterval(timer);
-					$('#process').css('display', 'none');
-					$('.progress-bar').css('width', '0%');
-					$('#prog'+id).attr('disabled', false);
-					$('#success_message').html("<div class='alert alert-success'>Data Saved</div>");
-					setTimeout(function(){
-						$('#success_message').html('');
-					}, 5000);
-				}
-			}
-		}
-	</script>
+<script type="text/javascript">
+function cekPlag(id) {
+	// var jko = +id;
+	$('#prog'+id).html('<img src="<?php echo base_url('assets/images/loader-blue.gif');?>" width="30px" height="30px" alt="Loading"/> <b style="color: red; animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;">Process Checking</b>');
+	window.location.href = "<?= site_url();?>dsn/dashboard/proses-sempro/"+id;
+}
+</script>

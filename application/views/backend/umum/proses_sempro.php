@@ -314,7 +314,7 @@
                                             <div class="form-group form-default form-static-label">
                                                 <select name="feedback" class="form-control">
                                                     <option value="1">Diterima</option>
-                                                    <option value="2">Diterima dengan revisi</option>
+                                                    <option value="2">Revisi</option>
                                                     <option value="3">Ditolak</option>
                                                 </select>
                                                 <span class="form-bar"></span>

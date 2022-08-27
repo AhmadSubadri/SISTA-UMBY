@@ -30,9 +30,9 @@ class Skripsi extends CI_Controller
 		$this->load->view('backend/partials_/footer');
 	}
 
-    public function ProsesSempro()
+    public function ProsesSempro($id)
     {
-        $id = $this->input->post('id');
+        // $id = $this->input->post('id');
         $cekhsl = $this->M_umum->GetSourcePembanding()->num_rows();
         $cekhs2 = $this->M_umum->GetSourcePengajuan()->num_rows();
         if($cekhsl  == 0 && $cekhs2  == 0){

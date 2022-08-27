@@ -69,7 +69,7 @@
                                 <a href="#" class="btn btn-mini btn-grd-inverse btn-disabled disabled"><i
                                     class="ti-na"></i>Lihat</a>
                                     
-                                    <a href="<?= site_url('dsn/dashboard/proses-sempro/'.$row->ididea);?>" class="btn btn-mini btn-outline-info btn-info menu" id="idj"><i class="ti-settings"></i>Proses sempros</a>
+                                <a onclick="cekPlagi(<?= $row->ididea;?>)" class="btn btn-mini btn-outline-info btn-info"><i class="ti-settings"></i>Proses sempro</a>
 
                                 <?php else:?>
                                     <a href="#"  id="Modal-Tourist" data-toggle="modal" data-target="#modal_lihats<?= $row->id;?>" class="btn btn-mini btn-outline-success"><i class="ti-eye"></i>Lihat</a>
@@ -134,3 +134,11 @@
   }
   @keyframes blinker2 { to { opacity: 0; } }
 </style>
+
+<script type="text/javascript">
+function cekPlagi(id) {
+    // var jko = +id;
+    $('#prog'+id).html('<img src="<?php echo base_url('assets/images/loader-blue.gif');?>" width="30px" height="30px" alt="Loading"/> <b style="color: red; animation: blinker2 0.6s cubic-bezier(1, 0, 0, 1) infinite alternate;">Process Checking</b>');
+    window.location.href = "<?= site_url();?>dsn/dashboard/proses-sempro/"+id;
+}
+</script>
