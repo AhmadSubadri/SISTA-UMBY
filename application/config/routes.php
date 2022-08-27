@@ -99,7 +99,8 @@ $route['dsn/dashboard/save-pengumuman-pendadaran'] = 'backend/dosen/Pendadaran/S
 
 // skripsi umum
 $route['dsn/dashboard/pelaksanaan-sempro'] = 'backend/umum/Skripsi';
-$route['dsn/dashboard/proses-sempro/(:any)'] = 'backend/umum/Skripsi/ProsesSempro/$1';
+// $route['dsn/dashboard/proses-sempro/(:any)'] = 'backend/umum/Skripsi/ProsesSempro/$1';
+$route['dsn/dashboard/proses-sempro'] = 'backend/umum/Skripsi/ProsesSempro';
 $route['dsn/dashboard/save-feedback'] = 'backend/umum/Skripsi/SaveFeedbackSubmission';
 $route['dsn/dashboard/Bimbingan'] = 'backend/umum/Skripsi/Bimbingan';
 // pendadaran
