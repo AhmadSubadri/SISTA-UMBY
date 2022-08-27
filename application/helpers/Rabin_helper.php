@@ -1,14 +1,14 @@
 <?php
 function hapus_simbol($result) {
 	$result = strtolower($result);
-    $result = preg_replace('/&amp;.+?;/', '', $result);
-    $result = preg_replace('/\s+/', '', $result);
-        $result = preg_replace('|%([a-fA-F0-9][a-fA-F0-9])|', '+', $result);
-    $result = preg_replace('|-+|', '', $result);
-        $result = preg_replace('/&amp;#?[a-z0-9]+;/i','',$result);
-        $result = preg_replace('/[^%A-Za-z0-9 _-]/', '', $result);
-    $result = trim($result, '');
-    return $result;
+	$result = preg_replace('/&amp;.+?;/', '', $result);
+	$result = preg_replace('/\s+/', '', $result);
+	$result = preg_replace('|%([a-fA-F0-9][a-fA-F0-9])|', '+', $result);
+	$result = preg_replace('|-+|', '', $result);
+	$result = preg_replace('/&amp;#?[a-z0-9]+;/i','',$result);
+	$result = preg_replace('/[^%A-Za-z0-9 _-]/', '', $result);
+	$result = trim($result, '');
+	return $result;
 }
 
 function kgram($teks21,$gram) {
@@ -36,15 +36,13 @@ function rollingHash($string, $h4nk) {
 		for ($i=0;$i<$pjgKarakter;$i++){
 			$ascii=ord($string[$i]);
 			$hash+=$ascii*pow($basis,$pjgKarakter-($i+1));
-			}
-			$a=$pjgKarakter-2;
-			$ascii1=ord($string[$a]);
-			$c=$pjgKarakter-1;
-			$ascii2=ord($string[$c]);
-			$b=$ascii1*$basis+($ascii2);
-			// return $hash + $b;
-			// return $hash;
-			return $hash;
+		}
+		$a=$pjgKarakter-2;
+		$ascii1=ord($string[$a]);
+		$c=$pjgKarakter-1;
+		$ascii2=ord($string[$c]);
+		$b=$ascii1*$basis+($ascii2);
+		return $hash;
 	}
 }
 
@@ -75,13 +73,13 @@ function hapus($a) {
 				}
 			}
 		}
-	 }
-	 if ($sudah==false){
-	 	$fingerPrint[]=$h4nk[$i];
-	 }
-	 $sudah=false;
-	 {
-	 	return $fingerPrint;
+	}
+	if ($sudah==false){
+		$fingerPrint[]=$h4nk[$i];
+	}
+	$sudah=false;
+	{
+		return $fingerPrint;
 	}
 }
 
@@ -119,5 +117,5 @@ function fingerPrint($hash1,$hash2) {
 		}
 	}
 	return $fingerPrint;
-	}
+}
 ?>

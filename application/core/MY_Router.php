@@ -1,7 +1,7 @@
 <?php class MY_Router extends CI_Router {
 
     protected function _set_default_controller() {
-         
+       
         if (empty($this->default_controller)) {
             show_error('Unable to determine what should be displayed. A default route has not been specified in the routing file.');
         }
